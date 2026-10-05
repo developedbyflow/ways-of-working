@@ -31,8 +31,8 @@
 - [ ] the flag is removed
 
 ## Concepts if you get stuck
-- A/B tests, sample size, peeking, fake doors → F23 The product-minded engineer
-- Flags → F16 The frontend in production
+- A/B tests, sample size, peeking, fake doors
+- Flags
 
 ## Next level
 - `staff` One place where every experiment and its result lives.

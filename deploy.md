@@ -40,10 +40,10 @@ The skill gives you every command. You run them.
 - **Fullstack:** when the backend adds fields, it goes first and stays backward compatible; the frontend follows. Never the other way around.
 
 ## Concepts if you get stuck
-- Pipelines, environments, health checks, rollback → Backend 08 Infrastructure, deploy and observability
-- Frontend build and deploy → F11 Tooling, build and deploy
-- Flags and releases in production → F16 The frontend in production
-- Reliability → S09 Reliability
+- Pipelines, environments, health checks, rollback
+- Frontend build and deploy
+- Flags and releases in production
+- Reliability
 
 ## Next level
 - Deploy on every merge, with risky changes behind flags.

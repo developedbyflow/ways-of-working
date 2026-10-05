@@ -38,11 +38,11 @@
 - **Fullstack:** each error state on the screen maps to an API error.
 
 ## Concepts if you get stuck
-- UX for developers, states, forms, speed → F21 UX for developers
-- Accessibility → F04 Accessibility
-- HTML and CSS → F03 Semantic HTML and modern CSS
-- Loading and error states for server data → F08 Data from the server
-- Design system → F15 Design system
+- UX for developers, states, forms, speed
+- Accessibility
+- HTML and CSS
+- Loading and error states for server data
+- Design system
 
 ## Next level
 - Test big flows with five users before building them.

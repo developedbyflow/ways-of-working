@@ -33,9 +33,9 @@
 - [ ] initiative: the milestones and the weekly status are set
 
 ## Concepts if you get stuck
-- Prioritizing, RICE, cost of delay → F23 The product-minded engineer
-- Trade-offs → S01 Requirements and Trade-offs
-- Leading initiatives → S19 Staff and Beyond
+- Prioritizing, RICE, cost of delay
+- Trade-offs
+- Leading initiatives
 
 ## Next level
 - Compare estimates with actuals every month (at the weekly `/wow-retro`) and adjust how you estimate.

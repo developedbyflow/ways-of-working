@@ -24,9 +24,9 @@ Automated tools find only part of the problems. The manual checks are required.
 - [ ] **Route changes** in a single-page app move the focus and update the title.
 
 ## Concepts
-- Accessibility → F04 Accessibility
-- Accessible components → F15 Design system
-- Forms and states → F21 UX for developers
+- Accessibility
+- Accessible components
+- Forms and states
 
 ## Changelog
 - 2026-10-05: v1

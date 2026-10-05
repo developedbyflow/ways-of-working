@@ -13,3 +13,8 @@ for dir in "$here"/skills/*/; do
   ln -sfn "${dir%/}" "$link"
   echo "linked $name"
 done
+config="$HOME/.claude/wow-config.md"
+if [ ! -e "$config" ]; then
+  cp "$here/config.example.md" "$config"
+  echo "created $config: fill it in"
+fi

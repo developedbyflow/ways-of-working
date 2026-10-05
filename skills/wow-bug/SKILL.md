@@ -6,7 +6,7 @@ argument-hint: "[what is broken]"
 
 # Bug
 
-1. Read `/Users/ionescuflorin-eugen/Desktop/TechProducts/ways-of-working/SKILLS.md`. It says how every wow skill behaves; follow it for the whole run.
-2. Read `/Users/ionescuflorin-eugen/Desktop/TechProducts/ways-of-working/bug.md`. It is the process: its steps, its STOPs, its "Done when" and its "Next".
+1. Read `${CLAUDE_SKILL_DIR}/../../SKILLS.md`. It says how every wow skill behaves; follow it for the whole run.
+2. Read `${CLAUDE_SKILL_DIR}/../../bug.md`. It is the process: its steps, its STOPs, its "Done when" and its "Next".
 
 The user's input: $ARGUMENTS

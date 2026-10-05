@@ -15,8 +15,8 @@
 - [ ] Tests run on every PR, and failing tests block the merge.
 
 ## Concepts
-- Testing in .NET → Backend 06 Testing
-- Testing the frontend → F10 Frontend testing
+- Testing in .NET
+- Testing the frontend
 
 ## Changelog
 - 2026-10-05: v1

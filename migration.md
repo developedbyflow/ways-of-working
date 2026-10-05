@@ -50,10 +50,10 @@ The same pattern: the new next to the old, one screen or module at a time, then 
 - [ ] the runbook is updated
 
 ## Concepts if you get stuck
-- Migrations, locks, transactions → Backend 04 Databases
-- API versioning → Backend 03 REST API design
-- Migrations in the real world → S17 Design in the Real World
-- Moving a big frontend step by step → F14 Frontend architecture at scale
+- Migrations, locks, transactions
+- API versioning
+- Migrations in the real world
+- Moving a big frontend step by step
 
 ## Next level
 - `staff` Migrations across teams, with a tracker of who has moved.

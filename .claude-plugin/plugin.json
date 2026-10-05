@@ -1,0 +1,10 @@
+{
+  "name": "ways-of-working",
+  "version": "1.0.0",
+  "description": "A fullstack developer's ways of working as Claude Code skills: one page per situation, STOPs where you decide, and a loop that improves the pages after every task.",
+  "author": {
+    "name": "developedbyflow",
+    "url": "https://github.com/developedbyflow"
+  },
+  "license": "MIT"
+}

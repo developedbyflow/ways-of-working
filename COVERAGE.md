@@ -4,7 +4,7 @@ Checked on 2026-10-05 against six sources, so the list does not depend on memory
 
 ## Sources
 1. The work from start to finish (the lifecycle).
-2. My Career Tracker framework: 15 focus areas, 172 competences.
+2. My own career framework: 15 focus areas, 172 competences.
 3. My tracks: Backend 00–17, Frontend F00–F23, System Design S00–S19, C# C0–C9.
 4. [SWEBOK v4](https://www.computer.org/education/bodies-of-knowledge/software-engineering) (IEEE): the 18 knowledge areas of software engineering.
 5. [DORA capabilities](https://dora.dev/capabilities/).
@@ -30,7 +30,7 @@ Checked on 2026-10-05 against six sources, so the list does not depend on memory
 | Leave | handoff |
 | Grow myself | retro (task, week, quarter), explain-again |
 
-## 2. Career Tracker
+## 2. My career framework
 
 | Focus area | Covered by |
 |---|---|
@@ -144,7 +144,7 @@ Every module is used by at least one skill, except the three interview modules.
 | Security | audit security, audit privacy, architecture (threat model), incident |
 | Professional Practice | comms, mentor, handoff, grill |
 | Economics | plan (cost of delay), research (build vs buy), audit cost, ai-feature (cost) |
-| Computing, Mathematical and Engineering Foundations | the tracks (the knowledge layer, not a situation) |
+| Computing, Mathematical and Engineering Foundations | my learning tracks (the knowledge layer, not a situation) |
 
 ## 5. DORA
 
@@ -194,7 +194,7 @@ Every module is used by at least one skill, except the three interview modules.
 | wizard | deploy, cloud, migration (the steps only I can do) |
 | handoff | handoff |
 | wait-what | explain-again |
-| teach | the tracks and explain-again |
+| teach | my learning tracks and explain-again |
 | retro | retro |
 | ask-matt | wow |
 | writing-for-agents | the guide I use to write the skills |
@@ -206,7 +206,7 @@ Every module is used by at least one skill, except the three interview modules.
 
 | Out | Comes in when |
 |---|---|
-| Interview prep (Backend 16, F19, S18) | it stays in the interview playbooks and the Career Tracker; retro (quarter) feeds them |
+| Interview prep (Backend 16, F19, S18) | it stays in my interview prep and my career tracker; retro (quarter) feeds them |
 | Hiring: interviewing candidates | I join an interview loop |
 | On-call rotation | I join one; until then, incident covers a single responder |
 | Docs website | the docs outgrow README and `docs/` |

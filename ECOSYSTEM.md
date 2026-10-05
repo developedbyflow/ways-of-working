@@ -7,7 +7,7 @@ How I checked that nothing is missing: [COVERAGE.md](COVERAGE.md).
 
 | Layer | What it is | Where it lives |
 |---|---|---|
-| Lessons | why and how a concept works | the tracks: Frontend, Backend, C#, System Design |
+| Lessons | why and how a concept works | your own learning material, linked to the pages by the lessons file in your personal settings (mine: my Frontend, Backend, C# and System Design tracks) |
 | Pages | how I work, one page per situation; the only place where the process is written | this repo |
 | Skills | run a page step by step and stop where I decide; how they behave is in `SKILLS.md` | `skills/` in this repo, linked into `~/.claude/skills/` by `install.sh` |
 | Project files | what the skills leave behind in each project | the project repo (`docs/`, `CLAUDE.md`, ...) |
@@ -168,7 +168,8 @@ Mine, outside any project:
 | File | What it holds | Written by | Read by |
 |---|---|---|---|
 | `ways-of-working/` | the pages | retro | every skill |
-| `impact-log.md` (private) | what I did and what changed, with numbers | retro (task) | retro (quarter): CV, STAR stories, Career Tracker evidence |
+| `~/.claude/wow-config.md` | personal settings: name, chat language, background, where the impact log, career tracker and lessons file are | `install.sh` (from `config.example.md`), then me | every skill |
+| `impact-log.md` (private) | what I did and what changed, with numbers | retro (task) | retro (quarter): CV, STAR stories, career tracker evidence |
 
 ## Which one, when two look alike
 

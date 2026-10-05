@@ -33,10 +33,10 @@
 - [ ] a changelog entry
 
 ## Concepts if you get stuck
-- Tokens, component API, versioning, governance → F15 Design system
-- Accessible components → F04 Accessibility
-- Components and hooks → F06 Well-built components and hooks
-- CSS → F03 Semantic HTML and modern CSS
+- Tokens, component API, versioning, governance
+- Accessible components
+- Components and hooks
+- CSS
 
 ## Next level
 - Adoption: move the screens to the component, and count how many have moved.

@@ -33,8 +33,8 @@ Test the behavior (inputs and outputs), not the implementation (private methods,
 - [ ] no test only checks a mock
 
 ## Concepts if you get stuck
-- Testing in .NET → Backend 06 Testing
-- Testing the frontend → F10 Frontend testing
+- Testing in .NET
+- Testing the frontend
 
 ## Next level
 - Mutation testing on critical logic (Stryker): it checks that your tests catch a changed line.

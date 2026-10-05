@@ -35,8 +35,8 @@
 - [ ] the definition of done is ticked
 
 ## Concepts if you get stuck
-- CI and the pipeline → F11 Tooling, build and deploy
-- Good PRs as a lead → F17 Technical leadership in frontend
+- CI and the pipeline
+- Good PRs as a lead
 
 ## Next level
 - Stacked PRs for a long feature: small PRs that build on each other.

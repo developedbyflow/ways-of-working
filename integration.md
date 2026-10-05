@@ -44,11 +44,11 @@
 - [ ] the runbook entry exists
 
 ## Concepts if you get stuck
-- Calls between systems, retries, webhooks → Backend 12 Communication between systems
-- Idempotency and correctness across services → S07 Correctness Across Services
-- Payments → S14 Money and Booking Systems
-- Secrets → Backend 05 Security
-- Running it in production → F16 The frontend in production
+- Calls between systems, retries, webhooks
+- Idempotency and correctness across services
+- Payments
+- Secrets
+- Running it in production
 
 ## Next level
 - Vendor review: what data they receive and where they store it. Under GDPR, the vendor is a processor.

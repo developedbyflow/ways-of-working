@@ -6,11 +6,11 @@ argument-hint: "[area]"
 
 # Audit
 
-1. Read `/Users/ionescuflorin-eugen/Desktop/TechProducts/ways-of-working/SKILLS.md`. It says how every wow skill behaves; follow it for the whole run.
-2. Read `/Users/ionescuflorin-eugen/Desktop/TechProducts/ways-of-working/audit.md`. It is the process: its steps, its STOPs, its "Done when" and its "Next".
+1. Read `${CLAUDE_SKILL_DIR}/../../SKILLS.md`. It says how every wow skill behaves; follow it for the whole run.
+2. Read `${CLAUDE_SKILL_DIR}/../../audit.md`. It is the process: its steps, its STOPs, its "Done when" and its "Next".
 
 The area is: $0
 
-Also read `audits/$0.md` in the pages folder. If the area is empty or has no file, list the areas from `audit.md` and ask which one (STOP).
+Also read `${CLAUDE_SKILL_DIR}/../../audits/$0.md`. If the area is empty or has no file, list the areas from `audit.md` and ask which one (STOP).
 
 The user's input: $ARGUMENTS

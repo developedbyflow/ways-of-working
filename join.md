@@ -32,8 +32,8 @@
 - **Fullstack:** where validation lives on each side, and how the contract and the types are shared.
 
 ## Concepts if you get stuck
-- How a backend handles a request → Backend 02 Anatomy of a backend
-- How a large frontend is organized → F14 Frontend architecture at scale
+- How a backend handles a request
+- How a large frontend is organized
 
 ## Next level
 - `staff` Write the onboarding doc you wished you had.

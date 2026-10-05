@@ -63,9 +63,9 @@ Next update: <time>
 - [ ] you sent it yourself
 
 ## Concepts if you get stuck
-- Influence and communication as a lead → F17 Technical leadership in frontend
-- Staff-level communication → S19 Staff and Beyond
-- Working with product people → F23 The product-minded engineer
+- Influence and communication as a lead
+- Staff-level communication
+- Working with product people
 
 ## Next level
 - `staff` Proposals for executives: one page, with the business number first.

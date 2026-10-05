@@ -33,12 +33,12 @@ Measure before and after, on data shaped like production's.
 - [ ] Connection pool size and memory use are checked under load.
 
 ## Concepts
-- Web performance → F12 Web performance
-- The browser rendering pipeline → F00 The browser from the inside
-- React rendering → F05 React from the inside
-- Backend performance → Backend 07 Performance
-- Indexes and query plans → Backend 04 Databases
-- Scaling → S10 Scaling in Practice
+- Web performance
+- The browser rendering pipeline
+- React rendering
+- Backend performance
+- Indexes and query plans
+- Scaling
 
 ## Changelog
 - 2026-10-05: v1

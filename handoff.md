@@ -34,7 +34,7 @@
 - [ ] `HANDOFF.md` exists
 
 ## Concepts if you get stuck
-- Runbooks, environments, access → Backend 08 Infrastructure, deploy and observability
+- Runbooks, environments, access
 
 ## Next level
 - `staff` A "bus factor" check: every critical area has two people who can run it.

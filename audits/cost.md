@@ -17,10 +17,10 @@
 - [ ] **Logs and metrics:** how long they're kept. It's often the hidden cost.
 
 ## Concepts
-- Security, multi-tenancy and cost → S11 Security, Multi-tenancy and Cost
-- Cloud on AWS → Backend 14 Cloud on AWS
-- Scaling in practice → S10 Scaling in Practice
-- AI in the backend → Backend 17 AI in the backend
+- Security, multi-tenancy and cost
+- Cloud on AWS
+- Scaling in practice
+- AI in the backend
 
 ## Changelog
 - 2026-10-05: v1

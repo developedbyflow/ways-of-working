@@ -44,10 +44,10 @@ Actions: each with an owner and a date
 - **Fullstack:** check whether the frontend's retries are making it worse.
 
 ## Concepts if you get stuck
-- Logs, alerts, rollback, runbooks → Backend 08 Infrastructure, deploy and observability
-- The frontend in production → F16 The frontend in production
-- Reliability, SLOs, postmortems → S09 Reliability
-- Security → Backend 05 Security
+- Logs, alerts, rollback, runbooks
+- The frontend in production
+- Reliability, SLOs, postmortems
+- Security
 
 ## Next level
 - SLOs, with alerts on what users feel.

@@ -52,9 +52,9 @@ Questions that usually come up:
 - **Fullstack:** where the logic lives, the shape of the contract, who validates what.
 
 ## Concepts if you get stuck
-- Requirements and trade-offs → S01 Requirements and Trade-offs
-- Leading technical decisions → F17 Technical leadership in frontend
-- Design principles → Backend 09 Principles and design patterns
+- Requirements and trade-offs
+- Leading technical decisions
+- Design principles
 
 ## Next level
 - Name things in the code with the words from `GLOSSARY.md`.

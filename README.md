@@ -53,31 +53,50 @@ Every page has a skill that runs it step by step: `/wow-<page>`. The prefix is t
 | **Anywhere** | | |
 | [What is in front of me](wow.md) | one item → the right skill; a list of incoming items → sorted by severity and priority | `/wow` |
 | [When an explanation doesn't land](explain-again.md) | the name first, anchored in what I already know, a small example, a diagram, the lesson link | `/wow-explain-again` |
-| [Retro](retro.md) | task: page, `CLAUDE.md`, impact log · week: what moved, what's next · quarter: CV bullets, STAR stories, Career Tracker evidence | `/wow-retro` |
+| [Retro](retro.md) | task: page, `CLAUDE.md`, impact log · week: what moved, what's next · quarter: CV bullets, STAR stories, career tracker evidence | `/wow-retro` |
 
 Audit areas: security, privacy, performance, accessibility, SEO, UX, analytics, testing, developer experience, production readiness, cost, architecture.
 
 Status: every page is v1, written on 2026-10-05. None has been used on a real task yet; `/wow-retro` will change them.
 
-The links to the lessons live in `LESSONS.md`, which stays on my machine and out of git: the lessons are private, so the links wouldn't open for anyone else.
+Each page lists the concepts it relies on. Where each concept is explained lives in a lessons file named in your personal settings; mine stays on my machine, because my lessons are private.
 
 ## How this grows
 1. The steps of a page fit on one screen. Templates, checklists and the Frontend · Backend · Fullstack notes come after them.
 2. A step stays only if I can say what breaks when I skip it.
-3. No theory here. A concept gets its name and the name of its lesson; the skills look up the link in `LESSONS.md`.
+3. No theory here. A page names the concept; the lessons file in the personal settings says where it's explained.
 4. After every real task, run `/wow-retro`: change the page and add a changelog line.
 5. "Next level" holds at most 3 things I don't do yet. When I start doing one, it moves into the steps.
 6. Skills are built from these pages. Every STOP here is a STOP in the skill.
 
-## Install the skills
-The skills live in `skills/`. `install.sh` links each one into `~/.claude/skills/`, so a change in this repo reaches Claude Code right away.
+## Install
+
+**As a plugin**, to use the skills:
 
 ```bash
-./install.sh
+claude plugin marketplace add developedbyflow/ways-of-working
 ```
 
-To remove them:
+```bash
+claude plugin install ways-of-working@developedbyflow
+```
+
+Then copy `config.example.md` to `~/.claude/wow-config.md` and fill it in. The commands are `/ways-of-working:wow-bug` and so on; the short `/wow-bug` works too, unless another command already has that name.
+
+**From a clone**, to change the pages and see the skills change right away:
+
+```bash
+git clone https://github.com/developedbyflow/ways-of-working.git && cd ways-of-working && ./install.sh
+```
+
+`install.sh` links every skill into `~/.claude/skills/`, and creates `~/.claude/wow-config.md` from `config.example.md` if it doesn't exist yet.
+
+To remove the linked skills:
 
 ```bash
 find ~/.claude/skills -maxdepth 1 -type l -name 'wow*' -delete
 ```
+
+## License
+
+MIT. See [LICENSE](LICENSE).

@@ -2,8 +2,8 @@
 
 - **Use it when:** a task is done (task), at the end of the week (week), at the end of a quarter (quarter).
 - **Not when:** an incident is still open. The postmortem comes first: `/wow-incident`.
-- **Reads:** the page you used, the ticket with its estimate, `impact-log.md`.
-- **Writes:** the page in `ways-of-working/` (with a changelog line), `CLAUDE.md`, `impact-log.md`; each quarter also CV bullets, STAR stories and Career Tracker evidence.
+- **Reads:** the page you used, the ticket with its estimate, `impact-log.md` (its path is in the personal settings).
+- **Writes:** the page in `ways-of-working/` (with a changelog line), `CLAUDE.md`, `impact-log.md`; each quarter also CV bullets, STAR stories and evidence in the career tracker from the personal settings.
 
 ## Task (2 minutes)
 1. **The page:** what helped, what was missing, and what you skipped without anything breaking.
@@ -21,7 +21,7 @@
 - What I did: <one sentence>
 - What changed: <the number before → after, for users or the team>
 - Proof: <PR, dashboard, report>
-- Competence: <Career Tracker area · competence>
+- Competence: <the skill it proves, as your career tracker names it>
 ```
 
 ## Week (15 minutes)
@@ -34,7 +34,7 @@
 1. **Read the quarter's impact log.**
 2. **CV bullets:** pick the 3–5 entries with the clearest number. Write each as "did X, which changed Y by Z".
 3. **STAR stories:** turn two of them into stories (situation, task, action, result).
-4. **Evidence:** add the links to the Career Tracker, on the competences they prove.
+4. **Evidence:** add the links to your career tracker (from the personal settings), on the skills they prove.
 5. **Next level:** which items do you already do? Move them into the steps of their page.
 
 No streaks and no scores. The loop records what changed, never how many days in a row.
@@ -45,7 +45,7 @@ No streaks and no scores. The loop records what changed, never how many days in 
 - [ ] quarter: CV bullets, two STAR stories and the evidence are added
 
 ## Concepts if you get stuck
-- CV bullets, STAR stories, impact with numbers → F23 The product-minded engineer
+- CV bullets, STAR stories, impact with numbers
 
 ## Next
 Nothing. This closes the loop.

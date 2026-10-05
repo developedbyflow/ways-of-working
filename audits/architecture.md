@@ -20,9 +20,9 @@
 Each finding → `/wow-refactor`. Each debt you accept → `docs/tech-debt.md`.
 
 ## Concepts
-- Principles and patterns → Backend 09 Principles and design patterns
-- Application architectures → Backend 11 Application architectures
-- Frontend architecture → F14 Frontend architecture at scale · F18 Frontend system design
+- Principles and patterns
+- Application architectures
+- Frontend architecture
 
 ## Changelog
 - 2026-10-05: v1

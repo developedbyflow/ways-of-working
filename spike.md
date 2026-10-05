@@ -23,8 +23,8 @@
 - [ ] the branch is deleted
 
 ## Concepts if you get stuck
-- Measuring the frontend → F12 Web performance
-- Measuring the backend → Backend 07 Performance
+- Measuring the frontend
+- Measuring the backend
 
 ## Next
 `/wow-grill`, `/wow-feature` or `/wow-design-doc`. End with `/wow-retro`.

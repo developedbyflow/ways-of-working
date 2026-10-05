@@ -1,0 +1,14 @@
+{
+  "name": "developedbyflow",
+  "description": "Claude Code plugins by developedbyflow.",
+  "owner": {
+    "name": "developedbyflow"
+  },
+  "plugins": [
+    {
+      "name": "ways-of-working",
+      "source": "./",
+      "description": "A fullstack developer's ways of working as Claude Code skills: one page per situation, STOPs where you decide, and a loop that improves the pages after every task."
+    }
+  ]
+}

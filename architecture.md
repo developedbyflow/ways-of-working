@@ -42,16 +42,16 @@
 - **Fullstack:** where the logic lives, the contract, the login flow end to end.
 
 ## Concepts if you get stuck
-- Numbers and estimates → S00 Numbers and Estimates
-- Requirements and trade-offs → S01 Requirements and Trade-offs
-- The building blocks → S02 The Building Blocks
-- Reliability → S09 Reliability
-- Scaling → S10 Scaling in Practice
-- Security and cost → S11 Security, Multi-tenancy and Cost
-- Application architectures → Backend 11 Application architectures
-- Scaling and distributed systems → Backend 13 Scaling and distributed systems
-- System design → Backend 15 System design
-- Frontend architecture → F14 Frontend architecture at scale · F18 Frontend system design
+- Numbers and estimates
+- Requirements and trade-offs
+- The building blocks
+- Reliability
+- Scaling
+- Security and cost
+- Application architectures
+- Scaling and distributed systems
+- System design
+- Frontend architecture
 
 ## Next level
 - Lint rules or tests that enforce the module boundaries.

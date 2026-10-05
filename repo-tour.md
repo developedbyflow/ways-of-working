@@ -31,9 +31,9 @@ Every claim points to a file and a line. Anything the code doesn't show is marke
 - [ ] you answered the five questions
 
 ## Concepts if you get stuck
-- The request pipeline → Backend 02 Anatomy of a backend
-- Tables and relations → Backend 04 Databases
-- How a large frontend is organized → F14 Frontend architecture at scale
+- The request pipeline
+- Tables and relations
+- How a large frontend is organized
 
 ## Next level
 - Keep `REPO-MAP.md` true. `/wow-review` asks for an update when a PR changes the structure.

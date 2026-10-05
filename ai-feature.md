@@ -46,9 +46,9 @@
 - **Fullstack:** the server validates. Always.
 
 ## Concepts if you get stuck
-- AI in the backend → Backend 17 AI in the backend
-- AI in the frontend → F20 AI in the frontend
-- AI systems at scale → S16 AI Systems
+- AI in the backend
+- AI in the frontend
+- AI systems at scale
 
 ## Next level
 - Eval results tracked over time.

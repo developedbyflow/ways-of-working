@@ -39,9 +39,9 @@
 - **Fullstack:** the table shape never leaks into the contract.
 
 ## Concepts if you get stuck
-- Relations, normalization, constraints, indexes, transactions, migrations → Backend 04 Databases
-- How storage engines work → S03 Storage Internals
-- Two writes at once → Backend 10 Concurrency
+- Relations, normalization, constraints, indexes, transactions, migrations
+- How storage engines work
+- Two writes at once
 
 ## Next level
 - `staff` Data ownership across services: one owner per table.

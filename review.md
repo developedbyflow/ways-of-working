@@ -56,10 +56,10 @@
 - [ ] you can explain every line
 
 ## Concepts if you get stuck
-- Review as a lead → F17 Technical leadership in frontend
-- Principles and patterns → Backend 09 Principles and design patterns
-- Security → Backend 05 Security · F13 Security in the browser
-- Tests → Backend 06 Testing · F10 Frontend testing
+- Review as a lead
+- Principles and patterns
+- Security
+- Tests
 
 ## Next level
 - Review within one working day, and keep PRs small.

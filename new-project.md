@@ -59,11 +59,11 @@
 - **Fullstack:** the backend generates the OpenAPI document, and CI generates the TypeScript types from it.
 
 ## Concepts if you get stuck
-- Project setup and tooling → C0 The project and the tools · F11 Tooling, build and deploy
-- Architecture choices → Backend 11 Application architectures · F14 Frontend architecture at scale
-- Tests at each level → Backend 06 Testing · F10 Frontend testing
-- Pipeline, environments, logs → Backend 08 Infrastructure, deploy and observability
-- Design system → F15 Design system
+- Project setup and tooling
+- Architecture choices
+- Tests at each level
+- Pipeline, environments, logs
+- Design system
 
 ## Next level
 - A feature template (folders, tests, telemetry), so every feature starts the same way.

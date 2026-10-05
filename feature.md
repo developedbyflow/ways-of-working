@@ -93,14 +93,14 @@ The steps are the same for all three. What changes is which steps you own, and w
   - generate the TypeScript types from the OpenAPI document, so the two sides can't drift apart.
 
 ## Concepts if you get stuck
-- Which number to track, and how → F23 The product-minded engineer
-- Which states the screen needs → F21 UX for developers
-- Loading and error states for server data → F08 Data from the server
-- Shaping the endpoint, OpenAPI, generated types → Backend 03 REST API design
-- Tables, migrations, transactions → Backend 04 Databases
-- Which tests, at which level → F10 Frontend testing · Backend 06 Testing
-- Feature flags and rolling out → F16 The frontend in production · Backend 08 Infrastructure, deploy and observability
-- Will it hold the traffic? → S00 Numbers and Estimates
+- Which number to track, and how
+- Which states the screen needs
+- Loading and error states for server data
+- Shaping the endpoint, OpenAPI, generated types
+- Tables, migrations, transactions
+- Which tests, at which level
+- Feature flags and rolling out
+- Will it hold the traffic?
 
 ## Next level
 - Write down what you decided NOT to build, and why. `staff`

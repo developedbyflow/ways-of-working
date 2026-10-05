@@ -41,9 +41,9 @@
 - **Fullstack:** the contract comes before either side.
 
 ## Concepts if you get stuck
-- Methods, status codes, DTOs, validation, pagination, versioning, OpenAPI → Backend 03 REST API design
-- Authorization → Backend 05 Security
-- How the client consumes it → F08 Data from the server
+- Methods, status codes, DTOs, validation, pagination, versioning, OpenAPI
+- Authorization
+- How the client consumes it
 
 ## Next level
 - Contract tests that fail when a breaking change ships.

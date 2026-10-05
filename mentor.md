@@ -6,7 +6,7 @@
 - **Writes:** a one-page plan, and notes at each checkpoint.
 
 ## Steps
-1. **Their goal, in their own words,** and where they are today, using levels L0–L3 like the Career Tracker.
+1. **Their goal, in their own words,** and where they are today, on a simple scale: L0 hasn't done it, L1 does it with help, L2 does it alone, L3 sets the standard for the team.
    - STOP: they agree with the goal and the starting point.
    - Skip it → you coach them toward your goal, not theirs.
 2. **The plan, on one page:**
@@ -29,8 +29,8 @@
 - [ ] they can do the skill alone
 
 ## Concepts if you get stuck
-- Technical leadership and growing others → F17 Technical leadership in frontend
-- Staff and beyond → S19 Staff and Beyond
+- Technical leadership and growing others
+- Staff and beyond
 
 ## Next level
 - `staff` Sponsor them: give them visible work, and credit them in public.

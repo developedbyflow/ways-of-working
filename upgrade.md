@@ -38,9 +38,9 @@ Commit the lockfile. To check what you have:
 - **Fullstack:** regenerate the API types if the OpenAPI tooling changed.
 
 ## Concepts if you get stuck
-- Packages, lockfiles, builds → F11 Tooling, build and deploy
-- The supply chain → Backend 05 Security
-- .NET project and tools → C0 The project and the tools
+- Packages, lockfiles, builds
+- The supply chain
+- .NET project and tools
 
 ## Next level
 - Renovate or Dependabot: patch updates grouped, and merged automatically when the tests pass.

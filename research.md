@@ -38,9 +38,9 @@
 - [ ] the decision is in an ADR
 
 ## Concepts if you get stuck
-- Trade-offs → S01 Requirements and Trade-offs
-- Evaluating technology as a lead → F17 Technical leadership in frontend
-- Packages, versions, the supply chain → F11 Tooling, build and deploy · Backend 05 Security
+- Trade-offs
+- Evaluating technology as a lead
+- Packages, versions, the supply chain
 
 ## Next level
 - `staff` A one-page evaluation template the whole team reuses.

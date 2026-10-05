@@ -43,12 +43,12 @@ When you haven't found the cause in 30 minutes:
 - **Fullstack:** compare the API response with the contract. That tells you which side to fix.
 
 ## Concepts if you get stuck
-- Can't see where it fails → logs and tracing → Backend 08 Infrastructure, deploy and observability
-- Errors that only users see in the browser → F16 The frontend in production
-- Breaks only when two requests run at once → Backend 04 Databases · Backend 10 Concurrency
-- Slow in the browser → F00 The browser from the inside · F12 Web performance
-- Slow on the server → Backend 07 Performance
-- How to write the failing test → F10 Frontend testing · Backend 06 Testing
+- Can't see where it fails → logs and tracing
+- Errors that only users see in the browser
+- Breaks only when two requests run at once
+- Slow in the browser
+- Slow on the server
+- How to write the failing test
 
 ## Next level
 - In production: check how many users were hit before you set the priority.

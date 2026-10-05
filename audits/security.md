@@ -42,9 +42,9 @@ Defense only: you check that the protections are in place.
 - [ ] Unmaintained packages are flagged.
 
 ## Concepts
-- Security on the backend → Backend 05 Security
-- Security in the browser → F13 Security in the browser
-- Security across a system → S11 Security, Multi-tenancy and Cost
+- Security on the backend
+- Security in the browser
+- Security across a system
 
 ## Changelog
 - 2026-10-05: v1

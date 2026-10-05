@@ -17,9 +17,9 @@
 - [ ] **Docs are current:** ADRs, `REPO-MAP.md`, the runbook.
 
 ## Concepts
-- Tooling, build and deploy → F11 Tooling, build and deploy
-- .NET project and tools → C0 The project and the tools
-- Pipelines and environments → Backend 08 Infrastructure, deploy and observability
+- Tooling, build and deploy
+- .NET project and tools
+- Pipelines and environments
 
 ## Changelog
 - 2026-10-05: v1

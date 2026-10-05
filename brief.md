@@ -35,8 +35,8 @@
 - **Fullstack:** give it the OpenAPI contract first, so both sides match.
 
 ## Concepts if you get stuck
-- AI in the frontend → F20 AI in the frontend
-- AI in the backend → Backend 17 AI in the backend
+- AI in the frontend
+- AI in the backend
 
 ## Next level
 - Turn repeated corrections into `CLAUDE.md` lines, or into a skill.
