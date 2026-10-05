@@ -61,6 +61,28 @@ Status: every page is v1, written on 2026-10-05. None has been used on a real ta
 
 Each page lists the concepts it relies on. Where each concept is explained lives in a lessons file named in your personal settings; mine stays on my machine, because my lessons are private.
 
+## How the skills work
+
+A skill is a command in Claude Code. Each one here is a shortcut to a page: `/wow-plan` opens `plan.md`, `/wow-bug` opens `bug.md`. The skill holds no steps of its own; the page holds the know-how.
+
+```
+/wow-bug "the daily plan is lost after refresh"
+  → skills/wow-bug/SKILL.md   "read SKILLS.md, then bug.md"
+  → SKILLS.md                 how every skill behaves
+  → bug.md                    the steps, the STOPs, "Done when"
+```
+
+What a run looks like:
+1. You type the command and what is in front of you.
+2. Claude reads the page and checks it fits. If another page fits better, it says so.
+3. It goes step by step. At every **STOP** it asks you, recommends an answer, and waits.
+4. It never commits, pushes, deploys or deletes anything. It gives you the command, and you run it.
+5. At the end it checks "Done when", then runs `/wow-retro`, so the page gets better after every task.
+
+Not sure which one fits? Run `/wow` and describe the situation.
+
+Change a page, and the skill follows it from the next run. Your name, chat language and background go in `~/.claude/wow-config.md` (see `config.example.md`).
+
 ## How this grows
 1. The steps of a page fit on one screen. Templates, checklists and the Frontend · Backend · Fullstack notes come after them.
 2. A step stays only if I can say what breaks when I skip it.
