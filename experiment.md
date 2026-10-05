@@ -31,8 +31,8 @@
 - [ ] the flag is removed
 
 ## Concepts if you get stuck
-- A/B tests, sample size, peeking, fake doors → [F23 The product-minded engineer](https://claude.ai/artifact/DKdJDmkmqw2fYTWRqwsaok)
-- Flags → [F16 The frontend in production](https://claude.ai/artifact/46i2EYDtDsXGonv52HDA7C)
+- A/B tests, sample size, peeking, fake doors → F23 The product-minded engineer
+- Flags → F16 The frontend in production
 
 ## Next level
 - `staff` One place where every experiment and its result lives.

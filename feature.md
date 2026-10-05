@@ -93,14 +93,14 @@ The steps are the same for all three. What changes is which steps you own, and w
   - generate the TypeScript types from the OpenAPI document, so the two sides can't drift apart.
 
 ## Concepts if you get stuck
-- Which number to track, and how → [F23 The product-minded engineer](https://claude.ai/artifact/DKdJDmkmqw2fYTWRqwsaok)
-- Which states the screen needs → [F21 UX for developers](https://claude.ai/artifact/YHHfHEXxeQagyagUQ8u9HB)
-- Loading and error states for server data → [F08 Data from the server](https://claude.ai/artifact/1tkt8Cyy34UEqQ5KTVmWgu)
-- Shaping the endpoint, OpenAPI, generated types → [Backend 03 REST API design](https://claude.ai/artifact/YLjb5zpeL3ZT1zjvPWf95y)
-- Tables, migrations, transactions → [Backend 04 Databases](https://claude.ai/artifact/Knm6iRsYMHy6b8nJbZxcEE)
-- Which tests, at which level → [F10 Frontend testing](https://claude.ai/artifact/CXApqj7VD4udwnpzWQcfpU) · [Backend 06 Testing](https://claude.ai/artifact/Xigv1zTb1mCCjUE4DDxxtV)
-- Feature flags and rolling out → [F16 The frontend in production](https://claude.ai/artifact/46i2EYDtDsXGonv52HDA7C) · [Backend 08 Infrastructure, deploy and observability](https://claude.ai/artifact/WqBR1zmfYkwSPwatLnhhjN)
-- Will it hold the traffic? → [S00 Numbers and Estimates](https://claude.ai/artifact/JkAxs8jyxHhe1q7Mponoga)
+- Which number to track, and how → F23 The product-minded engineer
+- Which states the screen needs → F21 UX for developers
+- Loading and error states for server data → F08 Data from the server
+- Shaping the endpoint, OpenAPI, generated types → Backend 03 REST API design
+- Tables, migrations, transactions → Backend 04 Databases
+- Which tests, at which level → F10 Frontend testing · Backend 06 Testing
+- Feature flags and rolling out → F16 The frontend in production · Backend 08 Infrastructure, deploy and observability
+- Will it hold the traffic? → S00 Numbers and Estimates
 
 ## Next level
 - Write down what you decided NOT to build, and why. `staff`

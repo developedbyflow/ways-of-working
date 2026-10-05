@@ -12,8 +12,8 @@
 - [ ] **Events nobody uses** are removed.
 
 ## Concepts
-- Tracking plans, server-side events, metrics → [F23 The product-minded engineer](https://claude.ai/artifact/DKdJDmkmqw2fYTWRqwsaok)
-- The frontend in production → [F16 The frontend in production](https://claude.ai/artifact/46i2EYDtDsXGonv52HDA7C)
+- Tracking plans, server-side events, metrics → F23 The product-minded engineer
+- The frontend in production → F16 The frontend in production
 
 ## Changelog
 - 2026-10-05: v1

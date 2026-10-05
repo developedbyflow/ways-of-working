@@ -17,9 +17,9 @@
 - [ ] **Docs are current:** ADRs, `REPO-MAP.md`, the runbook.
 
 ## Concepts
-- Tooling, build and deploy → [F11 Tooling, build and deploy](https://claude.ai/artifact/7UCtfqHKtpNyvWsLx74xPx)
-- .NET project and tools → [C0 The project and the tools](https://claude.ai/artifact/X3GKAuikKrMkqSuKjEKX1j)
-- Pipelines and environments → [Backend 08 Infrastructure, deploy and observability](https://claude.ai/artifact/WqBR1zmfYkwSPwatLnhhjN)
+- Tooling, build and deploy → F11 Tooling, build and deploy
+- .NET project and tools → C0 The project and the tools
+- Pipelines and environments → Backend 08 Infrastructure, deploy and observability
 
 ## Changelog
 - 2026-10-05: v1

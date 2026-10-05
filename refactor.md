@@ -24,10 +24,10 @@
 - [ ] `docs/tech-debt.md` is updated
 
 ## Concepts if you get stuck
-- Principles and patterns → [Backend 09 Principles and design patterns](https://claude.ai/artifact/5VQW732q4HnJh5QBQApgAz)
-- Application architectures → [Backend 11 Application architectures](https://claude.ai/artifact/2TucUS8p9GBDP2FvaxKJHQ)
-- Components and hooks → [F06 Well-built components and hooks](https://claude.ai/artifact/KqBw7on6TktepjDeFj47Ph)
-- Frontend architecture → [F14 Frontend architecture at scale](https://claude.ai/artifact/Gur1WgSsBwhrSBQMNmHBNS)
+- Principles and patterns → Backend 09 Principles and design patterns
+- Application architectures → Backend 11 Application architectures
+- Components and hooks → F06 Well-built components and hooks
+- Frontend architecture → F14 Frontend architecture at scale
 
 ## Next level
 - Deep modules: a lot of behavior behind a small interface, with no layers that only pass calls through.

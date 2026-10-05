@@ -29,8 +29,8 @@
 - [ ] they can do the skill alone
 
 ## Concepts if you get stuck
-- Technical leadership and growing others → [F17 Technical leadership in frontend](https://claude.ai/artifact/Vd4Czi7FfwPqJtw1BfRDgr)
-- Staff and beyond → [S19 Staff and Beyond](https://claude.ai/artifact/VrKjSeMQiXww1X3SWjEgYu)
+- Technical leadership and growing others → F17 Technical leadership in frontend
+- Staff and beyond → S19 Staff and Beyond
 
 ## Next level
 - `staff` Sponsor them: give them visible work, and credit them in public.

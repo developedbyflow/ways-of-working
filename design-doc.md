@@ -37,11 +37,11 @@ Status · Author · Reviewers · Date
 - [ ] the non-goals, alternatives, security and rollback sections are written
 
 ## Concepts if you get stuck
-- Design in the real world → [S17 Design in the Real World](https://claude.ai/artifact/LaCpLgDSkShGP185VnvTqC)
-- Staff work: docs, reviews, alignment → [S19 Staff and Beyond](https://claude.ai/artifact/VrKjSeMQiXww1X3SWjEgYu)
-- Frontend system design → [F18 Frontend system design](https://claude.ai/artifact/AGaPnkiHcDTebbT56VyUC3)
-- System design → [Backend 15 System design](https://claude.ai/artifact/HXuvY1JJV7gCxUpfisS9B2)
-- Leading technical decisions → [F17 Technical leadership in frontend](https://claude.ai/artifact/Vd4Czi7FfwPqJtw1BfRDgr)
+- Design in the real world → S17 Design in the Real World
+- Staff work: docs, reviews, alignment → S19 Staff and Beyond
+- Frontend system design → F18 Frontend system design
+- System design → Backend 15 System design
+- Leading technical decisions → F17 Technical leadership in frontend
 
 ## Next level
 - `staff` An RFC process for the team, with a review checklist.

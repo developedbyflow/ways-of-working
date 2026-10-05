@@ -42,16 +42,16 @@
 - **Fullstack:** where the logic lives, the contract, the login flow end to end.
 
 ## Concepts if you get stuck
-- Numbers and estimates → [S00 Numbers and Estimates](https://claude.ai/artifact/JkAxs8jyxHhe1q7Mponoga)
-- Requirements and trade-offs → [S01 Requirements and Trade-offs](https://claude.ai/artifact/Dxkh5ECYBQz8g3sA3HhEYs)
-- The building blocks → [S02 The Building Blocks](https://claude.ai/artifact/3rzsDvVY5f6YJtR3S3d8aj)
-- Reliability → [S09 Reliability](https://claude.ai/artifact/93Z3DRAoAx7WTiRWgdUyZE)
-- Scaling → [S10 Scaling in Practice](https://claude.ai/artifact/GwF4qx1zxYxaqyPkFGhCmn)
-- Security and cost → [S11 Security, Multi-tenancy and Cost](https://claude.ai/artifact/QfiYqZe1T5h1Y2NMkKMV9S)
-- Application architectures → [Backend 11 Application architectures](https://claude.ai/artifact/2TucUS8p9GBDP2FvaxKJHQ)
-- Scaling and distributed systems → [Backend 13 Scaling and distributed systems](https://claude.ai/artifact/EyWs6zPiDAsYzAuU1yTjqS)
-- System design → [Backend 15 System design](https://claude.ai/artifact/HXuvY1JJV7gCxUpfisS9B2)
-- Frontend architecture → [F14 Frontend architecture at scale](https://claude.ai/artifact/Gur1WgSsBwhrSBQMNmHBNS) · [F18 Frontend system design](https://claude.ai/artifact/AGaPnkiHcDTebbT56VyUC3)
+- Numbers and estimates → S00 Numbers and Estimates
+- Requirements and trade-offs → S01 Requirements and Trade-offs
+- The building blocks → S02 The Building Blocks
+- Reliability → S09 Reliability
+- Scaling → S10 Scaling in Practice
+- Security and cost → S11 Security, Multi-tenancy and Cost
+- Application architectures → Backend 11 Application architectures
+- Scaling and distributed systems → Backend 13 Scaling and distributed systems
+- System design → Backend 15 System design
+- Frontend architecture → F14 Frontend architecture at scale · F18 Frontend system design
 
 ## Next level
 - Lint rules or tests that enforce the module boundaries.

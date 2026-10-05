@@ -15,8 +15,8 @@
 - [ ] Tests run on every PR, and failing tests block the merge.
 
 ## Concepts
-- Testing in .NET → [Backend 06 Testing](https://claude.ai/artifact/Xigv1zTb1mCCjUE4DDxxtV)
-- Testing the frontend → [F10 Frontend testing](https://claude.ai/artifact/CXApqj7VD4udwnpzWQcfpU)
+- Testing in .NET → Backend 06 Testing
+- Testing the frontend → F10 Frontend testing
 
 ## Changelog
 - 2026-10-05: v1

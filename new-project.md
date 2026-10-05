@@ -59,11 +59,11 @@
 - **Fullstack:** the backend generates the OpenAPI document, and CI generates the TypeScript types from it.
 
 ## Concepts if you get stuck
-- Project setup and tooling → [C0 The project and the tools](https://claude.ai/artifact/X3GKAuikKrMkqSuKjEKX1j) · [F11 Tooling, build and deploy](https://claude.ai/artifact/7UCtfqHKtpNyvWsLx74xPx)
-- Architecture choices → [Backend 11 Application architectures](https://claude.ai/artifact/2TucUS8p9GBDP2FvaxKJHQ) · [F14 Frontend architecture at scale](https://claude.ai/artifact/Gur1WgSsBwhrSBQMNmHBNS)
-- Tests at each level → [Backend 06 Testing](https://claude.ai/artifact/Xigv1zTb1mCCjUE4DDxxtV) · [F10 Frontend testing](https://claude.ai/artifact/CXApqj7VD4udwnpzWQcfpU)
-- Pipeline, environments, logs → [Backend 08 Infrastructure, deploy and observability](https://claude.ai/artifact/WqBR1zmfYkwSPwatLnhhjN)
-- Design system → [F15 Design system](https://claude.ai/artifact/Gph2Rrnw6Tqe6cfus6hgLo)
+- Project setup and tooling → C0 The project and the tools · F11 Tooling, build and deploy
+- Architecture choices → Backend 11 Application architectures · F14 Frontend architecture at scale
+- Tests at each level → Backend 06 Testing · F10 Frontend testing
+- Pipeline, environments, logs → Backend 08 Infrastructure, deploy and observability
+- Design system → F15 Design system
 
 ## Next level
 - A feature template (folders, tests, telemetry), so every feature starts the same way.

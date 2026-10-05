@@ -41,10 +41,10 @@ The skill gives you every command. You run them.
 - **Fullstack:** CORS and cookie domains match where things are hosted.
 
 ## Concepts if you get stuck
-- Infrastructure, deploy, observability → [Backend 08 Infrastructure, deploy and observability](https://claude.ai/artifact/WqBR1zmfYkwSPwatLnhhjN)
-- Cloud on AWS → [Backend 14 Cloud on AWS](https://claude.ai/artifact/4bAfWqV5qzggpBByBkPqGr)
-- Infrastructure as a design problem → [S15 Infrastructure as a Design Problem](https://claude.ai/artifact/1o1vXu2ap4sHCEYphd41pK)
-- Cost → [S11 Security, Multi-tenancy and Cost](https://claude.ai/artifact/QfiYqZe1T5h1Y2NMkKMV9S)
+- Infrastructure, deploy, observability → Backend 08 Infrastructure, deploy and observability
+- Cloud on AWS → Backend 14 Cloud on AWS
+- Infrastructure as a design problem → S15 Infrastructure as a Design Problem
+- Cost → S11 Security, Multi-tenancy and Cost
 
 ## Next level
 - A written plan for losing the server or the region: what you restore, where, and how long it takes.

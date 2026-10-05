@@ -63,9 +63,9 @@ Next update: <time>
 - [ ] you sent it yourself
 
 ## Concepts if you get stuck
-- Influence and communication as a lead → [F17 Technical leadership in frontend](https://claude.ai/artifact/Vd4Czi7FfwPqJtw1BfRDgr)
-- Staff-level communication → [S19 Staff and Beyond](https://claude.ai/artifact/VrKjSeMQiXww1X3SWjEgYu)
-- Working with product people → [F23 The product-minded engineer](https://claude.ai/artifact/DKdJDmkmqw2fYTWRqwsaok)
+- Influence and communication as a lead → F17 Technical leadership in frontend
+- Staff-level communication → S19 Staff and Beyond
+- Working with product people → F23 The product-minded engineer
 
 ## Next level
 - `staff` Proposals for executives: one page, with the business number first.

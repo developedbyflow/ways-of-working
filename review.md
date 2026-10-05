@@ -56,10 +56,10 @@
 - [ ] you can explain every line
 
 ## Concepts if you get stuck
-- Review as a lead → [F17 Technical leadership in frontend](https://claude.ai/artifact/Vd4Czi7FfwPqJtw1BfRDgr)
-- Principles and patterns → [Backend 09 Principles and design patterns](https://claude.ai/artifact/5VQW732q4HnJh5QBQApgAz)
-- Security → [Backend 05 Security](https://claude.ai/artifact/M4ZwELWPjW8CDG5J3eaaA8) · [F13 Security in the browser](https://claude.ai/artifact/C4xcdjwcyvELDEWqgusVUD)
-- Tests → [Backend 06 Testing](https://claude.ai/artifact/Xigv1zTb1mCCjUE4DDxxtV) · [F10 Frontend testing](https://claude.ai/artifact/CXApqj7VD4udwnpzWQcfpU)
+- Review as a lead → F17 Technical leadership in frontend
+- Principles and patterns → Backend 09 Principles and design patterns
+- Security → Backend 05 Security · F13 Security in the browser
+- Tests → Backend 06 Testing · F10 Frontend testing
 
 ## Next level
 - Review within one working day, and keep PRs small.

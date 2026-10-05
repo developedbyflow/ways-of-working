@@ -32,10 +32,10 @@
 - [ ] Cost: budget alerts, plus usage limits on AI APIs.
 
 ## Concepts
-- Infrastructure, deploy, observability → [Backend 08 Infrastructure, deploy and observability](https://claude.ai/artifact/WqBR1zmfYkwSPwatLnhhjN)
-- The frontend in production → [F16 The frontend in production](https://claude.ai/artifact/46i2EYDtDsXGonv52HDA7C)
-- Reliability → [S09 Reliability](https://claude.ai/artifact/93Z3DRAoAx7WTiRWgdUyZE)
-- Build and deploy → [F11 Tooling, build and deploy](https://claude.ai/artifact/7UCtfqHKtpNyvWsLx74xPx)
+- Infrastructure, deploy, observability → Backend 08 Infrastructure, deploy and observability
+- The frontend in production → F16 The frontend in production
+- Reliability → S09 Reliability
+- Build and deploy → F11 Tooling, build and deploy
 
 ## Changelog
 - 2026-10-05: v1

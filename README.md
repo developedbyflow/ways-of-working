@@ -59,12 +59,12 @@ Audit areas: security, privacy, performance, accessibility, SEO, UX, analytics, 
 
 Status: every page is v1, written on 2026-10-05. None has been used on a real task yet; `/wow-retro` will change them.
 
-All the lesson links: [LESSONS.md](LESSONS.md).
+The links to the lessons live in `LESSONS.md`, which stays on my machine and out of git: the lessons are private, so the links wouldn't open for anyone else.
 
 ## How this grows
 1. The steps of a page fit on one screen. Templates, checklists and the Frontend · Backend · Fullstack notes come after them.
 2. A step stays only if I can say what breaks when I skip it.
-3. No theory here. A concept gets its name and a link to the lesson.
+3. No theory here. A concept gets its name and the name of its lesson; the skills look up the link in `LESSONS.md`.
 4. After every real task, run `/wow-retro`: change the page and add a changelog line.
 5. "Next level" holds at most 3 things I don't do yet. When I start doing one, it moves into the steps.
 6. Skills are built from these pages. Every STOP here is a STOP in the skill.

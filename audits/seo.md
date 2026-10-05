@@ -27,8 +27,8 @@
 - [ ] Core Web Vitals → `audits/performance.md`.
 
 ## Concepts
-- SEO for developers → [F22 SEO for developers](https://claude.ai/artifact/WGUAmuc7K77y93KeDT6Ui1)
-- Server rendering and Next.js → [F09 Server rendering and Next.js](https://claude.ai/artifact/L4gfk2AGUL4wbuavqw4VJh)
+- SEO for developers → F22 SEO for developers
+- Server rendering and Next.js → F09 Server rendering and Next.js
 
 ## Changelog
 - 2026-10-05: v1

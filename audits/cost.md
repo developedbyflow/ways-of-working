@@ -17,10 +17,10 @@
 - [ ] **Logs and metrics:** how long they're kept. It's often the hidden cost.
 
 ## Concepts
-- Security, multi-tenancy and cost → [S11 Security, Multi-tenancy and Cost](https://claude.ai/artifact/QfiYqZe1T5h1Y2NMkKMV9S)
-- Cloud on AWS → [Backend 14 Cloud on AWS](https://claude.ai/artifact/4bAfWqV5qzggpBByBkPqGr)
-- Scaling in practice → [S10 Scaling in Practice](https://claude.ai/artifact/GwF4qx1zxYxaqyPkFGhCmn)
-- AI in the backend → [Backend 17 AI in the backend](https://claude.ai/artifact/VEv76dkdhgR6W2QAQspgUH)
+- Security, multi-tenancy and cost → S11 Security, Multi-tenancy and Cost
+- Cloud on AWS → Backend 14 Cloud on AWS
+- Scaling in practice → S10 Scaling in Practice
+- AI in the backend → Backend 17 AI in the backend
 
 ## Changelog
 - 2026-10-05: v1

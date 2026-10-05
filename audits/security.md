@@ -42,9 +42,9 @@ Defense only: you check that the protections are in place.
 - [ ] Unmaintained packages are flagged.
 
 ## Concepts
-- Security on the backend → [Backend 05 Security](https://claude.ai/artifact/M4ZwELWPjW8CDG5J3eaaA8)
-- Security in the browser → [F13 Security in the browser](https://claude.ai/artifact/C4xcdjwcyvELDEWqgusVUD)
-- Security across a system → [S11 Security, Multi-tenancy and Cost](https://claude.ai/artifact/QfiYqZe1T5h1Y2NMkKMV9S)
+- Security on the backend → Backend 05 Security
+- Security in the browser → F13 Security in the browser
+- Security across a system → S11 Security, Multi-tenancy and Cost
 
 ## Changelog
 - 2026-10-05: v1

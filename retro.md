@@ -45,7 +45,7 @@ No streaks and no scores. The loop records what changed, never how many days in 
 - [ ] quarter: CV bullets, two STAR stories and the evidence are added
 
 ## Concepts if you get stuck
-- CV bullets, STAR stories, impact with numbers → [F23 The product-minded engineer](https://claude.ai/artifact/DKdJDmkmqw2fYTWRqwsaok)
+- CV bullets, STAR stories, impact with numbers → F23 The product-minded engineer
 
 ## Next
 Nothing. This closes the loop.

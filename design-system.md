@@ -33,10 +33,10 @@
 - [ ] a changelog entry
 
 ## Concepts if you get stuck
-- Tokens, component API, versioning, governance → [F15 Design system](https://claude.ai/artifact/Gph2Rrnw6Tqe6cfus6hgLo)
-- Accessible components → [F04 Accessibility](https://claude.ai/artifact/5T7CF2zgQZ2X8g96hXfzes)
-- Components and hooks → [F06 Well-built components and hooks](https://claude.ai/artifact/KqBw7on6TktepjDeFj47Ph)
-- CSS → [F03 Semantic HTML and modern CSS](https://claude.ai/artifact/GxkHQGTbFtZT38nDXVzXaz)
+- Tokens, component API, versioning, governance → F15 Design system
+- Accessible components → F04 Accessibility
+- Components and hooks → F06 Well-built components and hooks
+- CSS → F03 Semantic HTML and modern CSS
 
 ## Next level
 - Adoption: move the screens to the component, and count how many have moved.

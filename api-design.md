@@ -41,9 +41,9 @@
 - **Fullstack:** the contract comes before either side.
 
 ## Concepts if you get stuck
-- Methods, status codes, DTOs, validation, pagination, versioning, OpenAPI → [Backend 03 REST API design](https://claude.ai/artifact/YLjb5zpeL3ZT1zjvPWf95y)
-- Authorization → [Backend 05 Security](https://claude.ai/artifact/M4ZwELWPjW8CDG5J3eaaA8)
-- How the client consumes it → [F08 Data from the server](https://claude.ai/artifact/1tkt8Cyy34UEqQ5KTVmWgu)
+- Methods, status codes, DTOs, validation, pagination, versioning, OpenAPI → Backend 03 REST API design
+- Authorization → Backend 05 Security
+- How the client consumes it → F08 Data from the server
 
 ## Next level
 - Contract tests that fail when a breaking change ships.

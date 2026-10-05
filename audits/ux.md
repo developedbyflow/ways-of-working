@@ -28,9 +28,9 @@
 - [ ] CSS uses logical properties (`margin-inline-start`), so a right-to-left language would work.
 
 ## Concepts
-- UX for developers → [F21 UX for developers](https://claude.ai/artifact/YHHfHEXxeQagyagUQ8u9HB)
-- The product-minded engineer → [F23 The product-minded engineer](https://claude.ai/artifact/DKdJDmkmqw2fYTWRqwsaok)
-- Accessibility → [F04 Accessibility](https://claude.ai/artifact/5T7CF2zgQZ2X8g96hXfzes)
+- UX for developers → F21 UX for developers
+- The product-minded engineer → F23 The product-minded engineer
+- Accessibility → F04 Accessibility
 
 ## Changelog
 - 2026-10-05: v1

@@ -44,10 +44,10 @@ Actions: each with an owner and a date
 - **Fullstack:** check whether the frontend's retries are making it worse.
 
 ## Concepts if you get stuck
-- Logs, alerts, rollback, runbooks → [Backend 08 Infrastructure, deploy and observability](https://claude.ai/artifact/WqBR1zmfYkwSPwatLnhhjN)
-- The frontend in production → [F16 The frontend in production](https://claude.ai/artifact/46i2EYDtDsXGonv52HDA7C)
-- Reliability, SLOs, postmortems → [S09 Reliability](https://claude.ai/artifact/93Z3DRAoAx7WTiRWgdUyZE)
-- Security → [Backend 05 Security](https://claude.ai/artifact/M4ZwELWPjW8CDG5J3eaaA8)
+- Logs, alerts, rollback, runbooks → Backend 08 Infrastructure, deploy and observability
+- The frontend in production → F16 The frontend in production
+- Reliability, SLOs, postmortems → S09 Reliability
+- Security → Backend 05 Security
 
 ## Next level
 - SLOs, with alerts on what users feel.

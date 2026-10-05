@@ -36,5 +36,5 @@ Every `/wow-*` skill reads this file first, then its page. This file says how th
 
 ## Paths
 - **Pages:** `/Users/ionescuflorin-eugen/Desktop/TechProducts/ways-of-working/`
-- **Lessons:** `LESSONS.md` in the pages folder.
+- **Lessons:** `LESSONS.md` in the pages folder. It is local only (not in git); use it to turn a lesson name from a page into its link.
 - **Impact log (private):** `/Users/ionescuflorin-eugen/Desktop/TechProducts/impact-log.md`

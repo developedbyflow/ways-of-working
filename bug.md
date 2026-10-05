@@ -43,12 +43,12 @@ When you haven't found the cause in 30 minutes:
 - **Fullstack:** compare the API response with the contract. That tells you which side to fix.
 
 ## Concepts if you get stuck
-- Can't see where it fails → logs and tracing → [Backend 08 Infrastructure, deploy and observability](https://claude.ai/artifact/WqBR1zmfYkwSPwatLnhhjN)
-- Errors that only users see in the browser → [F16 The frontend in production](https://claude.ai/artifact/46i2EYDtDsXGonv52HDA7C)
-- Breaks only when two requests run at once → [Backend 04 Databases](https://claude.ai/artifact/Knm6iRsYMHy6b8nJbZxcEE) · [Backend 10 Concurrency](https://claude.ai/artifact/RGHBDGActWbfWtioz9vm6r)
-- Slow in the browser → [F00 The browser from the inside](https://claude.ai/artifact/D7a4dJ8BLUPYQ6rmWM8dfi) · [F12 Web performance](https://claude.ai/artifact/HmfCtXjvx5CPXY2tPHt8Mc)
-- Slow on the server → [Backend 07 Performance](https://claude.ai/artifact/HDsFaNVTSoZC3EkyVTRngm)
-- How to write the failing test → [F10 Frontend testing](https://claude.ai/artifact/CXApqj7VD4udwnpzWQcfpU) · [Backend 06 Testing](https://claude.ai/artifact/Xigv1zTb1mCCjUE4DDxxtV)
+- Can't see where it fails → logs and tracing → Backend 08 Infrastructure, deploy and observability
+- Errors that only users see in the browser → F16 The frontend in production
+- Breaks only when two requests run at once → Backend 04 Databases · Backend 10 Concurrency
+- Slow in the browser → F00 The browser from the inside · F12 Web performance
+- Slow on the server → Backend 07 Performance
+- How to write the failing test → F10 Frontend testing · Backend 06 Testing
 
 ## Next level
 - In production: check how many users were hit before you set the priority.

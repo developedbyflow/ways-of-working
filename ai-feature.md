@@ -46,9 +46,9 @@
 - **Fullstack:** the server validates. Always.
 
 ## Concepts if you get stuck
-- AI in the backend → [Backend 17 AI in the backend](https://claude.ai/artifact/VEv76dkdhgR6W2QAQspgUH)
-- AI in the frontend → [F20 AI in the frontend](https://claude.ai/artifact/QcvMqVPoPV388owNPomyxC)
-- AI systems at scale → [S16 AI Systems](https://claude.ai/artifact/P4zMfpCwLXkhJkQwZay5H9)
+- AI in the backend → Backend 17 AI in the backend
+- AI in the frontend → F20 AI in the frontend
+- AI systems at scale → S16 AI Systems
 
 ## Next level
 - Eval results tracked over time.

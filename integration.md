@@ -44,11 +44,11 @@
 - [ ] the runbook entry exists
 
 ## Concepts if you get stuck
-- Calls between systems, retries, webhooks → [Backend 12 Communication between systems](https://claude.ai/artifact/UzgyUSA1Y6Yk3Rq5fsSzTf)
-- Idempotency and correctness across services → [S07 Correctness Across Services](https://claude.ai/artifact/W8ro1StkRJTbvktEn3Kuem)
-- Payments → [S14 Money and Booking Systems](https://claude.ai/artifact/46UmmLzj6sPhBg8gugR5jq)
-- Secrets → [Backend 05 Security](https://claude.ai/artifact/M4ZwELWPjW8CDG5J3eaaA8)
-- Running it in production → [F16 The frontend in production](https://claude.ai/artifact/46i2EYDtDsXGonv52HDA7C)
+- Calls between systems, retries, webhooks → Backend 12 Communication between systems
+- Idempotency and correctness across services → S07 Correctness Across Services
+- Payments → S14 Money and Booking Systems
+- Secrets → Backend 05 Security
+- Running it in production → F16 The frontend in production
 
 ## Next level
 - Vendor review: what data they receive and where they store it. Under GDPR, the vendor is a processor.

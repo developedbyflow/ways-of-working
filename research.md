@@ -38,9 +38,9 @@
 - [ ] the decision is in an ADR
 
 ## Concepts if you get stuck
-- Trade-offs → [S01 Requirements and Trade-offs](https://claude.ai/artifact/Dxkh5ECYBQz8g3sA3HhEYs)
-- Evaluating technology as a lead → [F17 Technical leadership in frontend](https://claude.ai/artifact/Vd4Czi7FfwPqJtw1BfRDgr)
-- Packages, versions, the supply chain → [F11 Tooling, build and deploy](https://claude.ai/artifact/7UCtfqHKtpNyvWsLx74xPx) · [Backend 05 Security](https://claude.ai/artifact/M4ZwELWPjW8CDG5J3eaaA8)
+- Trade-offs → S01 Requirements and Trade-offs
+- Evaluating technology as a lead → F17 Technical leadership in frontend
+- Packages, versions, the supply chain → F11 Tooling, build and deploy · Backend 05 Security
 
 ## Next level
 - `staff` A one-page evaluation template the whole team reuses.

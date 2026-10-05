@@ -24,10 +24,10 @@ This is an engineering checklist, not legal advice. A lawyer or the DPO confirms
 - [ ] **A plan for a breach:** who decides, and the 72-hour notification. See `incident.md`.
 
 ## Concepts
-- Security, personal data in logs → [Backend 05 Security](https://claude.ai/artifact/M4ZwELWPjW8CDG5J3eaaA8)
-- Privacy in the browser, consent → [F13 Security in the browser](https://claude.ai/artifact/C4xcdjwcyvELDEWqgusVUD)
-- Tracking and consent → [F23 The product-minded engineer](https://claude.ai/artifact/DKdJDmkmqw2fYTWRqwsaok)
-- Security, multi-tenancy and cost → [S11 Security, Multi-tenancy and Cost](https://claude.ai/artifact/QfiYqZe1T5h1Y2NMkKMV9S)
+- Security, personal data in logs → Backend 05 Security
+- Privacy in the browser, consent → F13 Security in the browser
+- Tracking and consent → F23 The product-minded engineer
+- Security, multi-tenancy and cost → S11 Security, Multi-tenancy and Cost
 
 ## Changelog
 - 2026-10-05: v1

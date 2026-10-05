@@ -52,9 +52,9 @@ Questions that usually come up:
 - **Fullstack:** where the logic lives, the shape of the contract, who validates what.
 
 ## Concepts if you get stuck
-- Requirements and trade-offs → [S01 Requirements and Trade-offs](https://claude.ai/artifact/Dxkh5ECYBQz8g3sA3HhEYs)
-- Leading technical decisions → [F17 Technical leadership in frontend](https://claude.ai/artifact/Vd4Czi7FfwPqJtw1BfRDgr)
-- Design principles → [Backend 09 Principles and design patterns](https://claude.ai/artifact/5VQW732q4HnJh5QBQApgAz)
+- Requirements and trade-offs → S01 Requirements and Trade-offs
+- Leading technical decisions → F17 Technical leadership in frontend
+- Design principles → Backend 09 Principles and design patterns
 
 ## Next level
 - Name things in the code with the words from `GLOSSARY.md`.

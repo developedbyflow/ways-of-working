@@ -50,10 +50,10 @@ The same pattern: the new next to the old, one screen or module at a time, then 
 - [ ] the runbook is updated
 
 ## Concepts if you get stuck
-- Migrations, locks, transactions → [Backend 04 Databases](https://claude.ai/artifact/Knm6iRsYMHy6b8nJbZxcEE)
-- API versioning → [Backend 03 REST API design](https://claude.ai/artifact/YLjb5zpeL3ZT1zjvPWf95y)
-- Migrations in the real world → [S17 Design in the Real World](https://claude.ai/artifact/LaCpLgDSkShGP185VnvTqC)
-- Moving a big frontend step by step → [F14 Frontend architecture at scale](https://claude.ai/artifact/Gur1WgSsBwhrSBQMNmHBNS)
+- Migrations, locks, transactions → Backend 04 Databases
+- API versioning → Backend 03 REST API design
+- Migrations in the real world → S17 Design in the Real World
+- Moving a big frontend step by step → F14 Frontend architecture at scale
 
 ## Next level
 - `staff` Migrations across teams, with a tracker of who has moved.

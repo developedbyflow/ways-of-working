@@ -30,8 +30,8 @@
 - [ ] every item has a skill and an owner, or a written "won't do"
 
 ## Concepts if you get stuck
-- Prioritizing requests, RICE, cost of delay → [F23 The product-minded engineer](https://claude.ai/artifact/DKdJDmkmqw2fYTWRqwsaok)
-- How bad an outage is → [S09 Reliability](https://claude.ai/artifact/93Z3DRAoAx7WTiRWgdUyZE)
+- Prioritizing requests, RICE, cost of delay → F23 The product-minded engineer
+- How bad an outage is → S09 Reliability
 
 ## Next level
 - `staff` A triage rotation and a response time per severity for the team.

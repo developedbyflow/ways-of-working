@@ -2,7 +2,7 @@
 
 - **Use it when:** an explanation, a term or a piece of code doesn't make sense, in any skill.
 - **Not when:** you need the whole topic from zero. Open the lesson.
-- **Reads:** the project's GLOSSARY.md, LESSONS.md.
+- **Reads:** the project's GLOSSARY.md, `LESSONS.md` (local only: it maps each lesson name to its private link).
 - **Writes:** a new line in GLOSSARY.md when the term belongs to the project.
 
 ## Steps

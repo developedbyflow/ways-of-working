@@ -20,9 +20,9 @@
 Each finding → `/wow-refactor`. Each debt you accept → `docs/tech-debt.md`.
 
 ## Concepts
-- Principles and patterns → [Backend 09 Principles and design patterns](https://claude.ai/artifact/5VQW732q4HnJh5QBQApgAz)
-- Application architectures → [Backend 11 Application architectures](https://claude.ai/artifact/2TucUS8p9GBDP2FvaxKJHQ)
-- Frontend architecture → [F14 Frontend architecture at scale](https://claude.ai/artifact/Gur1WgSsBwhrSBQMNmHBNS) · [F18 Frontend system design](https://claude.ai/artifact/AGaPnkiHcDTebbT56VyUC3)
+- Principles and patterns → Backend 09 Principles and design patterns
+- Application architectures → Backend 11 Application architectures
+- Frontend architecture → F14 Frontend architecture at scale · F18 Frontend system design
 
 ## Changelog
 - 2026-10-05: v1

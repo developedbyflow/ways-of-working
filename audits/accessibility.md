@@ -24,9 +24,9 @@ Automated tools find only part of the problems. The manual checks are required.
 - [ ] **Route changes** in a single-page app move the focus and update the title.
 
 ## Concepts
-- Accessibility → [F04 Accessibility](https://claude.ai/artifact/5T7CF2zgQZ2X8g96hXfzes)
-- Accessible components → [F15 Design system](https://claude.ai/artifact/Gph2Rrnw6Tqe6cfus6hgLo)
-- Forms and states → [F21 UX for developers](https://claude.ai/artifact/YHHfHEXxeQagyagUQ8u9HB)
+- Accessibility → F04 Accessibility
+- Accessible components → F15 Design system
+- Forms and states → F21 UX for developers
 
 ## Changelog
 - 2026-10-05: v1

@@ -38,11 +38,11 @@
 - **Fullstack:** each error state on the screen maps to an API error.
 
 ## Concepts if you get stuck
-- UX for developers, states, forms, speed → [F21 UX for developers](https://claude.ai/artifact/YHHfHEXxeQagyagUQ8u9HB)
-- Accessibility → [F04 Accessibility](https://claude.ai/artifact/5T7CF2zgQZ2X8g96hXfzes)
-- HTML and CSS → [F03 Semantic HTML and modern CSS](https://claude.ai/artifact/GxkHQGTbFtZT38nDXVzXaz)
-- Loading and error states for server data → [F08 Data from the server](https://claude.ai/artifact/1tkt8Cyy34UEqQ5KTVmWgu)
-- Design system → [F15 Design system](https://claude.ai/artifact/Gph2Rrnw6Tqe6cfus6hgLo)
+- UX for developers, states, forms, speed → F21 UX for developers
+- Accessibility → F04 Accessibility
+- HTML and CSS → F03 Semantic HTML and modern CSS
+- Loading and error states for server data → F08 Data from the server
+- Design system → F15 Design system
 
 ## Next level
 - Test big flows with five users before building them.

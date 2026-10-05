@@ -31,9 +31,9 @@ Every claim points to a file and a line. Anything the code doesn't show is marke
 - [ ] you answered the five questions
 
 ## Concepts if you get stuck
-- The request pipeline → [Backend 02 Anatomy of a backend](https://claude.ai/artifact/NpS3aqhk6FmDNkUNej6nP1)
-- Tables and relations → [Backend 04 Databases](https://claude.ai/artifact/Knm6iRsYMHy6b8nJbZxcEE)
-- How a large frontend is organized → [F14 Frontend architecture at scale](https://claude.ai/artifact/Gur1WgSsBwhrSBQMNmHBNS)
+- The request pipeline → Backend 02 Anatomy of a backend
+- Tables and relations → Backend 04 Databases
+- How a large frontend is organized → F14 Frontend architecture at scale
 
 ## Next level
 - Keep `REPO-MAP.md` true. `/wow-review` asks for an update when a PR changes the structure.
