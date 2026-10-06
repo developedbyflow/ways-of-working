@@ -4,7 +4,7 @@
 - **Not when:**
   - the behavior stays the same → `/wow-refactor`;
   - something is broken → `/wow-bug`.
-- **Reads:** the request, `docs/definition-of-done.md`, the design system, `docs/tracking-plan.md`, past results in `docs/experiments/`.
+- **Reads:** the request, `docs/definition-of-done.md`, the design system, `docs/tracking-plan.md`, past results in `docs/experiments/`, the PRD in `docs/product/prd.md` if there is one.
 - **Writes:**
   - the ticket: problem, number, criteria, estimate;
   - tests and code;

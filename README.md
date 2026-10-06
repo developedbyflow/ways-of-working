@@ -4,12 +4,22 @@ How I work as a fullstack developer. One page per situation: open the page for w
 
 Every page has a skill that runs it step by step: `/wow-<page>`. The prefix is there because `/bug`, `/review`, `/plan` and `/upgrade` are already Claude Code commands.
 
+- The common journeys, from start to finish: [FLOWS.md](FLOWS.md).
 - How the pages, the skills and the project files connect: [ECOSYSTEM.md](ECOSYSTEM.md).
 - How I checked that nothing is missing: [COVERAGE.md](COVERAGE.md).
 - How every skill behaves: [SKILLS.md](SKILLS.md).
 
 | Situation | In one line | Skill |
 |---|---|---|
+| **Discover** | | |
+| [Brainstorm](brainstorm.md) | the problem as a job story, what people use today, many ideas, pick 1–2, the riskiest assumption | `/wow-brainstorm` |
+| [Customer interviews](interview.md) | five people, questions about their past not your idea, facts apart from opinions, a commitment ask | `/wow-interview` |
+| [Market research](market-research.md) | competitors and alternatives, what customers say, a bottom-up size, why now, the gap | `/wow-market-research` |
+| [Product review](product-review.md) | a live product: the outcome, the funnel, what users say, an opportunity tree, 1–3 picks | `/wow-product-review` |
+| [Product brief](product-brief.md) | one page: problem, who, alternatives, the idea, why now, the number, the four risks | `/wow-product-brief` |
+| **Define** | | |
+| [PRD](prd.md) | goal, journeys, ranked requirements with criteria, non-functional numbers, out of scope, first version, ready-to-build check | `/wow-prd` |
+| [Roadmap](roadmap.md) | outcomes first, then Now / Next / Later, scored in one list with debt and risks | `/wow-roadmap` |
 | **Start** | | |
 | [New project](new-project.md) | architecture, small design system, CI/CD and quality gates, environments, test strategy, logs and alerts, definition of done, first ADRs | `/wow-new-project` |
 | [Joining a project](join.md) | access, people, how the team works, run it locally, a first small PR | `/wow-join` |
@@ -46,6 +56,12 @@ Every page has a skill that runs it step by step: `/wow-<page>`. The prefix is t
 | **Run** | | |
 | [Incident](incident.md) | stop the damage → communicate → fix → postmortem without blame; security incidents | `/wow-incident` |
 | [Audit](audit.md) | measure → findings with what breaks → I choose → fix → measure again; 12 areas | `/wow-audit <area>` |
+| **Go to market** | | |
+| [Positioning](positioning.md) | alternatives, what only you have, value, best-fit customers, market category, the message | `/wow-positioning` |
+| [Pricing](pricing.md) | what they pay for, floor and ceiling, the model, a willingness-to-pay signal, EU VAT | `/wow-pricing` |
+| [Launch](launch.md) | ready to sell, landing page, audience before launch, 2–3 channels, demo, results by channel | `/wow-launch` |
+| [Growth](growth.md) | one number per funnel step, channel tests, an experiment backlog, a weekly review | `/wow-growth` |
+| [Sales](sales.md) | a list, a first message, discovery call, demo, objections, proposal, pipeline | `/wow-sales` |
 | **People** | | |
 | [Comms](comms.md) | a status, risk, decision or incident message: what, impact, risk, next, ask | `/wow-comms` |
 | [Mentoring](mentor.md) | a one-page plan for a colleague: skills, goals, checkpoints, feedback | `/wow-mentor` |

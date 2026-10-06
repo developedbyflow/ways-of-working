@@ -2,7 +2,7 @@
 
 - **Use it when:** you start an app or a service from zero.
 - **Not when:** the project already exists → `/wow-join`.
-- **Reads:** the problem: who uses it, how many people, what must never break.
+- **Reads:** the problem: who uses it, how many people, what must never break; `docs/product/brief.md` and `docs/product/prd.md` if they exist.
 - **Writes:** `CLAUDE.md`, README, `docs/adr/`, `docs/definition-of-done.md`, `docs/runbook.md`, the CI config, the PR template.
 
 ## Steps

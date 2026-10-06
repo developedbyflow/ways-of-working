@@ -14,6 +14,11 @@ Checked on 2026-10-05 against six sources, so the list does not depend on memory
 
 | Stage | Covered by |
 |---|---|
+| Find a new product idea | brainstorm, interview, market-research |
+| Understand a live product | product-review, interview |
+| Agree on the idea | product-brief |
+| Define what to build | prd |
+| Order the work for months | roadmap |
 | Arrive on a project, new or existing | new-project, join, repo-tour |
 | Understand the problem | feature (steps 1–2), grill |
 | Decide | grill, research, spike |
@@ -28,6 +33,9 @@ Checked on 2026-10-05 against six sources, so the list does not depend on memory
 | Grow others | mentor |
 | Remove a feature | feature ("Removing a feature") |
 | Leave | handoff |
+| Position and price | positioning, pricing |
+| Go public | launch |
+| Grow and sell | growth, sales |
 | Grow myself | retro (task, week, quarter), explain-again |
 
 ## 2. My career framework
@@ -232,3 +240,54 @@ Every module is used by at least one skill, except the three interview modules.
   | deploy | release notes; rollback rehearsal |
   | architecture, design-doc | a threat-model step |
   | new-project | definition of ready and done; CI gates; the feature template |
+
+## 9. Discover, define and go to market (2026-10-06)
+
+Added when I stopped using BMad, so that nothing I used it for is lost.
+
+Sources for the new pages:
+
+| Source | Where it lives |
+|---|---|
+| The four product risks: value, usability, feasibility, viability (Marty Cagan, *Inspired*) | product-brief |
+| Outcomes, opportunity solution tree, an interview every week (Teresa Torres, *Continuous Discovery Habits*) | product-review, interview, roadmap |
+| Questions about their past, not your idea (Rob Fitzpatrick, *The Mom Test*) | interview, sales |
+| Alternatives, unique attributes, value, best-fit customers, market category (April Dunford, *Obviously Awesome*) | positioning |
+| Working backwards: the press release and FAQ (Amazon) | product-brief |
+| Lean canvas (Ash Maurya) | product-brief |
+| Van Westendorp price questions | pricing |
+| The AARRR funnel (Dave McClure) | growth |
+| Test several channels, then focus on one (Gabriel Weinberg and Justin Mares, *Traction*) | growth |
+| RICE (Intercom), cost of delay | product-review, roadmap |
+
+Every BMad skill I had, and where it went:
+
+| BMad | Here |
+|---|---|
+| brainstorming, brainstorming coach, forge-idea | brainstorm, grill |
+| deep-recon, market-research, domain-research | market-research |
+| technical-research | research |
+| product-brief, prfaq | product-brief |
+| prd (create, edit, validate) | prd |
+| ux, UX designer, WDS scenarios and UX design | ui-design, the journeys in prd |
+| spec | prd requirements, feature criteria, design-doc |
+| check-implementation-readiness | prd, the ready-to-build check |
+| create-architecture, architect | architecture |
+| ticket, create-epics-and-stories, create-story, sprint-planning | plan |
+| sprint-status | comms (status), plan |
+| correct-course | plan (re-plan when reality changes) |
+| dev-story, quick-dev, developer | feature, tdd, brief |
+| code-review, adversarial review, edge-case hunter, checkpoint-preview | review, pr |
+| investigate | bug (hard bugs), repo-tour |
+| document-project, generate-project-context | repo-tour, new-project, join |
+| retrospective | retro |
+| test architect, testarch skills, e2e tests, teach-me-testing | tdd, new-project (test strategy), audit testing, explain-again |
+| testarch-nfr | audit (production readiness, performance, security) |
+| advanced-elicitation, problem-solving | grill |
+| design-thinking | interview, brainstorm, ui-design |
+| innovation-strategy, WDS trigger mapping | product-brief, positioning |
+| storytelling, presentation | launch (the demo and the message), comms |
+| WDS design system | design-system |
+| WDS product evolution | product-review |
+| not taken: party-mode, the agent, module and workflow builders, customize, eval-runner, shard-doc, index-docs, story-automator | tools for running BMad itself, or agents that work alone |
+

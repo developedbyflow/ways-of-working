@@ -23,8 +23,8 @@ Every `/wow-*` skill reads this file first, then its page. This file says how th
 
 ## End
 12. **Check "Done when"** item by item, with the evidence for each.
-13. **Hand-offs:** when "Next" names another skill, ask before starting it.
-    - STOP: the user confirms.
+13. **Say what comes next.** Recommend one skill, with the reason, from the page's "Next". When the work is part of a journey in `FLOWS.md` (in the pages folder), the next step of that journey wins. Show where the user is in it, for example "step 4 of 11".
+    - STOP: the user confirms, picks another skill, or stops here.
 14. **Run `/wow-retro`** in task mode, except in `/wow`, `/wow-retro` and `/wow-explain-again`.
 
 ## Talking

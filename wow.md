@@ -2,14 +2,14 @@
 
 - **Use it when:** you're not sure which page fits, or you have a list of incoming things: bug reports, requests, alerts, user feedback.
 - **Not when:** you already know the situation. Run that skill directly.
-- **Reads:** README.md, the "Which one, when two look alike" table in ECOSYSTEM.md.
+- **Reads:** README.md, the "Which one, when two look alike" table in ECOSYSTEM.md, FLOWS.md.
 - **Writes:** nothing for one item; for a list, the sorted list with a skill and an owner per item.
 
 ## One item
 1. **Say it in your own words.**
 2. **At most two questions**, only the ones that separate two skills. Example: "Are users affected right now?" separates incident from bug.
    - Skip it → you start the wrong flow, for example debugging while users are down instead of rolling back.
-3. **The skill and why**, in one sentence.
+3. **The skill and why**, in one sentence. If the item starts a longer journey (a new idea, a live product to improve), show the matching flow from FLOWS.md, so the user sees what comes after.
    - STOP: you confirm, then the skill starts.
 
 ## A list (triage)

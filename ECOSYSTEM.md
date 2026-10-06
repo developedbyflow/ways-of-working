@@ -1,7 +1,7 @@
 # The ecosystem
 
 How the pieces fit together: the lessons, the pages, the skills, and the files they leave behind in a project.
-How I checked that nothing is missing: [COVERAGE.md](COVERAGE.md).
+How I checked that nothing is missing: [COVERAGE.md](COVERAGE.md). The common journeys, step by step: [FLOWS.md](FLOWS.md).
 
 ## Five layers
 
@@ -18,7 +18,18 @@ How I checked that nothing is missing: [COVERAGE.md](COVERAGE.md).
 ```mermaid
 flowchart TD
   WOW["wow: what is in front of me?"]
-  WOW --> ST
+  WOW --> DI
+  subgraph DI[Discover]
+    BS[brainstorm]
+    IV[interview]
+    MR[market-research]
+    PRV[product-review]
+    PB[product-brief]
+  end
+  subgraph DF[Define]
+    PRD[prd]
+    RM[roadmap]
+  end
   subgraph ST[Start]
     NP[new-project]
     JO[join]
@@ -67,8 +78,14 @@ flowchart TD
     ME[mentor]
     HO[handoff]
   end
-  ST --> DC --> DS --> PL --> BD --> SH --> RN
-  RN --> PE
+  subgraph MK[Go to market]
+    PO[positioning]
+    PRC[pricing]
+    LA[launch]
+    GW[growth]
+    SA[sales]
+  end
+  DI --> DF --> ST --> DC --> DS --> PL --> BD --> SH --> RN --> MK --> PE
 ```
 
 `explain-again` and `retro` work everywhere, so they are not in the picture.
@@ -141,6 +158,37 @@ flowchart LR
   - writes to `docs/tech-debt.md` when we accept a shortcut;
   - ends with `retro`.
 
+Discover, define and go to market:
+
+```mermaid
+flowchart LR
+  BS[brainstorm] --> IV[interview]
+  BS --> MR[market-research]
+  BS --> EX[experiment]
+  IV --> PB[product-brief]
+  MR --> PB
+  MR --> PO[positioning]
+  PRV[product-review] --> EX
+  PRV --> PRD[prd]
+  PRV --> RM[roadmap]
+  PB --> PRD
+  PB --> PO
+  PRD --> UI[ui-design]
+  PRD --> AR[architecture]
+  PRD --> RM
+  RM --> PN[plan]
+  PO --> PRC[pricing]
+  PO --> LA[launch]
+  PRC --> LA
+  LA --> GW[growth]
+  GW --> EX
+  SA[sales] --> CO[comms]
+```
+
+- **A new idea:** brainstorm → interview and market research → product brief → PRD → the design skills.
+- **A live product:** product review → experiment or PRD → roadmap → plan.
+- **Selling it:** positioning → pricing → launch → growth; sales when you sell in a conversation.
+
 ## Files the skills share
 
 In the project:
@@ -162,6 +210,11 @@ In the project:
 | `docs/postmortems/` | one file per incident | incident | audit, handoff |
 | `docs/audits/` | one report per audit, with numbers before and after | audit | handoff |
 | `HANDOFF.md` | state, risks, access, who knows what | handoff | join (the next person) |
+| `docs/product/` | ideas, brief, PRD, roadmap, product reviews | brainstorm, product-brief, prd, roadmap, product-review | prd, roadmap, feature, new-project, positioning, launch |
+| `docs/interviews/` | one note per customer interview | interview | product-brief, product-review, market-research, positioning, pricing, sales |
+| `docs/opportunities.md` | user needs and pains, as a tree under the outcome | interview, product-review | product-brief, prd, roadmap |
+| `docs/research/` | technical and market research, with sources and dates | research, market-research | product-brief, positioning, pricing |
+| `docs/gtm/` | positioning, pricing, launch plan, growth, sales pipeline | positioning, pricing, launch, growth, sales | pricing, launch, growth, sales |
 
 Mine, outside any project:
 
@@ -211,6 +264,17 @@ Mine, outside any project:
 | you arrive on a project | join (it runs repo-tour) | |
 | you only need to understand a codebase | repo-tour | join |
 | you leave a project | handoff | |
+| you are looking for a new product idea | brainstorm | product-review |
+| the product is live and you look for what to improve | product-review | brainstorm, audit |
+| you learn what people do and pay for | interview | ui-design (usability test) |
+| the question is about a market: competitors, customers, size | market-research | research |
+| one page to agree on the idea | product-brief | prd |
+| what to build, with requirements | prd | product-brief, design-doc |
+| the order of work for the next months | roadmap | plan |
+| who it's for and why it's their best choice | positioning | launch |
+| going public | launch | deploy |
+| more of the right users after launch | growth | experiment |
+| selling in a conversation | sales | growth, comms |
 
 ## Rules that keep it connected
 1. **One place per thing.** The process lives only in the pages. A checklist lives in one page, and the others link to it: review links to the security list, it doesn't copy it.
