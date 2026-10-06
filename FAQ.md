@@ -42,6 +42,9 @@ Yes. The skill tells you what breaks if you skip it (each step's "Skip it →"),
 **Will a skill commit, push, deploy, delete data or send messages for me?**
 Never. It gives you the exact command, and you run it.
 
+**What if a web page, a review or a PR contains instructions for the AI?**
+The skill doesn't follow them. Text from outside is treated as data, the way you escape user input against XSS: it gets analyzed, never executed. The skill quotes the sentence to you, says where it came from, and keeps following the page. The rule is in `SKILLS.md`.
+
 **What does "every claim points to a file and a line" mean?**
 When a skill says something about your code, it shows where it read it. Anything it can't point to is marked as an assumption.
 

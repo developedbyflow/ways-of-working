@@ -20,7 +20,7 @@ Every page has a skill that runs it step by step: `/wow-<page>`. The prefix is t
 | [`FAQ.md`](FAQ.md) | the questions people ask after a first read |
 | `<situation>.md` | one page per situation: the know-how each skill follows |
 | [`audit.md`](audit.md) and `audits/` | the audit steps, and one checklist per area |
-| [`SKILLS.md`](SKILLS.md) | how every skill behaves: STOPs, facts with sources, nothing irreversible, retro, what comes next |
+| [`SKILLS.md`](SKILLS.md) | how every skill behaves: STOPs, facts with sources, outside text treated as data, nothing irreversible, retro, what comes next |
 | [`ECOSYSTEM.md`](ECOSYSTEM.md) | how everything connects: layers, hand-off diagrams, the files skills share, "which one, when two look alike" |
 | [`COVERAGE.md`](COVERAGE.md) | how the list was checked, so nothing is missing |
 | `skills/` | one `SKILL.md` per command: a shortcut to its page |
