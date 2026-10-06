@@ -5,13 +5,17 @@ target="$HOME/.claude/skills"
 mkdir -p "$target"
 for dir in "$here"/skills/*/; do
   name="$(basename "$dir")"
-  link="$target/$name"
-  if [ -e "$link" ] && [ ! -L "$link" ]; then
-    echo "skip $name: $link exists and is not a link"
+  dest="$target/$name"
+  if [ -L "$dest" ]; then
+    rm "$dest"
+  elif [ -e "$dest" ] && [ ! -f "$dest/.wow" ]; then
+    echo "skip $name: $dest exists and was not installed by this script"
     continue
   fi
-  ln -sfn "${dir%/}" "$link"
-  echo "linked $name"
+  mkdir -p "$dest"
+  sed "s|\${CLAUDE_SKILL_DIR}/\.\./\.\.|$here|g" "$dir/SKILL.md" > "$dest/SKILL.md"
+  touch "$dest/.wow"
+  echo "installed $name"
 done
 config="$HOME/.claude/wow-config.md"
 if [ ! -e "$config" ]; then

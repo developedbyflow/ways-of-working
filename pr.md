@@ -1,6 +1,8 @@
 # Pull request
 
 - **Use it when:** you open your own PR.
+- **What you get:** a PR description with a picture, proof and risk, after you reviewed your own diff.
+- **Run it:** `/wow-pr`
 - **Not when:** you're reviewing someone else's → `/wow-review`.
 - **Reads:** the ticket, your diff, `docs/definition-of-done.md`.
 - **Writes:** the PR description, plus a line for the release notes when users will notice the change.

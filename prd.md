@@ -1,6 +1,8 @@
 # PRD (product requirements)
 
 - **Use it when:** you define what to build for a product, a version, or a big area, after the brief.
+- **What you get:** requirements with acceptance criteria, and a first version small enough to ship.
+- **Run it:** `/wow-prd version 1 of the meal planner`
 - **Not when:**
   - one feature → `/wow-feature`;
   - how to build it → `/wow-architecture`, `/wow-design-doc`.

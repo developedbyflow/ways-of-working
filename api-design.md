@@ -1,6 +1,8 @@
 # API design
 
 - **Use it when:** you add or change an API that a client calls: your frontend, a mobile app, another team.
+- **What you get:** a contract both sides agree on before coding, generated types, and authorization on every object.
+- **Run it:** `/wow-api-design POST /orders`
 - **Not when:** you call someone else's API → `/wow-integration`.
 - **Reads:** what the client needs (the screens from `/wow-ui-design`), `GLOSSARY.md`, the API's existing conventions.
 - **Writes:** the OpenAPI document, the requests in the `.http` file, the generated TypeScript types.

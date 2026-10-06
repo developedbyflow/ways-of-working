@@ -1,6 +1,8 @@
 # Pricing
 
 - **Use it when:** you set or change a price, or decide between free and paid.
+- **What you get:** a price above your costs, checked against what people would pay, with VAT handled.
+- **Run it:** `/wow-pricing the pro plan`
 - **Not when:** you're checking what the app costs you to run → `/wow-audit cost`.
 - **Reads:** `docs/gtm/positioning.md`, competitor prices from the market research in `docs/research/`, the cost audit, the notes in `docs/interviews/`.
 - **Writes:** `docs/gtm/pricing.md`.

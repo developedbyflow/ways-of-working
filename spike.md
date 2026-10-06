@@ -1,6 +1,8 @@
 # Spike
 
 - **Use it when:** only building something will answer the question. Does library X do Y? Which UI works? How fast is Z?
+- **What you get:** a measured answer in hours, and no prototype code left in production.
+- **Run it:** `/wow-spike can IndexedDB hold 10,000 meals offline fast enough?`
 - **Not when:** the docs can answer it → `/wow-research`.
 - **Reads:** the question.
 - **Writes:** the answer, in `docs/research/` or in an ADR. The prototype code gets deleted.

@@ -4,6 +4,8 @@
   - you change something in production that others depend on: a database schema, existing data, an API contract;
   - you move to a new library, framework or system;
   - you run a one-off data fix.
+- **What you get:** a change to production data or APIs with no downtime and a way back at every step.
+- **Run it:** `/wow-migration split name into first and last name`
 - **Not when:** a package version changes → `/wow-upgrade`.
 - **Reads:** the data model, the API consumers, the runbook.
 - **Writes:** the migration scripts, the plan with its steps, a runbook entry, an ADR for big moves.

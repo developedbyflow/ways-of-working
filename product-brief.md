@@ -1,6 +1,8 @@
 # Product brief
 
 - **Use it when:** you picked an idea (a new product, or a big new area of one) and need one page everyone agrees on before writing requirements.
+- **What you get:** one page everyone agrees on, with the four risks and how to test each.
+- **Run it:** `/wow-product-brief the meal planner`
 - **Not when:** you're writing the requirements themselves → `/wow-prd`.
 - **Reads:** `docs/product/ideas.md`, the notes in `docs/interviews/`, the market research in `docs/research/`, `docs/opportunities.md`.
 - **Writes:** `docs/product/brief.md`.

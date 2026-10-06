@@ -1,6 +1,8 @@
 # Design doc
 
 - **Use it when:** a large feature (see the size table in `feature.md`), a change across several parts or teams, or anything that's hard to undo.
+- **What you get:** a 1–2 page doc others review before you code, so the big mistakes show up on paper.
+- **Run it:** `/wow-design-doc moving from polling to WebSockets`
 - **Not when:** the decision is small → `/wow-grill` and an ADR are enough.
 - **Reads:** the grill output, the research, the spikes, the architecture.
 - **Writes:** `docs/design/YYYY-MM-title.md`, the big choices as ADRs in `docs/adr/`, `docs/risks.md`.

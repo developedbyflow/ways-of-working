@@ -1,6 +1,8 @@
 # Bug
 
 - **Use it when:** something that should work doesn't, and nobody is blocked right now.
+- **What you get:** the bug reproduced, a test that keeps it from coming back, and the cause written down.
+- **Run it:** `/wow-bug the daily plan disappears after refresh`
 - **Not when:**
   - users are affected right now → `/wow-incident`;
   - you want to check a whole area → `/wow-audit`.

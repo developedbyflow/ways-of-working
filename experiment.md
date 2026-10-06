@@ -1,6 +1,8 @@
 # Experiment
 
 - **Use it when:** you need proof that a change moved a number (conversion, retention, completion). That means an A/B test, or a fake door before you build.
+- **What you get:** proof that a change moved the number, not noise.
+- **Run it:** `/wow-experiment a shorter sign-up form`
 - **Not when:** you just ship and watch for errors → step 7 of `/wow-feature`.
 - **Reads:** the tracking plan, the current numbers, the traffic.
 - **Writes:** `docs/experiments/YYYY-MM-name.md`, the events in `docs/tracking-plan.md`, the result.

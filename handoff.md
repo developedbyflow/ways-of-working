@@ -1,6 +1,8 @@
 # Leaving a project (handoff)
 
 - **Use it when:** you leave a project, or hand an area to someone else: a new job, a move to another team, a long absence.
+- **What you get:** a project the next person can run, deploy and roll back without you.
+- **Run it:** `/wow-handoff the payments service`
 - **Not when:** you're the one arriving → `/wow-join`.
 - **Reads:** `REPO-MAP.md`, `docs/adr/`, `docs/risks.md`, `docs/tech-debt.md`, the runbook, `docs/postmortems/`, `docs/audits/`, open tickets and PRs.
 - **Writes:** `HANDOFF.md`, an updated `REPO-MAP.md` (through `/wow-repo-tour`), the list of access transfers.

@@ -1,6 +1,8 @@
 # Joining a project
 
 - **Use it when:** you start on a project that already exists: a new job, a new team, a client's repo.
+- **What you get:** the app running locally, a map of the code, and a first PR in production within days.
+- **Run it:** `/wow-join the payments service at my new job`
 - **Not when:** you only need to understand some code → `/wow-repo-tour`.
 - **Reads:** README, `CLAUDE.md`, the ADRs in `docs/adr/`, the runbook and postmortems in `docs/`, `HANDOFF.md` if the last person left one, the team's onboarding doc.
 - **Writes:** `REPO-MAP.md` and `GLOSSARY.md` (through `/wow-repo-tour`), `CLAUDE.md` if it's missing, your list of questions.

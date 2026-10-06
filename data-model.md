@@ -1,6 +1,8 @@
 # Data model
 
 - **Use it when:** you design new tables, or a change to existing ones, for a feature or a system.
+- **What you get:** tables that keep bad data out, an index for every query, and a migration plan.
+- **Run it:** `/wow-data-model meal plans and shopping lists`
 - **Not when:** the design is done and the tables already in production must change → `/wow-migration`.
 - **Reads:** `GLOSSARY.md`, the acceptance criteria, the current schema.
 - **Writes:** the table diagram (in the ticket or the design doc), the migration code, `GLOSSARY.md`.

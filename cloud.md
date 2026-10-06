@@ -1,6 +1,8 @@
 # Cloud and infrastructure
 
 - **Use it when:** servers, containers, databases, DNS, TLS certificates, storage, secrets or networking are created or changed.
+- **What you get:** infrastructure written as code and reviewed, with backups, alerts and a cost you approved.
+- **Run it:** `/wow-cloud add a managed Postgres`
 - **Not when:** you ship a new version of the app → `/wow-deploy`.
 - **Reads:** `docs/architecture.md`, `docs/runbook.md`, the provider's docs and pricing.
 - **Writes:** the infrastructure as code, the runbook, an ADR for each provider choice, a cost alert.

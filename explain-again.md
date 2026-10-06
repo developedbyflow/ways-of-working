@@ -1,6 +1,8 @@
 # When an explanation doesn't land (explain-again)
 
 - **Use it when:** an explanation, a term or a piece of code doesn't make sense, in any skill.
+- **What you get:** the concept explained from what you already know, with a small example and a diagram.
+- **Run it:** `/wow-explain-again idempotency`
 - **Not when:** you need the whole topic from zero. Open the lesson.
 - **Reads:** the project's GLOSSARY.md; the lessons file from the personal settings, if there is one.
 - **Writes:** a new line in GLOSSARY.md when the term belongs to the project.

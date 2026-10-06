@@ -1,6 +1,8 @@
 # Audit
 
 - **Use it when:** you check one area of something that already exists: before a launch, after a big change, every few months, or when a number gets worse.
+- **What you get:** a report with numbers before and after, and checks in CI so the problems don't come back.
+- **Run it:** `/wow-audit accessibility`
 - **Not when:**
   - one problem → `/wow-bug`;
   - one diff → `/wow-review`.

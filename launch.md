@@ -1,6 +1,8 @@
 # Launch
 
 - **Use it when:** you put a product, or a big feature, in front of the public.
+- **What you get:** a launch where the product can take money, and you know which channel worked.
+- **Run it:** `/wow-launch version 1`
 - **Not when:** you're shipping code → `/wow-deploy`.
 - **Reads:** `docs/gtm/positioning.md`, `docs/gtm/pricing.md`, the first version in `docs/product/prd.md`, the production-readiness audit.
 - **Writes:** `docs/gtm/launch-plan.md`, the landing page text, the launch checklist.

@@ -3,6 +3,8 @@
 - **Use it when:**
   - production is broken or slow for users, right now;
   - a security event: a leaked secret, suspicious access, exposed data.
+- **What you get:** the damage stopped first, people kept informed, and a postmortem so it doesn't happen again.
+- **Run it:** `/wow-incident checkout returns 500`
 - **Not when:** a bug that has a workaround and blocks nobody → `/wow-bug`.
 - **Reads:** `docs/runbook.md`, dashboards, logs, recent deploys.
 - **Writes:** the incident notes with a timeline, the status updates (`/wow-comms`), `docs/postmortems/YYYY-MM-DD-title.md`, the actions, `docs/risks.md`.

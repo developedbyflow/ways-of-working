@@ -1,6 +1,8 @@
 # Market research
 
 - **Use it when:** you're deciding whether a market is worth it: who else solves this, for whom, at what price, and how many customers there are.
+- **What you get:** competitors, prices and a bottom-up size, every number with its source.
+- **Run it:** `/wow-market-research meal-planning apps in Europe`
 - **Not when:** you're choosing a library or a vendor → `/wow-research`.
 - **Reads:** the idea or the product, the notes in `docs/interviews/`.
 - **Writes:** `docs/research/YYYY-MM-market-<topic>.md`, with sources and dates.

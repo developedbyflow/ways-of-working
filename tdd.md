@@ -1,6 +1,8 @@
 # TDD
 
 - **Use it when:** you write code yourself: logic, an endpoint, a bug fix, a refactor.
+- **What you get:** code written test-first, with each test at the right level.
+- **Run it:** `/wow-tdd calorie totals per day`
 - **Not when:**
   - a screen you've never built → try it first (`/wow-spike`), then write the tests;
   - a throwaway prototype.

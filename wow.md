@@ -1,6 +1,8 @@
 # What is in front of me (wow)
 
 - **Use it when:** you're not sure which page fits, or you have a list of incoming things: bug reports, requests, alerts, user feedback.
+- **What you get:** the right skill after one or two questions, or a sorted list when many things come in at once.
+- **Run it:** `/wow users say the plan isn't saved after refresh`
 - **Not when:** you already know the situation. Run that skill directly.
 - **Reads:** README.md, the "Which one, when two look alike" table in ECOSYSTEM.md, FLOWS.md.
 - **Writes:** nothing for one item; for a list, the sorted list with a skill and an owner per item.

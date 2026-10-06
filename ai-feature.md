@@ -1,6 +1,8 @@
 # AI feature
 
 - **Use it when:** a feature in your product calls an LLM: summaries, extracting data, chat, classifying, generating.
+- **What you get:** an LLM feature with a test set, cost limits and a fallback, instead of a demo that breaks.
+- **Run it:** `/wow-ai-feature suggest meals from what's in the fridge`
 - **Not when:** you use AI to write code → `/wow-brief`.
 - **Reads:** the problem, real example inputs, the provider's docs, pricing and data terms.
 - **Writes:**

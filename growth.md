@@ -1,6 +1,8 @@
 # Growth
 
 - **Use it when:** after launch, you work on getting more of the right users and keeping them.
+- **What you get:** the leakiest funnel step fixed first, and one channel that works.
+- **Run it:** `/wow-growth`
 - **Not when:** you need proof for one change → `/wow-experiment`. Growth runs many of those.
 - **Reads:** the funnel from the product review, `docs/tracking-plan.md`, the results in `docs/gtm/launch-plan.md`, `docs/gtm/positioning.md`.
 - **Writes:** `docs/gtm/growth.md`: the funnel numbers, the channel tests, the experiment backlog and the results.

@@ -9,8 +9,6 @@ argument-hint: "[status | risk | decision | incident]"
 1. Read `${CLAUDE_SKILL_DIR}/../../SKILLS.md`. It says how every wow skill behaves; follow it for the whole run.
 2. Read `${CLAUDE_SKILL_DIR}/../../comms.md`. It is the process: its steps, its STOPs, its "Done when" and its "Next".
 
-The format is: $0
-
-If it is empty, ask which format (STOP).
+The format is the first word of the input when it is `status`, `risk`, `decision` or `incident`. Otherwise ask which format (STOP); the input is the content of the message.
 
 The user's input: $ARGUMENTS

@@ -1,6 +1,8 @@
 # Comms
 
 - **Use it when:** you write to people who need to know something or decide something. That covers a status update, a risk, a decision request and an incident update.
+- **What you get:** a message with the bottom line first and one clear ask.
+- **Run it:** `/wow-comms risk the launch may slip a week`
 - **Not when:** you're writing the design itself → `/wow-design-doc`.
 - **Reads:** the plan, `docs/risks.md`, the options for the decision, the incident notes, the experiment results in `docs/experiments/`.
 - **Writes:** the message, and the decision recorded as an ADR once it's made.

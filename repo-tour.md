@@ -1,6 +1,8 @@
 # Understanding a codebase (repo-tour)
 
 - **Use it when:** you need to understand a codebase fast: a new project, a colleague's service, a library.
+- **What you get:** `REPO-MAP.md`: how to run it, where things are, one request traced end to end, the risky areas.
+- **Run it:** `/wow-repo-tour ~/code/shop-api`
 - **Not when:** you are joining a team → `/wow-join`, which runs this inside.
 - **Reads:** the code, the git history, README, `docs/`, the migrations, the routes.
 - **Writes:** `REPO-MAP.md`, `GLOSSARY.md`.

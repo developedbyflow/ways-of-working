@@ -1,6 +1,8 @@
 # Sales
 
 - **Use it when:** you sell directly to people or companies: a business customer, a pilot, a client, a paid plan sold in a conversation.
+- **What you get:** a pipeline where every deal has a next step and a date.
+- **Run it:** `/wow-sales gyms in my city`
 - **Not when:** users sign up and pay on their own → `/wow-growth`.
 - **Reads:** `docs/gtm/positioning.md`, `docs/gtm/pricing.md`, the notes in `docs/interviews/`.
 - **Writes:** `docs/gtm/pipeline.md` (or a CRM), call notes, the objection log.

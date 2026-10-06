@@ -1,6 +1,8 @@
 # Refactor and tech debt
 
 - **Use it when:** the code must change shape while the behavior stays the same: to make a feature easier, to remove duplication, to fix a design that hurts.
+- **What you get:** cleaner code with the same behavior, in small steps a reviewer can follow.
+- **Run it:** `/wow-refactor split the 900-line OrderService`
 - **Not when:** the behavior changes → `/wow-feature`.
 - **Reads:** `docs/tech-debt.md`, the findings from `/wow-audit architecture`, the code and its tests.
 - **Writes:** code, tests, `docs/tech-debt.md` (debt paid or added).

@@ -1,6 +1,8 @@
 # Brainstorm a new product idea
 
 - **Use it when:** you have an idea for a new app or product, or you want to find one.
+- **What you get:** 1–2 ideas picked by score, each with the riskiest assumption and a way to test it.
+- **Run it:** `/wow-brainstorm an app for people who cook for the week on Sundays`
 - **Not when:** the product already exists and you're looking for what to improve → `/wow-product-review`.
 - **Reads:** your notes, what you already know about the problem.
 - **Writes:** `docs/product/ideas.md`: the problem, the ideas, the 1–2 you picked and why.

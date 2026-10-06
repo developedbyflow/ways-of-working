@@ -1,6 +1,8 @@
 # Architecture
 
 - **Use it when:** a new system, or a big change to how the parts fit together: a new service, a new data flow, a new need for scale or reliability.
+- **What you get:** C4 diagrams, the numbers, failure modes and threats, and the big choices written as ADRs.
+- **Run it:** `/wow-architecture offline sync for the mobile app`
 - **Not when:**
   - one feature's tables or endpoint → `/wow-data-model`, `/wow-api-design`;
   - checking code that already exists → `/wow-audit architecture`.

@@ -1,6 +1,8 @@
 # UI design
 
 - **Use it when:** a new screen or flow, or a big change to one.
+- **What you get:** every state of every screen designed before users find the missing ones.
+- **Run it:** `/wow-ui-design the checkout flow`
 - **Not when:** a component or tokens that many screens reuse → `/wow-design-system`.
 - **Reads:** the problem and the acceptance criteria, the design system, the analytics funnel (where users drop off).
 - **Writes:** the flow diagram, the states of each screen, the list of components (in the ticket or the design doc), and a prototype only when the flow is unclear.

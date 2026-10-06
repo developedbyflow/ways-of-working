@@ -9,7 +9,7 @@ How I checked that nothing is missing: [COVERAGE.md](COVERAGE.md). The common jo
 |---|---|---|
 | Lessons | why and how a concept works | your own learning material, linked to the pages by the lessons file in your personal settings (mine: my Frontend, Backend, C# and System Design tracks) |
 | Pages | how I work, one page per situation; the only place where the process is written | this repo |
-| Skills | run a page step by step and stop where I decide; how they behave is in `SKILLS.md` | `skills/` in this repo, linked into `~/.claude/skills/` by `install.sh` |
+| Skills | run a page step by step and stop where I decide; how they behave is in `SKILLS.md` | `skills/` in this repo; `install.sh` writes them into `~/.claude/skills/` with the repo's path, or they install as a plugin |
 | Project files | what the skills leave behind in each project | the project repo (`docs/`, `CLAUDE.md`, ...) |
 | Growth loop | after every task, week and quarter, the pages, `CLAUDE.md` and my impact log get better | `/wow-retro` |
 

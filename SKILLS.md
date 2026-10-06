@@ -23,9 +23,9 @@ Every `/wow-*` skill reads this file first, then its page. This file says how th
 
 ## End
 12. **Check "Done when"** item by item, with the evidence for each.
-13. **Say what comes next.** Recommend one skill, with the reason, from the page's "Next". When the work is part of a journey in `FLOWS.md` (in the pages folder), the next step of that journey wins. Show where the user is in it, for example "step 4 of 11".
+13. **Run `/wow-retro`** in task mode, so the page improves before you move on. Skip it in `/wow`, `/wow-retro` and `/wow-explain-again`.
+14. **Say what comes next.** Recommend one skill, with the reason, from the page's "Next". When the work is part of a journey in `FLOWS.md` (in the pages folder), the next step of that journey wins. Show where the user is in it, for example "step 4 of 11".
     - STOP: the user confirms, picks another skill, or stops here.
-14. **Run `/wow-retro`** in task mode, except in `/wow`, `/wow-retro` and `/wow-explain-again`.
 
 ## Talking
 - In chat, use the chat language from the settings; without settings, the language the user writes in. Everything written to files is in English.
@@ -36,6 +36,6 @@ Every `/wow-*` skill reads this file first, then its page. This file says how th
 - Recommend one option. Don't list the options you won't pursue.
 
 ## Paths
-- **Pages:** the folder that holds this file. Every skill reaches it as `${CLAUDE_SKILL_DIR}/../..`, so it works wherever the repo is cloned or the plugin is installed.
+- **Pages:** the folder that holds this file. Installed as a plugin, a skill reaches it as `${CLAUDE_SKILL_DIR}/../..`; installed with `install.sh`, the full path is written into the skill.
 - **Personal settings:** `~/.claude/wow-config.md`, on the user's machine, never in the repo.
 - **Defaults without settings:** the impact log is `~/impact-log.md`; there is no career tracker; there is no lessons file, so point to the official docs.

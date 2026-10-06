@@ -1,6 +1,8 @@
 # Product review (an existing product)
 
 - **Use it when:** you have a live product and need to decide what to improve next.
+- **What you get:** the 1–3 improvements most likely to move your main number, with the evidence.
+- **Run it:** `/wow-product-review the meal planner`
 - **Not when:** you're checking one quality area (accessibility, performance and so on) → `/wow-audit`.
 - **Reads:** analytics (funnel, retention), support tickets, app reviews, the notes in `docs/interviews/`, `docs/tracking-plan.md`, `docs/experiments/`.
 - **Writes:** `docs/product/review-YYYY-MM.md`, `docs/opportunities.md`.

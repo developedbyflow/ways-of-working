@@ -1,6 +1,8 @@
 # Grill: from problem to decision
 
 - **Use it when:** a problem or a decision has no clear answer, or you want a plan stress-tested.
+- **What you get:** a decision you can defend, with the options you rejected and why, written as an ADR.
+- **Run it:** `/wow-grill should meals be stored per day or per week?`
 - **Not when:**
   - the docs can answer a single factual question → `/wow-research`;
   - only building something will answer it → `/wow-spike`.

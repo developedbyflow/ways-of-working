@@ -1,6 +1,8 @@
 # Release and deploy
 
 - **Use it when:** you ship a change to production.
+- **What you get:** a release you watch and can roll back in minutes.
+- **Run it:** `/wow-deploy release 1.4`
 - **Not when:** servers, DNS, the database, or secrets change → `/wow-cloud`.
 - **Reads:** `docs/runbook.md`, the risk section of the PR, the migration plan.
 - **Writes:** release notes, runbook updates.

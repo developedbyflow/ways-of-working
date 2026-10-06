@@ -1,6 +1,8 @@
 # Roadmap
 
 - **Use it when:** you decide the order of the work for the next months of a product.
+- **What you get:** Now, Next and Later tied to outcomes, instead of a list of features with dates.
+- **Run it:** `/wow-roadmap next quarter`
 - **Not when:** you're slicing one feature or initiative into tickets → `/wow-plan`.
 - **Reads:** the outcomes, `docs/opportunities.md`, `docs/product/prd.md`, `docs/tech-debt.md`, `docs/risks.md`.
 - **Writes:** `docs/product/roadmap.md`.

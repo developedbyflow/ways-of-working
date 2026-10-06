@@ -1,6 +1,8 @@
 # Integration with an external service
 
 - **Use it when:** your app calls a service you don't own (payments, sign-in provider, email, maps, another team's API), or receives its webhooks.
+- **What you get:** calls that survive timeouts, retries and outages, with no double charges.
+- **Run it:** `/wow-integration Stripe payments`
 - **Not when:**
   - you design the API others call → `/wow-api-design`;
   - the service is an LLM → `/wow-ai-feature`, which runs this inside.

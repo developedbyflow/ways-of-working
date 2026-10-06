@@ -1,6 +1,8 @@
 # Positioning
 
 - **Use it when:** before a launch, a landing page or a price: you decide who the product is for, and why it's their best choice.
+- **What you get:** a message your best-fit customers understand in five seconds.
+- **Run it:** `/wow-positioning the meal planner`
 - **Not when:** you're planning the launch itself → `/wow-launch`.
 - **Reads:** `docs/product/brief.md`, the market research in `docs/research/`, the notes in `docs/interviews/`, what users say about your product.
 - **Writes:** `docs/gtm/positioning.md`.

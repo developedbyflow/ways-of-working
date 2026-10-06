@@ -4,10 +4,31 @@ How I work as a fullstack developer. One page per situation: open the page for w
 
 Every page has a skill that runs it step by step: `/wow-<page>`. The prefix is there because `/bug`, `/review`, `/plan` and `/upgrade` are already Claude Code commands.
 
-- The common journeys, from start to finish: [FLOWS.md](FLOWS.md).
-- How the pages, the skills and the project files connect: [ECOSYSTEM.md](ECOSYSTEM.md).
-- How I checked that nothing is missing: [COVERAGE.md](COVERAGE.md).
-- How every skill behaves: [SKILLS.md](SKILLS.md).
+## Start here
+1. **Install** the skills (see "Install" below).
+2. **Find your journey** in [FLOWS.md](FLOWS.md): a new idea, a live product, a feature, a bug, and so on.
+3. **Open the page** for the step you're at (the table below). Its first lines say what you get and give an example command.
+4. **Run the skill.** Not sure which one? Run `/wow` and describe the situation.
+5. **Questions?** [FAQ.md](FAQ.md) answers the ones people ask after a first read.
+
+## What's in this repo
+
+| File or folder | What it is |
+|---|---|
+| `README.md` | this page: start here, the list of situations, install |
+| [`FLOWS.md`](FLOWS.md) | the common journeys, start to finish, as sequences of skills |
+| [`FAQ.md`](FAQ.md) | the questions people ask after a first read |
+| `<situation>.md` | one page per situation: the know-how each skill follows |
+| [`audit.md`](audit.md) and `audits/` | the audit steps, and one checklist per area |
+| [`SKILLS.md`](SKILLS.md) | how every skill behaves: STOPs, facts with sources, nothing irreversible, retro, what comes next |
+| [`ECOSYSTEM.md`](ECOSYSTEM.md) | how everything connects: layers, hand-off diagrams, the files skills share, "which one, when two look alike" |
+| [`COVERAGE.md`](COVERAGE.md) | how the list was checked, so nothing is missing |
+| `skills/` | one `SKILL.md` per command: a shortcut to its page |
+| `install.sh` | installs the skills into `~/.claude/skills/` and creates your settings file |
+| `config.example.md` | the template for your personal settings |
+| `.claude-plugin/` | makes the repo installable as a Claude Code plugin |
+| `LICENSE` | MIT |
+
 
 | Situation | In one line | Skill |
 |---|---|---|
@@ -93,7 +114,10 @@ What a run looks like:
 2. Claude reads the page and checks it fits. If another page fits better, it says so.
 3. It goes step by step. At every **STOP** it asks you, recommends an answer, and waits.
 4. It never commits, pushes, deploys or deletes anything. It gives you the command, and you run it.
-5. At the end it checks "Done when", then runs `/wow-retro`, so the page gets better after every task.
+5. At the end it checks "Done when" and runs `/wow-retro`, so the page gets better after every task. You don't call retro yourself, except `/wow-retro week` and `/wow-retro quarter`.
+6. It recommends the next skill and why. In a journey from `FLOWS.md`, it says where you are, for example "step 4 of 11". You confirm, pick another, or stop.
+
+Every page starts with **What you get** and **Run it**, an example command.
 
 Not sure which one fits? Run `/wow` and describe the situation.
 
@@ -109,6 +133,8 @@ Change a page, and the skill follows it from the next run. Your name, chat langu
 
 ## Install
 
+A plugin is a package for Claude Code, the way an npm package is for a project: one command installs the skills, and updates come the same way. Which install fits you is in [FAQ.md](FAQ.md).
+
 **As a plugin**, to use the skills:
 
 ```bash
@@ -121,18 +147,18 @@ claude plugin install ways-of-working@developedbyflow
 
 Then copy `config.example.md` to `~/.claude/wow-config.md` and fill it in. The commands are `/ways-of-working:wow-bug` and so on; the short `/wow-bug` works too, unless another command already has that name.
 
-**From a clone**, to change the pages and see the skills change right away:
+**From a clone**, to change the pages and see the skills follow them right away:
 
 ```bash
 git clone https://github.com/developedbyflow/ways-of-working.git && cd ways-of-working && ./install.sh
 ```
 
-`install.sh` links every skill into `~/.claude/skills/`, and creates `~/.claude/wow-config.md` from `config.example.md` if it doesn't exist yet.
+`install.sh` writes every skill into `~/.claude/skills/`, with the full path of your clone in it, and creates `~/.claude/wow-config.md` from `config.example.md` if it doesn't exist yet. A changed page works at the next run. A changed `SKILL.md` needs `./install.sh` again.
 
-To remove the linked skills:
+To remove the installed skills:
 
 ```bash
-find ~/.claude/skills -maxdepth 1 -type l -name 'wow*' -delete
+for d in ~/.claude/skills/*/.wow; do rm -rf "$(dirname "$d")"; done
 ```
 
 ## License

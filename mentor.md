@@ -1,6 +1,8 @@
 # Mentoring
 
 - **Use it when:** you help a colleague grow: a new joiner, a junior, someone moving into your area.
+- **What you get:** a one-page plan with checkpoints, so growth happens on real work.
+- **Run it:** `/wow-mentor a junior developer who wants to own the backend`
 - **Not when:** you're the one who is stuck → `/wow-explain-again`.
 - **Reads:** what they want to grow in, the team's career ladder, their recent work.
 - **Writes:** a one-page plan, and notes at each checkpoint.

@@ -4,6 +4,8 @@
   - official docs or other primary sources can answer the question;
   - you're choosing a library or a vendor;
   - you're deciding whether to build or buy.
+- **What you get:** an answer from official sources, with versions and dates, instead of a blog post from three versions ago.
+- **Run it:** `/wow-research which date library for React Native?`
 - **Not when:** only building something will answer it → `/wow-spike`.
 - **Reads:** official docs, specs, release notes, source code, issue trackers. Blog posts come last.
 - **Writes:** `docs/research/YYYY-MM-topic.md` (question, answer, sources, date), or the ADR directly.

@@ -1,6 +1,8 @@
 # Customer interviews
 
 - **Use it when:** you need to learn what people actually do and pay for, before building, or to understand the users of a product you already have.
+- **What you get:** what people really do and pay for, instead of a polite "I'd use it".
+- **Run it:** `/wow-interview gym beginners who track what they eat`
 - **Not when:** you're testing whether people can use a screen → the usability test in `/wow-ui-design`.
 - **Reads:** the riskiest assumption, the brief if there is one.
 - **Writes:** `docs/interviews/YYYY-MM-DD-<role>.md` (one note per interview), `docs/opportunities.md`.

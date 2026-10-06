@@ -9,7 +9,7 @@ argument-hint: "[task | week | quarter]"
 1. Read `${CLAUDE_SKILL_DIR}/../../SKILLS.md`. It says how every wow skill behaves; follow it for the whole run.
 2. Read `${CLAUDE_SKILL_DIR}/../../retro.md`. It is the process: its steps, its STOPs, its "Done when" and its "Next".
 
-The mode is: $0 (task when empty).
+The mode is the first word of the input when it is `task`, `week` or `quarter`. Otherwise the mode is task, and the whole input says what to look at or change.
 
 The impact log path is in the personal settings (see `SKILLS.md`). If the file doesn't exist yet, create it with the title `# Impact log`.
 

@@ -1,6 +1,8 @@
 # Feature
 
 - **Use it when:** you add, change or remove something users see or use.
+- **What you get:** a feature with a test per criterion, shipped behind a flag and measured.
+- **Run it:** `/wow-feature let users copy yesterday's meals`
 - **Not when:**
   - the behavior stays the same → `/wow-refactor`;
   - something is broken → `/wow-bug`.

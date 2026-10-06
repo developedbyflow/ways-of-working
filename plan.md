@@ -3,6 +3,8 @@
 - **Use it when:** before committing to work, for:
   - **one feature:** the slices and a time range;
   - **an initiative of several weeks:** milestones, decisions, risks.
+- **What you get:** slices that ship one by one, a time range people believe, and the risks named early.
+- **Run it:** `/wow-plan the shopping list feature`
 - **Not when:** you're deciding how to build it → `/wow-design-doc` or `/wow-grill`.
 - **Reads:** the ticket or the design doc, `docs/risks.md`, `docs/tech-debt.md` (debt that slows this work), past estimates and actuals (the tickets, the impact log).
 - **Writes:**

@@ -3,6 +3,8 @@
 - **Use it when:**
   - you review a colleague's PR or code written by AI;
   - you check your own diff before a PR (`/wow-pr` runs this).
+- **What you get:** comments labelled by severity, each blocker with what breaks, plus the checks AI-written code needs.
+- **Run it:** `/wow-review PR #42`
 - **Not when:** you want to check a whole area of the app → `/wow-audit`.
 - **Reads:** the ticket and its criteria, the diff, `docs/definition-of-done.md`, the conventions in `CLAUDE.md`, the ADRs in `docs/adr/` that the change touches, the design doc in `docs/design/` if there is one, `REPO-MAP.md`.
 - **Writes:** comments labelled by severity; `docs/tech-debt.md` for accepted shortcuts.

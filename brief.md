@@ -1,6 +1,8 @@
 # Working with AI (brief)
 
 - **Use it when:** you hand coding work to an AI, such as Claude Code.
+- **What you get:** AI-written code you understand line by line, with the design decisions still yours.
+- **Run it:** `/wow-brief add pagination to the meals endpoint`
 - **Not when:** the product itself calls an LLM → `/wow-ai-feature`.
 - **Reads:** the ticket and its criteria, `REPO-MAP.md`, `GLOSSARY.md`, `CLAUDE.md`, the contract, the example files.
 - **Writes:** the brief; a new line in `CLAUDE.md` when you correct the AI twice for the same thing.

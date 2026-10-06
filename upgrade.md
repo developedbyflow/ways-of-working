@@ -1,6 +1,8 @@
 # Dependency upgrade
 
 - **Use it when:** a new version of a framework or package comes out, a security advisory appears, or something you use is deprecated.
+- **What you get:** the breaking changes found before production, one upgrade per PR.
+- **Run it:** `/wow-upgrade React to the next major version`
 - **Not when:** your own schema, data or API changes → `/wow-migration`.
 - **Reads:** the release notes, the migration guide, the changelog, the advisory.
 - **Writes:** the upgrade PR, with the breaking changes it handles.

@@ -1,6 +1,8 @@
 # Retro
 
 - **Use it when:** a task is done (task), at the end of the week (week), at the end of a quarter (quarter).
+- **What you get:** pages that improve after every task, and an impact log that turns into CV bullets.
+- **Run it:** `/wow-retro`, `/wow-retro week`, `/wow-retro quarter`, or `/wow-retro bug.md missed the service worker cache`
 - **Not when:** an incident is still open. The postmortem comes first: `/wow-incident`.
 - **Reads:** the page you used, the ticket with its estimate, `impact-log.md` (its path is in the personal settings).
 - **Writes:** the page in `ways-of-working/` (with a changelog line), `CLAUDE.md`, `impact-log.md`; each quarter also CV bullets, STAR stories and evidence in the career tracker from the personal settings.

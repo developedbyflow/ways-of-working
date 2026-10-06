@@ -1,6 +1,8 @@
 # Design system
 
 - **Use it when:** a component or tokens that many screens reuse: new, changed, or removed.
+- **What you get:** a shared component that is accessible, documented and safe to change.
+- **Run it:** `/wow-design-system a Combobox component`
 - **Not when:** a single screen → `/wow-ui-design`.
 - **Reads:** the design (Figma or a sketch), the existing components, the tokens.
 - **Writes:** the component (code, tests, stories), the tokens, the design system changelog.
