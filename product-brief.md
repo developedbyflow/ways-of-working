@@ -42,7 +42,7 @@ Decision: go, change, or drop, and why
 6. **Optional: a lean canvas** (problem, customer groups, unique value, solution, channels, revenue, costs, key numbers, unfair advantage), when the business model is the open question and the brief doesn't already answer it. Don't repeat the brief in a table.
 7. **Read by someone else.**
    - STOP: someone outside the idea reads it and tells you what they think it is. If they can't, rewrite it.
-   - Nobody at hand? Run a critique against a different template (for example `/bmad-product-brief validate` on the file). A second method finds the holes the first one hides: an inverted buyer, a test aimed at the wrong module, a missing boundary.
+   - Nobody at hand? Run `/wow-product-brief validate <file>` (the Validate mode in `SKILLS.md`), then a critique against a different template (for example `/bmad-product-brief validate`). A second method finds the holes the first one hides: an inverted buyer, a test aimed at the wrong module, a missing boundary.
 8. **Decide:** go, change, or drop.
    - STOP: you decide. When the honest answer is "I can't decide without talking to five people", write that as the decision, with the date you'll have talked to them.
 
@@ -65,5 +65,6 @@ Decision: go, change, or drop, and why
 `/wow-prd`, `/wow-experiment`, `/wow-interview` when the buyer is still open, `/wow-positioning`. End with `/wow-retro`.
 
 ## Changelog
+- 2026-10-07: v2.1. Step 7 points to the Validate mode of `SKILLS.md`.
 - 2026-10-07: v2. Added the summary, the buyer check (must vs want, read the law yourself), the cost of the status quo, scope and sequence, honest differentiation, the vision with its ceiling, "who pays and at what price" in the number, and the second-template critique as a stand-in outside reader. Source: the ProjectX dietitian-platform brief, validated against the BMad product-brief template. The v1 page produced an honest, testable brief that still inverted the buyer (the law obliges the unit; the brief picked the dietitian), aimed the spike at the second module, and had no boundary.
 - 2026-10-06: v1

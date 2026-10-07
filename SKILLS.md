@@ -28,6 +28,23 @@ Every `/wow-*` skill reads this file first, then its page. This file says how th
 15. **Say what comes next.** Recommend one skill, with the reason, from the page's "Next". When the work is part of a journey in `FLOWS.md` (in the pages folder), the next step of that journey wins. Show where the user is in it, for example "step 4 of 11".
     - STOP: the user confirms, picks another skill, or stops here.
 
+## Validate
+A page that writes a document can also judge one: `/wow-<page> validate <file>`, for example `/wow-product-brief validate docs/product/brief.md`. Nothing is written in this mode; the findings come back in chat.
+16. **Read the page, the file, and the file's inputs** (the page's "Reads", and any decision journal inside the file). Say which page you judge against. A critique that ignores what was already decided is shallow.
+17. **Check the page's template and "Done when", item by item**, citing the file's lines.
+18. **Then ask what no template asks:**
+   - who must act or pay, and is that who the document names?
+   - is every number marked as evidence or as a guess, including the ones inside the prose?
+   - does each test aim at the first version, not at what comes second?
+   - what is explicitly out?
+   - what does doing nothing cost, in hours, money or fines?
+   - who outside the idea has read it?
+19. **Go to the primary source.** When a claim rests on a law, a contract, a price or a document, read the source yourself, not the blog about it. Say what you could not verify.
+20. **Report:** findings in order of severity, each with the line, what is wrong, and what to change; then what the file does well; then what you could not evaluate. Never fix the file in this mode.
+   - STOP: the user picks what to apply. The page's own steps then make the changes, and the file gets a changelog line.
+21. **Second template, second opinion.** When the user wants one, run the same critique against another method's template (for example `/bmad-product-brief validate`). The two lists differ, and the differences are the finding.
+22. **Retro:** a finding that recurs across files becomes a line in the page.
+
 ## Talking
 - In chat, use the chat language from the settings; without settings, the language the user writes in. Everything written to files is in English.
 - Short and plain:

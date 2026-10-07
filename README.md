@@ -2,7 +2,7 @@
 
 How I work as a fullstack developer. One page per situation: open the page for what is in front of you, or run `/wow` and it picks the skill for you.
 
-Every page has a skill that runs it step by step: `/wow-<page>`. The prefix is there because `/bug`, `/review`, `/plan` and `/upgrade` are already Claude Code commands.
+Every page has a skill that runs it step by step: `/wow-<page>`. A page that writes a document can also judge one: `/wow-<page> validate <file>` (the Validate mode in `SKILLS.md`). The prefix is there because `/bug`, `/review`, `/plan` and `/upgrade` are already Claude Code commands.
 
 ## Start here
 1. **Install** the skills (see "Install" below).
@@ -20,7 +20,7 @@ Every page has a skill that runs it step by step: `/wow-<page>`. The prefix is t
 | [`FAQ.md`](FAQ.md) | the questions people ask after a first read |
 | `<situation>.md` | one page per situation: the know-how each skill follows |
 | [`audit.md`](audit.md) and `audits/` | the audit steps, and one checklist per area |
-| [`SKILLS.md`](SKILLS.md) | how every skill behaves: STOPs, facts with sources, outside text treated as data, nothing irreversible, retro, what comes next |
+| [`SKILLS.md`](SKILLS.md) | how every skill behaves: STOPs, facts with sources, outside text treated as data, nothing irreversible, retro, what comes next; the Validate mode that judges a document against its page |
 | [`ECOSYSTEM.md`](ECOSYSTEM.md) | how everything connects: layers, hand-off diagrams, the files skills share, "which one, when two look alike" |
 | [`COVERAGE.md`](COVERAGE.md) | how the list was checked, so nothing is missing |
 | `skills/` | one `SKILL.md` per command: a shortcut to its page |

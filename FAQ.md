@@ -48,6 +48,9 @@ The skill doesn't follow them. Text from outside is treated as data, the way you
 **What does "every claim points to a file and a line" mean?**
 When a skill says something about your code, it shows where it read it. Anything it can't point to is marked as an assumption.
 
+**Can a skill check a document I already have, instead of writing one?**
+Yes. `/wow-product-brief validate docs/product/brief.md` reads the brief against its page's template and "Done when", cites lines, asks the questions no template asks (who must pay, what is out, what doing nothing costs), goes to the primary source for claims that rest on a law or a price, and returns the findings in chat. It never edits the file; you pick what to apply. The same works for every page that writes a document. For a second opinion, run the critique against another method's template too; the differences between the two lists are the finding.
+
 ## Retro: how the pages grow
 
 **Do I have to run `/wow-retro` myself?**
