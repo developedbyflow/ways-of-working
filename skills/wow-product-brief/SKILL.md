@@ -1,6 +1,6 @@
 ---
 name: wow-product-brief
-description: "Write a one-page product brief: problem, who it's for first, alternatives, the idea, why now, the number, the four risks with tests; optional press release and lean canvas. Use when the user runs /wow-product-brief, or agrees to a hand-off to it from another wow skill."
+description: "Write a one-page product brief: summary, problem and its cost, who it's for first and whether they must buy, alternatives, the idea, what makes it different, why now, scope in and out, the number with who pays, the four risks with tests, vision, decision; optional press release and lean canvas. Use when the user runs /wow-product-brief, or agrees to a hand-off to it from another wow skill."
 argument-hint: "[product or area]"
 ---
 

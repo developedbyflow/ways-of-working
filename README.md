@@ -37,7 +37,7 @@ Every page has a skill that runs it step by step: `/wow-<page>`. The prefix is t
 | [Customer interviews](interview.md) | five people, questions about their past not your idea, facts apart from opinions, a commitment ask | `/wow-interview` |
 | [Market research](market-research.md) | competitors and alternatives, what customers say, a bottom-up size, why now, the gap | `/wow-market-research` |
 | [Product review](product-review.md) | a live product: the outcome, the funnel, what users say, an opportunity tree, 1–3 picks | `/wow-product-review` |
-| [Product brief](product-brief.md) | one page: problem, who, alternatives, the idea, why now, the number, the four risks | `/wow-product-brief` |
+| [Product brief](product-brief.md) | one page: problem and its cost, who must buy, alternatives, the idea, scope, the number, the four risks, the decision | `/wow-product-brief` |
 | **Define** | | |
 | [PRD](prd.md) | goal, journeys, ranked requirements with criteria, non-functional numbers, out of scope, first version, ready-to-build check | `/wow-prd` |
 | [Roadmap](roadmap.md) | outcomes first, then Now / Next / Later, scored in one list with debt and risks | `/wow-roadmap` |
