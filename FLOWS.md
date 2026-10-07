@@ -24,12 +24,12 @@ flowchart TD
 ```
 
 1. `/wow-brainstorm`: the problem, the ideas, the riskiest assumption.
-2. `/wow-interview`: five people. The idea is kept, changed, or dropped.
+2. `/wow-interview`: five people. The idea is kept, changed, or dropped. Skipped it? Say so in the brief; the brief's value risk inherits the interviews.
 3. `/wow-market-research`: alternatives, prices, size.
 4. `/wow-product-brief`: one page. Go, change, or drop.
 5. `/wow-experiment`: a fake door or a pre-order, while demand is still the open question.
 6. `/wow-prd`: journeys, requirements, the first version.
-7. `/wow-new-project`: architecture, repo, CI, the first deploy. It runs `/wow-architecture`, `/wow-design-system`, `/wow-cloud` and `/wow-deploy`.
+7. `/wow-new-project`: architecture, repo, CI, the first deploy. It runs `/wow-architecture`, `/wow-design-system`, `/wow-cloud` and `/wow-deploy`. Building inside a product that already exists → only `/wow-architecture`, for the new area.
 8. `/wow-roadmap`, then `/wow-plan`: the order of the work, and the slices.
 9. `/wow-feature` for each slice. It runs `/wow-ui-design`, `/wow-api-design`, `/wow-data-model`, `/wow-tdd`, `/wow-pr` and `/wow-deploy`.
 10. `/wow-positioning`, `/wow-pricing`, `/wow-launch`.

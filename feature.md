@@ -32,7 +32,7 @@ flowchart LR
   S2 --> T[Tests from criteria] --> V[Thin slice] --> R[Ship and measure]
 ```
 
-1. **Problem and number:** who has the problem, what they do today, and which number shows it worked.
+1. **Problem and number:** who has the problem, what they do today, and which number shows it worked. The number is an event in `docs/tracking-plan.md`, with its target and date (template in `experiment.md`).
    - Output: 2–3 sentences in the ticket. If no number fits (legal, an internal tool), write why it's still worth doing.
    - Skip it → you build something nobody needed, and you can't tell whether it worked.
 2. **Acceptance criteria:** given / when / then, including the error cases. Add one line: "Not in this version: ...".
@@ -113,6 +113,7 @@ The steps are the same for all three. What changes is which steps you own, and w
 `/wow-pr`, `/wow-deploy`; `/wow-experiment` when you need proof. End with `/wow-retro`.
 
 ## Changelog
+- 2026-10-07: the number is an event in the tracking plan, with target and date.
 - 2026-10-05: v1
 - 2026-10-05: Frontend · Backend · Fullstack says who owns which step, plus features with no screen or no API change.
 - 2026-10-05: v2 — the shared page shape, hand-offs to the design skills, removing a feature.

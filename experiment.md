@@ -26,7 +26,15 @@
    - STOP: you decide.
 7. **Clean up:** remove the losing variant and the flag.
 
-**Fake door:** a button for a feature that doesn't exist yet, where you count the clicks. Tell users honestly that it's coming, and use it rarely.
+**Fake door:** a button for a feature that doesn't exist yet, where you count the clicks. Tell users honestly that it's coming, and use it rarely. With no traffic (a product that doesn't exist yet), it is outreach plus a page: absolute numbers from a list of people you contact, the decision rule written before the first email, and no payment taken.
+
+**The tracking plan** (`docs/tracking-plan.md`) is the list of things you count to know whether it worked, decided before the code. An event is one row written when something happens; its properties are the details saved with it, so the count can be filtered later. Every row carries the question it answers, the target and the date; without them the number in the PRD or the hypothesis can't be checked.
+
+```markdown
+| Event | Fires where | Properties | Question it answers | Target | By |
+|---|---|---|---|---|---|
+| `menu_pdf_exported` | API, after the PDF is generated | operator id, age band, norms version | is the output used | 20 | month 4 |
+```
 
 ## Done when
 - [ ] the experiment doc has the hypothesis, metrics, size, dates, result and decision
@@ -43,4 +51,5 @@
 `/wow-feature`, `/wow-comms` to share the result. End with `/wow-retro`.
 
 ## Changelog
+- 2026-10-07: v2. Fake door without traffic; the tracking plan explained, with target and date per event. From ProjectX.
 - 2026-10-05: v1

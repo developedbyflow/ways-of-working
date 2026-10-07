@@ -19,11 +19,12 @@ Status · Owner · Date
 ## Non-functional: speed, availability, privacy, accessibility, languages
 ## Out of scope
 ## The first version
-## Open questions
+## Open questions: what each blocks, who answers, by when
+## Journal: dated decisions
 ```
 
 ## Steps
-1. **Start from the brief:** the goal, the number, the users.
+1. **Start from the brief:** the goal, the number, the users. The number becomes events in `docs/tracking-plan.md`, each with its target and date (template in `experiment.md`).
    - Skip it → requirements that serve nobody in particular.
 2. **Journeys:** the main flows from the user's side, step by step. Each step later becomes screens (`/wow-ui-design`).
 3. **Requirements:** what the user can do, not how it's built.
@@ -36,7 +37,7 @@ Status · Owner · Date
 6. **The first version:** the smallest set of musts that reaches the goal for the first users. Not a smaller copy of everything.
 7. **Review.**
    - STOP: design and engineering read it. Their questions are answered, or listed as open with an owner.
-8. **Ready to build:** the PRD, the UI design, the architecture and the plan agree; every must has criteria; every open question has an owner.
+8. **Ready to build:** the PRD, the UI design, the architecture and the plan agree; every must has criteria; every open question has an owner. Only the questions that block the next step must be closed; the rest keep their owner and date. The ones that are the user's are asked now, with a recommendation, not left in the file.
    - STOP: confirm before the first `/wow-feature`.
    - Skip it → the build stops halfway on a question nobody owned.
 
@@ -56,4 +57,5 @@ Status · Owner · Date
 `/wow-ui-design`, `/wow-architecture`, `/wow-roadmap`, `/wow-plan`. End with `/wow-retro`.
 
 ## Changelog
+- 2026-10-07: v2. Open questions carry what they block and by when; the user's blocking ones are asked on the spot. The number becomes events with targets. A dated journal closes the file. From the ProjectX MVP PRD.
 - 2026-10-06: v1
