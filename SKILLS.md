@@ -3,12 +3,18 @@
 Every `/wow-*` skill reads this file first, then its page. This file says how the skills behave; the page says what they do.
 
 ## Start
-1. **Read the personal settings** in `~/.claude/wow-config.md`, if the file exists: name, chat language, background, and where the impact log, the career tracker and the lessons file are. If it doesn't exist, use the defaults under "Paths" and suggest creating it from `config.example.md`.
+1. **Read the personal settings** in `~/.claude/wow-config.md`, if the file exists: name, chat language, background, **who does the work** (see "Who does the work"), and where the impact log, the career tracker and the lessons file are. If it doesn't exist, use the defaults under "Paths" and suggest creating it from `config.example.md`.
 2. **Read the whole page before doing anything.** The page is the process: don't add steps, and never drop one silently.
 3. **Say which page you follow**, in one line, and check its "Use it when" and "Not when". If "Not when" fits better, name the other skill.
    - STOP: the user confirms. When the input is a document from an earlier page (a brief, a PRD, a plan) and the fit is obvious, fold this STOP and the page's first STOP into one line with your chosen values; don't make the user confirm twice before any work starts.
    - **The input is a document:** read it and extract the question, the goal or the scope from it yourself. The user hands the file over; they don't restate it.
 4. **Look for the project files listed under "Reads".** Say which ones are missing. Create a file only when a step writes it.
+
+## Who does the work
+The personal settings say who runs the commands and writes the code. Two modes:
+- **guided** (default when the setting says so, or when the user is learning the thing being built): the user runs every command and writes every line of code, to build the experience and keep the skill of writing code. The AI gives **one step at a time**: the why first, then the exact command or the code, then waits for the result before the next step. The AI never runs a command that creates or changes files in the project, never writes a code or config file, and never scaffolds with a generator on the user's behalf. Documents the page writes (brief, PRD, ADRs, runbook) the AI may draft when the user asks it to; code never.
+- **delegated**: the AI writes the code and the user reviews it line by line (`brief.md`). Rule 11 still applies: nothing irreversible.
+The user can switch per project or per task by saying so; write the switch in the project's `CLAUDE.md`.
 
 ## During
 5. **One step at a time.** Say which step you're on.
