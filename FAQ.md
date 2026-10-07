@@ -87,10 +87,10 @@ The 12 checklists for `/wow-audit`, one per area. `audit.md` holds the steps, wh
 ## Settings and install
 
 **What are the personal settings?**
-`~/.claude/wow-config.md`, on your machine, never in the repo: your name, the chat language, your background (so explanations start from what you know), how you learn best, and where your impact log and career tracker are. `install.sh` creates it from `config.example.md`.
+`~/.claude/wow-config.md`, on your machine, never in the repo: your name, the chat language, your background (so explanations start from what you know), how you learn best, **who does the work** (`guided`: you run every command and write the code, the AI explains and gives one step at a time; `delegated`: the AI writes, you review line by line), and where your impact log and career tracker are. `install.sh` creates it from `config.example.md`; as a plugin, you copy the example yourself.
 
 **What happens without settings?**
-Everything works. Chat follows the language you write in, the impact log goes to `~/impact-log.md`, and explanations point to the official docs.
+Everything works. Chat follows the language you write in, the impact log goes to `~/impact-log.md`, explanations point to the official docs, and the work is `delegated`: the AI writes, you review. Say "guided" in chat, or set it in the settings, to run and write everything yourself.
 
 **What is a plugin?**
 A package for Claude Code: a folder of skills you install with one command and update the same way. It works like an npm package: `plugin.json` is its `package.json`, and a marketplace (`marketplace.json`) is the list it's installed from. This repo is both the plugin and its marketplace.
