@@ -6,7 +6,7 @@ Every page has a skill that runs it step by step: `/wow-<page>`. A page that wri
 
 ## Start here
 1. **Install** the skills (see "Install" below).
-2. **Find your journey** in [FLOWS.md](FLOWS.md): a new idea, a live product, a feature, a bug, and so on.
+2. **Find your journey** in [FLOWS.md](FLOWS.md): a new idea, a live product, a feature, a bug, and so on. For the why of each stage, or to see where a project stands, run `/wow-stage` ([stages.md](stages.md)).
 3. **Open the page** for the step you're at (the table below). Its first lines say what you get and give an example command.
 4. **Run the skill.** Not sure which one? Run `/wow` and describe the situation.
 5. **Questions?** [FAQ.md](FAQ.md) answers the ones people ask after a first read.
@@ -42,6 +42,7 @@ Every page has a skill that runs it step by step: `/wow-<page>`. A page that wri
 | [PRD](prd.md) | goal, journeys, ranked requirements with criteria, non-functional numbers, out of scope, first version, ready-to-build check | `/wow-prd` |
 | [Roadmap](roadmap.md) | outcomes first, then Now / Next / Later, scored in one list with debt and risks | `/wow-roadmap` |
 | **Start** | | |
+| [Stages of a product](stages.md) | the whole road in three levels, stage → step → component, with what, why and what it gives; where an existing project is | `/wow-stage` |
 | [New project](new-project.md) | architecture, small design system, CI/CD and quality gates, environments, test strategy, logs and alerts, definition of done, first ADRs | `/wow-new-project` |
 | [Joining a project](join.md) | access, people, how the team works, run it locally, a first small PR | `/wow-join` |
 | [Understanding a codebase](repo-tour.md) | what it does, folder map, one request traced end to end, data model, risky areas, glossary | `/wow-repo-tour` |

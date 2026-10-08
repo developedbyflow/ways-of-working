@@ -1,6 +1,6 @@
 # Flows
 
-The common journeys, from start to finish. Each line is a skill. You run one, and at its last STOP it offers the next. You can stop or skip anywhere; the page says what breaks if you do.
+The common journeys, from start to finish. What each stage is, why it exists and what it gives you, in three levels: [stages.md](stages.md) (`/wow-stage`). Each line is a skill. You run one, and at its last STOP it offers the next. You can stop or skip anywhere; the page says what breaks if you do.
 
 ## 1. From an idea to the first paying users
 
