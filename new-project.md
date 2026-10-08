@@ -83,17 +83,19 @@
 One row per language, framework, library and tool the project depends on, grouped (languages, backend, database, frontend, tooling, infrastructure, observability). Big choices link to their ADR; small ones carry their reason in the row.
 
 ```markdown
-| Technology | Version | What it is | What it does here | Why it | Not chosen | Cost: license, size, learning | Source |
-|---|---|---|---|---|---|---|---|
-| TanStack Router | 1.x (lockfile) | routing for React with validated params | the editor's URL: operator, group, week, day | typed params; a broken link is a type error | React Router | MIT; small; new API | ADR 0004, official docs |
-| (to decide) | | | styling | | | | new-project step 6 |
+| Technology | Version | What it is | What it does here | Why it | Not chosen | Cost: license, size, learning | Revisit when | Source |
+|---|---|---|---|---|---|---|---|---|
+| TanStack Router | 1.x (lockfile) | routing for React with validated params | the editor's URL: operator, group, week, day | typed params; a broken link is a type error | React Router | MIT; small; new API | breaking changes cost more than typed URLs save | ADR 0004, official docs |
+| (to decide) | | | styling | | | | | new-project step 6 |
 ```
 
 - A technology not decided yet gets a row "to decide", with the step that decides it.
 - The version is the one in the lockfile; the row says the major version.
 - A new dependency adds its row in the same change that adds it to the code.
+- "Why it" must survive a colleague asking "why not the other one?". A big choice gets an ADR with the full argument: the need, the options, the trade-off said plainly, why it wins here, and when to revisit it.
 
 ## Changelog
 - 2026-10-05: v1
 - 2026-10-08: step 1 checks the repository and its history; ask where the documents live (Sated: a reset repo, then docs moved to a separate repository by the user).
 - 2026-10-08: `docs/tech-stack.md`, a register of every technology with why, started after the architecture and kept current by the PR template (Sated; Florin wants the same at work).
+- 2026-10-08: "Revisit when" in the tech stack template; a "why" that survives a challenge; the full argument in the ADR.
