@@ -2,18 +2,20 @@
 
 - **Use it when:**
   - you want the whole road of a product (a SaaS, an app, a service) in front of you, from the first idea to a product that grows;
-  - or you need to know what stage an existing project is at, and what it skipped.
-- **What you get:** a map in three levels: stage → step → component, each with what it is, why it's needed and what it gives you. For an existing project: its stage, the gaps behind it with what each one breaks, and the next step.
+  - or you need to know what stage an existing project is at, and what it skipped;
+  - or you want to learn one step properly, reading and applying it on your project at the same time.
+- **What you get:** a map in three levels: stage → step → component, each with what it is, why it's needed and what it gives you. For an existing project: its stage, the gaps behind it with what each one breaks, and the next step. For learning: each component of a step in three layers (beginner, intermediate, advanced) next to a task you apply on your project while you read.
 - **Run it:**
   - `/wow-stage`: the eight stages;
   - `/wow-stage foundation`: the steps of one stage;
   - `/wow-stage foundation architecture`: the components of one step;
-  - `/wow-stage assess ~/code/my-app`: where a project is.
+  - `/wow-stage assess ~/code/my-app`: where a project is;
+  - `/wow-stage learn foundation architecture`: a step as a lesson, with a task per component.
 - **Not when:**
   - you know the situation in front of you → run that skill, or `/wow`;
   - you join a project to work on it → `/wow-join` (it can start with an assess).
 - **Reads:** this page, `FLOWS.md`, and the "Steps" of every page the map opens. For an assess: the project's README, `CLAUDE.md`, its docs, its git history, its CI and deploy files.
-- **Writes:** nothing in the project it assesses. The report goes in chat, or in a file where the user says.
+- **Writes:** nothing in the project it assesses. The report goes in chat, or in a file where the user says. In learn mode, the project changes only through the tasks the user runs.
 
 ## How the map works
 
@@ -185,6 +187,22 @@ Not stages: tools you pick up when a situation needs them.
 2. **A picture** of that level, drawn as the "Diagrams" rule in `SKILLS.md` says.
 3. **If a project is open,** mark where it is on the picture, from the last assess or by asking.
 
+## Learn mode
+1. **The step and the project:** a stage and a step, and the project to apply it on (the open one, or ask). If the project has no code yet for this step, pick a reference project the user owns and say so.
+   - Read the step's page (its "Steps" are the components), its "Concepts if you get stuck", and the project files the tasks will need.
+2. **Three layers per component**, each one short:
+   - **Beginner:** what it is, in one or two sentences, anchored in the background from the settings;
+   - **Intermediate:** how it works, on the project's own example;
+   - **Advanced:** the trade-offs, the traps, the names a senior uses for them.
+   - Every new term is defined where it first appears. A claim about a tool, a standard or a law has its source, or is marked as an assumption.
+   - Skip the layers → the user applies a step without knowing why it exists.
+3. **"Apply now" per component:** a task of 10–15 minutes on the project, and a line "done when …".
+   - Tasks read and change only the user's own files. Nothing runs against production, and nothing probes a system the user doesn't own.
+   - In `guided` mode the user writes; the AI explains and checks.
+4. **The picture:** the components grouped, the layers opened one at a time ("deeper"), the task always visible next to them, and a button that sends the task to the chat. Drawn as the "Diagrams" rule in `SKILLS.md` says.
+5. **A task started from the picture** runs one step at a time. At the end, check its "done when". If it changed a document, it gets a journal line.
+   - STOP: the next component, another task, or back to where the user was.
+
 ## Assess mode
 1. **The project:** the folder or repo, and what the user already knows about it.
    - STOP: confirm the folder and whether any part is off limits.
@@ -215,6 +233,7 @@ Not stages: tools you pick up when a situation needs them.
 ## Done when
 - [ ] map: the level asked for is shown with what, why and what it gives, and level 3 was read from the page, not from memory
 - [ ] assess: every stage has a status with evidence, the gaps are ordered, and the next step is named from `FLOWS.md`
+- [ ] learn: every component has three layers and a task with "done when", and every fact in the layers has a source or is marked
 
 ## Concepts if you get stuck
 - Product discovery and the four risks
@@ -229,3 +248,4 @@ The step the report names, through its skill. End with `/wow-retro`.
 
 ## Changelog
 - 2026-10-08: v1, from Florin's request on Sated: the whole road in three levels, and a way to place an existing project on it.
+- 2026-10-08: learn mode: a step as a lesson in three layers, with a task applied on the project while reading (piloted on Foundation → Architecture).
