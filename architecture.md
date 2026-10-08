@@ -21,6 +21,7 @@
    - who uses the system and which external systems it talks to;
    - the parts you deploy (web app, API, database, queue, workers) and how they talk to each other.
    - Default: one API and one database, until a number says otherwise.
+   - **One action end to end:** follow one real user action through every part, as a numbered table (where, what happens). Readers new to the system understand this before the diagrams.
 4. **Data:** where each piece of data lives, who owns it, and how it flows. What must be correct right away, and what can be correct a little later. The details → `/wow-data-model`.
 5. **Frontend:**
    - how each type of page is rendered (CSR, SSR, SSG, ISR);
@@ -37,6 +38,7 @@
 - [ ] the context and container diagrams exist
 - [ ] the numbers, the failure modes and the threats are written
 - [ ] the ADRs and risks are written
+- [ ] one user action is traced end to end, and every term the reader may not know is in a glossary, compared with what they already know (the background from the settings)
 
 ## Frontend · Backend · Fullstack
 - **Frontend:** rendering, routing, state, the size budget for the JavaScript bundle.
@@ -64,3 +66,4 @@
 
 ## Changelog
 - 2026-10-05: v1
+- 2026-10-08: one action end to end, and a glossary anchored in the reader's background (Sated: the first architecture.md read as confusing to a frontend developer new to the backend).

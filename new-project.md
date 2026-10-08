@@ -5,10 +5,11 @@
 - **Run it:** `/wow-new-project a meal-planning app for gym beginners`
 - **Not when:** the project already exists → `/wow-join`.
 - **Reads:** the problem: who uses it, how many people, what must never break; `docs/product/brief.md` and `docs/product/prd.md` if they exist.
-- **Writes:** `CLAUDE.md`, README, `docs/adr/`, `docs/definition-of-done.md`, `docs/runbook.md`, the CI config, the PR template.
+- **Writes:** `CLAUDE.md`, README, `docs/adr/`, `docs/definition-of-done.md`, `docs/runbook.md`, the CI config, the PR template. The documents go where the user says: the code repo's `docs/`, or a separate docs repository with folder names the user picks. Ask before writing.
 
 ## Steps
 1. **Problem, users, numbers:** who, how many, and what must never break (data, money, privacy). If it's unclear → `/wow-grill`.
+   - First look at the repository: its files, its history, and the reflog. Decisions left from an earlier start are offered as proposals or set aside; the user picks.
    - Skip it → you pick a stack for the wrong scale.
 2. **Architecture** → `/wow-architecture`. Start with one deployable app split into clear modules, unless a number says otherwise.
    - STOP: approve the first ADRs.
@@ -76,3 +77,4 @@
 
 ## Changelog
 - 2026-10-05: v1
+- 2026-10-08: step 1 checks the repository and its history; ask where the documents live (Sated: a reset repo, then docs moved to a separate repository by the user).
