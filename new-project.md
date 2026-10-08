@@ -8,6 +8,8 @@
 - **Writes:** `CLAUDE.md`, README, `docs/adr/`, `docs/tech-stack.md`, `docs/definition-of-done.md`, `docs/runbook.md`, the CI config, the PR template. The documents go where the user says: the code repo's `docs/`, or a separate docs repository with folder names the user picks. Ask before writing.
 
 ## Steps
+Every step that picks a technology closes its "to decide" row in `docs/tech-stack.md` before the step is done: the version, why it, what was not chosen, the cost, and when to revisit it.
+
 1. **Problem, users, numbers:** who, how many, and what must never break (data, money, privacy). If it's unclear → `/wow-grill`.
    - First look at the repository: its files, its history, and the reflog. Decisions left from an earlier start are offered as proposals or set aside; the user picks.
    - Skip it → you pick a stack for the wrong scale.
@@ -22,6 +24,7 @@
    - the folder convention for a feature (UI, API client, tests).
    - Skip it → every change starts a debate about where things go.
 4. **Quality gates in CI:** lint, format check, typecheck, tests and build are required to merge. Add a dependency scan and a secret scan.
+   - Consider a check that fails when a dependency in a lockfile has no row in `docs/tech-stack.md`.
    - Skip it → broken code reaches main.
 5. **Test strategy:** what each level tests.
    - unit tests for logic;
@@ -99,3 +102,4 @@ One row per language, framework, library and tool the project depends on, groupe
 - 2026-10-08: step 1 checks the repository and its history; ask where the documents live (Sated: a reset repo, then docs moved to a separate repository by the user).
 - 2026-10-08: `docs/tech-stack.md`, a register of every technology with why, started after the architecture and kept current by the PR template (Sated; Florin wants the same at work).
 - 2026-10-08: "Revisit when" in the tech stack template; a "why" that survives a challenge; the full argument in the ADR.
+- 2026-10-08: every step that picks a technology closes its row in `docs/tech-stack.md`; a CI check for missing rows is considered at step 4.
