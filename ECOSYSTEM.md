@@ -200,6 +200,7 @@ In the project:
 | `GLOSSARY.md` | the project's words, one line each | grill, data-model, repo-tour | every skill, explain-again |
 | `docs/adr/` | one decision per file: context, choice, options not chosen | grill, architecture, design-doc, new-project | join, review, handoff |
 | `docs/design/` | design docs | design-doc | feature, plan, review |
+| `docs/tech-stack.md` | every language, framework, library and tool: version, what it does here, why it, what was not chosen, cost, source | new-project, repo-tour, review (new packages), upgrade | join, review, upgrade, handoff, audit |
 | `docs/definition-of-done.md` | when a ticket is ready to start, and when it is done | new-project | feature, pr, review |
 | the ticket | problem, number, acceptance criteria, estimate | feature, plan | brief, review, pr, retro |
 | `docs/tracking-plan.md` | the events the app sends, their fields, who owns them | feature, experiment, ai-feature | audit (analytics, privacy) |

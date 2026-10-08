@@ -5,7 +5,7 @@
 - **Run it:** `/wow-upgrade React to the next major version`
 - **Not when:** your own schema, data or API changes → `/wow-migration`.
 - **Reads:** the release notes, the migration guide, the changelog, the advisory.
-- **Writes:** the upgrade PR, with the breaking changes it handles.
+- **Writes:** the upgrade PR, with the breaking changes it handles; the new version in `docs/tech-stack.md`.
 
 ## Steps
 1. **Why, and how big:**
@@ -53,3 +53,4 @@ Commit the lockfile. To check what you have:
 
 ## Changelog
 - 2026-10-05: v1
+- 2026-10-08: the upgrade updates `docs/tech-stack.md`.

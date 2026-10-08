@@ -5,7 +5,7 @@
 - **Run it:** `/wow-repo-tour ~/code/shop-api`
 - **Not when:** you are joining a team → `/wow-join`, which runs this inside.
 - **Reads:** the code, the git history, README, `docs/`, the migrations, the routes.
-- **Writes:** `REPO-MAP.md`, `GLOSSARY.md`.
+- **Writes:** `REPO-MAP.md`, `GLOSSARY.md`, `docs/tech-stack.md` if the project has none.
 
 Every claim points to a file and a line. Anything the code doesn't show is marked as an assumption. STOP after each step: you ask your questions before the next one.
 
@@ -14,6 +14,7 @@ Every claim points to a file and a line. Anything the code doesn't show is marke
 2. **How to run and test it:** the exact commands, checked by running them.
    - Skip it → the map describes an app nobody can start.
 3. **Folder map:** one line per top folder, plus the entry points (`Program.cs`, `main.tsx`, the router).
+   - **Tech stack:** from the manifests (`package.json`, `*.csproj`, Dockerfiles, CI and infrastructure files), one row per technology in `docs/tech-stack.md` (template in `new-project.md`). The "why" comes from the ADRs, or says "unknown, ask <who>"; those go on the questions list.
 4. **One request, end to end:** take the main user action and follow it: click → component → API client → endpoint → service → database → back. Draw it as a sequence diagram, with file and line at every step.
    - Skip it → you know the folders but not how they work together.
 5. **Data model:** tables and relations as a diagram, from the migrations or the ORM model.
@@ -45,3 +46,4 @@ Back to `/wow-join`, or on to `/wow-feature` or `/wow-bug`. End with `/wow-retro
 
 ## Changelog
 - 2026-10-05: v1
+- 2026-10-08: the tech stack register, built from the manifests, with the unknown "why" as questions.

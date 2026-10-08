@@ -44,6 +44,7 @@
   - reuses what exists, follows the conventions and the ADRs, adds no layer nobody asked for;
   - if the structure changed, `REPO-MAP.md` is updated.
 - **Logs:** errors logged with context, no personal data.
+- **Dependencies:** a new package has its row in `docs/tech-stack.md`: why it, what wasn't chosen, license and size. Nothing added for what ten lines of code would do.
 
 ## Code written by AI: check also
 - **Invented APIs:** methods or options that don't exist in your version. Check the types or the docs.
@@ -72,3 +73,4 @@
 
 ## Changelog
 - 2026-10-05: v1
+- 2026-10-08: a new dependency needs its row in `docs/tech-stack.md`.

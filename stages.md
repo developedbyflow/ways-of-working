@@ -88,7 +88,7 @@ Every step names its page. The page's "Steps" are the components (level 3).
 - **What it is:** the decisions and the skeleton every feature will stand on: architecture, repository, quality gates, tests, a small design system, environments, a first deploy, logs and alerts.
 - **Why:** the first shortcuts become the architecture, and deploy problems found in launch week are the most expensive ones.
 - **What it gives you:** every feature starts on the same ground, and a change reaches production through checks.
-- **Proof it's done:** ADRs; CI with required checks; a page in production deployed through the pipeline; logs, error tracking and one alert that fires; a definition of done; README says how to run and test.
+- **Proof it's done:** ADRs; a tech stack register with why for every technology; CI with required checks; a page in production deployed through the pipeline; logs, error tracking and one alert that fires; a definition of done; README says how to run and test.
 - **Skipped →** each feature invents its own way, and the first incident is debugged blind.
 
 | Step | What it is | Why | Page |

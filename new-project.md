@@ -5,7 +5,7 @@
 - **Run it:** `/wow-new-project a meal-planning app for gym beginners`
 - **Not when:** the project already exists → `/wow-join`.
 - **Reads:** the problem: who uses it, how many people, what must never break; `docs/product/brief.md` and `docs/product/prd.md` if they exist.
-- **Writes:** `CLAUDE.md`, README, `docs/adr/`, `docs/definition-of-done.md`, `docs/runbook.md`, the CI config, the PR template. The documents go where the user says: the code repo's `docs/`, or a separate docs repository with folder names the user picks. Ask before writing.
+- **Writes:** `CLAUDE.md`, README, `docs/adr/`, `docs/tech-stack.md`, `docs/definition-of-done.md`, `docs/runbook.md`, the CI config, the PR template. The documents go where the user says: the code repo's `docs/`, or a separate docs repository with folder names the user picks. Ask before writing.
 
 ## Steps
 1. **Problem, users, numbers:** who, how many, and what must never break (data, money, privacy). If it's unclear → `/wow-grill`.
@@ -13,10 +13,12 @@
    - Skip it → you pick a stack for the wrong scale.
 2. **Architecture** → `/wow-architecture`. Start with one deployable app split into clear modules, unless a number says otherwise.
    - STOP: approve the first ADRs.
-   - Skip it → the first shortcuts become the architecture.
+   - Start `docs/tech-stack.md` (template below): every technology decided so far, and the ones still to decide, each with the step that decides it.
+   - Skip it → the first shortcuts become the architecture, and in six months nobody knows why a package is there.
 3. **Repo and workflow:**
    - one main branch, short-lived branches, small PRs;
    - the PR template, `type(scope):` commit messages, the lockfile committed;
+   - the PR template asks: a new dependency has its row in `docs/tech-stack.md`;
    - the folder convention for a feature (UI, API client, tests).
    - Skip it → every change starts a debate about where things go.
 4. **Quality gates in CI:** lint, format check, typecheck, tests and build are required to merge. Add a dependency scan and a secret scan.
@@ -46,6 +48,7 @@
 10. **`CLAUDE.md`:** stack, commands, conventions, and what the AI must never do.
 
 ## Done when
+- [ ] `docs/tech-stack.md` lists every technology, with why, or the step that decides it
 - [ ] a merged PR reaches production through the pipeline, with every gate green
 - [ ] logs, error tracking and one alert work
 - [ ] README says how to run and test it in a few commands
@@ -75,6 +78,22 @@
 ## Next
 `/wow-architecture`, `/wow-design-system`, `/wow-cloud`, `/wow-deploy`, then the first `/wow-feature`. End with `/wow-retro`.
 
+## Tech stack template (`docs/tech-stack.md`)
+
+One row per language, framework, library and tool the project depends on, grouped (languages, backend, database, frontend, tooling, infrastructure, observability). Big choices link to their ADR; small ones carry their reason in the row.
+
+```markdown
+| Technology | Version | What it is | What it does here | Why it | Not chosen | Cost: license, size, learning | Source |
+|---|---|---|---|---|---|---|---|
+| TanStack Router | 1.x (lockfile) | routing for React with validated params | the editor's URL: operator, group, week, day | typed params; a broken link is a type error | React Router | MIT; small; new API | ADR 0004, official docs |
+| (to decide) | | | styling | | | | new-project step 6 |
+```
+
+- A technology not decided yet gets a row "to decide", with the step that decides it.
+- The version is the one in the lockfile; the row says the major version.
+- A new dependency adds its row in the same change that adds it to the code.
+
 ## Changelog
 - 2026-10-05: v1
 - 2026-10-08: step 1 checks the repository and its history; ask where the documents live (Sated: a reset repo, then docs moved to a separate repository by the user).
+- 2026-10-08: `docs/tech-stack.md`, a register of every technology with why, started after the architecture and kept current by the PR template (Sated; Florin wants the same at work).
