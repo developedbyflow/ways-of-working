@@ -42,6 +42,15 @@ All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the do
 - **02 says stop or change:** back to 00 with what you learned.
 - **A risk test from 03 fails,** even during 04 or later: back to 03, decide again, add a line to its journal.
 
+### When to validate
+Steps 01–04 can judge an existing document: `/<skill> validate <file>`. Run it:
+- **on a document written without the skill:** an older version, someone else's, one from your job;
+- **before a decision that's hard to undo:** the end of 03 (go or stop) and of 04 (before architecture and code);
+- **after a big change:** a test failed, the MVP was cut;
+- **when nobody else can read it.**
+
+Not right after writing with the skill (its "Done when" already checked it), and not for small edits.
+
 ### Status
 00 Brainstorm hasn't been tried on a project yet. Setup and 01–04 were done on MacroMate (Setup by hand, as the private `macromate-docs` repo).
 
