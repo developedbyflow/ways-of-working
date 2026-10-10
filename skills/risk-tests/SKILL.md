@@ -1,13 +1,16 @@
 ---
-name: discovery-risk-tests
-description: "Discovery, in parallel from step 03: run the risk tests from the product brief honestly. Pick the riskiest, write the hypothesis with the pass mark set in the brief, choose the cheapest test that answers it (signup page, fake door, spike on real data, waitlist, price page, cost check), run it, compare with the pass mark, decide, and update the brief. Use after the brief, alongside the PRD and the build, until every risk has a result. Also judges an existing test: /discovery-risk-tests validate <file>."
+name: risk-tests
+description: "A tool for every phase: test a risky assumption before building on it. In Discovery, the risks from the product brief; in Delivery, a technical unknown (a spike, a load test); after launch, a channel or a price (an experiment). Pick the riskiest, write the hypothesis with the pass mark set in the brief, choose the cheapest test that answers it (signup page, fake door, spike on real data, waitlist, price page, cost check), run it, compare with the pass mark, decide, and update the brief. Use whenever the next step depends on an unchecked assumption. Also judges an existing test: /risk-tests validate <file>."
 argument-hint: "[the risk to test] or validate <file>"
 ---
 
-# Discovery · Risk tests (in parallel)
+# Risk tests (any phase)
 
 ## When to use it
-After the brief (03), for each risk in its table. Runs alongside the PRD and the build, until every risk has a result.
+Whenever the next step depends on an assumption you haven't checked, in any phase:
+- **Discovery:** the risks in the brief's table (value, usability, feasibility, viability), each when its "When" says;
+- **Delivery:** a technical unknown before you commit to it ("can the database take 10,000 users?", "does this library do X?");
+- **after launch:** a channel, a price, a change to a screen (an experiment).
 
 ## The problem it solves
 The brief writes the tests; this step runs them honestly and decides from them. Without it, the tests stay on paper and you build on assumptions.
@@ -25,7 +28,7 @@ The brief writes the tests; this step runs them honestly and decides from them. 
 ## How to run it
 - **The bar:** do what a senior engineer or the C-level who owns this area (CEO, CPO, CTO, CFO, CMO, COO) at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder.
-- **Read first:** the risk table and the journal in `docs/01-discovery/03-product-brief.md`, and `docs/01-discovery/risk-tests.md` if it exists.
+- **Read first:** where the risk comes from (the brief's risk table and journal in Discovery, the architecture's open questions in Delivery) and `docs/01-discovery/risk-tests.md` if it exists. Product risks from the brief are recorded there; later phases record their tests in their own folder (`docs/02-delivery/risk-tests.md`…).
 - **One test at a time.** The user runs it; you help design it and read the result.
 - **The pass mark never moves after the result.** If it was wrong, say so in the journal and set a new one for the next test.
 - **Nothing outside this machine without the user:** no page published, no email sent, no money taken.
@@ -56,6 +59,8 @@ The pass mark is the one in the brief. Also write what would make the result unc
 | **Usability:** can they use it? | the prototype (`/discovery-prototype`) |
 | **Feasibility:** can it be built? | a spike: a small throwaway test on real data, with a count (for example 30 known foods, compare the AI's estimates with the real values) |
 | **Viability:** does it work as a business? | a waitlist from the channel you chose; a price page that counts clicks on each plan; the cost per user with the providers' real prices |
+| **Technical** (Delivery): will this technology hold? | a spike: the smallest throwaway code that answers the question; a load test with the expected numbers |
+| **Growth** (after launch): does this change move a number? | an A/B test with a sample size worked out in advance; a channel test with a budget and a stop date |
 
 A product press release (from the brief's working-backwards step) makes a good signup page: the promise is already written.
 
@@ -88,7 +93,7 @@ Then add a section to `docs/01-discovery/risk-tests.md`:
 ```
 
 ## Validate mode
-`/discovery-risk-tests validate <file>`: judge existing risk tests, change nothing.
+`/risk-tests validate <file>`: judge existing risk tests, change nothing.
 1. Read the file and the brief's risk table and journal.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask: does every pass mark match the one in the brief, set before the test? Was the riskiest risk tested first, or the easiest? Is the raw data there, so someone else could check the result? Is any "unclear" read as a pass? Did the brief and the PRD change where a result says they should?
@@ -117,4 +122,4 @@ When a project rests on a big assumption ("customers will use this", "the API ca
 - [ ] what changed in the product is in the PRD, with a journal line
 
 ## Next
-Runs until every risk has a result. If a big one fails: back to Discovery · 03 Product brief.
+Back to the step that was waiting for the result. In Discovery, if a big risk fails: back to 03 Product brief.

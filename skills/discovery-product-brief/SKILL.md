@@ -71,7 +71,7 @@ When the summary feels flat or the user isn't sure what the product is, use Amaz
 - **The internal FAQ:** what the team would ask ("what's hardest to build?", "what does a user cost us?", "what did we leave out?", "what kills this?").
 - **Hard mode:** challenge every vague answer and every claim without evidence. If the press release is boring, the product is too.
 
-The press release makes a good signup page for the value test (`/discovery-risk-tests`): the promise is already written. Shown to people from the segment, it turns from a thinking tool into evidence.
+The press release makes a good signup page for the value test (`/risk-tests`): the promise is already written. Shown to people from the segment, it turns from a thinking tool into evidence.
 
 When the business model itself is the open question, add a lean canvas instead.
 
@@ -148,4 +148,4 @@ Before a big project, ask for a one-page brief: the problem, the market, the fou
 - [ ] the decision, the fallback and the first journal line
 
 ## Next
-Discovery · 04 PRD (`/discovery-prd`). The risk tests run in parallel with it (`/discovery-risk-tests`).
+Discovery · 04 PRD (`/discovery-prd`). The risk tests run in parallel with it (`/risk-tests`).

@@ -36,7 +36,7 @@ flowchart LR
 | 03 | [Product brief](skills/discovery-product-brief/SKILL.md) | `/discovery-product-brief` | `01`, `02`, `ideas.md` | `03-product-brief.md` | go, go with conditions, change or stop |
 | 04 | [PRD](skills/discovery-prd/SKILL.md) | `/discovery-prd` | everything above | `04-prd.md`, `ideas.md` (sorted) | ready for delivery |
 | 05 | [Prototype](skills/discovery-prototype/SKILL.md) (optional) | `/discovery-prototype` | `04-prd.md`, `03-product-brief.md` | `05-prototype.md`, brief and PRD updated | pass, or fix and retest |
-| – | [Risk tests](skills/discovery-risk-tests/SKILL.md) (in parallel, from 03) | `/discovery-risk-tests` | `03-product-brief.md` | `risk-tests.md`, brief updated | every risk in the brief has a result |
+| – | [Risk tests](skills/risk-tests/SKILL.md) (in parallel, from 03) | `/risk-tests` | `03-product-brief.md` | `risk-tests.md`, brief updated | every risk in the brief has a result |
 
 All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
 
@@ -70,7 +70,7 @@ docs/
 
 **What it gives you:** you learn in days what you'd otherwise learn after months of code, and every decision rests on numbers, not hope.
 
-**When to run them:** the tests whose result picks a technology or a provider before the architecture; value tests (interviews) as early as possible; tests that need the real app during the build; a beta and a waitlist before launch. They run alongside the other steps, one at a time, with `/discovery-risk-tests`.
+**When to run them:** the tests whose result picks a technology or a provider before the architecture; value tests (interviews) as early as possible; tests that need the real app during the build; a beta and a waitlist before launch. They run alongside the other steps, one at a time, with `/risk-tests`.
 
 ### Validate
 **What it is:** every step from 01 on can also judge a document that already exists, without changing it: `/<skill> validate <file>`, for example `/discovery-prd validate docs/01-discovery/04-prd.md`. It's a code review for a document:

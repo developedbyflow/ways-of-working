@@ -34,7 +34,7 @@ And always in the simplest form that meets that bar: senior means knowing what t
 
 ## How a skill is written
 
-One folder per step in `skills/`, named `phase-step` (for example `discovery-problem`), with one `SKILL.md` that holds everything. No numbers in names: the order lives in [FLOWS.md](FLOWS.md), so a new step never renames the others. Every skill has the same sections:
+One folder per step in `skills/`, named `phase-step` (for example `discovery-problem`), with one `SKILL.md` that holds everything. No numbers in names: the order lives in [FLOWS.md](FLOWS.md), so a new step never renames the others. A tool used in every phase has no phase in its name (for example `risk-tests`). Every skill has the same sections:
 
 - **When to use it**
 - **The problem it solves**
