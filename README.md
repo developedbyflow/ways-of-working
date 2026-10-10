@@ -32,10 +32,6 @@ Everything here is what a senior engineer or a C-level at a well-run company wou
 
 And always in the simplest form that meets that bar: senior means knowing what to leave out.
 
-## When a skill gets added
-
-Only after I've done that step on a real project (MacroMate). No skill is written ahead of the experience.
-
 ## How a skill is written
 
 One folder per step in `skills/`, named `phase-step` (for example `discovery-problem`), with one `SKILL.md` that holds everything. No numbers in names: the order lives in [FLOWS.md](FLOWS.md), so a new step never renames the others. Every skill has the same sections:
