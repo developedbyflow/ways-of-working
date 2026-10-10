@@ -40,7 +40,26 @@ flowchart LR
 
 All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
 
-### Risk tests: checking the brief's assumptions
+## Where the documents go
+
+`docs/` is wherever `/discovery-setup` put it: a private docs repo, `docs/` in the code repo, or the team's existing place. The `Project documents:` line in `CLAUDE.md` points to it. Inside, one folder per phase, numbered in the order of the road; each step's file is numbered inside it:
+
+```
+docs/
+  ideas.md               your raw ideas, shaped in 00 Brainstorm, sorted in 04 PRD
+  01-discovery/
+    00-brainstorm.md
+    01-problem.md
+    02-market-research.md
+    03-product-brief.md
+    04-prd.md
+    05-prototype.md
+    risk-tests.md
+```
+
+## Extra clarifications
+
+### Risk tests
 **What it is:** a small experiment that checks one risky assumption before you spend months building on it. The brief lists the risks, each with a test and a pass mark; this step runs them one by one.
 
 **An example, the AI plate scan:**
@@ -53,7 +72,7 @@ All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the do
 
 **When to run them:** the tests whose result picks a technology or a provider before the architecture; value tests (interviews) as early as possible; tests that need the real app during the build; a beta and a waitlist before launch. They run alongside the other steps, one at a time, with `/discovery-risk-tests`.
 
-### Validate: a review of a document
+### Validate
 **What it is:** every step from 01 on can also judge a document that already exists, without changing it: `/<skill> validate <file>`, for example `/discovery-prd validate docs/01-discovery/04-prd.md`. It's a code review for a document:
 1. it reads the document and the ones it comes from (a PRD with its brief and problem);
 2. it checks it item by item against what the step asks for, citing the lines;
@@ -73,20 +92,3 @@ All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the do
 - **when nobody else can read it.**
 
 Not right after writing with the skill (its "Done when" already checked it), and not for small edits.
-
-## Where the documents go
-
-`docs/` is wherever `/discovery-setup` put it: a private docs repo, `docs/` in the code repo, or the team's existing place. The `Project documents:` line in `CLAUDE.md` points to it. Inside, one folder per phase, numbered in the order of the road; each step's file is numbered inside it:
-
-```
-docs/
-  ideas.md               your raw ideas, shaped in 00 Brainstorm, sorted in 04 PRD
-  01-discovery/
-    00-brainstorm.md
-    01-problem.md
-    02-market-research.md
-    03-product-brief.md
-    04-prd.md
-    05-prototype.md
-    risk-tests.md
-```
