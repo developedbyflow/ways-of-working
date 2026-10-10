@@ -1,7 +1,7 @@
 ---
 name: discovery-market-research
-description: "Discovery, step 02: what already exists, what users love and hate about it, how big the market is, why now, and how many people you must reach to hit the goal; ends with go, change or stop. Use after the problem is written (docs/01-discovery/01-problem.md), before choosing features."
-argument-hint: "[the product or the problem]"
+description: "Discovery, step 02: what already exists, what users love and hate about it, how big the market is, why now, and how many people you must reach to hit the goal; ends with go, change or stop. Use after the problem is written (docs/01-discovery/01-problem.md), before choosing features. Also judges an existing market research: /discovery-market-research validate <file>."
+argument-hint: "[the product or the problem] or validate <file>"
 ---
 
 # Discovery · 02 Market research
@@ -115,6 +115,21 @@ Go / change / stop, the price to test, what is still unknown.
 ## Sources
 [link], [date read]
 ```
+
+## Validate mode
+`/discovery-market-research validate <file>`: judge an existing market research, change nothing.
+1. Read the file, `docs/01-discovery/01-problem.md` and anything that cites the research (the brief, the PRD).
+2. Check the template and "Done when" item by item, citing the lines.
+3. Then ask:
+   - Does every number have a source and a date, or is it marked as a guess, including the ones inside sentences?
+   - How old is it? Prices and competitors older than 6 months need a fresh look before a pricing decision.
+   - Do the complaints come from real users (stores, forums) or from competitors' blogs?
+   - Is any "differentiator" something a major competitor already has? Does each one answer a counted complaint?
+   - Is the size bottom-up, or a share of a big report number?
+   - Does the funnel use rates with sources, and does the channel reach the user from 01?
+   - Is there an answer (go, change, stop), and does the brief follow it?
+4. Go to the primary source for any price or claim the decision rests on.
+5. Report: findings by severity, each with the line, what's wrong and what to change; then what the research does well; then what you couldn't evaluate. The user picks what to apply.
 
 ## The bad version and why not
 - "There's nothing like it" → there almost always is.

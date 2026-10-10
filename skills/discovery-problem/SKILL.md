@@ -1,7 +1,7 @@
 ---
 name: discovery-problem
-description: "Discovery, step 01: who has the problem, what it is, how they solve it today and what it costs them, checked in 3–5 interviews about what people did, not about the idea. Use when the user starts a new app or product and has an idea, before market research and before any code."
-argument-hint: "[the idea, in a few words]"
+description: "Discovery, step 01: who has the problem, what it is, how they solve it today and what it costs them, checked in 3–5 interviews about what people did, not about the idea. Use when the user starts a new app or product and has an idea, before market research and before any code. Also judges an existing problem page: /discovery-problem validate <file>."
+argument-hint: "[the idea, in a few words] or validate <file>"
 ---
 
 # Discovery · 01 Problem
@@ -99,6 +99,19 @@ Then write `docs/01-discovery/01-problem.md`:
 **Pattern:** [x of 5 describe …]
 **Decision:** keep / change / drop
 ```
+
+## Validate mode
+`/discovery-problem validate <file>`: judge an existing problem page, change nothing.
+1. Read the page, `docs/01-discovery/00-brainstorm.md` if it exists, `docs/ideas.md` and any interview notes.
+2. Check the template and "Done when" item by item, citing the lines.
+3. Then ask:
+   - Is the person concrete enough to decide something, or is it "anyone who…"?
+   - Does the problem hide a solution ("an app that…")?
+   - Is every cost a number, and is each one checked or a guess?
+   - Is the strength on the ladder backed by something someone did?
+   - Were the interviews about the past, with people who aren't friends? Any "would you…?" question?
+   - Is there a decision after the interviews, or are they still "not yet verified", and is that test in the brief?
+4. Report: findings by severity, each with the line, what's wrong and what to change; then what the page does well; then what you couldn't evaluate. The user picks what to apply.
 
 ## The bad version and why not
 - "For anyone who wants to eat healthy" → too vague to decide anything.
