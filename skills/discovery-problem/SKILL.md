@@ -15,6 +15,7 @@ You know who you build for and what hurts them, so every later decision has a re
 ## How to run it
 - **The bar:** do what a senior engineer or the C-level who owns this area (CEO, CPO, CTO, CFO, CMO, COO) at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder.
+- **Spot risky assumptions for the user:** when a decision here rests on something nobody has checked ("I think people will…", "the AI can probably…") and being wrong would cost a lot, stop and propose a risk test: what to check, how long it takes, the pass mark, and when it must be done. The user only says yes or no; run it with `/risk-tests`. Don't propose one for cheap, easy-to-undo choices.
 - **Read first:** `docs/01-discovery/00-brainstorm.md` (the picked problem and its fallbacks) and `docs/ideas.md`. Start from what is there; ask only what is missing.
 - **One question at a time,** then wait. Write the file from the user's answers; never invent one.
 - **If an answer is vague, push back** before moving on: "how often?", "how much, roughly?", "what did you do the last time?".

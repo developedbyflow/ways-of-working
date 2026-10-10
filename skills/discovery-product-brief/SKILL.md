@@ -15,6 +15,7 @@ Everything you know about the product on one page, and a conscious decision to g
 ## How to run it
 - **The bar:** do what a senior engineer or the C-level who owns this area (CEO, CPO, CTO, CFO, CMO, COO) at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder.
+- **Spot risky assumptions for the user:** when a decision here rests on something nobody has checked ("I think people will…", "the AI can probably…") and being wrong would cost a lot, stop and propose a risk test: what to check, how long it takes, the pass mark, and when it must be done. The user only says yes or no; run it with `/risk-tests`. Don't propose one for cheap, easy-to-undo choices.
 - **Read first:** `docs/01-discovery/01-problem.md`, `docs/01-discovery/02-market-research.md`, `docs/ideas.md`. Ask only what is missing.
 - **Summarise, don't repeat.** Link to 01 and 02 for the detail. One page, two at most.
 - **Mark every claim** as evidence (with where it comes from) or as a guess.

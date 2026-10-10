@@ -32,6 +32,8 @@ Everything here is what a senior engineer or a C-level at a well-run company wou
 
 And always in the simplest form that meets that bar: senior means knowing what to leave out.
 
+The skills also watch for risky assumptions: when a decision rests on something unchecked and being wrong would cost a lot, they stop and propose a test (see `risk-tests` in [FLOWS.md](FLOWS.md)). You only say yes or no.
+
 ## How a skill is written
 
 One folder per step in `skills/`, named `phase-step` (for example `discovery-problem`), with one `SKILL.md` that holds everything. No numbers in names: the order lives in [FLOWS.md](FLOWS.md), so a new step never renames the others. A tool used in every phase has no phase in its name (for example `risk-tests`). Every skill has the same sections:

@@ -17,6 +17,7 @@ You find out whether people can use the product before writing code (Marty Cagan
 ## How to run it
 - **The bar:** do what a senior engineer or the C-level who owns this area (CEO, CPO, CTO, CFO, CMO, COO) at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder.
+- **Spot risky assumptions for the user:** when a decision here rests on something nobody has checked ("I think people will…", "the AI can probably…") and being wrong would cost a lot, stop and propose a risk test: what to check, how long it takes, the pass mark, and when it must be done. The user only says yes or no; run it with `/risk-tests`. Don't propose one for cheap, easy-to-undo choices.
 - **Read first:** `docs/01-discovery/04-prd.md` (journeys, glossary, criteria) and the usability risk in `docs/01-discovery/03-product-brief.md`.
 - **The user runs the sessions.** You prepare the script, the tasks and the results table, and help read the results.
 - **Behaviour over opinion:** count what people did, not what they said they liked.
