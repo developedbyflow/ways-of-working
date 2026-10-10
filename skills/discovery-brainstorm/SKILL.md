@@ -13,6 +13,7 @@ The first step of every new project. Before it, write everything in your head in
 Your raw ideas get a shape, and you pick a problem by comparing it with others, not the first one that comes to mind. Most ideas arrive as solutions; this step finds the problem behind each one.
 
 ## How to run it
+- **The bar:** do what a senior engineer, a CTO or a CEO at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Stay in exploring as long as possible.** Don't judge, group or score until step 4. When the flow slows, switch area or lens; don't conclude.
 - **One prompt at a time,** then wait. Never dump a list of questions.
 - **Switch area every ~8 problems.** Ideas drift toward the same theme; a new area forces new ones.
@@ -22,7 +23,7 @@ Your raw ideas get a shape, and you pick a problem by comparing it with others, 
 ## Steps
 
 ### 1. Shape the ideas
-Read `docs/ideas.md`. If it's empty or missing, ask for a dump: "write everything in your head about what you'd like to build", then "anything else?".
+Read `docs/ideas.md`. If it's empty or missing, ask for a dump: "write everything in your head about what you'd like to build", then "anything else?". Nothing at all? Skip to step 3, the path without an idea.
 - Give each idea the next free ID, a short name and one line on what it does for the user, with *From: brain dump*.
 - Merge duplicates (the merged ID gets an arrow), keep the user's meaning, invent nothing.
 - Rewrite the file in the format below, all under "New", and show it. The user confirms or corrects.

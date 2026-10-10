@@ -15,6 +15,10 @@ Me first. Written so anyone can use it, because I want to share it on YouTube.
 
 Each skill is one step of the road, in order. It explains why the step matters and leaves a document behind.
 
+## The bar
+
+Everything here is what a senior engineer, a CTO or a CEO at a well-run company would do, never the amateur shortcut, because the point is to grow. And always in the simplest form that meets that bar: senior means knowing what to leave out.
+
 ## When a skill gets added
 
 Only after I've done that step on a real project (MacroMate). No skill is written ahead of the experience.

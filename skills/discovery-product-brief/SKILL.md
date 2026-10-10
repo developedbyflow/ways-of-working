@@ -13,6 +13,7 @@ After the problem (01) and the market research (02), before describing features 
 Everything you know about the product on one page, and a conscious decision to go on, change something or stop. The decision is the end of the brief.
 
 ## How to run it
+- **The bar:** do what a senior engineer, a CTO or a CEO at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Read first:** `docs/01-discovery/01-problem.md`, `docs/01-discovery/02-market-research.md`, `docs/ideas.md`. Ask only what is missing.
 - **Summarise, don't repeat.** Link to 01 and 02 for the detail. One page, two at most.
 - **Mark every claim** as evidence (with where it comes from) or as a guess.
@@ -56,7 +57,11 @@ What the first version does, as a few capabilities, and what it explicitly doesn
 Where it goes in 2–3 years if it works, in two or three lines, and its ceiling: what would stop it from growing further.
 
 ### 8. Open decisions
-Every decision still open, what it blocks, who answers, by when. Those that block the PRD are asked now, as questions with a recommended answer.
+Every decision still open, what it blocks, who answers, by when, and what kind of door it is:
+- **one-way door:** hard to undo (a price promised to early users, a data model, a legal entity). Take the time, write the reasoning.
+- **two-way door:** easy to undo (a name, a screen, a free tier). Decide fast and move on.
+
+Those that block the PRD are asked now, as questions with a recommended answer.
 
 ### 9. Optional: working backwards
 When the summary feels flat or the user isn't sure what the product is, write the launch announcement as if it had shipped: a headline, who it's for, the problem, how it solves it, a quote from a user, how to start. Then 5 hard questions a sceptic would ask, with answers. If the announcement is boring, the product is too.
@@ -91,7 +96,7 @@ Then write `docs/01-discovery/03-product-brief.md`:
 **In the first version:** … **Out:** …
 ## Vision
 ## Open decisions
-| Decision | Blocks | Who | By when |
+| Decision | One-way or two-way | Blocks | Who | By when |
 ## Decision
 **[Go / go with conditions / change / stop]**, because …
 **Fallback:** …
