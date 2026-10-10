@@ -33,6 +33,19 @@ One folder per step in `skills/`, named `phase-step` (for example `discovery-pro
 - **Done when**
 - **Next**
 
+## Where the documents go
+
+One folder per phase in the project's `docs/`, numbered in the order of the road; each step's file is numbered inside it:
+
+```
+docs/
+  ideas.md               feature ideas with stable IDs, used in every phase
+  01-discovery/
+    00-brainstorm.md
+    01-problem.md
+    02-market-research.md
+```
+
 ## The road
 
 ### Discovery: what to build, for whom and why

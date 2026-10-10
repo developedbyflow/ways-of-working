@@ -71,7 +71,7 @@ For each: search for complaints online and for products people pay for. Note one
 ### 6. Pick one, keep two
 The user picks one, with the reason. On a tie, the one where people already pay or built a workaround wins. The other two are fallbacks if 01 drops the pick.
 
-Then write `docs/00-brainstorm.md`:
+Then write `docs/01-discovery/00-brainstorm.md`:
 
 ```markdown
 # 00 – Brainstorm

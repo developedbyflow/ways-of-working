@@ -1,43 +1,80 @@
 ---
 name: discovery-problem
-description: "Discovery, step 01: who has the problem, what it is, how they solve it today and what it costs them, checked on 3–5 people. Use when the user starts a new app or product and has an idea, before market research and before any code."
+description: "Discovery, step 01: who has the problem, what it is, how they solve it today and what it costs them, checked in 3–5 interviews about what people did, not about the idea. Use when the user starts a new app or product and has an idea, before market research and before any code."
 argument-hint: "[the idea, in a few words]"
 ---
 
 # Discovery · 01 Problem
 
 ## When to use it
-The first step of any new product, before any code.
+The first step of any new product, before any code. Without an idea yet, run `/discovery-brainstorm` first.
 
 ## The problem it solves
 You know who you build for and what hurts them, so every later decision has a reason.
 
+## How to run it
+- **One question at a time,** then wait. Write the file from the user's answers; never invent one.
+- **If an answer is vague, push back** before moving on: "how often?", "how much, roughly?", "what did you do the last time?".
+- **Mark every claim** as checked (someone told you, or you saw it) or as an assumption.
+- **Feature ideas that come up** go to `docs/ideas.md`, each with a stable ID (F-01, F-02…) that never changes. Don't discuss them until the PRD.
+
 ## Steps
-Ask one question at a time and wait for the answer. Write the file from the user's answers; never invent one. If an answer is vague, push back once before moving on.
 
-1. **Who?** One concrete person: age, situation, what they want. Starting with yourself is fine; say so.
-2. **What problem?** What they can't do today, without a solution in it. Feature ideas that come up go to `docs/ideas.md`, each with a stable ID (F-01, F-02…), not discussed.
-3. **How do they solve it today?** Each alternative (an app, a spreadsheet, a person, nothing), with what it does well and where it fails. A workaround they built themselves is the strongest sign the problem is real.
-4. **What does it cost them?** Time, money or results, in numbers. Approximate is fine, vague is not: "~30 minutes a day", not "a lot of time".
-5. **The segment:** the wider group the person belongs to, one you can reach (for example "developers who want to lose weight").
-6. **Check it on 3–5 people from the segment:** strangers or acquaintances, not friends being nice.
-   - Write 5 questions about what they did, not about the idea: what they tried, what they use, why they stopped, how much time it takes, whether they ever paid. Start each with "Tell me about the last time you…" and note their pains in their own words.
-   - Don't mention the idea until the end. Then ask for something real: an email for the beta.
-   - 3 out of 5 describe the same problem → it's real. Fewer → change the who or the problem and check again, or drop it.
-   - Not done yet? Mark it "not yet verified"; it becomes a test in the product brief.
+### 1. Who?
+One concrete person: age, situation, what they want. Starting with yourself is fine; say so.
 
-Then write `docs/01-problem.md`:
+### 2. What problem?
+What they can't do today, without a solution in it. Then the same as a job story:
+> When [situation], I want to [what they try to do], so I can [the outcome they want].
+
+The job story keeps the focus on what they want to achieve, not on a feature.
+
+### 3. How do they solve it today?
+Each alternative (an app, a spreadsheet, a person, doing nothing), with what it does well and where it fails. A workaround they built themselves is the strongest sign the problem is real.
+
+### 4. What does it cost them?
+Time, money or results, in numbers. Approximate is fine, vague is not: "~30 minutes a day", not "a lot of time". These numbers become the success metrics in the PRD.
+
+### 5. How strong is the problem?
+Place it on the ladder; the higher, the better:
+1. they are annoyed, but do nothing;
+2. they tried something and gave up;
+3. they built a workaround (a spreadsheet, a template, a routine);
+4. they pay for something today;
+5. they are looking for a better solution right now.
+
+### 6. The segment
+The wider group the person belongs to, one you can reach (for example "developers who want to lose weight"). Say where they gather: communities, forums, events, job titles.
+
+### 7. Check it in 3–5 interviews
+- **Who:** people from the segment who have the problem now. Strangers or acquaintances, not friends being nice. Find them in the communities from step 6, on LinkedIn, or among people you know.
+- **The questions:** 5 questions about what they did, not about the idea. Start each with "Tell me about the last time you…". For example: what they tried, what they use now, why they stopped, how much time it takes, whether they ever paid.
+- **Never ask:** "would you use…?", "would you pay…?", "do you think it's a good idea?". Hypotheticals and compliments predict nothing.
+- **During the interview:** 20–30 minutes, and they talk most of the time. When they say "usually" or "always", ask for the last specific time. When they show emotion, ask "why?".
+- **At the end:** tell them the idea, then ask for something real: an email for the beta, a pre-order, an intro to someone else with the problem.
+- **After each one:** a short note with what they did (facts), their pains in their own words, what they pay for, and your interpretation kept separate.
+- **Personal data:** ask before recording, keep notes private, no names in public repos.
+- **The result:** 3 out of 5 describe the same problem → it's real. Fewer → change the who or the problem and check again, or drop it. Not done yet? Mark it "not yet verified"; it becomes a test in the product brief.
+
+Then write `docs/01-discovery/01-problem.md`:
 
 ```markdown
 # 01 – Problem
 **Who:**
-**Segment:**
+**Segment:** [the group], found in [where they gather]
 **Problem:**
+**Job story:** When …, I want to …, so I can …
 **How they solve it today:**
 - [alternative]: what it does well, where it fails
 **What it costs them:**
+**How strong:** [step on the ladder], because [evidence]
 ## Verify with others
-[verified / not yet verified], the 5 questions, the results
+[verified / not yet verified]
+### Questions
+### Results
+| Person (no name) | What they did | What they use | Why they stopped | Time / cost | Paid? | Gave something real? |
+**Pattern:** [x of 5 describe …]
+**Decision:** keep / change / drop
 ```
 
 ## The bad version and why not
@@ -45,22 +82,23 @@ Then write `docs/01-problem.md`:
 - Starting from the solution ("an app with AI") instead of the problem.
 - Assuming everyone has your problem.
 - Asking "would you use my app?" → almost everyone says yes to be nice. Only what they already did counts.
+- Interviewing friends → they protect your feelings, not your product.
 
 ## What breaks if you skip it
 You build features nobody uses.
 
 ## The principle behind it
-Start from the problem, not the solution. You are not your user.
+Start from the problem, not the solution. You are not your user. Past behaviour predicts, opinions don't (The Mom Test).
 
 ## How to apply it at work
-Before any feature or ticket, ask: what problem does this solve, and for whom?
+Before any feature or ticket, ask: what problem does this solve, for whom, and what does it cost them today? When a stakeholder asks for a feature, ask for the last time a user hit the problem.
 
 ## Done when
-- [ ] one concrete person and a reachable segment
-- [ ] the problem has no solution in it
+- [ ] one concrete person and a reachable segment, with where they gather
+- [ ] the problem has no solution in it, plus a job story
 - [ ] today's alternatives, each with where it fails
-- [ ] the cost in numbers
-- [ ] checked on 3–5 people, or marked "not yet verified"
+- [ ] the cost in numbers, and the strength on the ladder
+- [ ] 3–5 interviews with a results table and a decision, or marked "not yet verified"
 - [ ] feature ideas parked in `docs/ideas.md` with stable IDs
 
 ## Next
