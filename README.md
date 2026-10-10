@@ -36,5 +36,6 @@ One folder per step in `skills/`, named `phase-step` (for example `discovery-pro
 ## The road
 
 ### Discovery: what to build, for whom and why
+0. [Brainstorm](skills/discovery-brainstorm/SKILL.md) · `/discovery-brainstorm` (optional, only without an idea; not yet tried on a project)
 1. [Problem](skills/discovery-problem/SKILL.md) · `/discovery-problem`
 2. [Market research](skills/discovery-market-research/SKILL.md) · `/discovery-market-research`
