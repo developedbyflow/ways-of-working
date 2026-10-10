@@ -68,6 +68,7 @@ docs/
     01-problem.md
     02-market-research.md
     03-product-brief.md
+    04-prd.md
 ```
 
 ## The road
@@ -77,3 +78,4 @@ docs/
 1. [Problem](skills/discovery-problem/SKILL.md) · `/discovery-problem`
 2. [Market research](skills/discovery-market-research/SKILL.md) · `/discovery-market-research`
 3. [Product brief](skills/discovery-product-brief/SKILL.md) · `/discovery-product-brief`
+4. [PRD](skills/discovery-prd/SKILL.md) · `/discovery-prd`
