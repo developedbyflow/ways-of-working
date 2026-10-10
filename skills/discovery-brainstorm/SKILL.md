@@ -17,12 +17,13 @@ Ask one question at a time and wait for the answer. The problems and the scores 
 
 1. **Where to look:** problems you have yourself, problems of people around you, complaints in the reviews of existing apps, work people still do in spreadsheets or on paper.
 2. **At least 10 problems, no judging.** Problems, not solutions: "planning meals for the week takes an hour", not "a meal-planning app". 20–30 minutes.
+   Stuck before 10? Give one prompt at a time, never a list: walk through yesterday hour by hour; what they complain about or pay for; switch area (work, home, health, money).
 3. **Score each from 1 to 5** on:
    - how painful it is;
    - how often it happens;
    - whether you can reach those people;
    - whether you can build a first version alone in a few weeks.
-4. **Pick one**, with the reason. The user decides; you only add up the scores.
+4. **Pick one**, with the reason. The user decides; you only add up the scores. On a tie, pick the one where people already pay for a fix or built a workaround. Keep the next two in case 01 drops the pick.
 
 Then write `docs/00-brainstorm.md`:
 
@@ -30,6 +31,7 @@ Then write `docs/00-brainstorm.md`:
 # 00 – Brainstorm
 | Problem | Pain | Frequency | Reach | Buildable | Total |
 **Picked:** [problem], because [reason]
+**Next if it fails in 01:** [2nd], [3rd]
 ```
 
 ## The bad version and why not
