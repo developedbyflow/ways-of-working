@@ -7,7 +7,9 @@ argument-hint: "[the risk to test] or validate <file>"
 # Risk tests (any phase)
 
 ## When to use it
-Whenever the next step depends on an assumption you haven't checked, in any phase:
+When you're about to build or decide something that rests on an assumption you haven't checked, and being wrong would cost a lot. You hear it as "I think people will…", "the AI can probably…", "it should work…". Ask: if it's false, how much do I lose, and how much does checking cost? Big loss, cheap check → test. Small loss (a two-way door) → just do it and watch. Big loss, expensive check → a smaller test, or cut the risk.
+
+It happens in every phase:
 - **Discovery:** the risks in the brief's table (value, usability, feasibility, viability), each when its "When" says;
 - **Delivery:** a technical unknown before you commit to it ("can the database take 10,000 users?", "does this library do X?");
 - **after launch:** a channel, a price, a change to a screen (an experiment).
