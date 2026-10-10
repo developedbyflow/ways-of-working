@@ -12,6 +12,16 @@ After the brief (03), for each risk in its table. Runs alongside the PRD and the
 ## The problem it solves
 The brief writes the tests; this step runs them honestly and decides from them. Without it, the tests stay on paper and you build on assumptions.
 
+**What it is:** a small experiment that checks one risky assumption before you spend months building on it. The brief lists the risks, each with a test and a pass mark; this step runs them one by one.
+
+**An example, the AI plate scan:**
+- **The assumption:** "the AI recognizes what's on the plate and roughly how much". The scan feature rests on it.
+- **The experiment, 1–2 days of work spread over a week:** before eating, weigh each food on the plate and take a photo, until you have 20 plates. Work out the real calories from the weights. Send the 20 photos to the AI provider you're considering and note its estimates.
+- **The pass mark, fixed before you start:** 15 of 20 plates within ±20% of the real calories.
+- **The decision:** pass → pick that provider and build the scan. Fail → try another provider, change the feature (the AI names the foods, you enter the grams), or postpone it.
+
+**What it gives you:** you learn in days what you'd otherwise learn after months of code, and every decision rests on numbers, not hope.
+
 ## How to run it
 - **The bar:** do what a senior engineer or the C-level who owns this area (CEO, CPO, CTO, CFO, CMO, COO) at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder.
@@ -23,7 +33,13 @@ The brief writes the tests; this step runs them honestly and decides from them. 
 ## Steps
 
 ### 1. Pick the test
-The riskiest open one: it would hurt most if wrong, and you are least sure about it. Usually value or viability before feasibility, because those are the ones developers avoid.
+The riskiest open one: it would hurt most if wrong, and you are least sure about it. Usually value or viability before feasibility, because those are the ones developers avoid. But a test whose result blocks the architecture (for example which AI provider) runs before the architecture, whatever its type.
+
+**When each test runs:**
+- **before the architecture:** tests whose result picks a technology or a provider;
+- **as early as possible, in parallel:** value tests (interviews), because a fail changes direction;
+- **during the build:** tests that need part of the real app (testers on a slice);
+- **before launch:** tests that need the whole app (a beta) or an audience (a waitlist).
 
 ### 2. The hypothesis
 > We believe [what]. We'll know it's true if [pass mark] by [date].

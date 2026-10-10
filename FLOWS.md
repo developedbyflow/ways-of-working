@@ -40,6 +40,19 @@ flowchart LR
 
 All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
 
+### Risk tests: checking the brief's assumptions
+**What it is:** a small experiment that checks one risky assumption before you spend months building on it. The brief lists the risks, each with a test and a pass mark; this step runs them one by one.
+
+**An example, the AI plate scan:**
+- **The assumption:** "the AI recognizes what's on the plate and roughly how much". The scan feature rests on it.
+- **The experiment, 1–2 days of work spread over a week:** before eating, weigh each food on the plate and take a photo, until you have 20 plates. Work out the real calories from the weights. Send the 20 photos to the AI provider you're considering and note its estimates.
+- **The pass mark, fixed before you start:** 15 of 20 plates within ±20% of the real calories.
+- **The decision:** pass → pick that provider and build the scan. Fail → try another provider, change the feature (the AI names the foods, you enter the grams), or postpone it.
+
+**What it gives you:** you learn in days what you'd otherwise learn after months of code, and every decision rests on numbers, not hope.
+
+**When to run them:** the tests whose result picks a technology or a provider before the architecture; value tests (interviews) as early as possible; tests that need the real app during the build; a beta and a waitlist before launch. They run alongside the other steps, one at a time, with `/discovery-risk-tests`.
+
 ### Validate: a review of a document
 **What it is:** every step from 01 on can also judge a document that already exists, without changing it: `/<skill> validate <file>`, for example `/discovery-prd validate docs/01-discovery/04-prd.md`. It's a code review for a document:
 1. it reads the document and the ones it comes from (a PRD with its brief and problem);
