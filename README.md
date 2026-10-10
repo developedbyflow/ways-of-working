@@ -52,4 +52,4 @@ One folder per step in `skills/`, named `phase-step` (for example `discovery-pro
 
 ## How to use it
 
-[FLOWS.md](FLOWS.md) says which skill to run, in what order, and what each one reads and writes. Starting a new product: write every idea into `docs/ideas.md`, then run `/discovery-brainstorm`.
+[FLOWS.md](FLOWS.md) says which skill to run, in what order, and what each one reads and writes. Starting a new product: run `/discovery-setup`, write every idea into `docs/ideas.md`, then run `/discovery-brainstorm`.

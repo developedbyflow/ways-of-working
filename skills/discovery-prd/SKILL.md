@@ -14,6 +14,7 @@ You write down exactly what the app does (PRD = Product Requirements Document): 
 
 ## How to run it
 - **The bar:** do what a senior engineer or the C-level who owns this area (CEO, CPO, CTO, CFO, CMO, COO) at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
+- **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder.
 - **Read first:** everything in `docs/01-discovery/` and `docs/ideas.md`. Ask only what is missing.
 - **The user decides** what goes in the MVP and what each criterion says. You propose, push back and check; you don't pick the cuts.
 - **One feature at a time** for the criteria. Show each before the next.

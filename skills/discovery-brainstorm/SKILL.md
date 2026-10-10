@@ -7,13 +7,14 @@ argument-hint: "[the idea, a field or a group of people, optional]"
 # Discovery · 00 Brainstorm
 
 ## When to use it
-The first step of every new project. Before it, write everything in your head into `docs/ideas.md`, in any form: features, names, "it would be cool if…". No idea yet? Start with an empty file.
+The first step of every new project, after `/discovery-setup`. Before it, write everything in your head into `docs/ideas.md`, in any form: features, names, "it would be cool if…". No idea yet? Start with an empty file.
 
 ## The problem it solves
 Your raw ideas get a shape, and you pick a problem by comparing it with others, not the first one that comes to mind. Most ideas arrive as solutions; this step finds the problem behind each one.
 
 ## How to run it
 - **The bar:** do what a senior engineer or the C-level who owns this area (CEO, CPO, CTO, CFO, CMO, COO) at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
+- **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder.
 - **Stay in exploring as long as possible.** Don't judge, group or score until step 4. When the flow slows, switch area or lens; don't conclude.
 - **One prompt at a time,** then wait. Never dump a list of questions.
 - **Switch area every ~8 problems.** Ideas drift toward the same theme; a new area forces new ones.

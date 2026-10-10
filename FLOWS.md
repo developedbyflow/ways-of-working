@@ -11,7 +11,7 @@ From an idea, or no idea, to a decision and the requirements of the first versio
 flowchart LR
   I["ideas.md<br/>(raw dump)"] --> B
   subgraph D["Discovery: what to build, for whom and why"]
-    B["00 Brainstorm"] --> P["01 Problem"] --> M["02 Market research"] --> R["03 Product brief"] --> Q["04 PRD"]
+    S["Setup"] --> B["00 Brainstorm"] --> P["01 Problem"] --> M["02 Market research"] --> R["03 Product brief"] --> Q["04 PRD"]
   end
   Q --> X["Delivery<br/>(not written yet)"]
   P -. "fewer than 3 of 5" .-> B
@@ -20,20 +20,22 @@ flowchart LR
 ```
 
 ### Start
-1. Write everything in your head into `docs/ideas.md`, in any form. No idea yet? Leave it empty.
-2. Run `/discovery-brainstorm`.
+1. Run `/discovery-setup` once: it decides where the documents live and writes the `Project documents:` line in `CLAUDE.md`.
+2. Write everything in your head into `docs/ideas.md`, in any form. No idea yet? Leave it empty.
+3. Run `/discovery-brainstorm`.
 
 ### The steps
 
 | # | Step | Command | Reads | Writes | Ends with |
 |---|---|---|---|---|---|
+| – | [Setup](skills/discovery-setup/SKILL.md) | `/discovery-setup` | the user's answers | `CLAUDE.md` line, `ideas.md` (empty), `01-discovery/` | the documents' place exists and the skills know it |
 | 00 | [Brainstorm](skills/discovery-brainstorm/SKILL.md) | `/discovery-brainstorm` | `ideas.md` (raw) | `00-brainstorm.md`, `ideas.md` (shaped) | one problem picked, two fallbacks |
 | 01 | [Problem](skills/discovery-problem/SKILL.md) | `/discovery-problem` | `00-brainstorm.md`, `ideas.md` | `01-problem.md` | 3 of 5 interviews confirm it, or "not yet verified" |
 | 02 | [Market research](skills/discovery-market-research/SKILL.md) | `/discovery-market-research` | `01-problem.md` | `02-market-research.md` | go, change or stop |
 | 03 | [Product brief](skills/discovery-product-brief/SKILL.md) | `/discovery-product-brief` | `01`, `02`, `ideas.md` | `03-product-brief.md` | go, go with conditions, change or stop |
 | 04 | [PRD](skills/discovery-prd/SKILL.md) | `/discovery-prd` | everything above | `04-prd.md`, `ideas.md` (sorted) | ready for delivery |
 
-All files are in `docs/01-discovery/`, except `docs/ideas.md`.
+All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
 
 ### Going back
 - **01 fails** (fewer than 3 of 5 describe the problem): change the person or the problem, or go back to 00 and take a fallback.
@@ -41,11 +43,11 @@ All files are in `docs/01-discovery/`, except `docs/ideas.md`.
 - **A risk test from 03 fails,** even during 04 or later: back to 03, decide again, add a line to its journal.
 
 ### Status
-00 Brainstorm hasn't been tried on a project yet. Everything else was done on MacroMate.
+00 Brainstorm hasn't been tried on a project yet. Setup and 01–04 were done on MacroMate (Setup by hand, as the private `macromate-docs` repo).
 
 ## Where the documents go
 
-One folder per phase in the project's `docs/`, numbered in the order of the road; each step's file is numbered inside it:
+`docs/` is wherever `/discovery-setup` put it: a private docs repo, `docs/` in the code repo, or the team's existing place. The `Project documents:` line in `CLAUDE.md` points to it. Inside, one folder per phase, numbered in the order of the road; each step's file is numbered inside it:
 
 ```
 docs/
