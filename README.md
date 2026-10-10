@@ -38,7 +38,7 @@ Only after I've done that step on a real project (MacroMate). No skill is writte
 
 ## How a skill is written
 
-One folder per step in `skills/`, named `phase-step` (for example `discovery-problem`), with one `SKILL.md` that holds everything. No numbers in names: the order lives here, so a new step never renames the others. Every skill has the same sections:
+One folder per step in `skills/`, named `phase-step` (for example `discovery-problem`), with one `SKILL.md` that holds everything. No numbers in names: the order lives in [FLOWS.md](FLOWS.md), so a new step never renames the others. Every skill has the same sections:
 
 - **When to use it**
 - **The problem it solves**
@@ -50,32 +50,6 @@ One folder per step in `skills/`, named `phase-step` (for example `discovery-pro
 - **Done when**
 - **Next**
 
-## Start a new project
+## How to use it
 
-1. Write everything in your head into `docs/ideas.md`, in any form.
-2. Run `/discovery-brainstorm`. It shapes the ideas, finds the problems behind them, and picks one.
-3. Follow the road below.
-
-## Where the documents go
-
-One folder per phase in the project's `docs/`, numbered in the order of the road; each step's file is numbered inside it:
-
-```
-docs/
-  ideas.md               your raw ideas, shaped in 00 Brainstorm, sorted in 04 PRD
-  01-discovery/
-    00-brainstorm.md
-    01-problem.md
-    02-market-research.md
-    03-product-brief.md
-    04-prd.md
-```
-
-## The road
-
-### Discovery: what to build, for whom and why
-0. [Brainstorm](skills/discovery-brainstorm/SKILL.md) · `/discovery-brainstorm` (not yet tried on a project)
-1. [Problem](skills/discovery-problem/SKILL.md) · `/discovery-problem`
-2. [Market research](skills/discovery-market-research/SKILL.md) · `/discovery-market-research`
-3. [Product brief](skills/discovery-product-brief/SKILL.md) · `/discovery-product-brief`
-4. [PRD](skills/discovery-prd/SKILL.md) · `/discovery-prd`
+[FLOWS.md](FLOWS.md) says which skill to run, in what order, and what each one reads and writes. Starting a new product: write every idea into `docs/ideas.md`, then run `/discovery-brainstorm`.
