@@ -40,8 +40,20 @@ flowchart LR
 
 All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
 
-### When to validate
-Steps 01–05 and the risk tests can judge an existing document: `/<skill> validate <file>`. Run it:
+### Validate: a review of a document
+**What it is:** every step from 01 on can also judge a document that already exists, without changing it: `/<skill> validate <file>`, for example `/discovery-prd validate docs/01-discovery/04-prd.md`. It's a code review for a document:
+1. it reads the document and the ones it comes from (a PRD with its brief and problem);
+2. it checks it item by item against what the step asks for, citing the lines;
+3. it asks the questions no template asks (does every MVP feature trace back to the problem? do the numbers agree?);
+4. it reports the problems from the most serious down, each with the line and what to change, then what the document does well. You pick what to apply.
+
+**What it gives you:**
+- you find what's missing without rewriting the document;
+- a second pair of eyes when nobody else can read it;
+- it catches gaps that change decisions, not only formatting (for example "22 features don't fit the time until launch");
+- you can rerun it after every big change.
+
+**When to run it:**
 - **on a document written without the skill:** an older version, someone else's, one from your job;
 - **before a decision that's hard to undo:** the end of 03 (go or stop) and of 04 (before architecture and code);
 - **after a big change:** a test failed, the MVP was cut;
