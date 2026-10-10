@@ -26,21 +26,16 @@ flowchart LR
 
 ### The steps
 
-| # | Step | Command | Reads | Writes | Ends with |
-|---|---|---|---|---|---|
-| – | [Setup](skills/discovery-setup/SKILL.md) | `/discovery-setup` | the user's answers | `CLAUDE.md` line, `ideas.md` (empty), `01-discovery/` | the documents' place exists and the skills know it |
-| 00 | [Brainstorm](skills/discovery-brainstorm/SKILL.md) | `/discovery-brainstorm` | `ideas.md` (raw) | `00-brainstorm.md`, `ideas.md` (shaped) | one problem picked, two fallbacks |
-| 01 | [Problem](skills/discovery-problem/SKILL.md) | `/discovery-problem` | `00-brainstorm.md`, `ideas.md` | `01-problem.md` | 3 of 5 interviews confirm it, or "not yet verified" |
-| 02 | [Market research](skills/discovery-market-research/SKILL.md) | `/discovery-market-research` | `01-problem.md` | `02-market-research.md` | go, change or stop |
-| 03 | [Product brief](skills/discovery-product-brief/SKILL.md) | `/discovery-product-brief` | `01`, `02`, `ideas.md` | `03-product-brief.md` | go, go with conditions, change or stop |
-| 04 | [PRD](skills/discovery-prd/SKILL.md) | `/discovery-prd` | everything above | `04-prd.md`, `ideas.md` (sorted) | ready for delivery |
+| # | Step | Command | Reads | Writes | Ends with | If it fails |
+|---|---|---|---|---|---|---|
+| – | [Setup](skills/discovery-setup/SKILL.md) | `/discovery-setup` | the user's answers | `CLAUDE.md` line, `ideas.md` (empty), `01-discovery/` | the documents' place exists and the skills know it | |
+| 00 | [Brainstorm](skills/discovery-brainstorm/SKILL.md) (not yet tried on a project) | `/discovery-brainstorm` | `ideas.md` (raw) | `00-brainstorm.md`, `ideas.md` (shaped) | one problem picked, two fallbacks | |
+| 01 | [Problem](skills/discovery-problem/SKILL.md) | `/discovery-problem` | `00-brainstorm.md`, `ideas.md` | `01-problem.md` | 3 of 5 interviews confirm it, or "not yet verified" | fewer than 3 of 5: change the person or the problem, or take a fallback from 00 |
+| 02 | [Market research](skills/discovery-market-research/SKILL.md) | `/discovery-market-research` | `01-problem.md` | `02-market-research.md` | go, change or stop | stop or change: back to 00 with what you learned |
+| 03 | [Product brief](skills/discovery-product-brief/SKILL.md) | `/discovery-product-brief` | `01`, `02`, `ideas.md` | `03-product-brief.md` | go, go with conditions, change or stop | a risk test fails, even later: back here, decide again, add a journal line |
+| 04 | [PRD](skills/discovery-prd/SKILL.md) | `/discovery-prd` | everything above | `04-prd.md`, `ideas.md` (sorted) | ready for delivery | doesn't fit the time: cut the MVP |
 
 All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
-
-### Going back
-- **01 fails** (fewer than 3 of 5 describe the problem): change the person or the problem, or go back to 00 and take a fallback.
-- **02 says stop or change:** back to 00 with what you learned.
-- **A risk test from 03 fails,** even during 04 or later: back to 03, decide again, add a line to its journal.
 
 ### When to validate
 Steps 01–04 can judge an existing document: `/<skill> validate <file>`. Run it:
@@ -50,9 +45,6 @@ Steps 01–04 can judge an existing document: `/<skill> validate <file>`. Run it
 - **when nobody else can read it.**
 
 Not right after writing with the skill (its "Done when" already checked it), and not for small edits.
-
-### Status
-00 Brainstorm hasn't been tried on a project yet. Setup and 01–04 were done on MacroMate (Setup by hand, as the private `macromate-docs` repo).
 
 ## Where the documents go
 
