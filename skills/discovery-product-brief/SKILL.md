@@ -17,7 +17,7 @@ Everything you know about the product on one page, and a conscious decision to g
 - **Summarise, don't repeat.** Link to 01 and 02 for the detail. One page, two at most.
 - **Mark every claim** as evidence (with where it comes from) or as a guess.
 - **Push back when an answer is thin,** especially on the goal, the risks and the pass marks. The user decides; the brief must feel like theirs.
-- **Feature details belong in the PRD,** not here. New feature ideas go to `docs/ideas.md`.
+- **Feature details belong in the PRD,** not here. New feature ideas go to `docs/ideas.md`, under "New", with the next ID.
 
 ## Steps
 

@@ -17,12 +17,12 @@ You pick a problem by comparing it with many others, from areas you wouldn't hav
 - **One prompt at a time,** then wait. Never dump a list of questions.
 - **Switch area every ~8 problems.** Ideas drift toward the same theme; a new area forces new ones.
 - **Problems count only when the user writes or accepts them.** You may offer a provocation ("people who move house lose a weekend to address changes — true for you?"); it goes in the list only if the user says yes.
-- **Problems, not solutions.** When the user says "an app that…", ask "what hurts without it?" and write that.
+- **Problems, not solutions.** When the user says "an app that…", park the solution in `docs/ideas.md` with the next ID, then ask "what hurts without it?" and write that problem. No idea is lost, and the list stays about problems.
 
 ## Steps
 
 ### 1. Pick where to start
-Ask what they know well (job, hobbies, a group of people they belong to). Start with the area closest to that; the unfair advantage is a field you already understand.
+If `docs/ideas.md` exists, read it first: every idea there hides a problem someone has. Then ask what they know well (job, hobbies, a group of people they belong to). Start with the area closest to that; the unfair advantage is a field you already understand.
 
 ### 2. Explore: at least 30 problems, 30–45 minutes
 Go through the areas, and use a lens on each when the area runs dry.
@@ -71,6 +71,28 @@ For each: search for complaints online and for products people pay for. Note one
 ### 6. Pick one, keep two
 The user picks one, with the reason. On a tie, the one where people already pay or built a workaround wins. The other two are fallbacks if 01 drops the pick.
 
+Create `docs/ideas.md` if it doesn't exist, in this format:
+
+```markdown
+# Ideas
+Parking lot for feature ideas. Each idea has a stable ID (F-01, F-02…) that never changes, even when the order does. Unsorted until 04 PRD, which sorts them.
+
+## New (not sorted yet)
+- **F-01 [Short name]:** what it does for the user, in one line. *From:* [step, date]. *Solves:* [the problem or complaint, if known]
+
+## MVP (set in 04 PRD)
+## After MVP
+### High
+### Medium
+### Low
+## Dropped
+- **F-07 [Name]:** why, so it isn't discussed again
+## Merged
+- F-25 → F-11
+```
+
+Rules: take the next free ID, never reuse one; a merged idea keeps its ID with an arrow; a dropped idea stays with its reason.
+
 Then write `docs/01-discovery/00-brainstorm.md`:
 
 ```markdown
@@ -109,6 +131,7 @@ When a team asks "what should we build next?", list the problems first (from sup
 - [ ] a shortlist of 8–12, scored on the 6 criteria
 - [ ] evidence links for the top 3
 - [ ] one picked with the reason, and two fallbacks
+- [ ] every solution that came up is parked in `docs/ideas.md` with an ID
 
 ## Next
 Discovery · 01 Problem (`/discovery-problem`), with the picked problem.

@@ -16,7 +16,27 @@ You know who you build for and what hurts them, so every later decision has a re
 - **One question at a time,** then wait. Write the file from the user's answers; never invent one.
 - **If an answer is vague, push back** before moving on: "how often?", "how much, roughly?", "what did you do the last time?".
 - **Mark every claim** as checked (someone told you, or you saw it) or as an assumption.
-- **Feature ideas that come up** go to `docs/ideas.md`, each with a stable ID (F-01, F-02…) that never changes. Don't discuss them until the PRD.
+- **Feature ideas that come up** go to `docs/ideas.md`, under "New", with the next ID. Don't discuss them until the PRD. If the file doesn't exist (no brainstorm), create it in this format:
+
+  ```markdown
+  # Ideas
+  Parking lot for feature ideas. Each idea has a stable ID (F-01, F-02…) that never changes, even when the order does. Unsorted until 04 PRD, which sorts them.
+
+  ## New (not sorted yet)
+  - **F-01 [Short name]:** what it does for the user, in one line. *From:* [step, date]. *Solves:* [the problem or complaint, if known]
+
+  ## MVP (set in 04 PRD)
+  ## After MVP
+  ### High
+  ### Medium
+  ### Low
+  ## Dropped
+  - **F-07 [Name]:** why, so it isn't discussed again
+  ## Merged
+  - F-25 → F-11
+  ```
+
+  Rules: take the next free ID, never reuse one; a merged idea keeps its ID with an arrow; a dropped idea stays with its reason.
 
 ## Steps
 

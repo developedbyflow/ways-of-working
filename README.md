@@ -39,7 +39,7 @@ One folder per phase in the project's `docs/`, numbered in the order of the road
 
 ```
 docs/
-  ideas.md               feature ideas with stable IDs, used in every phase
+  ideas.md               feature ideas with stable IDs, started in the first step, sorted in 04 PRD
   01-discovery/
     00-brainstorm.md
     01-problem.md
