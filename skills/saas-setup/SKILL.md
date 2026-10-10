@@ -1,6 +1,6 @@
 ---
-name: discovery-setup
-description: "Discovery, setup before step 00, once per project: decide where the project documents live (a private docs repo, docs/ in the code repo, or the team's existing tool), create the place and its starting structure, and write the 'Project documents:' line in CLAUDE.md so every skill writes there. Use when the user starts a new project, before /discovery-brainstorm."
+name: saas-setup
+description: "Discovery, setup before step 00, once per project: decide where the project documents live (a private docs repo, docs/ in the code repo, or the team's existing tool), create the place and its starting structure, and write the 'Project documents:' line in CLAUDE.md so every skill writes there. Use when the user starts a new project, before /saas-brainstorm."
 argument-hint: "[the project name]"
 ---
 
@@ -50,7 +50,7 @@ docs/
   ideas.md          every idea in your head, in any form
   01-discovery/     brainstorm, problem, market research, brief, PRD
 ```
-`ideas.md` starts with one line: `# Ideas` and "Write every idea here, in any form. /discovery-brainstorm shapes it." Later phases add their folders (`02-delivery/`…) when they start.
+`ideas.md` starts with one line: `# Ideas` and "Write every idea here, in any form. /saas-brainstorm shapes it." Later phases add their folders (`02-delivery/`…) when they start.
 
 ### 4. Tell the skills where it is
 In `CLAUDE.md` of the folder where the user works with Claude, one line with the absolute path to the documents folder:
@@ -94,4 +94,4 @@ Use the place the team already keeps documents in, instead of creating a new one
 - [ ] the structure is committed
 
 ## Next
-Discovery · 00 Brainstorm (`/discovery-brainstorm`): write every idea into `ideas.md` first.
+Discovery · 00 Brainstorm (`/saas-brainstorm`): write every idea into `ideas.md` first.

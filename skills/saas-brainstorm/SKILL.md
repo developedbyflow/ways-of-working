@@ -1,5 +1,5 @@
 ---
-name: discovery-brainstorm
+name: saas-brainstorm
 description: "Discovery, step 00, the start of every new project: shape the raw ideas into docs/ideas.md, find the problems behind them and around them across many areas and lenses, score a shortlist on 6 criteria, check the top 3, pick one with two fallbacks. Use when the user starts a new product, with a raw list of ideas, a single idea, or nothing."
 argument-hint: "[the idea, a field or a group of people, optional]"
 ---
@@ -7,7 +7,7 @@ argument-hint: "[the idea, a field or a group of people, optional]"
 # Discovery · 00 Brainstorm
 
 ## When to use it
-The first step of every new project, after `/discovery-setup`. Before it, write everything in your head into `docs/ideas.md`, in any form: features, names, "it would be cool if…". No idea yet? Start with an empty file.
+The first step of every new project, after `/saas-setup`. Before it, write everything in your head into `docs/ideas.md`, in any form: features, names, "it would be cool if…". No idea yet? Start with an empty file.
 
 ## The problem it solves
 Your raw ideas get a shape, and you pick a problem by comparing it with others, not the first one that comes to mind. Most ideas arrive as solutions; this step finds the problem behind each one.
@@ -147,4 +147,4 @@ When a team asks "what should we build next?", list the problems first (from sup
 - [ ] every solution that came up is parked in `docs/ideas.md` with an ID
 
 ## Next
-Discovery · 01 Problem (`/discovery-problem`), with the picked problem.
+Discovery · 01 Problem (`/saas-problem`), with the picked problem.

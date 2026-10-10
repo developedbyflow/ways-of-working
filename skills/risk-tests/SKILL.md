@@ -58,7 +58,7 @@ The pass mark is the one in the brief. Also write what would make the result unc
 | Risk | Tests, cheapest first |
 |---|---|
 | **Value:** will they want it? | the interviews from 01; a signup page with the promise and a waitlist; a fake door (a button for a feature that doesn't exist yet, with an honest "coming soon"); a pre-order only with a clear refund |
-| **Usability:** can they use it? | the prototype (`/discovery-prototype`) |
+| **Usability:** can they use it? | the prototype (`/saas-prototype`) |
 | **Feasibility:** can it be built? | a spike: a small throwaway test on real data, with a count (for example 30 known foods, compare the AI's estimates with the real values) |
 | **Viability:** does it work as a business? | a waitlist from the channel you chose; a price page that counts clicks on each plan; the cost per user with the providers' real prices |
 | **Technical** (Delivery): will this technology hold? | a spike: the smallest throwaway code that answers the question; a load test with the expected numbers |

@@ -36,7 +36,12 @@ The skills also watch for risky assumptions: when a decision rests on something 
 
 ## How a skill is written
 
-One folder per step in `skills/`, named `phase-step` (for example `discovery-problem`), with one `SKILL.md` that holds everything. No numbers in names: the order lives in [FLOWS.md](FLOWS.md), so a new step never renames the others. A tool used in every phase has no phase in its name (for example `risk-tests`). Every skill has the same sections:
+One folder per step in `skills/`, with one `SKILL.md` that holds everything. The name says the context and the step:
+- `saas-…`: building a new product to sell (`saas-problem`, `saas-prd`);
+- `job-…`: working in an existing codebase at a job;
+- no prefix: a tool used everywhere (`risk-tests`).
+
+The phases (Discovery, Design, Planning, Build, Launch & Growth) and the order live in [FLOWS.md](FLOWS.md), not in the names, so a new step never renames the others. No numbers in names. Every skill has the same sections:
 
 - **When to use it**
 - **The problem it solves**
@@ -59,4 +64,4 @@ It links each skill into `~/.claude/skills`, so an edit or a `git pull` applies 
 
 ## How to use it
 
-[FLOWS.md](FLOWS.md) says which skill to run, in what order, and what each one reads and writes. Starting a new product: run `/discovery-setup`, write every idea into `docs/ideas.md`, then run `/discovery-brainstorm`.
+[FLOWS.md](FLOWS.md) says which skill to run, in what order, and what each one reads and writes. Starting a new product: run `/saas-setup`, write every idea into `docs/ideas.md`, then run `/saas-brainstorm`.
