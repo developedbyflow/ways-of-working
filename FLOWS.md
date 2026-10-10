@@ -70,7 +70,19 @@ docs/
 
 **What it gives you:** you learn in days what you'd otherwise learn after months of code, and every decision rests on numbers, not hope.
 
-**When to run them:** the tests whose result picks a technology or a provider before the architecture; value tests (interviews) as early as possible; tests that need the real app during the build; a beta and a waitlist before launch. They run alongside the other steps, one at a time, with `/risk-tests`.
+**When to run one:** when you're about to build or decide something that rests on an assumption you haven't checked, and being wrong would cost a lot.
+
+You recognize it when you hear yourself say "I think people will…", "the AI can probably…", "it should work…". Then ask two questions: if it's false, how much do I lose? How much does checking it first cost?
+
+| Loss if it's false | Cost of checking | What to do |
+|---|---|---|
+| big | small | **run the test** |
+| small (a two-way door) | any | just do it and watch |
+| big | big | find a smaller test, or cut the risk (postpone the feature) |
+
+Examples: "the AI can estimate calories from a photo" (weeks of code if false, a week of photos to check) → test now. "Developers want to lose weight with my app" (the whole project if false, 5 conversations to check) → test as early as possible. "The blue button is better" → just do it.
+
+The brief's "When" column is this rule already applied to the risks you know at the start. Run them with `/risk-tests`.
 
 ### Validate
 **What it is:** every step from 01 on can also judge a document that already exists, without changing it: `/<skill> validate <file>`, for example `/discovery-prd validate docs/01-discovery/04-prd.md`. It's a code review for a document:
