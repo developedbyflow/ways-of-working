@@ -13,7 +13,7 @@ After `/discovery-brainstorm`, with the problem picked there, before any code.
 You know who you build for and what hurts them, so every later decision has a reason.
 
 ## How to run it
-- **The bar:** do what a senior engineer, a CTO or a CEO at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
+- **The bar:** do what a senior engineer, a CTO, a CEO, a CFO or a CMO at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Read first:** `docs/01-discovery/00-brainstorm.md` (the picked problem and its fallbacks) and `docs/ideas.md`. Start from what is there; ask only what is missing.
 - **One question at a time,** then wait. Write the file from the user's answers; never invent one.
 - **If an answer is vague, push back** before moving on: "how often?", "how much, roughly?", "what did you do the last time?".

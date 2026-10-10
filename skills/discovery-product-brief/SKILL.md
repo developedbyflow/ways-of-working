@@ -13,7 +13,7 @@ After the problem (01) and the market research (02), before describing features 
 Everything you know about the product on one page, and a conscious decision to go on, change something or stop. The decision is the end of the brief.
 
 ## How to run it
-- **The bar:** do what a senior engineer, a CTO or a CEO at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
+- **The bar:** do what a senior engineer, a CTO, a CEO, a CFO or a CMO at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Read first:** `docs/01-discovery/01-problem.md`, `docs/01-discovery/02-market-research.md`, `docs/ideas.md`. Ask only what is missing.
 - **Summarise, don't repeat.** Link to 01 and 02 for the detail. One page, two at most.
 - **Mark every claim** as evidence (with where it comes from) or as a guess.

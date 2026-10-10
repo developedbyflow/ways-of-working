@@ -13,11 +13,13 @@ Me first. Written so anyone can use it, because I want to share it on YouTube.
 - **Growing from frontend to architect.** Every step explains the principle behind it, not just what to do.
 - **Sharing it** on YouTube.
 
+Two skills to get good at: **finding ideas with potential, then marketing and selling them**, and **fullstack development**.
+
 Each skill is one step of the road, in order. It explains why the step matters and leaves a document behind.
 
 ## The bar
 
-Everything here is what a senior engineer, a CTO or a CEO at a well-run company would do, never the amateur shortcut, because the point is to grow. And always in the simplest form that meets that bar: senior means knowing what to leave out.
+Everything here is what a senior engineer, a CTO, a CEO, a CFO or a CMO at a well-run company would do, never the amateur shortcut, because the point is to grow. And always in the simplest form that meets that bar: senior means knowing what to leave out.
 
 ## When a skill gets added
 
