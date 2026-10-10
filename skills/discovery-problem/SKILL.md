@@ -7,16 +7,17 @@ argument-hint: "[the idea, in a few words]"
 # Discovery · 01 Problem
 
 ## When to use it
-The first step of any new product, before any code. Without an idea yet, run `/discovery-brainstorm` first.
+After `/discovery-brainstorm`, with the problem picked there, before any code.
 
 ## The problem it solves
 You know who you build for and what hurts them, so every later decision has a reason.
 
 ## How to run it
+- **Read first:** `docs/01-discovery/00-brainstorm.md` (the picked problem and its fallbacks) and `docs/ideas.md`. Start from what is there; ask only what is missing.
 - **One question at a time,** then wait. Write the file from the user's answers; never invent one.
 - **If an answer is vague, push back** before moving on: "how often?", "how much, roughly?", "what did you do the last time?".
 - **Mark every claim** as checked (someone told you, or you saw it) or as an assumption.
-- **Feature ideas that come up** go to `docs/ideas.md`, under "New", with the next ID. Don't discuss them until the PRD. If the file doesn't exist (no brainstorm), create it in this format:
+- **Feature ideas that come up** go to `docs/ideas.md`, under "New", with the next ID. Don't discuss them until the PRD. If the file doesn't exist (the brainstorm was skipped), create it in this format:
 
   ```markdown
   # Ideas

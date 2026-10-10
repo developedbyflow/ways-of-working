@@ -1,19 +1,19 @@
 ---
 name: discovery-brainstorm
-description: "Discovery, optional step before 01: find a problem worth building for when you have no idea yet. 30+ problems across many areas and lenses, a shortlist scored on 6 criteria, a quick evidence check on the top 3, one picked with two fallbacks. Use when the user wants to build something but doesn't know what; skip it when they already have an idea."
-argument-hint: "[a field or a group of people, optional]"
+description: "Discovery, step 00, the start of every new project: shape the raw ideas into docs/ideas.md, find the problems behind them and around them across many areas and lenses, score a shortlist on 6 criteria, check the top 3, pick one with two fallbacks. Use when the user starts a new product, with a raw list of ideas, a single idea, or nothing."
+argument-hint: "[the idea, a field or a group of people, optional]"
 ---
 
-# Discovery · Brainstorm (optional)
+# Discovery · 00 Brainstorm
 
 ## When to use it
-Only when you want to build something and have no idea what. With an idea, go straight to `/discovery-problem`.
+The first step of every new project. Before it, write everything in your head into `docs/ideas.md`, in any form: features, names, "it would be cool if…". No idea yet? Start with an empty file.
 
 ## The problem it solves
-You pick a problem by comparing it with many others, from areas you wouldn't have thought of alone, not the first one that comes to mind.
+Your raw ideas get a shape, and you pick a problem by comparing it with others, not the first one that comes to mind. Most ideas arrive as solutions; this step finds the problem behind each one.
 
 ## How to run it
-- **Stay in exploring as long as possible.** Don't judge, group or score until step 3. When the flow slows, switch area or lens; don't conclude.
+- **Stay in exploring as long as possible.** Don't judge, group or score until step 4. When the flow slows, switch area or lens; don't conclude.
 - **One prompt at a time,** then wait. Never dump a list of questions.
 - **Switch area every ~8 problems.** Ideas drift toward the same theme; a new area forces new ones.
 - **Problems count only when the user writes or accepts them.** You may offer a provocation ("people who move house lose a weekend to address changes — true for you?"); it goes in the list only if the user says yes.
@@ -21,11 +21,20 @@ You pick a problem by comparing it with many others, from areas you wouldn't hav
 
 ## Steps
 
-### 1. Pick where to start
-If `docs/ideas.md` exists, read it first: every idea there hides a problem someone has. Then ask what they know well (job, hobbies, a group of people they belong to). Start with the area closest to that; the unfair advantage is a field you already understand.
+### 1. Shape the ideas
+Read `docs/ideas.md`. If it's empty or missing, ask for a dump: "write everything in your head about what you'd like to build", then "anything else?".
+- Give each idea the next free ID, a short name and one line on what it does for the user, with *From: brain dump*.
+- Merge duplicates (the merged ID gets an arrow), keep the user's meaning, invent nothing.
+- Rewrite the file in the format below, all under "New", and show it. The user confirms or corrects.
 
-### 2. Explore: at least 30 problems, 30–45 minutes
-Go through the areas, and use a lens on each when the area runs dry.
+### 2. The problems behind the ideas
+For each idea, or each group of similar ideas: "what hurts without it, and for whom?". Write the answer as a problem (who + what hurts) and fill the idea's *Solves* field. These are the first problems on the list.
+
+### 3. Explore around them
+- **With a clear idea:** at least 10 more problems around it: the same people's other problems, the step before and after, neighbouring areas. You check that your idea's problem is the strongest one there, not just the first.
+- **Without one:** at least 30 problems, 30–45 minutes, across the areas.
+
+Ask what the user knows well (job, hobbies, a group of people they belong to) and start with the area closest to that; the unfair advantage is a field you already understand. Use a lens when an area runs dry.
 
 **Areas:**
 - **Your day:** walk through yesterday hour by hour; then a typical week, then a month (bills, admin, chores).
@@ -50,10 +59,10 @@ Go through the areas, and use a lens on each when the area runs dry.
 
 Write each problem in one line: who + what hurts. "Freelancers chase late invoices every month", not "invoicing app".
 
-### 3. Group and cut to a shortlist
+### 4. Group and cut to a shortlist
 Merge duplicates, rewrite any solution as a problem, then the user picks the 8–12 they find most interesting.
 
-### 4. Score the shortlist from 1 to 5
+### 5. Score the shortlist from 1 to 5
 | Criterion | The question |
 |---|---|
 | **Pain** | how much does it hurt when it happens? |
@@ -65,13 +74,13 @@ Merge duplicates, rewrite any solution as a problem, then the user picks the 8�
 
 The user gives the scores; you add them up.
 
-### 5. Quick evidence on the top 3 (10 minutes each)
+### 6. Quick evidence on the top 3 (10 minutes each)
 For each: search for complaints online and for products people pay for. Note one link for each. Paid competitors are good news: the problem is real and people pay.
 
-### 6. Pick one, keep two
+### 7. Pick one, keep two
 The user picks one, with the reason. On a tie, the one where people already pay or built a workaround wins. The other two are fallbacks if 01 drops the pick.
 
-Create `docs/ideas.md` if it doesn't exist, in this format:
+The format of `docs/ideas.md`:
 
 ```markdown
 # Ideas
@@ -118,7 +127,7 @@ Then write `docs/01-discovery/00-brainstorm.md`:
 - Picking a problem you don't care about → you quit after three months.
 
 ## What breaks if you skip it
-Nothing, if you already have an idea. Without one, you pick by enthusiasm and find out at 01 that the problem is weak.
+Your ideas stay a pile of solutions with no problem behind them, and you pick the first one by enthusiasm, to find out at 01 that the problem is weak.
 
 ## The principle behind it
 Many options first, then choose: diverge, then converge. Judging too early kills the ideas you need.
@@ -127,7 +136,8 @@ Many options first, then choose: diverge, then converge. Judging too early kills
 When a team asks "what should we build next?", list the problems first (from support tickets, sales calls, user reviews), score them together, then pick.
 
 ## Done when
-- [ ] at least 30 problems from at least 5 areas, written without solutions
+- [ ] `docs/ideas.md` in the format, every idea with an ID and, where known, the problem it solves
+- [ ] the problems behind the ideas, plus at least 10 around a clear idea, or 30 from at least 5 areas without one, all written without solutions
 - [ ] a shortlist of 8–12, scored on the 6 criteria
 - [ ] evidence links for the top 3
 - [ ] one picked with the reason, and two fallbacks
