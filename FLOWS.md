@@ -6,7 +6,9 @@ The common journeys, from start to finish. What each stage is, why it exists and
 
 ```mermaid
 flowchart TD
-  A[brainstorm] --> B[interview]
+  Q{{"have an idea?"}} -->|no| A[brainstorm]
+  Q -->|yes| B[problem, checked with interview]
+  A --> B
   B --> C[market-research]
   C --> D[product-brief]
   D --> E{{"STOP: go?"}}
@@ -23,12 +25,12 @@ flowchart TD
   N --> O[growth]
 ```
 
-1. `/wow-brainstorm`: the problem, the ideas, the riskiest assumption.
-2. `/wow-interview`: five people. The idea is kept, changed, or dropped. Skipped it? Say so in the brief; the brief's value risk inherits the interviews.
-3. `/wow-market-research`: alternatives, prices, size.
-4. `/wow-product-brief`: one page. Go, change, or drop.
+1. `/wow-brainstorm`, only when there is no idea yet: 10 problems, scored, one picked.
+2. `/wow-problem`: one person, the segment, today's alternatives, the cost in numbers, checked on 3–5 people with `/wow-interview`. Not checked yet? It becomes the value test in the brief.
+3. `/wow-market-research`: alternatives, monthly and yearly prices, differentiators vs expected, size, the funnel worked back from the goal.
+4. `/wow-product-brief`: one page. The four risks with a pass mark; go, change, or drop.
 5. `/wow-experiment`: a fake door or a pre-order, while demand is still the open question.
-6. `/wow-prd`: journeys, requirements, the first version.
+6. `/wow-prd`: success metrics, the MVP with criteria per feature, journeys, non-functional numbers.
 7. `/wow-new-project`: architecture, repo, CI, the first deploy. It runs `/wow-architecture`, `/wow-design-system`, `/wow-cloud` and `/wow-deploy`. Building inside a product that already exists → only `/wow-architecture`, for the new area.
 8. `/wow-roadmap`, then `/wow-plan`: the order of the work, and the slices.
 9. `/wow-feature` for each slice. It runs `/wow-ui-design`, `/wow-api-design`, `/wow-data-model`, `/wow-tdd`, `/wow-pr` and `/wow-deploy`.

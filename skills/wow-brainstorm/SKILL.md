@@ -1,6 +1,6 @@
 ---
 name: wow-brainstorm
-description: "Find and shape a new product idea: the problem as a job story, what people use today, many ideas, pick 1–2 by score, the riskiest assumption and its test. Use when the user runs /wow-brainstorm, or agrees to a hand-off to it from another wow skill."
+description: "Find a problem worth building for when you have no idea yet: 10 problems, scored on pain, frequency, reach and buildability, one picked and handed to /wow-problem. Use when the user runs /wow-brainstorm, or agrees to a hand-off to it from another wow skill."
 argument-hint: "[the idea or the problem]"
 ---
 

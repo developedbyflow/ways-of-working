@@ -1,6 +1,6 @@
 ---
 name: wow-interview
-description: "Run customer interviews the Mom Test way: five real people, questions about their past not your idea, notes with facts apart from opinions, a commitment ask, opportunities updated. Use when the user runs /wow-interview, or agrees to a hand-off to it from another wow skill."
+description: "Run customer interviews the Mom Test way, as the check of /wow-problem or for a live product: 3–5 real people, questions about their past not your idea, notes with facts apart from opinions, a commitment ask, opportunities updated. Use when the user runs /wow-interview, or agrees to a hand-off to it from another wow skill."
 argument-hint: "[who and what you want to learn]"
 ---
 

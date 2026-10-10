@@ -21,6 +21,7 @@ flowchart TD
   WOW --> DI
   subgraph DI[Discover]
     BS[brainstorm]
+    PBM[problem]
     IV[interview]
     MR[market-research]
     PRV[product-review]
@@ -162,11 +163,12 @@ Discover, define and go to market:
 
 ```mermaid
 flowchart LR
-  BS[brainstorm] --> IV[interview]
-  BS --> MR[market-research]
-  BS --> EX[experiment]
-  IV --> PB[product-brief]
-  MR --> PB
+  BS[brainstorm] --> PBM[problem]
+  PBM --> IV[interview]
+  IV --> PBM
+  PBM --> MR[market-research]
+  MR --> PB[product-brief]
+  PB --> EX[experiment]
   MR --> PO[positioning]
   PRV[product-review] --> EX
   PRV --> PRD[prd]
@@ -185,7 +187,7 @@ flowchart LR
   SA[sales] --> CO[comms]
 ```
 
-- **A new idea:** brainstorm → interview and market research → product brief → PRD → the design skills.
+- **A new idea:** brainstorm (only without an idea) → problem, checked with interview → market research → product brief → PRD → the design skills.
 - **A live product:** product review → experiment or PRD → roadmap → plan.
 - **Selling it:** positioning → pricing → launch → growth; sales when you sell in a conversation.
 
@@ -211,8 +213,8 @@ In the project:
 | `docs/postmortems/` | one file per incident | incident | audit, handoff |
 | `docs/audits/` | one report per audit, with numbers before and after | audit | handoff |
 | `HANDOFF.md` | state, risks, access, who knows what | handoff | join (the next person) |
-| `docs/product/` | ideas, brief, PRD, roadmap, product reviews | brainstorm, product-brief, prd, roadmap, product-review | prd, roadmap, feature, new-project, positioning, launch |
-| `docs/interviews/` | one note per customer interview | interview | product-brief, product-review, market-research, positioning, pricing, sales |
+| `docs/product/` | brainstorm, problem, ideas, brief, PRD, roadmap, product reviews | brainstorm, problem, product-brief, prd, roadmap, product-review | market-research, product-brief, prd, roadmap, feature, new-project, positioning, launch |
+| `docs/interviews/` | one note per customer interview | interview | problem, product-brief, product-review, market-research, positioning, pricing, sales |
 | `docs/opportunities.md` | user needs and pains, as a tree under the outcome | interview, product-review | product-brief, prd, roadmap |
 | `docs/research/` | technical and market research, with sources and dates | research, market-research | product-brief, positioning, pricing |
 | `docs/gtm/` | positioning, pricing, launch plan, growth, sales pipeline | positioning, pricing, launch, growth, sales | pricing, launch, growth, sales |
@@ -265,9 +267,10 @@ Mine, outside any project:
 | you arrive on a project | join (it runs repo-tour) | |
 | you only need to understand a codebase | repo-tour | join |
 | you leave a project | handoff | |
-| you are looking for a new product idea | brainstorm | product-review |
+| you have no idea yet and look for one | brainstorm | problem, product-review |
+| you have an idea and need the problem behind it | problem | brainstorm |
 | the product is live and you look for what to improve | product-review | brainstorm, audit |
-| you learn what people do and pay for | interview | ui-design (usability test) |
+| you learn what people do and pay for (called by problem and product-review) | interview | ui-design (usability test) |
 | the question is about a market: competitors, customers, size | market-research | research |
 | one page to agree on the idea | product-brief | prd |
 | what to build, with requirements | prd | product-brief, design-doc |

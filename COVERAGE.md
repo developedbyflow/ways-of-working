@@ -14,7 +14,7 @@ Checked on 2026-10-05 against six sources, so the list does not depend on memory
 
 | Stage | Covered by |
 |---|---|
-| Find a new product idea | brainstorm, interview, market-research |
+| Find a new product idea | brainstorm (without an idea), problem, interview, market-research |
 | Understand a live product | product-review, interview |
 | Agree on the idea | product-brief |
 | Define what to build | prd |

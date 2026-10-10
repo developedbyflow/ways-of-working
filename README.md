@@ -33,13 +33,14 @@ Every page has a skill that runs it step by step: `/wow-<page>`. A page that wri
 | Situation | In one line | Skill |
 |---|---|---|
 | **Discover** | | |
-| [Brainstorm](brainstorm.md) | the problem as a job story, what people use today, many ideas, pick 1–2, the riskiest assumption | `/wow-brainstorm` |
-| [Customer interviews](interview.md) | five people, questions about their past not your idea, facts apart from opinions, a commitment ask | `/wow-interview` |
-| [Market research](market-research.md) | competitors and alternatives, what customers say, a bottom-up size, why now, the gap | `/wow-market-research` |
+| [Brainstorm](brainstorm.md) | only when there is no idea yet: 10 problems, scored, one picked | `/wow-brainstorm` |
+| [The problem](problem.md) | one person, the segment, today's alternatives, the cost in numbers, checked on 3–5 people; ideas parked with stable IDs | `/wow-problem` |
+| [Customer interviews](interview.md) | a tool for the problem and for a live product: questions about their past not your idea, facts apart from opinions, a commitment ask | `/wow-interview` |
+| [Market research](market-research.md) | competitors with monthly and yearly prices, differentiators vs expected, a bottom-up size, the funnel from the goal, the channel, why now | `/wow-market-research` |
 | [Product review](product-review.md) | a live product: the outcome, the funnel, what users say, an opportunity tree, 1–3 picks | `/wow-product-review` |
-| [Product brief](product-brief.md) | one page: problem and its cost, who must buy, alternatives, the idea, scope, the number, the four risks, the decision | `/wow-product-brief` |
+| [Product brief](product-brief.md) | one page: the summary, the goal in paying users, the four risks with a pass mark, scope, the decision and the fallback | `/wow-product-brief` |
 | **Define** | | |
-| [PRD](prd.md) | goal, journeys, ranked requirements with criteria, non-functional numbers, out of scope, first version, ready-to-build check | `/wow-prd` |
+| [PRD](prd.md) | success metrics from the problem's cost, sorted ideas, the MVP with checkable criteria, payment / both-sides / AI-cost checks, journeys, non-functional numbers that agree | `/wow-prd` |
 | [Roadmap](roadmap.md) | outcomes first, then Now / Next / Later, scored in one list with debt and risks | `/wow-roadmap` |
 | **Start** | | |
 | [Stages of a product](stages.md) | the whole road in three levels, stage → step → component, with what, why and what it gives; where an existing project is | `/wow-stage` |

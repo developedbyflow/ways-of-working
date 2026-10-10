@@ -52,37 +52,37 @@ Every step names its page. The page's "Steps" are the components (level 3).
 - **What it is:** finding out whether a problem is real, who has it, and what they do about it today.
 - **Why:** building something nobody needs is the most common way a product fails. Discovery is the cheapest place to find out.
 - **What it gives you:** a problem worth solving, chosen on evidence, not on enthusiasm.
-- **Proof it's done:** the problem written as a job story; notes from at least five conversations about people's past; the alternatives, with their prices.
+- **Proof it's done:** the problem with one person, the segment and the cost in numbers; 3–5 conversations about people's past, or the check planned as a test in the brief; the alternatives, with monthly and yearly prices.
 - **Skipped →** you build for an imagined user, and you learn it after months of work.
 
 | Step | What it is | Why | Page |
 |---|---|---|---|
-| 1.1 Brainstorm | from a problem to many ideas, then 1–2 picked by score, with the riskiest assumption | you pick ideas by evidence, and you know what to test first | `brainstorm.md` |
-| 1.2 Customer interviews | five people, asked about what they did, not about your idea | polite "I'd use it" answers hide what people really do and pay for | `interview.md` |
-| 1.3 Market research | competitors, alternatives, prices, a size counted from the bottom up | you know who else solves it, for how much, and how many customers exist | `market-research.md` |
+| 1.0 Brainstorm (only without an idea) | 10 problems, scored, one picked | you start from a problem worth it, not the first thought | `brainstorm.md` |
+| 1.1 The problem | one person, the segment, today's alternatives, the cost in numbers, checked on 3–5 people (`interview.md`) | polite "I'd use it" answers hide what people really do and pay for | `problem.md` |
+| 1.2 Market research | competitors, prices per month and year, differentiators vs expected, a bottom-up size, the funnel from the goal | you know who else solves it, for how much, and how many people you must reach | `market-research.md` |
 
 ### 2. Decide
 - **What it is:** one page that everyone agrees on, ending in go, change or drop.
 - **Why:** months of work should start from a decision someone wrote down and can check later.
-- **What it gives you:** the buyer named, the scope drawn, the four risks (value, usability, feasibility, viability) each with a test.
+- **What it gives you:** the goal in paying users, the scope drawn, the four risks (value, usability, feasibility, viability) each with a test and a pass mark.
 - **Proof it's done:** a brief with a dated decision; when demand is the open question, a signal such as pre-orders or a fake door.
 - **Skipped →** the scope grows without limits, and nobody knows what "worked" would mean.
 
 | Step | What it is | Why | Page |
 |---|---|---|---|
-| 2.1 Product brief | one page: problem and its cost, who must buy, alternatives, scope, the number, the risks, the decision | a shared, checkable reason to build | `product-brief.md` |
+| 2.1 Product brief | one page: the summary, the goal in paying users, the four risks with a pass mark, scope, the decision and the fallback | a shared, checkable reason to build | `product-brief.md` |
 | 2.2 Experiment | a fake door or a pre-order while demand is unclear | proof that people act, not only say | `experiment.md` |
 
 ### 3. Define
 - **What it is:** what the first version does, for whom, how you'll know each part works, and what it leaves out.
 - **Why:** without a defined first version, "almost done" lasts forever.
 - **What it gives you:** requirements you can test, a first version small enough to ship.
-- **Proof it's done:** journeys; requirements ranked must / should / later, each with acceptance criteria; numbers for speed, availability and data; out of scope written.
+- **Proof it's done:** success metrics; the MVP with checkable criteria per feature; journeys; non-functional numbers that agree with each other; out of scope written.
 - **Skipped →** every conversation re-opens the scope, and nothing is ever finished.
 
 | Step | What it is | Why | Page |
 |---|---|---|---|
-| 3.1 PRD | goal and number, journeys, ranked requirements with criteria, non-functional numbers, out of scope, the first version | the contract between "why" and "how" | `prd.md` |
+| 3.1 PRD | success metrics, sorted ideas, the MVP with criteria, payment / both-sides / AI-cost checks, journeys, non-functional numbers | the contract between "why" and "how" | `prd.md` |
 
 ### 4. Foundation
 - **What it is:** the decisions and the skeleton every feature will stand on: architecture, repository, quality gates, tests, a small design system, environments, a first deploy, logs and alerts.
