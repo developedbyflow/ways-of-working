@@ -49,7 +49,7 @@ First find them with a **pre-mortem:** "It's a year later and the product failed
 - **feasibility:** can it be built? (do you have the data, does the AI do it well enough: "20 out of 30 correct")
 - **viability:** does it work as a business? (reach, money from step 4, legal: "100 sign-ups before launch")
 
-For each risk: a test, a **pass mark set now, before the test**, how long the test takes, and a status. Put the riskiest first: the one that would hurt most if wrong and that you are least sure about. Test what the first version needs, not what comes second.
+For each risk: a test, a **pass mark set now, before the test**, how long the test takes, **when it runs** (the step that depends on it: "before the architecture", "before slice 1", "before launch"), and a status. Put the riskiest first: the one that would hurt most if wrong and that you are least sure about. Test what the first version needs, not what comes second.
 
 ### 6. Scope
 What the first version does, as a few capabilities, and what it explicitly doesn't. The boundary, not a feature list; the PRD turns it into features.
@@ -98,7 +98,7 @@ Then write `docs/01-discovery/03-product-brief.md`:
 ## Money check
 | Price | Fees | Hosting | AI | Other | Left per user |
 ## Risks and how I test them
-| Risk | Type | Test | Pass if | Takes | Status |
+| Risk | Type | Test | Pass if | Takes | When | Status |
 ## Scope
 **In the first version:** … **Out:** …
 ## Vision

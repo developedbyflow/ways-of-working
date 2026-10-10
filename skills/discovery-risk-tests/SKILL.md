@@ -33,6 +33,8 @@ The brief writes the tests; this step runs them honestly and decides from them. 
 ## Steps
 
 ### 1. Pick the test
+**Run a test when the next step depends on it.** The brief's risk table has a "When" column for each test; it says which tests are due now.
+
 The riskiest open one: it would hurt most if wrong, and you are least sure about it. Usually value or viability before feasibility, because those are the ones developers avoid. But a test whose result blocks the architecture (for example which AI provider) runs before the architecture, whatever its type.
 
 **When each test runs:**
