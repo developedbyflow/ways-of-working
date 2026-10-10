@@ -19,7 +19,18 @@ Each skill is one step of the road, in order. It explains why the step matters a
 
 ## The bar
 
-Everything here is what a senior engineer, a CTO, a CEO, a CFO or a CMO at a well-run company would do, never the amateur shortcut, because the point is to grow. And always in the simplest form that meets that bar: senior means knowing what to leave out.
+Everything here is what a senior engineer or a C-level at a well-run company would do, never the amateur shortcut, because the point is to grow. Each step is held to the bar of the role that owns it:
+
+| Role | Owns |
+|---|---|
+| **CEO** | the whole: which problem, go or stop, the vision |
+| **CPO** | the product: the problem, the users, what goes in the first version |
+| **CTO** / senior engineer | the architecture, the code, the quality, the security |
+| **CFO** | the money: price, cost per user, margin, runway |
+| **CMO** | reaching people: positioning, channels, the funnel, sales |
+| **COO** | running it day to day: support, backups, incidents, vendors, legal |
+
+And always in the simplest form that meets that bar: senior means knowing what to leave out.
 
 ## When a skill gets added
 

@@ -13,7 +13,7 @@ After you know the problem and who it's for (01), before choosing features.
 Three answers: what already exists, how big the market is, why now. Plus the one that usually decides: can you reach enough people?
 
 ## How to run it
-- **The bar:** do what a senior engineer, a CTO, a CEO, a CFO or a CMO at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
+- **The bar:** do what a senior engineer or the C-level who owns this area (CEO, CPO, CTO, CFO, CMO, COO) at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Read `docs/01-discovery/01-problem.md` first.** Its alternatives are your first competitors; its cost and segment feed the sizing.
 - **Do the research yourself,** one step at a time, and show each result before the next.
 - **Every number has a source and a date,** or is marked "guess". When sources disagree, show both and say which you trust and why.
