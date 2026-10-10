@@ -1,10 +1,10 @@
 ---
-name: saas-prototype
-description: "Discovery, step 05, optional: test whether people can use the main flow before any code. A throwaway clickable prototype of 2–3 journeys from the PRD, 3–5 tasks written as goals, a pass mark set in advance, 5 people from the segment thinking aloud, results per task and problems by severity, then fix and retest or move on. Use after the PRD when the main flow is new to people or the usability risk in the brief is high. Also judges an existing test: /saas-prototype validate <file>."
+name: prototype
+description: "Test whether people can use the main flow before any code. A throwaway clickable prototype of 2–3 journeys from the PRD, 3–5 tasks written as goals, a pass mark set in advance, 5 people from the segment thinking aloud, results per task and problems by severity, then fix and retest or move on. Use after the PRD when the main flow is new to people or the usability risk in the brief is high. Also judges an existing test: /prototype validate <file>."
 argument-hint: "[the journeys to test] or validate <file>"
 ---
 
-# Discovery · 05 Prototype (optional)
+# Prototype (optional)
 
 ## When to use it
 Optional, after the PRD (04), before architecture and code.
@@ -87,7 +87,7 @@ Then write `docs/01-discovery/05-prototype.md`:
 ```
 
 ## Validate mode
-`/saas-prototype validate <file>`: judge an existing usability test, change nothing.
+`/prototype validate <file>`: judge an existing usability test, change nothing.
 1. Read the file, the PRD and the brief.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask: were the tasks goals or instructions? Was the pass mark written before the sessions? Were the people from the segment? Did anyone help during a task? Are the results what people did, or what they said? Did every "blocks" problem get fixed and retested? Did the PRD change where the flow changed?
@@ -118,4 +118,4 @@ Before a big new flow, ask for a prototype tested with 5 users. In refinement, a
 - [ ] a decision; the brief's usability risk and the PRD updated, each with a journal line
 
 ## Next
-Delivery: the architecture.
+Design: the architecture.

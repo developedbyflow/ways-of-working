@@ -1,10 +1,10 @@
 ---
-name: saas-prd
-description: "Discovery, step 04: what the first version does, exactly. Success metrics from the cost of the problem, user journeys, a glossary, ideas sorted into the MVP and after, checks for payment, both sides, AI cost and day one, a size check, yes/no acceptance criteria per feature, non-functional numbers that agree, and a ready-for-delivery check. Use after the brief decides go, before architecture and code. Also judges an existing PRD: /saas-prd validate <file>."
+name: prd
+description: "What the first version does, exactly. Success metrics from the cost of the problem, user journeys, a glossary, ideas sorted into the MVP and after, checks for payment, both sides, AI cost and day one, a size check, yes/no acceptance criteria per feature, non-functional numbers that agree, and a ready-for-delivery check. Use after the brief decides go, before architecture and code. Also judges an existing PRD: /prd validate <file>."
 argument-hint: "[the product or version] or validate <file>"
 ---
 
-# Discovery · 04 PRD
+# PRD
 
 ## When to use it
 After the brief decides "go" or "go with conditions" (03), before architecture and code.
@@ -102,7 +102,7 @@ Third-party providers appear as requirements (region, data processing agreement,
 - Every open decision: one-way or two-way door, what it blocks, who answers, by when. Those that block the architecture are asked now, with a recommended answer.
 
 ### 12. Review and ready for delivery
-- Someone who will design or build it reads the PRD. Their questions are answered, or listed as open with an owner. Nobody at hand? Run `/saas-prd validate <file>`.
+- Someone who will design or build it reads the PRD. Their questions are answered, or listed as open with an owner. Nobody at hand? Run `/prd validate <file>`.
 - **Ready for delivery** when: every MVP feature has criteria, the numbers agree, the size fits the time, and no open decision blocks the architecture.
 
 Then write `docs/01-discovery/04-prd.md`:
@@ -138,7 +138,7 @@ Everything after the MVP in `docs/ideas.md`.
 ```
 
 ## Validate mode
-`/saas-prd validate <file>`: judge an existing PRD, change nothing.
+`/prd validate <file>`: judge an existing PRD, change nothing.
 1. Read the PRD, its journal, everything in `docs/01-discovery/` and `docs/ideas.md`.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask: does every MVP feature trace back to the problem, a dependency, an expected feature or a differentiator? Can each criterion be ticked yes or no by someone else? Does the glossary match the words used? Do the non-functional numbers agree? Is any vendor named where a requirement belongs? Does the size fit the time?
@@ -175,4 +175,4 @@ On any project, ask: what is the smallest thing we can ship that solves the prob
 - [ ] reviewed or validated, and ready for delivery
 
 ## Next
-Discovery · 05 Prototype (`/saas-prototype`), optional: when the main flow is new to people. Otherwise Delivery: the architecture.
+Prototype (`/prototype`), optional: when the main flow is new to people. Otherwise Design: the architecture.

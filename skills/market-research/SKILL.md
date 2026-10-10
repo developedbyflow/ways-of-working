@@ -1,10 +1,10 @@
 ---
-name: saas-market-research
-description: "Discovery, step 02: what already exists, what users love and hate about it, how big the market is, why now, and how many people you must reach to hit the goal; ends with go, change or stop. Use after the problem is written (docs/01-discovery/01-problem.md), before choosing features. Also judges an existing market research: /saas-market-research validate <file>."
+name: market-research
+description: "What already exists, what users love and hate about it, how big the market is, why now, and how many people you must reach to hit the goal; ends with go, change or stop. Use after the problem is written (docs/01-discovery/01-problem.md), before choosing features. Also judges an existing market research: /market-research validate <file>."
 argument-hint: "[the product or the problem] or validate <file>"
 ---
 
-# Discovery · 02 Market research
+# Market research
 
 ## When to use it
 After you know the problem and who it's for (01), before choosing features.
@@ -118,7 +118,7 @@ Go / change / stop, the price to test, what is still unknown.
 ```
 
 ## Validate mode
-`/saas-market-research validate <file>`: judge an existing market research, change nothing.
+`/market-research validate <file>`: judge an existing market research, change nothing.
 1. Read the file, `docs/01-discovery/01-problem.md` and anything that cites the research (the brief, the PRD).
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask:
@@ -161,4 +161,4 @@ Before a new feature or tool, check: does something already do this, what do its
 - [ ] an answer: go, change or stop, decided by the user
 
 ## Next
-Discovery · 03 Product brief (`/saas-product-brief`).
+Product brief (`/product-brief`).

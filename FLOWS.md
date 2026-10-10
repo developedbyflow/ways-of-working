@@ -1,8 +1,8 @@
 # Flows
 
-Which skill to run, in what order, and what each one reads and writes. One flow per situation; a new flow is added when its skills exist.
+Recipes: which skills to run, in what order, and what each one reads and writes, for one situation. The same skill can appear in several recipes. A new recipe is added when its skills exist.
 
-## New SaaS product
+## Recipe: a new SaaS product
 
 From an idea, or no idea, to a product that people pay for, in five phases:
 
@@ -33,28 +33,28 @@ flowchart LR
 ```
 
 #### Start
-1. Run `/saas-setup` once: it decides where the documents live and writes the `Project documents:` line in `CLAUDE.md`.
+1. Run `/docs-setup` once: it decides where the documents live and writes the `Project documents:` line in `CLAUDE.md`.
 2. Write everything in your head into `docs/ideas.md`, in any form. No idea yet? Leave it empty.
-3. Run `/saas-brainstorm`.
+3. Run `/brainstorm`.
 
 #### The steps
 
 | # | Step | Command | Reads | Writes | Ends with |
 |---|---|---|---|---|---|
-| – | [Setup](skills/saas-setup/SKILL.md) | `/saas-setup` | the user's answers | `CLAUDE.md` line, `ideas.md` (empty), `01-discovery/` | the documents' place exists and the skills know it |
-| 00 | [Brainstorm](skills/saas-brainstorm/SKILL.md) | `/saas-brainstorm` | `ideas.md` (raw) | `00-brainstorm.md`, `ideas.md` (shaped) | one problem picked, two fallbacks |
-| 01 | [Problem](skills/saas-problem/SKILL.md) | `/saas-problem` | `00-brainstorm.md`, `ideas.md` | `01-problem.md` | 3 of 5 interviews confirm it, or "not yet verified" |
-| 02 | [Market research](skills/saas-market-research/SKILL.md) | `/saas-market-research` | `01-problem.md` | `02-market-research.md` | go, change or stop |
-| 03 | [Product brief](skills/saas-product-brief/SKILL.md) | `/saas-product-brief` | `01`, `02`, `ideas.md` | `03-product-brief.md` | go, go with conditions, change or stop |
-| 04 | [PRD](skills/saas-prd/SKILL.md) | `/saas-prd` | everything above | `04-prd.md`, `ideas.md` (sorted) | ready for delivery |
-| 05 | [Prototype](skills/saas-prototype/SKILL.md) (optional) | `/saas-prototype` | `04-prd.md`, `03-product-brief.md` | `05-prototype.md`, brief and PRD updated | pass, or fix and retest |
+| – | [Setup](skills/docs-setup/SKILL.md) | `/docs-setup` | the user's answers | `CLAUDE.md` line, `ideas.md` (empty), `01-discovery/` | the documents' place exists and the skills know it |
+| 00 | [Brainstorm](skills/brainstorm/SKILL.md) | `/brainstorm` | `ideas.md` (raw) | `00-brainstorm.md`, `ideas.md` (shaped) | one problem picked, two fallbacks |
+| 01 | [Problem](skills/problem/SKILL.md) | `/problem` | `00-brainstorm.md`, `ideas.md` | `01-problem.md` | 3 of 5 interviews confirm it, or "not yet verified" |
+| 02 | [Market research](skills/market-research/SKILL.md) | `/market-research` | `01-problem.md` | `02-market-research.md` | go, change or stop |
+| 03 | [Product brief](skills/product-brief/SKILL.md) | `/product-brief` | `01`, `02`, `ideas.md` | `03-product-brief.md` | go, go with conditions, change or stop |
+| 04 | [PRD](skills/prd/SKILL.md) | `/prd` | everything above | `04-prd.md`, `ideas.md` (sorted) | ready for delivery |
+| 05 | [Prototype](skills/prototype/SKILL.md) (optional) | `/prototype` | `04-prd.md`, `03-product-brief.md` | `05-prototype.md`, brief and PRD updated | pass, or fix and retest |
 | – | [Risk tests](skills/risk-tests/SKILL.md) (in parallel, from 03) | `/risk-tests` | `03-product-brief.md` | `risk-tests.md`, brief updated | every risk in the brief has a result |
 
 All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
 
 ## Where the documents go
 
-`docs/` is wherever `/saas-setup` put it: a private docs repo, `docs/` in the code repo, or the team's existing place. The `Project documents:` line in `CLAUDE.md` points to it. Inside, one folder per phase, numbered in the order of the road; each step's file is numbered inside it:
+`docs/` is wherever `/docs-setup` put it: a private docs repo, `docs/` in the code repo, or the team's existing place. The `Project documents:` line in `CLAUDE.md` points to it. Inside, one folder per phase, numbered in the order of the road; each step's file is numbered inside it:
 
 ```
 docs/
@@ -97,7 +97,7 @@ Examples: "the AI can estimate calories from a photo" (weeks of code if false, a
 The brief's "When" column is this rule already applied to the risks you know at the start. Run them with `/risk-tests`.
 
 ### Validate
-**What it is:** every step from 01 on can also judge a document that already exists, without changing it: `/<skill> validate <file>`, for example `/saas-prd validate docs/01-discovery/04-prd.md`. It's a code review for a document:
+**What it is:** every step from 01 on can also judge a document that already exists, without changing it: `/<skill> validate <file>`, for example `/prd validate docs/01-discovery/04-prd.md`. It's a code review for a document:
 1. it reads the document and the ones it comes from (a PRD with its brief and problem);
 2. it checks it item by item against what the step asks for, citing the lines;
 3. it asks the questions no template asks (does every MVP feature trace back to the problem? do the numbers agree?);

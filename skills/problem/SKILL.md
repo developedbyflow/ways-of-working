@@ -1,13 +1,13 @@
 ---
-name: saas-problem
-description: "Discovery, step 01: who has the problem, what it is, how they solve it today and what it costs them, checked in 3–5 interviews about what people did, not about the idea. Use when the user starts a new app or product and has an idea, before market research and before any code. Also judges an existing problem page: /saas-problem validate <file>."
+name: problem
+description: "Who has the problem, what it is, how they solve it today and what it costs them, checked in 3–5 interviews about what people did, not about the idea. Use when the user starts a new app or product and has an idea, before market research and before any code. Also judges an existing problem page: /problem validate <file>."
 argument-hint: "[the idea, in a few words] or validate <file>"
 ---
 
-# Discovery · 01 Problem
+# Problem
 
 ## When to use it
-After `/saas-brainstorm`, with the problem picked there, before any code.
+After `/brainstorm`, with the problem picked there, before any code.
 
 ## The problem it solves
 You know who you build for and what hurts them, so every later decision has a reason.
@@ -102,7 +102,7 @@ Then write `docs/01-discovery/01-problem.md`:
 ```
 
 ## Validate mode
-`/saas-problem validate <file>`: judge an existing problem page, change nothing.
+`/problem validate <file>`: judge an existing problem page, change nothing.
 1. Read the page, `docs/01-discovery/00-brainstorm.md` if it exists, `docs/ideas.md` and any interview notes.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask:
@@ -139,4 +139,4 @@ Before any feature or ticket, ask: what problem does this solve, for whom, and w
 - [ ] feature ideas parked in `docs/ideas.md` with stable IDs
 
 ## Next
-Discovery · 02 Market research (`/saas-market-research`).
+Market research (`/market-research`).

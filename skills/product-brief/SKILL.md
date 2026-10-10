@@ -1,10 +1,10 @@
 ---
-name: saas-product-brief
-description: "Discovery, step 03: one page that decides whether to build. A summary from 01–02, the goal in paying users, the four risks each with a test and a pass mark set in advance, scope in and out, and a decision: go, go with conditions, change or stop. Use after the problem and the market research, before writing requirements. Also judges an existing brief: /saas-product-brief validate <file>."
+name: product-brief
+description: "One page that decides whether to build. A summary from 01–02, the goal in paying users, the four risks each with a test and a pass mark set in advance, scope in and out, and a decision: go, go with conditions, change or stop. Use after the problem and the market research, before writing requirements. Also judges an existing brief: /product-brief validate <file>."
 argument-hint: "[the product] or validate <file>"
 ---
 
-# Discovery · 03 Product brief
+# Product brief
 
 ## When to use it
 After the problem (01) and the market research (02), before describing features in the PRD.
@@ -77,7 +77,7 @@ The press release makes a good signup page for the value test (`/risk-tests`): t
 When the business model itself is the open question, add a lean canvas instead.
 
 ### 10. An outside reader
-Someone outside the idea reads the page and says back what the product is and for whom. If they can't, rewrite. Nobody at hand? Run `/saas-product-brief validate <file>`.
+Someone outside the idea reads the page and says back what the product is and for whom. If they can't, rewrite. Nobody at hand? Run `/product-brief validate <file>`.
 
 ### 11. The decision
 - **Go**, **go with conditions** (start the PRD while the tests run), **change** or **stop**, and why.
@@ -113,7 +113,7 @@ Then write `docs/01-discovery/03-product-brief.md`:
 ```
 
 ## Validate mode
-`/saas-product-brief validate <file>`: judge an existing brief, change nothing.
+`/product-brief validate <file>`: judge an existing brief, change nothing.
 1. Read the brief, its journal, 01 and 02. A critique that ignores what was already decided is shallow.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask what no template asks: who must act or pay, and is that who the brief names? Is every number marked as evidence or guess, including inside the prose? Does each test aim at the first version? Was each pass mark set before the test? What is explicitly out? What does doing nothing cost?
@@ -149,4 +149,4 @@ Before a big project, ask for a one-page brief: the problem, the market, the fou
 - [ ] the decision, the fallback and the first journal line
 
 ## Next
-Discovery · 04 PRD (`/saas-prd`). The risk tests run in parallel with it (`/risk-tests`).
+PRD (`/prd`). The risk tests run in parallel with it (`/risk-tests`).
