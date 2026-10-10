@@ -174,4 +174,4 @@ On any project, ask: what is the smallest thing we can ship that solves the prob
 - [ ] reviewed or validated, and ready for delivery
 
 ## Next
-Delivery: the architecture. Before it, test usability: a few screens as a clickable prototype, shown to 3 people (the risk from the brief).
+Discovery · 05 Prototype (`/discovery-prototype`), optional: when the main flow is new to people. Otherwise Delivery: the architecture.

@@ -64,8 +64,14 @@ Every decision still open, what it blocks, who answers, by when, and what kind o
 
 Those that block the PRD are asked now, as questions with a recommended answer.
 
-### 9. Optional: working backwards
-When the summary feels flat or the user isn't sure what the product is, write the launch announcement as if it had shipped: a headline, who it's for, the problem, how it solves it, a quote from a user, how to start. Then 5 hard questions a sceptic would ask, with answers. If the announcement is boring, the product is too.
+### 9. Optional: working backwards (PRFAQ)
+When the summary feels flat or the user isn't sure what the product is, use Amazon's Working Backwards: write the launch as if it had shipped, before building.
+- **The press release,** under a page: a headline, who it's for, the problem, how it solves it, a quote from a user, how to start, the price.
+- **The customer FAQ:** what a buyer would ask ("how much?", "why not [competitor]?", "what happens to my data?", "what if I stop paying?").
+- **The internal FAQ:** what the team would ask ("what's hardest to build?", "what does a user cost us?", "what did we leave out?", "what kills this?").
+- **Hard mode:** challenge every vague answer and every claim without evidence. If the press release is boring, the product is too.
+
+The press release makes a good signup page for the value test (`/discovery-risk-tests`): the promise is already written. Shown to people from the segment, it turns from a thinking tool into evidence.
 
 When the business model itself is the open question, add a lean canvas instead.
 
@@ -142,4 +148,4 @@ Before a big project, ask for a one-page brief: the problem, the market, the fou
 - [ ] the decision, the fallback and the first journal line
 
 ## Next
-Discovery · 04 PRD (`/discovery-prd`). The risk tests run in parallel with it.
+Discovery · 04 PRD (`/discovery-prd`). The risk tests run in parallel with it (`/discovery-risk-tests`).

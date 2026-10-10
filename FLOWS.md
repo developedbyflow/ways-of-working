@@ -11,9 +11,10 @@ From an idea, or no idea, to a decision and the requirements of the first versio
 flowchart LR
   I["ideas.md<br/>(raw dump)"] --> B
   subgraph D["Discovery: what to build, for whom and why"]
-    S["Setup"] --> B["00 Brainstorm"] --> P["01 Problem"] --> M["02 Market research"] --> R["03 Product brief"] --> Q["04 PRD"]
+    S["Setup"] --> B["00 Brainstorm"] --> P["01 Problem"] --> M["02 Market research"] --> R["03 Product brief"] --> Q["04 PRD"] --> O["05 Prototype<br/>(optional)"]
+    R -.-> T["Risk tests<br/>(in parallel)"]
   end
-  Q --> X["Delivery<br/>(not written yet)"]
+  O --> X["Delivery<br/>(not written yet)"]
   P -. "fewer than 3 of 5" .-> B
   M -. "stop or change" .-> B
   R -. "a risk test fails" .-> R
@@ -34,11 +35,13 @@ flowchart LR
 | 02 | [Market research](skills/discovery-market-research/SKILL.md) | `/discovery-market-research` | `01-problem.md` | `02-market-research.md` | go, change or stop |
 | 03 | [Product brief](skills/discovery-product-brief/SKILL.md) | `/discovery-product-brief` | `01`, `02`, `ideas.md` | `03-product-brief.md` | go, go with conditions, change or stop |
 | 04 | [PRD](skills/discovery-prd/SKILL.md) | `/discovery-prd` | everything above | `04-prd.md`, `ideas.md` (sorted) | ready for delivery |
+| 05 | [Prototype](skills/discovery-prototype/SKILL.md) (optional) | `/discovery-prototype` | `04-prd.md`, `03-product-brief.md` | `05-prototype.md`, brief and PRD updated | pass, or fix and retest |
+| – | [Risk tests](skills/discovery-risk-tests/SKILL.md) (in parallel, from 03) | `/discovery-risk-tests` | `03-product-brief.md` | `risk-tests.md`, brief updated | every risk in the brief has a result |
 
 All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
 
 ### When to validate
-Steps 01–04 can judge an existing document: `/<skill> validate <file>`. Run it:
+Steps 01–05 and the risk tests can judge an existing document: `/<skill> validate <file>`. Run it:
 - **on a document written without the skill:** an older version, someone else's, one from your job;
 - **before a decision that's hard to undo:** the end of 03 (go or stop) and of 04 (before architecture and code);
 - **after a big change:** a test failed, the MVP was cut;
@@ -59,4 +62,6 @@ docs/
     02-market-research.md
     03-product-brief.md
     04-prd.md
+    05-prototype.md
+    risk-tests.md
 ```
