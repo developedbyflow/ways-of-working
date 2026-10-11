@@ -9,7 +9,7 @@ From an idea, or no idea, to a product that people pay for, in five phases:
 | Phase | What it does | Skills |
 |---|---|---|
 | **1. Discovery** | from zero to what to build: the problem, the market, the decision, the MVP | below |
-| **2. Design** | the architecture, the data model, the API, the screens | not written yet |
+| **2. Design** | how the system runs, how the code is organized, the data, the API, the screens, the law, security and AI | see below, not written yet |
 | **3. Planning** | split the work into slices and tasks, estimate from the design, set the order | not written yet |
 | **4. Build** | implement, test and deploy, every slice (deploy from the first week) | not written yet |
 | **5. Launch & Growth** | launch, then grow and measure | not written yet |
@@ -51,6 +51,21 @@ flowchart LR
 | – | [Risk tests](skills/risk-tests/SKILL.md) (in parallel, from 03) | `/risk-tests` | `03-product-brief.md` | `risk-tests.md`, brief updated | every risk in the brief has a result |
 
 All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
+
+### Phase 2: Design (skills not written yet)
+
+| # | Step | Command | The question it answers |
+|---|---|---|---|
+| 01 | System design | `/system-design` | how does the system run? components, data flows, scale, failures, monitoring, cost, deployment and CI/CD |
+| 02 | Compliance: the decisions | `/compliance` | what does the law require? data location, providers and their agreements, retention, consents, licences |
+| 03 | Architecture | `/architecture` | how is the code organized? modules, layers, frameworks, testing strategy |
+| 04 | Data model | `/data-model` | what data, how it relates, which rules |
+| 05 | API design | `/api-design` | how the app and the server talk |
+| 06 | UI design | `/ui-design` | what people see: screens, states, a small design system |
+| 07 | Security | `/security` | what can be attacked (STRIDE) and how it's protected |
+| 08 | AI design | `/ai-design` | for products with AI: evals, prompts, limits, cost |
+
+Compliance comes right after System design: it needs the list of providers, and it changes the data model (consent records, retention), the API (export, deletion) and the screens (consent, minimum age). It runs again before launch, to check everything exists and works. 04–06 can run almost in parallel; 07–08 check what 01–06 decided. Every big decision in 01–03 becomes an ADR.
 
 ## Where the documents go
 
