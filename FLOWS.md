@@ -9,7 +9,7 @@ From an idea, or no idea, to a product that people pay for, in five phases:
 | Phase | What it does | Skills |
 |---|---|---|
 | **1. Discovery** | from zero to what to build: the problem, the market, the decision, the MVP | below |
-| **2. Design** | how the system runs, how the code is organized, the data, the API, the screens, the law, security and AI | see below, not written yet |
+| **2. Design** | how the system runs, how the code is organized, the data, the API, the screens, the law, security and AI | below: 01 written, the rest not yet |
 | **3. Planning** | split the work into slices and tasks, estimate from the design, set the order | not written yet |
 | **4. Build** | implement, test and deploy, every slice (deploy from the first week) | not written yet |
 | **5. Launch & Growth** | launch, then grow and measure | not written yet |
@@ -26,7 +26,7 @@ flowchart LR
     S["Setup"] --> B["00 Brainstorm"] --> P["01 Problem"] --> M["02 Market research"] --> R["03 Product brief"] --> Q["04 PRD"] --> O["05 Prototype<br/>(optional)"]
     R -.-> T["Risk tests<br/>(in parallel)"]
   end
-  O --> X["2. Design<br/>(not written yet)"]
+  O --> X["2. Design"]
   P -. "fewer than 3 of 5" .-> B
   M -. "stop or change" .-> B
   R -. "a risk test fails" .-> R
@@ -52,11 +52,11 @@ flowchart LR
 
 All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
 
-### Phase 2: Design (skills not written yet)
+### Phase 2: Design
 
 | # | Step | Command | The question it answers |
 |---|---|---|---|
-| 01 | System design | `/system-design` | how does the system run? components, data flows, scale, failures, monitoring, cost, deployment and CI/CD |
+| 01 | [System design](skills/system-design/SKILL.md) | `/system-design` | how does the system run? components, data flows, scale, failures, monitoring, cost, deployment and CI/CD |
 | 02 | Compliance: the decisions | `/compliance` | what does the law require? data location, providers and their agreements, retention, consents, licences |
 | 03 | Architecture | `/architecture` | how is the code organized? modules, layers, frameworks, testing strategy |
 | 04 | Data model | `/data-model` | what data, how it relates, which rules |
