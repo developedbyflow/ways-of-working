@@ -17,7 +17,7 @@ The PRD says what the product does. System design says how it runs: which parts 
 - **Teach while you go:** the user may be doing this for the first time. Every term gets one line on what it is and what it brings, compared with something they already know (a frontend developer knows `fetch` and JSON; system design is everything on the other side of that `fetch`). Show the full picture of the topic, then mark what this product needs.
 - **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder. Create `docs/02-design/` if it doesn't exist.
 - **Spot risky assumptions for the user:** when a decision rests on something nobody has checked ("the AI answers in 5 s", "the free tier is enough") and being wrong would cost a lot, stop and propose a risk test: what to check, how long it takes, the pass mark, and when. The user only says yes or no; run it with `/risk-tests`.
-- **Read first:** `docs/01-discovery/04-prd.md` (journeys, glossary, non-functional requirements, open decisions), the money check in `03-product-brief.md`, `risk-tests.md`, and `docs/ideas.md` (the After-MVP High ideas). Ask only what is missing.
+- **Read first:** the running system if there is one (step 1), `docs/01-discovery/04-prd.md` (journeys, glossary, non-functional requirements, open decisions), the money check in `03-product-brief.md`, `risk-tests.md`, and `docs/ideas.md` (the After-MVP High ideas). Ask only what is missing.
 - **The user decides** at three points: the numbers (step 2), the shape of the system (step 5) and every ADR (step 14). You give the options and a recommendation; they choose. One decision at a time.
 - **No new requirements here.** If the design needs a requirement the PRD doesn't have (for example how much works offline), stop, propose it, and on a yes add it to the PRD with a journal line.
 - **Start with the fewest parts.** Every extra box is one more thing that fails, needs watching and costs money. A part is added only when a number asks for it.
@@ -65,6 +65,8 @@ Use this list at steps 4–5 and 9. Name only the parts this system needs; expla
 
 ### 1. Read what exists
 Journeys, glossary, non-functional requirements and open decisions from the PRD; the money check from the brief; the risk tests. List what's missing and ask only that.
+
+**If the system already runs**, read how it runs first: the deploy files, Docker Compose, the backup. It's the starting point, not a rule. For each part show what it is today, keep or change, why, and what moving costs (data to migrate, scripts to rewrite, what could break). Change only for a reason: a requirement it doesn't meet or a number it can't carry. The user decides.
 
 ### 2. Requirements, with numbers
 - **The 3–7 main jobs** of the system, from the journeys.
