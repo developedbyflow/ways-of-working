@@ -1,99 +1,133 @@
 # Flows
 
-The common journeys, from start to finish. What each stage is, why it exists and what it gives you, in three levels: [stages.md](stages.md) (`/wow-stage`). Each line is a skill. You run one, and at its last STOP it offers the next. You can stop or skip anywhere; the page says what breaks if you do.
+Recipes: which skills to run, in what order, and what each one reads and writes, for one situation. The same skill can appear in several recipes. A new recipe is added when its skills exist.
 
-## 1. From an idea to the first paying users
+## Recipe: a new SaaS product
 
-```mermaid
-flowchart TD
-  Q{{"have an idea?"}} -->|no| A[brainstorm]
-  Q -->|yes| B[problem, checked with interview]
-  A --> B
-  B --> C[market-research]
-  C --> D[product-brief]
-  D --> E{{"STOP: go?"}}
-  E -->|demand unclear| F[experiment]
-  F --> E
-  E -->|go| G[prd]
-  G --> H[new-project]
-  H --> I[roadmap]
-  I --> J[plan]
-  J --> K[feature, slice by slice]
-  K --> L[positioning]
-  L --> M[pricing]
-  M --> N[launch]
-  N --> O[growth]
-```
+From an idea, or no idea, to a product that people pay for, in five phases:
 
-1. `/wow-brainstorm`, only when there is no idea yet: 10 problems, scored, one picked.
-2. `/wow-problem`: one person, the segment, today's alternatives, the cost in numbers, checked on 3–5 people with `/wow-interview`. Not checked yet? It becomes the value test in the brief.
-3. `/wow-market-research`: alternatives, monthly and yearly prices, differentiators vs expected, size, the funnel worked back from the goal.
-4. `/wow-product-brief`: one page. The four risks with a pass mark; go, change, or drop.
-5. `/wow-experiment`: a fake door or a pre-order, while demand is still the open question.
-6. `/wow-prd`: success metrics, the MVP with criteria per feature, journeys, non-functional numbers.
-7. `/wow-new-project`: architecture, repo, CI, the first deploy. It runs `/wow-architecture`, `/wow-design-system`, `/wow-cloud` and `/wow-deploy`. Building inside a product that already exists → only `/wow-architecture`, for the new area.
-8. `/wow-roadmap`, then `/wow-plan`: the order of the work, and the slices.
-9. `/wow-feature` for each slice. It runs `/wow-ui-design`, `/wow-api-design`, `/wow-data-model`, `/wow-tdd`, `/wow-pr` and `/wow-deploy`.
-10. `/wow-positioning`, `/wow-pricing`, `/wow-launch`.
-11. `/wow-growth` every week; add `/wow-sales` if you sell through conversations.
+| Phase | What it does | Skills |
+|---|---|---|
+| **1. Discovery** | from zero to what to build: the problem, the market, the decision, the MVP | below |
+| **2. Design** | how the system runs, how the code is organized, the data, the API, the screens, the law, security and AI | see below, not written yet |
+| **3. Planning** | split the work into slices and tasks, estimate from the design, set the order | not written yet |
+| **4. Build** | implement, test and deploy, every slice (deploy from the first week) | not written yet |
+| **5. Launch & Growth** | launch, then grow and measure | not written yet |
 
-## 2. Improve a live product, every month
+Design comes before Planning: you can't estimate what you haven't designed. Testing and deploying aren't the end of Build, they happen on every slice.
+
+### Phase 1: Discovery
 
 ```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e8eef7", "primaryTextColor": "#1a1a1a", "primaryBorderColor": "#8a8a8a", "lineColor": "#8a8a8a", "clusterBkg": "#f5f5f5", "clusterBorder": "#8a8a8a"}}}%%
 flowchart LR
-  A[product-review] --> B[experiment]
-  B --> C[roadmap]
-  C --> D[plan]
-  D --> E[feature]
-  E --> F[deploy]
-  F --> A
+  I["ideas.md<br/>(raw dump)"] --> B
+  subgraph D["Discovery: what to build, for whom and why"]
+    S["Setup"] --> B["00 Brainstorm"] --> P["01 Problem"] --> M["02 Market research"] --> R["03 Product brief"] --> Q["04 PRD"] --> O["05 Prototype<br/>(optional)"]
+    R -.-> T["Risk tests<br/>(in parallel)"]
+  end
+  O --> X["2. Design<br/>(not written yet)"]
+  P -. "fewer than 3 of 5" .-> B
+  M -. "stop or change" .-> B
+  R -. "a risk test fails" .-> R
 ```
 
-1. `/wow-product-review`: the outcome, the funnel, what users say, 1–3 picks.
-2. `/wow-interview`: when the numbers show where users drop, but not why.
-3. `/wow-experiment`: test the riskiest pick small.
-4. `/wow-roadmap`: update Now, Next and Later.
-5. `/wow-plan`, then `/wow-feature` for each Now item.
+#### Start
+1. Run `/docs-setup` once: it decides where the documents live and writes the `Project documents:` line in `CLAUDE.md`.
+2. Write everything in your head into `docs/ideas.md`, in any form. No idea yet? Leave it empty.
+3. Run `/brainstorm`.
 
-## 3. A feature
-- **Small:** `/wow-feature` → `/wow-tdd` → `/wow-pr` → `/wow-deploy`.
-- **Medium:** `/wow-feature` → `/wow-plan` → `/wow-ui-design`, `/wow-api-design`, `/wow-data-model` → `/wow-tdd` for each slice → `/wow-pr` → `/wow-deploy` → measure.
-- **Large:** the medium flow, plus `/wow-grill` and `/wow-design-doc` before the design skills.
-- **It calls a service you don't own:** add `/wow-integration`. **It calls an LLM:** add `/wow-ai-feature`.
-- **You need proof it moved the number:** add `/wow-experiment`.
+#### The steps
 
-## 4. Something is broken
-- **Users are affected now:** `/wow-incident`. It rolls back with `/wow-deploy` and sends updates with `/wow-comms`. Then `/wow-bug` for the fix and the postmortem. Run `/wow-audit production-readiness` if the cause was a gap.
-- **Not urgent:** `/wow-bug` → `/wow-pr` → `/wow-deploy`.
-- **A list of reports:** `/wow` sorts them, then each one goes to `/wow-bug` or `/wow-feature`.
+| # | Step | Command | Reads | Writes | Ends with |
+|---|---|---|---|---|---|
+| – | [Setup](skills/docs-setup/SKILL.md) | `/docs-setup` | the user's answers | `CLAUDE.md` line, `ideas.md` (empty), `01-discovery/` | the documents' place exists and the skills know it |
+| 00 | [Brainstorm](skills/brainstorm/SKILL.md) | `/brainstorm` | `ideas.md` (raw) | `00-brainstorm.md`, `ideas.md` (shaped) | one problem picked, two fallbacks |
+| 01 | [Problem](skills/problem/SKILL.md) | `/problem` | `00-brainstorm.md`, `ideas.md` | `01-problem.md` | 3 of 5 interviews confirm it, or "not yet verified" |
+| 02 | [Market research](skills/market-research/SKILL.md) | `/market-research` | `01-problem.md` | `02-market-research.md` | go, change or stop |
+| 03 | [Product brief](skills/product-brief/SKILL.md) | `/product-brief` | `01`, `02`, `ideas.md` | `03-product-brief.md` | go, go with conditions, change or stop |
+| 04 | [PRD](skills/prd/SKILL.md) | `/prd` | everything above | `04-prd.md`, `ideas.md` (sorted) | ready for delivery |
+| 05 | [Prototype](skills/prototype/SKILL.md) (optional) | `/prototype` | `04-prd.md`, `03-product-brief.md` | `05-prototype.md`, brief and PRD updated | pass, or fix and retest |
+| – | [Risk tests](skills/risk-tests/SKILL.md) (in parallel, from 03) | `/risk-tests` | `03-product-brief.md` | `risk-tests.md`, brief updated | every risk in the brief has a result |
 
-## 5. A change to what exists
-- **The shape of the code:** `/wow-refactor` → `/wow-pr`.
-- **A schema, data, an API or a library:** `/wow-migration`, then `/wow-deploy` for each step.
-- **A package version:** `/wow-upgrade` → `/wow-pr` → `/wow-deploy`.
-- **Servers, domain or secrets:** `/wow-cloud`.
+All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
 
-## 6. Decide something
-- **The problem is unclear:** `/wow-grill`, ending in an ADR.
-- **The docs can answer it:** `/wow-research`.
-- **Only building will answer it:** `/wow-spike`.
-- **Big and hard to undo:** `/wow-design-doc` (it runs `/wow-grill`), then `/wow-comms` with a decision request.
+### Phase 2: Design (skills not written yet)
 
-## 7. Let the AI write the code
-`/wow-brief` → the AI builds one slice at a time → `/wow-review`, with the extra checks for AI code → `/wow-pr`.
+| # | Step | Command | The question it answers |
+|---|---|---|---|
+| 01 | System design | `/system-design` | how does the system run? components, data flows, scale, failures, monitoring, cost, deployment and CI/CD |
+| 02 | Compliance: the decisions | `/compliance` | what does the law require? data location, providers and their agreements, retention, consents, licences |
+| 03 | Architecture | `/architecture` | how is the code organized? modules, layers, frameworks, testing strategy |
+| 04 | Data model | `/data-model` | what data, how it relates, which rules |
+| 05 | API design | `/api-design` | how the app and the server talk |
+| 06 | UI design | `/ui-design` | what people see: screens, states, a small design system |
+| 07 | Security | `/security` | what can be attacked (STRIDE) and how it's protected |
+| 08 | AI design | `/ai-design` | for products with AI: evals, prompts, limits, cost |
 
-## 8. Arriving and leaving
-- **You join a project:** `/wow-join`, which runs `/wow-repo-tour`, then a first `/wow-bug` or `/wow-feature`.
-- **You leave a project:** `/wow-handoff`, which refreshes the repo map with `/wow-repo-tour`.
-- **Someone joins your team:** `/wow-mentor`.
+Compliance comes right after System design: it needs the list of providers, and it changes the data model (consent records, retention), the API (export, deletion) and the screens (consent, minimum age). It runs again before launch, to check everything exists and works. 04–06 can run almost in parallel; 07–08 check what 01–06 decided. Every big decision in 01–03 becomes an ADR.
 
-## 9. The rhythm
+## Where the documents go
 
-| When | What |
-|---|---|
-| After every task | `/wow-retro` (task) |
-| Every week | `/wow-retro week`; the `/wow-growth` review; a status through `/wow-comms` for an initiative; one `/wow-interview` |
-| Every month | `/wow-product-review`; the `/wow-roadmap` review; `/wow-audit security` |
-| Every quarter | `/wow-retro quarter`; `/wow-audit accessibility` and `/wow-audit performance`; the rollback rehearsal from `/wow-deploy` |
-| You're stuck on a concept | `/wow-explain-again` |
-| You don't know where to start | `/wow` |
+`docs/` is wherever `/docs-setup` put it: a private docs repo, `docs/` in the code repo, or the team's existing place. The `Project documents:` line in `CLAUDE.md` points to it. Inside, one folder per phase, numbered in the order of the road; each step's file is numbered inside it:
+
+```
+docs/
+  ideas.md               your raw ideas, shaped in 00 Brainstorm, sorted in 04 PRD
+  01-discovery/
+    00-brainstorm.md
+    01-problem.md
+    02-market-research.md
+    03-product-brief.md
+    04-prd.md
+    05-prototype.md
+    risk-tests.md
+```
+
+## Extra clarifications
+
+### Risk tests
+**What it is:** a small experiment that checks one risky assumption before you spend months building on it. The brief lists the risks, each with a test and a pass mark; this step runs them one by one.
+
+**An example, the AI plate scan:**
+- **The assumption:** "the AI recognizes what's on the plate and roughly how much". The scan feature rests on it.
+- **The experiment, 1–2 days of work spread over a week:** before eating, weigh each food on the plate and take a photo, until you have 20 plates. Work out the real calories from the weights. Send the 20 photos to the AI provider you're considering and note its estimates.
+- **The pass mark, fixed before you start:** 15 of 20 plates within ±20% of the real calories.
+- **The decision:** pass → pick that provider and build the scan. Fail → try another provider, change the feature (the AI names the foods, you enter the grams), or postpone it.
+
+**What it gives you:** you learn in days what you'd otherwise learn after months of code, and every decision rests on numbers, not hope.
+
+**When to run one:** when you're about to build or decide something that rests on an assumption you haven't checked, and being wrong would cost a lot.
+
+You recognize it when you hear yourself say "I think people will…", "the AI can probably…", "it should work…". Then ask two questions: if it's false, how much do I lose? How much does checking it first cost?
+
+| Loss if it's false | Cost of checking | What to do |
+|---|---|---|
+| big | small | **run the test** |
+| small (a two-way door) | any | just do it and watch |
+| big | big | find a smaller test, or cut the risk (postpone the feature) |
+
+Examples: "the AI can estimate calories from a photo" (weeks of code if false, a week of photos to check) → test now. "Developers want to lose weight with my app" (the whole project if false, 5 conversations to check) → test as early as possible. "The blue button is better" → just do it.
+
+The brief's "When" column is this rule already applied to the risks you know at the start. Run them with `/risk-tests`.
+
+### Validate
+**What it is:** every step from 01 on can also judge a document that already exists, without changing it: `/<skill> validate <file>`, for example `/prd validate docs/01-discovery/04-prd.md`. It's a code review for a document:
+1. it reads the document and the ones it comes from (a PRD with its brief and problem);
+2. it checks it item by item against what the step asks for, citing the lines;
+3. it asks the questions no template asks (does every MVP feature trace back to the problem? do the numbers agree?);
+4. it reports the problems from the most serious down, each with the line and what to change, then what the document does well. You pick what to apply.
+
+**What it gives you:**
+- you find what's missing without rewriting the document;
+- a second pair of eyes when nobody else can read it;
+- it catches gaps that change decisions, not only formatting (for example "22 features don't fit the time until launch");
+- you can rerun it after every big change.
+
+**When to run it:**
+- **on a document written without the skill:** an older version, someone else's, one from your job;
+- **before a decision that's hard to undo:** the end of 03 (go or stop) and of 04 (before architecture and code);
+- **after a big change:** a test failed, the MVP was cut;
+- **when nobody else can read it.**
+
+Not right after writing with the skill (its "Done when" already checked it), and not for small edits.
