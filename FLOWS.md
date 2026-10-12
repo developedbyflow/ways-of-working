@@ -9,7 +9,7 @@ From an idea, or no idea, to a product that people pay for, in five phases:
 | Phase | What it does | Skills |
 |---|---|---|
 | **1. Discovery** | from zero to what to build: the problem, the market, the decision, the MVP | below |
-| **2. Design** | how the system runs, how the code is organized, the data, the API, the screens, the law, security and AI | below: 01–02 written, the rest not yet |
+| **2. Design** | how the system runs, how the code is organized, the data, the API, the screens, the law, security and AI | below: 01–03 written, the rest not yet |
 | **3. Planning** | split the work into slices and tasks, estimate from the design, set the order | not written yet |
 | **4. Build** | implement, test and deploy, every slice (deploy from the first week) | not written yet |
 | **5. Launch & Growth** | launch, then grow and measure | not written yet |
@@ -58,7 +58,7 @@ All files are in `docs/01-discovery/`, except `docs/00-project/ideas.md`. `docs/
 |---|---|---|---|
 | 01 | [System design](skills/system-design/SKILL.md) | `/system-design` | how does the system run? components, data flows, scale, failures, monitoring, cost, deployment and CI/CD |
 | 02 | [Compliance](skills/compliance/SKILL.md) | `/compliance` | what does the law require? data location, providers and their agreements, retention, consents, licences |
-| 03 | Architecture | `/architecture` | how is the code organized? modules, inside a module, the requirements in code, languages and tools, conventions, testing strategy |
+| 03 | [Architecture](skills/architecture/SKILL.md) | `/architecture` | how is the code organized? modules, inside a module, the requirements in code, languages and tools, conventions, testing strategy |
 | 04 | Data model | `/data-model` | what data, how it relates, which rules |
 | 05 | API design | `/api-design` | how the app and the server talk |
 | 06 | UI design | `/ui-design` | what people see: screens, states, a small design system |
