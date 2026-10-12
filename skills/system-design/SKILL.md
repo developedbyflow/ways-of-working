@@ -98,22 +98,26 @@ The parts deployed separately and how they talk (HTTP, a queue, a database conne
 The 2–3 most important and most risky actions (for example: log a food; scan a plate with AI; pay). Each as a numbered table: step, where, what happens. For each:
 - what happens right away and what goes to the background;
 - what must be correct at once (payment, the account) and what can be correct a little later (sync, statistics);
-- the offline path, if the flow works offline.
+- the offline path, if the flow works offline;
+- **the "server says no" path:** what happens to an entry the server refuses (an expired login, an ended trial, a bad value). Signing out or an expired login never deletes what wasn't sent without asking;
+- offline edits and deletes, not only new entries.
 
 Draw each flow as a **C4 dynamic diagram**: the parts on top, the numbered steps below in order, like a film of one request; the numbers match the table.
 
 These flows become the end-to-end tests; the rest of the testing strategy is decided in `/architecture`.
 
 ### 7. The data
-Where each kind of data lives, which copy is the source of truth (the server, or the phone until sync), what is sensitive (health data, payments), how it's backed up and where the backup copy lives (3-2-1: 3 copies, on 2 kinds of storage, 1 at another company). A diagram of where the data and its copies live. Details of tables and fields → `/data-model`.
+Where each kind of data lives, which copy is the source of truth (the server, or the phone until sync), what is sensitive (health data, payments), how it's backed up and where the backup copy lives (3-2-1: 3 copies, on 2 kinds of storage, 1 at another company). A diagram of where the data and its copies live. Logs with a user's id or IP address are still personal data under GDPR: never write "no personal data"; write what they hold, for how long and where. Details of tables and fields → `/data-model`.
 
 ### 8. What happens when something fails
 A table with every dependency (the database, the AI, payments, email, the server itself) × slow, down, returns garbage: timeout, retry, fallback, what the user sees.
+- **The parts you don't see count too:** the monitoring itself, the backup job, the image registry, the domain and DNS, the HTTPS certificate.
 - **Single points of failure:** list them, and accept each one knowingly or remove it.
 - **Idempotency:** the same request received twice (a payment webhook, a retry after a timeout) doesn't do the work twice. Name where you need it and how (an idempotency key, a unique constraint).
 
 ### 9. Scale
 What breaks first at 10× and at 100×, and **the number at which you change something** ("at 70% CPU for a week, a bigger server"). Don't build for 100× now; know what you'd do then. Bigger server first (vertical), more servers later (horizontal). Name the part from the building blocks you'd add at each threshold.
+- **Doors kept open:** nothing only on the server's disk (not even the login keys, or a rebuilt server signs everyone out); scheduled jobs (hourly, daily) with a named place to run and a lock, so two servers don't run them twice.
 
 ### 10. Monitoring
 - structured logs, without personal data;
@@ -121,7 +125,7 @@ What breaks first at 10× and at 100×, and **the number at which you change som
 - errors from the app and the server in one place;
 - an outside check that the site answers (uptime);
 - alerts that reach the user, tied to the availability target (the SLO, for example "works 99.5% of the time"): alert when you're burning through it, not on every error;
-- a budget alert for each paid service.
+- a budget alert for each paid service, **set at the provider too** (for example a cloud billing alert), not only in the app: a stolen key skips the app's own counter.
 
 ### 11. Deployment and CI/CD, as decisions
 The implementation comes in Build, with `project-setup`.
@@ -133,7 +137,7 @@ The implementation comes in Build, with `project-setup`.
 - A diagram of the road from a push to production, with the rollback.
 
 ### 12. Providers
-For each need (hosting, database, AI, payments, email, login, monitoring), pick one against the PRD's requirements: region, data processing agreement (DPA), no training on your data, price, and **how you'd leave** if you had to (put it behind one interface in the code). Build or buy: build only what makes the product different. The list feeds `/compliance`. A provider that depends on a risk test (for example the AI) is chosen after the test.
+For each need (hosting, database, AI, payments, email, login, monitoring), pick one against the PRD's requirements: region, data processing agreement (DPA), no training on your data, price, and **how you'd leave** if you had to (put it behind one interface in the code). Build or buy: build only what makes the product different. The list feeds `/compliance`. Check that the analytics tool can compute the PRD's metrics (retention by sign-up week needs to follow one person over time, which privacy-first web analytics don't do). A provider that depends on a risk test can be chosen before it when the test only picks the model; the rule for choosing is written before the test and includes the PRD's response time, not only accuracy.
 
 ### 13. Monthly cost
 Now, at the target and at 10×, per part, with today's prices from the providers' official pages. Cost per paying user compared with the money check in the brief. If the margin doesn't hold, go back to the brief.
@@ -142,7 +146,7 @@ Now, at the target and at 10×, per part, with today's prices from the providers
 - **AI: pick the model per kind of request,** the expensive one only where accuracy matters. When a risk test picks the model, write the rule for choosing before the test runs.
 
 ### 14. The big decisions become ADRs
-An ADR (Architecture Decision Record) is one short file per decision, in `docs/00-project/adr/`: context, the options, the decision, the consequences, when to revisit. Only one-way doors: the database, the hosting, the offline level, monolith or not, the AI provider. One at a time: you give the options and your recommendation, **the user chooses**. Note what each decision pulls along ("offline level 2 means deciding what happens when the same entry is changed on two devices").
+An ADR (Architecture Decision Record) is one short file per decision, in `docs/00-project/adr/`: context, the options, the decision, the consequences, when to revisit. Only one-way doors: the database, the hosting, the offline level, monolith or not, the AI provider. One at a time: you give the options and your recommendation, **the user chooses**. Note what each decision pulls along ("offline level 2 means deciding what happens when the same entry is changed on two devices"). **After each ADR, re-read the earlier files it changes:** a managed database makes the failure, scale and monitoring files stale.
 
 ### 15. Check it
 - every non-functional requirement has a mechanism in the design that covers it;
@@ -250,13 +254,15 @@ Before a new service or data flow, write a one-page design doc: requirements wit
 - [ ] the context and container diagrams, the offline level, the shape confirmed by the user
 - [ ] 2–3 flows traced end to end, with what's immediate and what's later, each with a dynamic diagram
 - [ ] the data: where it lives, source of truth, sensitive data, backups, with a diagram
-- [ ] a failure row for every dependency, single points of failure, idempotency
+- [ ] a failure row for every dependency, the unseen ones too (monitoring, backup job, registry, domain, certificate), single points of failure, idempotency
+- [ ] every offline flow has a "server says no" path; nothing unsent is deleted without asking
+- [ ] nothing only on the server's disk (login keys included); scheduled jobs have a place to run
 - [ ] what breaks at 10× and 100×, with trigger numbers
-- [ ] monitoring, alerts tied to the SLO, budget alerts
+- [ ] monitoring, alerts tied to the SLO, budget alerts in the app and at the provider
 - [ ] deployment and CI/CD decided, with a diagram of the road to production
 - [ ] providers chosen against the requirements, with a way to leave
 - [ ] monthly cost at three sizes, per paying user, compared with the brief; when the expensive parts start
-- [ ] every one-way door an ADR, chosen by the user
+- [ ] every one-way door an ADR, chosen by the user; the earlier files re-read after each one
 - [ ] checked against the requirements, the journeys and the High ideas
 - [ ] a glossary for every term
 - [ ] the README: status, summary, what we skip and why, open questions, the ADR table
