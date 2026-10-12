@@ -58,7 +58,7 @@ All files are in `docs/01-discovery/`, except `docs/00-project/ideas.md`. `docs/
 |---|---|---|---|
 | 01 | [System design](skills/system-design/SKILL.md) | `/system-design` | how does the system run? components, data flows, scale, failures, monitoring, cost, deployment and CI/CD |
 | 02 | [Compliance](skills/compliance/SKILL.md) | `/compliance` | what does the law require? data location, providers and their agreements, retention, consents, licences |
-| 03 | Architecture | `/architecture` | how is the code organized? modules, layers, frameworks, testing strategy |
+| 03 | Architecture | `/architecture` | how is the code organized? modules, inside a module, the requirements in code, languages and tools, conventions, testing strategy |
 | 04 | Data model | `/data-model` | what data, how it relates, which rules |
 | 05 | API design | `/api-design` | how the app and the server talk |
 | 06 | UI design | `/ui-design` | what people see: screens, states, a small design system |
@@ -66,6 +66,8 @@ All files are in `docs/01-discovery/`, except `docs/00-project/ideas.md`. `docs/
 | 08 | AI design | `/ai-design` | for products with AI: evals, prompts, limits, cost |
 
 Compliance comes right after System design: it needs the list of providers, and it changes the data model (consent records, retention), the API (export, deletion) and the screens (consent, minimum age). It runs again before launch, to check everything exists and works. 04–06 can run almost in parallel; 07–08 check what 01–06 decided. Every big decision in 01–03 becomes an ADR, in `docs/00-project/adr/`.
+
+At work you'll hear "high-level design" (HLD) and "low-level design" (LLD); every company draws the line differently, so they aren't step names here. The translation: HLD is 01 System design plus the modules in 03 Architecture; LLD is the rest of 03, 04 Data model and 05 API design; 02, 06, 07 and 08 touch both. `docs/02-design/README.md` holds this map for the project, with each step's status; the first Design step creates it, and each step updates its own row when it ends.
 
 ## Where the documents go
 
@@ -88,6 +90,7 @@ docs/
       README.md          every risk: pass mark, when, status
       ai-plate-scan/     one folder per test: README, scripts, raw data
   02-design/
+    README.md            the map: each step, its question, high-level or low-level design, status
     01-system-design/
       README.md          status, summary, what we skip, open questions, ADRs, glossary, journal
       01-requirements.md … 12-cost.md

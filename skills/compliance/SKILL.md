@@ -114,7 +114,7 @@ The list of new requirements, each with where it lands (PRD, data model, API, sc
 - every health-related text stays clear of medical claims;
 - before launch, run again as a checklist: each item exists and works. Nobody at hand? `/compliance validate <folder>`.
 
-Write as you go: each step's file once the user confirms it, with a journal line in the README.
+Write as you go: each step's file once the user confirms it, with a journal line in the README. At the end, set this step's row in `docs/02-design/README.md` (the map of the Design steps) to done, with the date, and link the folder.
 
 ```
 docs/02-design/02-compliance/
