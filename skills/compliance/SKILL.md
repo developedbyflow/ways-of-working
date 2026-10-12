@@ -63,10 +63,10 @@ Use this list at step 8. Name the ones that apply; for each one you name, one li
 ## Steps
 
 ### 1. Read what exists
-The system design's data map, providers, flows and open questions; the PRD's GDPR and operations requirements; the brief. List what's missing (countries, legal entity, users' age) and ask only that.
+The system design's data map, providers, flows and open questions; the PRD's GDPR and operations requirements; the brief. **The running app too:** its data model (preferences, reports, soft-deleted rows, invites and display names slip out of the documents) and what it does in production today (providers, open sign-up). If it's public with real users, whatever isn't compliant is urgent: say so first. List what's missing (countries, legal entity, users' age) and ask only that.
 
 ### 2. The record of processing
-One row per purpose, not per table: what data, **why** (the purpose), **the legal basis**, special category or not, where it lives, which processors touch it, **how long** it's kept. Start from the system design's data map and add the legal columns.
+One row per purpose, not per table: what data, **why** (the purpose), **the legal basis**, special category or not, where it lives, which processors touch it, **how long** it's kept. Start from the system design's data map and add the legal columns; then check it against the running app's tables. Each AI feature is its own row, with exactly what it sends (a recipe generator may send remaining calories and preferences, not only a photo).
 
 | Example | Purpose | Legal basis | Special | Where | Processors | Kept |
 |---|---|---|---|---|---|---|
@@ -77,13 +77,17 @@ One row per purpose, not per table: what data, **why** (the purpose), **the lega
 - Which consents, when, with what text; separate, not pre-ticked, as easy to withdraw as to give.
 - **What's recorded as proof:** who, what was accepted, which version of the text, when; withdrawing is recorded the same way.
 - What happens when consent is refused or withdrawn (for health data in a health app, usually: the feature can't work, say so honestly, offer deletion).
-- The minimum age, and how the app asks for it.
+- **Purposes the app doesn't need** (usage metrics, measuring the AI's accuracy, improving the product) get their own **optional**, unticked box; bundled into the required one, the required consent isn't freely given. The required box's text names every use, the AI features and support included.
+- The minimum age, and how the app asks for it: **before the account exists**, so "nothing kept" is true.
 
 ### 4. The providers
-For each processor: the DPA (signed or accepted in the account), where the data goes, the transfer basis outside the EU, whether it trains on your data, what it keeps and for how long, its sub-processors. The list of processors is published for users (in the privacy policy). A provider that can't meet the requirements is replaced now, not after launch.
+For each processor: the DPA (signed or accepted in the account), where the data goes, the transfer basis outside the EU, whether it trains on your data, what it keeps and for how long, its sub-processors. **Check the company's country, not only the data region:** a US company storing in the EU still needs a transfer basis. A merchant of record is a separate controller: write what you send it, and tell it when an account is deleted (article 19). The list of processors is published for users (in the privacy policy). A provider that can't meet the requirements is replaced now, not after launch.
 
 ### 5. Retention
 A period for every kind of data, and **what deletes it** (a job, a provider setting, a backup that ages out), never "someone remembers". Include backups, logs, exports, payment events (accounting law usually asks years for invoices; the merchant of record may keep them for you).
+- **Soft-deleted rows** lose their values at once; keep only the marker other devices need.
+- **A backup restore brings deleted accounts back:** keep the deleted ids as long as the oldest backup and run the deletions again after any restore.
+- **A minimal proof** (consents, requests answered), without the special category data, may stay after deletion for the limitation period, to answer a complaint (article 17(3)(e)).
 
 ### 6. The rights, as mechanisms
 For each right: where the user triggers it, what happens behind it, how long it takes, how you prove it was done. Export (a machine-readable file), deletion (database, files, providers, backups within their retention), correction, withdrawing consent, access ("what do you have about me?"). Each becomes a requirement for the data model, the API and the screens.
@@ -92,13 +96,13 @@ For each right: where the user triggers it, what happens behind it, how long it 
 For high-risk processing: what could hurt people (someone sees another's health data, data leaves the EU, a breach), how likely and how bad, and what reduces it. Decide whether it's required and write why; when in doubt with health data, write the short version anyway.
 
 ### 8. The other laws
-Go through the table above; for each one that applies, the decision: cookies (banner or not, and why), consumer law (terms, withdrawal, prices), medical devices (what the app must never claim; the wording of every health-related text), the AI Act (what's marked as made by AI), accessibility, data licences (attribution, what must be published), the legal entity and tax.
+Go through the table above; for each one that applies, the decision (selling in the UK or the US adds the UK GDPR and Children's Code, the ICO, and the US state health data and breach laws): cookies (banner or not, and why), consumer law (terms, withdrawal, prices), medical devices (what the app must never claim; the wording of every health-related text), the AI Act (what's marked as made by AI), accessibility, data licences (attribution, what must be published), the legal entity and tax.
 
 ### 9. The breach plan
 What to do in the first 72 hours if data leaks: how you'd notice, who decides, what you check, whom you tell (the supervisory authority, the people affected, the processors), with which text. One page, written now, not during the incident.
 
 ### 10. The documents before launch
-Drafts of the privacy policy (what, why, basis, where, who, how long, rights, contact), the terms, the list of processors, the consent texts. Written for the user's reading level, in every language the app supports. Marked as drafts until a lawyer checks them.
+Drafts of the privacy policy (what, why, basis, where, who, how long, rights, contact), the terms, the list of processors, the consent texts. Written for the user's reading level, in every language the app supports. Marked as drafts until a lawyer checks them. An accessibility statement says "aims to conform" until a full check. Any new promise in the terms (notice periods, refunds) is shown to the user before it's written, and goes into the PRD.
 
 ### 11. What changes in the design
 The list of new requirements, each with where it lands (PRD, data model, API, screens); on the user's yes, into the PRD with a journal line. Hard-to-undo choices (the legal basis for health data, a provider replaced) become ADRs, one at a time, chosen by the user.
@@ -156,7 +160,7 @@ What data, the special categories, the legal bases, where it lives, the rights o
 `/compliance validate <folder>`: judge an existing compliance folder, change nothing.
 1. Read the folder, its ADRs, the system design's data and providers, the PRD and the running app's privacy texts if any.
 2. Check the template and "Done when" item by item, citing the lines.
-3. Then ask: does every kind of data in the system design appear in the record? Does every purpose have a basis that fits (no "legitimate interest" for health data)? Is consent for special category data explicit, separate and recorded? Does every processor have a DPA, a transfer basis and a known retention? Does every right have a mechanism that reaches the backups and the providers? Does any text read like a medical claim? Is every new requirement in the PRD?
+3. Then ask: does every kind of data in the system design appear in the record? Does every purpose have a basis that fits (no "legitimate interest" for health data)? Is consent for special category data explicit, separate and recorded? Does every processor have a DPA, a transfer basis and a known retention? Does every right have a mechanism that reaches the backups and the providers? Does any text read like a medical claim? Is every new requirement in the PRD? Does the record match the running app's tables? Is any non-essential purpose bundled into a required consent? Does every provider's company country have a transfer basis? Do deletions survive a backup restore?
 4. Report: findings by severity, each with the line, what's wrong and what to change; then what's done well; then what needs a lawyer. The user picks what to apply.
 
 ## The bad version and why not
@@ -177,11 +181,11 @@ Privacy by design: collect only what you need, know why you have it, keep it onl
 Before a feature with personal data, ask: which data, why, on what basis, at which provider, for how long, how does the person delete it. If the company has a DPO, bring them in at design, not at the final review. Before a new provider, ask for its DPA and its list of sub-processors.
 
 ## Done when
-- [ ] every kind of data in the system design is in the record, with purpose, basis, place, processors and retention
-- [ ] special category data has explicit, separate consent, recorded with the text version and the time
-- [ ] the minimum age decided, and how it's asked
-- [ ] every processor with a DPA, a transfer basis, training and retention known
-- [ ] every retention period has a mechanism that deletes, backups included
+- [ ] every kind of data in the system design and in the running app's tables is in the record, with purpose, basis, place, processors and retention; each AI feature with what it sends
+- [ ] special category data has explicit, separate consent, recorded with the text version and the time; non-essential purposes in their own optional box
+- [ ] the minimum age decided, asked before the account exists
+- [ ] every processor with a DPA, a transfer basis (by the company's country, not only the data region), training and retention known
+- [ ] every retention period has a mechanism that deletes, backups included; deletions re-run after a restore
 - [ ] every right is a mechanism with a deadline
 - [ ] the DPIA written, or why it isn't required
 - [ ] the other laws gone through, each with a decision
