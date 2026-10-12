@@ -47,10 +47,11 @@ The second command must print `"visibility": "PRIVATE"`.
 ### 3. The starting structure
 ```
 docs/
-  ideas.md          every idea in your head, in any form
+  00-project/       what belongs to the whole project, not to one phase
+    ideas.md        every idea in your head, in any form
   01-discovery/     brainstorm, problem, market research, brief, PRD
 ```
-`ideas.md` starts with one line: `# Ideas` and "Write every idea here, in any form. /brainstorm shapes it." Later phases add their folders (`02-delivery/`…) when they start.
+`ideas.md` starts with one line: `# Ideas` and "Write every idea here, in any form. /brainstorm shapes it." Later phases add their folders (`02-design/`…) when they start; the decisions (ADRs) go in `00-project/adr/` from the first one.
 
 ### 4. Tell the skills where it is
 In `CLAUDE.md` of the folder where the user works with Claude, one line with the absolute path to the documents folder:
@@ -88,7 +89,7 @@ Use the place the team already keeps documents in, instead of creating a new one
 ## Done when
 - [ ] the place is decided, with the reason
 - [ ] it exists, and a private repo is verified as private
-- [ ] `docs/ideas.md` and `docs/01-discovery/` exist
+- [ ] `docs/00-project/ideas.md` and `docs/01-discovery/` exist
 - [ ] the `Project documents:` line is in `CLAUDE.md`, pointing to a path that exists
 - [ ] access is decided: who, which role, until when
 - [ ] the structure is committed

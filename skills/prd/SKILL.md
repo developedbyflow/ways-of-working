@@ -16,7 +16,7 @@ You write down exactly what the app does (PRD = Product Requirements Document): 
 - **The bar:** do what a senior engineer or the C-level who owns this area (CEO, CPO, CTO, CFO, CMO, COO) at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder.
 - **Spot risky assumptions for the user:** when a decision here rests on something nobody has checked ("I think people will…", "the AI can probably…") and being wrong would cost a lot, stop and propose a risk test: what to check, how long it takes, the pass mark, and when it must be done. The user only says yes or no; run it with `/risk-tests`. Don't propose one for cheap, easy-to-undo choices.
-- **Read first:** everything in `docs/01-discovery/` and `docs/ideas.md`. Ask only what is missing.
+- **Read first:** everything in `docs/01-discovery/` and `docs/00-project/ideas.md`. Ask only what is missing.
 - **The user decides** what goes in the MVP and what each criterion says. You propose, push back and check; you don't pick the cuts.
 - **One feature at a time** for the criteria. Show each before the next.
 - **Requirements, not implementation:** what the user can do and what must be true, never which library, database or vendor. Those are decided in the architecture.
@@ -48,7 +48,7 @@ Each journey later becomes screens and tests.
 Every domain word the PRD uses (for example *food, recipe, variant, meal, plan, log entry*), defined once, with how it relates to the others ("a recipe has many variants"). Use exactly these words everywhere after; no synonyms. This becomes the data model and the names in the code (ubiquitous language, from Domain-Driven Design).
 
 ### 5. Sort the ideas
-Take every idea from `docs/ideas.md` and sort it with the user:
+Take every idea from `docs/00-project/ideas.md` and sort it with the user:
 - **MVP:** the smallest set that solves the problem in 01 end to end. It must have:
   - what the other features depend on (a weight chart needs a weight log; a scanner needs a data source);
   - what solves the problem;
@@ -56,7 +56,7 @@ Take every idea from `docs/ideas.md` and sort it with the user:
   - **at least one differentiator** from 02, or nobody has a reason to switch.
 - **After MVP:** High / Medium / Low, by value against effort. When the list is long, score with RICE (reach × impact × confidence ÷ effort).
 - Order the MVP by dependencies first, then what solves the problem, then the rest.
-- Rewrite `docs/ideas.md`: ideas move from "New" to their section; merged and dropped ones are marked.
+- Rewrite `docs/00-project/ideas.md`: ideas move from "New" to their section; merged and dropped ones are marked.
 
 ### 6. The checks a feature list misses
 - **Payment:** if the goal is revenue, is there a feature through which people pay? Trial, plans, cancel.
@@ -95,7 +95,7 @@ Third-party providers appear as requirements (region, data processing agreement,
 
 ### 10. Non-goals and out of scope
 - **Non-goals:** what the product is not and won't become in this version (for example "not a medical app", "no social feed").
-- **Out of scope:** everything after the MVP, by reference to `docs/ideas.md`.
+- **Out of scope:** everything after the MVP, by reference to `docs/00-project/ideas.md`.
 
 ### 11. Assumptions and open decisions
 - Every `[ASSUMPTION]` listed, to confirm or test.
@@ -129,7 +129,7 @@ Not in MVP: …
 ### Speed · Security · Personal data · Devices · Languages · Availability and backups · Accessibility · Operations
 ## Non-goals
 ## Out of scope
-Everything after the MVP in `docs/ideas.md`.
+Everything after the MVP in `docs/00-project/ideas.md`.
 ## Assumptions
 ## Open decisions
 | Decision | One-way or two-way | Blocks | Who | By when |
@@ -139,7 +139,7 @@ Everything after the MVP in `docs/ideas.md`.
 
 ## Validate mode
 `/prd validate <file>`: judge an existing PRD, change nothing.
-1. Read the PRD, its journal, everything in `docs/01-discovery/` and `docs/ideas.md`.
+1. Read the PRD, its journal, everything in `docs/01-discovery/` and `docs/00-project/ideas.md`.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask: does every MVP feature trace back to the problem, a dependency, an expected feature or a differentiator? Can each criterion be ticked yes or no by someone else? Does the glossary match the words used? Do the non-functional numbers agree? Is any vendor named where a requirement belongs? Does the size fit the time?
 4. Report: findings by severity, each with the line, what's wrong and what to change; then what the PRD does well; then what you couldn't evaluate. The user picks what to apply.
@@ -165,7 +165,7 @@ On any project, ask: what is the smallest thing we can ship that solves the prob
 - [ ] success metrics from the cost of the problem, with the user signal, a counter-metric and events
 - [ ] 3–5 journeys with a named person, the moment value lands and an edge case
 - [ ] a glossary, used consistently
-- [ ] ideas sorted, the MVP justified, dependencies checked, `docs/ideas.md` rewritten
+- [ ] ideas sorted, the MVP justified, dependencies checked, `docs/00-project/ideas.md` rewritten
 - [ ] payment, both sides, AI cost, day one, data in and out, and roles checked
 - [ ] the MVP size fits the time until launch
 - [ ] every MVP feature has yes/no criteria, including the main failures

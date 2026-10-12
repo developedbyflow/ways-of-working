@@ -1,13 +1,13 @@
 ---
 name: brainstorm
-description: "Shape the raw ideas into docs/ideas.md, find the problems behind them and around them across many areas and lenses, score a shortlist on 6 criteria, check the top 3, pick one with two fallbacks. Use when the user starts a new product, with a raw list of ideas, a single idea, or nothing."
+description: "Shape the raw ideas into docs/00-project/ideas.md, find the problems behind them and around them across many areas and lenses, score a shortlist on 6 criteria, check the top 3, pick one with two fallbacks. Use when the user starts a new product, with a raw list of ideas, a single idea, or nothing."
 argument-hint: "[the idea, a field or a group of people, optional]"
 ---
 
 # Brainstorm
 
 ## When to use it
-The first step of every new project, after `/docs-setup`. Before it, write everything in your head into `docs/ideas.md`, in any form: features, names, "it would be cool if…". No idea yet? Start with an empty file.
+The first step of every new project, after `/docs-setup`. Before it, write everything in your head into `docs/00-project/ideas.md`, in any form: features, names, "it would be cool if…". No idea yet? Start with an empty file.
 
 ## The problem it solves
 Your raw ideas get a shape, and you pick a problem by comparing it with others, not the first one that comes to mind. Most ideas arrive as solutions; this step finds the problem behind each one.
@@ -20,12 +20,12 @@ Your raw ideas get a shape, and you pick a problem by comparing it with others, 
 - **One prompt at a time,** then wait. Never dump a list of questions.
 - **Switch area every ~8 problems.** Ideas drift toward the same theme; a new area forces new ones.
 - **Problems count only when the user writes or accepts them.** You may offer a provocation ("people who move house lose a weekend to address changes — true for you?"); it goes in the list only if the user says yes.
-- **Problems, not solutions.** When the user says "an app that…", park the solution in `docs/ideas.md` with the next ID, then ask "what hurts without it?" and write that problem. No idea is lost, and the list stays about problems.
+- **Problems, not solutions.** When the user says "an app that…", park the solution in `docs/00-project/ideas.md` with the next ID, then ask "what hurts without it?" and write that problem. No idea is lost, and the list stays about problems.
 
 ## Steps
 
 ### 1. Shape the ideas
-Read `docs/ideas.md`. If it's empty or missing, ask for a dump: "write everything in your head about what you'd like to build", then "anything else?". Nothing at all? Skip to step 3, the path without an idea.
+Read `docs/00-project/ideas.md`. If it's empty or missing, ask for a dump: "write everything in your head about what you'd like to build", then "anything else?". Nothing at all? Skip to step 3, the path without an idea.
 - Give each idea the next free ID, a short name and one line on what it does for the user, with *From: brain dump*.
 - Merge duplicates (the merged ID gets an arrow), keep the user's meaning, invent nothing.
 - Rewrite the file in the format below, all under "New", and show it. The user confirms or corrects.
@@ -83,7 +83,7 @@ For each: search for complaints online and for products people pay for. Note one
 ### 7. Pick one, keep two
 The user picks one, with the reason. On a tie, the one where people already pay or built a workaround wins. The other two are fallbacks if 01 drops the pick.
 
-The format of `docs/ideas.md`:
+The format of `docs/00-project/ideas.md`:
 
 ```markdown
 # Ideas
@@ -139,12 +139,12 @@ Many options first, then choose: diverge, then converge. Judging too early kills
 When a team asks "what should we build next?", list the problems first (from support tickets, sales calls, user reviews), score them together, then pick.
 
 ## Done when
-- [ ] `docs/ideas.md` in the format, every idea with an ID and, where known, the problem it solves
+- [ ] `docs/00-project/ideas.md` in the format, every idea with an ID and, where known, the problem it solves
 - [ ] the problems behind the ideas, plus at least 10 around a clear idea, or 30 from at least 5 areas without one, all written without solutions
 - [ ] a shortlist of 8–12, scored on the 6 criteria
 - [ ] evidence links for the top 3
 - [ ] one picked with the reason, and two fallbacks
-- [ ] every solution that came up is parked in `docs/ideas.md` with an ID
+- [ ] every solution that came up is parked in `docs/00-project/ideas.md` with an ID
 
 ## Next
 Problem (`/problem`), with the picked problem.

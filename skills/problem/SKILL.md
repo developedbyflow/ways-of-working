@@ -16,11 +16,11 @@ You know who you build for and what hurts them, so every later decision has a re
 - **The bar:** do what a senior engineer or the C-level who owns this area (CEO, CPO, CTO, CFO, CMO, COO) at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder.
 - **Spot risky assumptions for the user:** when a decision here rests on something nobody has checked ("I think people will…", "the AI can probably…") and being wrong would cost a lot, stop and propose a risk test: what to check, how long it takes, the pass mark, and when it must be done. The user only says yes or no; run it with `/risk-tests`. Don't propose one for cheap, easy-to-undo choices.
-- **Read first:** `docs/01-discovery/00-brainstorm.md` (the picked problem and its fallbacks) and `docs/ideas.md`. Start from what is there; ask only what is missing.
+- **Read first:** `docs/01-discovery/00-brainstorm.md` (the picked problem and its fallbacks) and `docs/00-project/ideas.md`. Start from what is there; ask only what is missing.
 - **One question at a time,** then wait. Write the file from the user's answers; never invent one.
 - **If an answer is vague, push back** before moving on: "how often?", "how much, roughly?", "what did you do the last time?".
 - **Mark every claim** as checked (someone told you, or you saw it) or as an assumption.
-- **Feature ideas that come up** go to `docs/ideas.md`, under "New", with the next ID. Don't discuss them until the PRD. If the file doesn't exist (the brainstorm was skipped), create it in this format:
+- **Feature ideas that come up** go to `docs/00-project/ideas.md`, under "New", with the next ID. Don't discuss them until the PRD. If the file doesn't exist (the brainstorm was skipped), create it in this format:
 
   ```markdown
   # Ideas
@@ -103,7 +103,7 @@ Then write `docs/01-discovery/01-problem.md`:
 
 ## Validate mode
 `/problem validate <file>`: judge an existing problem page, change nothing.
-1. Read the page, `docs/01-discovery/00-brainstorm.md` if it exists, `docs/ideas.md` and any interview notes.
+1. Read the page, `docs/01-discovery/00-brainstorm.md` if it exists, `docs/00-project/ideas.md` and any interview notes.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask:
    - Is the person concrete enough to decide something, or is it "anyone who…"?
@@ -136,7 +136,7 @@ Before any feature or ticket, ask: what problem does this solve, for whom, and w
 - [ ] today's alternatives, each with where it fails
 - [ ] the cost in numbers, and the strength on the ladder
 - [ ] 3–5 interviews with a results table and a decision, or marked "not yet verified"
-- [ ] feature ideas parked in `docs/ideas.md` with stable IDs
+- [ ] feature ideas parked in `docs/00-project/ideas.md` with stable IDs
 
 ## Next
 Market research (`/market-research`).

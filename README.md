@@ -63,4 +63,4 @@ It links each skill into `~/.claude/skills`, so an edit or a `git pull` applies 
 
 ## How to use it
 
-[FLOWS.md](FLOWS.md) says which skill to run, in what order, and what each one reads and writes. Starting a new product: run `/docs-setup`, write every idea into `docs/ideas.md`, then run `/brainstorm`.
+[FLOWS.md](FLOWS.md) says which skill to run, in what order, and what each one reads and writes. Starting a new product: run `/docs-setup`, write every idea into `docs/00-project/ideas.md`, then run `/brainstorm`.

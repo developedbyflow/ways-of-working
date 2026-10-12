@@ -15,9 +15,9 @@ The PRD says what the product does. System design says how it runs: which parts 
 ## How to run it
 - **The bar:** do what a senior engineer or the CTO at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Teach while you go:** the user may be doing this for the first time. Every term gets one line on what it is and what it brings, compared with something they already know (a frontend developer knows `fetch` and JSON; system design is everything on the other side of that `fetch`). Show the full picture of the topic, then mark what this product needs.
-- **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder. Write into `docs/02-design/01-system-design/` (one folder per Design step, numbered in the order of the road) and the ADRs into `docs/adr/` (decisions come from every phase); create them if they don't exist.
+- **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder. Write into `docs/02-design/01-system-design/` (one folder per Design step, numbered in the order of the road) and the ADRs into `docs/00-project/adr/` (decisions come from every phase); create them if they don't exist.
 - **Spot risky assumptions for the user:** when a decision rests on something nobody has checked ("the AI answers in 5 s", "the free tier is enough") and being wrong would cost a lot, stop and propose a risk test: what to check, how long it takes, the pass mark, and when. The user only says yes or no; run it with `/risk-tests`.
-- **Read first:** the running system if there is one (step 1), `docs/01-discovery/04-prd.md` (journeys, glossary, non-functional requirements, open decisions), the money check in `03-product-brief.md`, the risk tests (`docs/01-discovery/risk-tests/`), and `docs/ideas.md` (the After-MVP High ideas). Ask only what is missing.
+- **Read first:** the running system if there is one (step 1), `docs/01-discovery/04-prd.md` (journeys, glossary, non-functional requirements, open decisions), the money check in `03-product-brief.md`, the risk tests (`docs/01-discovery/risk-tests/`), and `docs/00-project/ideas.md` (the After-MVP High ideas). Ask only what is missing.
 - **The user decides** at three points: the numbers (step 2), the shape of the system (step 5) and every ADR (step 14). You give the options and a recommendation; they choose. One decision at a time.
 - **No new requirements here.** If the design needs a requirement the PRD doesn't have (for example how much works offline), stop, propose it, and on a yes add it to the PRD with a journal line.
 - **Start with the fewest parts.** Every extra box is one more thing that fails, needs watching and costs money. A part is added only when a number asks for it.
@@ -142,12 +142,12 @@ Now, at the target and at 10×, per part, with today's prices from the providers
 - **AI: pick the model per kind of request,** the expensive one only where accuracy matters. When a risk test picks the model, write the rule for choosing before the test runs.
 
 ### 14. The big decisions become ADRs
-An ADR (Architecture Decision Record) is one short file per decision, in `docs/adr/`: context, the options, the decision, the consequences, when to revisit. Only one-way doors: the database, the hosting, the offline level, monolith or not, the AI provider. One at a time: you give the options and your recommendation, **the user chooses**. Note what each decision pulls along ("offline level 2 means deciding what happens when the same entry is changed on two devices").
+An ADR (Architecture Decision Record) is one short file per decision, in `docs/00-project/adr/`: context, the options, the decision, the consequences, when to revisit. Only one-way doors: the database, the hosting, the offline level, monolith or not, the AI provider. One at a time: you give the options and your recommendation, **the user chooses**. Note what each decision pulls along ("offline level 2 means deciding what happens when the same entry is changed on two devices").
 
 ### 15. Check it
 - every non-functional requirement has a mechanism in the design that covers it;
 - every PRD journey passes through the diagram;
-- the After-MVP High ideas in `docs/ideas.md` aren't blocked by the design (for example an import needs a background job and large uploads); don't build them, just don't close the door;
+- the After-MVP High ideas in `docs/00-project/ideas.md` aren't blocked by the design (for example an import needs a background job and large uploads); don't build them, just don't close the door;
 - someone outside reads the main flow and understands it. Nobody at hand? `/system-design validate <folder>`.
 
 Write as you go: each step's file once the user confirms it, with a journal line in the README.
@@ -159,7 +159,7 @@ docs/02-design/01-system-design/
   05-flows.md          06-data.md          07-failures.md  08-scale.md
   09-monitoring.md     10-deployment.md    11-providers.md 12-cost.md
   diagrams/            c4-context, c4-containers, one per flow, data, deployment (SVG)
-docs/adr/
+docs/00-project/adr/
   0001-[title].md …
 ```
 
@@ -205,7 +205,7 @@ Each topic file starts with `# NN – [Topic]` and a link back to the README, th
 | `11-providers.md` | `\| Need \| Provider \| Region \| DPA \| How I'd leave \|` |
 | `12-cost.md` | `\| Part \| Now \| Target \| 10× \|`; per paying user against the brief |
 
-And one file per decision in `docs/adr/NNNN-[title].md`:
+And one file per decision in `docs/00-project/adr/NNNN-[title].md`:
 
 ```markdown
 # ADR-NNNN: [Decision]
@@ -221,7 +221,7 @@ And one file per decision in `docs/adr/NNNN-[title].md`:
 
 ## Validate mode
 `/system-design validate <folder>`: judge an existing system design, change nothing.
-1. Read the design folder, its ADRs and the README's journal, the PRD, the brief's money check and `docs/ideas.md`.
+1. Read the design folder, its ADRs and the README's journal, the PRD, the brief's money check and `docs/00-project/ideas.md`.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask: does every number trace back to the PRD? Does the calculation justify every part beyond one API and one database? Does every dependency have a failure row? Does every non-functional requirement have a mechanism? Does the cost fit the brief? Is every one-way door an ADR? Is every term explained?
 4. Report: findings by severity, each with the line, what's wrong and what to change; then what the design does well; then what you couldn't evaluate. The user picks what to apply.

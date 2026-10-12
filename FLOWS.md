@@ -34,7 +34,7 @@ flowchart LR
 
 #### Start
 1. Run `/docs-setup` once: it decides where the documents live and writes the `Project documents:` line in `CLAUDE.md`.
-2. Write everything in your head into `docs/ideas.md`, in any form. No idea yet? Leave it empty.
+2. Write everything in your head into `docs/00-project/ideas.md`, in any form. No idea yet? Leave it empty.
 3. Run `/brainstorm`.
 
 #### The steps
@@ -50,7 +50,7 @@ flowchart LR
 | 05 | [Prototype](skills/prototype/SKILL.md) (optional) | `/prototype` | `04-prd.md`, `03-product-brief.md` | `05-prototype.md`, brief and PRD updated | pass, or fix and retest |
 | – | [Risk tests](skills/risk-tests/SKILL.md) (in parallel, from 03) | `/risk-tests` | `03-product-brief.md` | `risk-tests/` (an overview, one folder per test), brief updated | every risk in the brief has a result |
 
-All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
+All files are in `docs/01-discovery/`, except `docs/00-project/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
 
 ### Phase 2: Design
 
@@ -65,15 +65,18 @@ All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the do
 | 07 | Security | `/security` | what can be attacked (STRIDE) and how it's protected |
 | 08 | AI design | `/ai-design` | for products with AI: evals, prompts, limits, cost |
 
-Compliance comes right after System design: it needs the list of providers, and it changes the data model (consent records, retention), the API (export, deletion) and the screens (consent, minimum age). It runs again before launch, to check everything exists and works. 04–06 can run almost in parallel; 07–08 check what 01–06 decided. Every big decision in 01–03 becomes an ADR, in `docs/adr/`.
+Compliance comes right after System design: it needs the list of providers, and it changes the data model (consent records, retention), the API (export, deletion) and the screens (consent, minimum age). It runs again before launch, to check everything exists and works. 04–06 can run almost in parallel; 07–08 check what 01–06 decided. Every big decision in 01–03 becomes an ADR, in `docs/00-project/adr/`.
 
 ## Where the documents go
 
-`docs/` is wherever `/docs-setup` put it: a private docs repo, `docs/` in the code repo, or the team's existing place. The `Project documents:` line in `CLAUDE.md` points to it. Inside, one folder per phase, numbered in the order of the road; each step is numbered inside it, as a file, or as a folder when it has several files (a README is its entry). The decisions (ADRs) have one folder for the whole project, because they come from every phase:
+`docs/` is wherever `/docs-setup` put it: a private docs repo, `docs/` in the code repo, or the team's existing place. The `Project documents:` line in `CLAUDE.md` points to it. Inside, one folder per phase, numbered in the order of the road; each step is numbered inside it, as a file, or as a folder when it has several files (a README is its entry). What belongs to the whole project, not to one phase, sits in `00-project/`: the ideas and the decisions (ADRs), which come from every phase:
 
 ```
 docs/
-  ideas.md               your raw ideas, shaped in 00 Brainstorm, sorted in 04 PRD
+  00-project/
+    ideas.md             your raw ideas, shaped in 00 Brainstorm, sorted in 04 PRD
+    adr/                 the decisions that are hard to undo, from every phase
+      0001-database.md …
   01-discovery/
     00-brainstorm.md
     01-problem.md
@@ -90,8 +93,6 @@ docs/
       01-requirements.md … 12-cost.md
       diagrams/
     02-compliance …
-  adr/
-    0001-database.md …
 ```
 
 ## Extra clarifications
