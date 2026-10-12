@@ -1,7 +1,7 @@
 ---
 name: system-design
-description: "How the system runs. Requirements with numbers and the top 3 qualities, a back-of-the-envelope calculation, the context and container diagrams (C4), how much works offline, 2–3 flows traced end to end, where the data lives, what happens when each part fails, what breaks first at 10×, monitoring, deployment and CI/CD as decisions, the providers, the monthly cost, and the big choices as ADRs. Use after the PRD, as the first Design step, or at work before a new service or data flow. Also judges an existing design: /system-design validate <file>."
-argument-hint: "[the product or the change] or validate <file>"
+description: "How the system runs. Requirements with numbers and the top 3 qualities, a back-of-the-envelope calculation, the context and container diagrams (C4), how much works offline, 2–3 flows traced end to end, where the data lives, what happens when each part fails, what breaks first at 10×, monitoring, deployment and CI/CD as decisions, the providers, the monthly cost, and the big choices as ADRs. Writes a folder: a README (status, summary, what we skip, open questions) and one file per topic, with diagrams. Use after the PRD, as the first Design step, or at work before a new service or data flow. Also judges an existing design: /system-design validate <folder>."
+argument-hint: "[the product or the change] or validate <folder>"
 ---
 
 # System design
@@ -15,12 +15,14 @@ The PRD says what the product does. System design says how it runs: which parts 
 ## How to run it
 - **The bar:** do what a senior engineer or the CTO at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Teach while you go:** the user may be doing this for the first time. Every term gets one line on what it is and what it brings, compared with something they already know (a frontend developer knows `fetch` and JSON; system design is everything on the other side of that `fetch`). Show the full picture of the topic, then mark what this product needs.
-- **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder. Create `docs/02-design/` if it doesn't exist.
+- **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder. Write into `docs/02-design/01-system-design/` (one folder per Design step, numbered in the order of the road) and the ADRs into `docs/adr/` (decisions come from every phase); create them if they don't exist.
 - **Spot risky assumptions for the user:** when a decision rests on something nobody has checked ("the AI answers in 5 s", "the free tier is enough") and being wrong would cost a lot, stop and propose a risk test: what to check, how long it takes, the pass mark, and when. The user only says yes or no; run it with `/risk-tests`.
-- **Read first:** the running system if there is one (step 1), `docs/01-discovery/04-prd.md` (journeys, glossary, non-functional requirements, open decisions), the money check in `03-product-brief.md`, `risk-tests.md`, and `docs/ideas.md` (the After-MVP High ideas). Ask only what is missing.
+- **Read first:** the running system if there is one (step 1), `docs/01-discovery/04-prd.md` (journeys, glossary, non-functional requirements, open decisions), the money check in `03-product-brief.md`, the risk tests (`docs/01-discovery/risk-tests/`), and `docs/ideas.md` (the After-MVP High ideas). Ask only what is missing.
 - **The user decides** at three points: the numbers (step 2), the shape of the system (step 5) and every ADR (step 14). You give the options and a recommendation; they choose. One decision at a time.
 - **No new requirements here.** If the design needs a requirement the PRD doesn't have (for example how much works offline), stop, propose it, and on a yes add it to the PRD with a journal line.
 - **Start with the fewest parts.** Every extra box is one more thing that fails, needs watching and costs money. A part is added only when a number asks for it.
+- **Diagrams as SVG files** in `diagrams/`, in the C4 notation: each box with its name, type and technology; people dark blue, the system's containers blue, outside systems grey; the system's border dashed; a title and a legend. Number the arrows and explain them in a table under the diagram. Not Mermaid in chat (the arrows get lost). Open each one in a browser before committing: no text overlaps.
+- **Security has its own step** (07 Security, `/security`): it needs the API and the data model, which come later. Here, only the mechanisms the other steps need (for example a webhook's signature, a daily AI cap); the README points to 07.
 
 ## The building blocks
 Use this list at steps 4–5 and 9. Name only the parts this system needs; explain each one you name.
@@ -78,10 +80,10 @@ Journeys, glossary, non-functional requirements and open decisions from the PRD;
 Storage per year, peak requests, AI calls per day and their cost, photo traffic. Write the calculation, not only the result: "300 users × 20 entries a day = 6,000 writes a day, about 0.07 per second; one small server is plenty." Without it, a cache or a queue is a guess.
 
 ### 4. Context (C4, level 1)
-C4 draws the system at zoom levels, like a map: level 1 shows the system as one box and the world around it, level 2 opens the box. Here: who uses the system and which outside systems it talks to (payments, email, AI, data sources). A Mermaid diagram.
+C4 draws the system at zoom levels, like a map: level 1 shows the system as one box and the world around it, level 2 opens the box. Here: who uses the system and which outside systems it talks to (payments, email, AI, data sources). A diagram, with the relationship table under it.
 
 ### 5. Containers (C4, level 2)
-The parts deployed separately and how they talk (HTTP, a queue, a database connection). A Mermaid diagram.
+The parts deployed separately and how they talk (HTTP, a queue, a database connection). A diagram, with the relationship table under it.
 - **Default: one API and one database** (a monolith), until a number asks for more.
 - **How the app reaches people:** static files (PWA, SPA) or a server that renders pages (SSR). It changes the hosting.
 - **How much works offline**, a one-way door:
@@ -98,10 +100,12 @@ The 2–3 most important and most risky actions (for example: log a food; scan a
 - what must be correct at once (payment, the account) and what can be correct a little later (sync, statistics);
 - the offline path, if the flow works offline.
 
+Draw each flow as a **C4 dynamic diagram**: the parts on top, the numbered steps below in order, like a film of one request; the numbers match the table.
+
 These flows become the end-to-end tests; the rest of the testing strategy is decided in `/architecture`.
 
 ### 7. The data
-Where each kind of data lives, which copy is the source of truth (the server, or the phone until sync), what is sensitive (health data, payments), how it's backed up and where the backup copy lives. Details of tables and fields → `/data-model`.
+Where each kind of data lives, which copy is the source of truth (the server, or the phone until sync), what is sensitive (health data, payments), how it's backed up and where the backup copy lives (3-2-1: 3 copies, on 2 kinds of storage, 1 at another company). A diagram of where the data and its copies live. Details of tables and fields → `/data-model`.
 
 ### 8. What happens when something fails
 A table with every dependency (the database, the AI, payments, email, the server itself) × slow, down, returns garbage: timeout, retry, fallback, what the user sees.
@@ -126,63 +130,82 @@ The implementation comes in Build, with `project-setup`.
 - **Environments:** local, staging (a copy of production to check before release; yes or no, and why), production.
 - **The pipeline:** lint, tests, one build, deploy from `main`. Preview deploys per PR if the hosting offers them.
 - **Database migrations** (changes to the structure) that run before the new code, **rollback** in minutes (back to the previous version), secrets outside the code, a backup with a tested restore.
+- A diagram of the road from a push to production, with the rollback.
 
 ### 12. Providers
 For each need (hosting, database, AI, payments, email, login, monitoring), pick one against the PRD's requirements: region, data processing agreement (DPA), no training on your data, price, and **how you'd leave** if you had to (put it behind one interface in the code). Build or buy: build only what makes the product different. The list feeds `/compliance`. A provider that depends on a risk test (for example the AI) is chosen after the test.
 
 ### 13. Monthly cost
-Now, at the target and at 10×, per part. Cost per user compared with the money check in the brief. If the margin doesn't hold, go back to the brief.
+Now, at the target and at 10×, per part, with today's prices from the providers' official pages. Cost per paying user compared with the money check in the brief. If the margin doesn't hold, go back to the brief.
+- **Divide by the paying users,** not all users: people in a trial cost without paying.
+- **The expensive parts start when other people's data arrives** (the beta), not on day one: while only the builder uses it, a cheaper setup carries the same risk. Write the rule ("before the first beta tester") and what you accept until then.
+- **AI: pick the model per kind of request,** the expensive one only where accuracy matters. When a risk test picks the model, write the rule for choosing before the test runs.
 
 ### 14. The big decisions become ADRs
-An ADR (Architecture Decision Record) is one short file per decision: context, the options, the decision, the consequences, when to revisit. Only one-way doors: the database, the hosting, the offline level, monolith or not, the AI provider. One at a time: you give the options and your recommendation, **the user chooses**. Note what each decision pulls along ("offline level 2 means deciding what happens when the same entry is changed on two devices").
+An ADR (Architecture Decision Record) is one short file per decision, in `docs/adr/`: context, the options, the decision, the consequences, when to revisit. Only one-way doors: the database, the hosting, the offline level, monolith or not, the AI provider. One at a time: you give the options and your recommendation, **the user chooses**. Note what each decision pulls along ("offline level 2 means deciding what happens when the same entry is changed on two devices").
 
 ### 15. Check it
 - every non-functional requirement has a mechanism in the design that covers it;
 - every PRD journey passes through the diagram;
 - the After-MVP High ideas in `docs/ideas.md` aren't blocked by the design (for example an import needs a background job and large uploads); don't build them, just don't close the door;
-- someone outside reads the main flow and understands it. Nobody at hand? `/system-design validate <file>`.
+- someone outside reads the main flow and understands it. Nobody at hand? `/system-design validate <folder>`.
 
-Then write `docs/02-design/01-system-design.md`:
+Write as you go: each step's file once the user confirms it, with a journal line in the README.
+
+```
+docs/02-design/01-system-design/
+  README.md            the entry: status, summary, files, what we skip, open questions, ADRs, glossary, journal
+  01-requirements.md   02-calculation.md   03-context.md   04-containers.md
+  05-flows.md          06-data.md          07-failures.md  08-scale.md
+  09-monitoring.md     10-deployment.md    11-providers.md 12-cost.md
+  diagrams/            c4-context, c4-containers, one per flow, data, deployment (SVG)
+docs/adr/
+  0001-[title].md …
+```
+
+The README:
 
 ````markdown
-# 01 – System design
-## Requirements
-**Main jobs:** …
-| Quality | Number | Source (PRD line) |
-**Top 3:** … > … > …
-## Calculation
-## Context (C4 level 1)
-```mermaid
-```
-## Containers (C4 level 2)
-```mermaid
-```
-**Offline level:** …
-## Flows
-### [Action]
-| # | Where | What happens |
-## Data
-| Data | Lives in | Source of truth | Sensitive | Backup |
-## When something fails
-| Dependency | Slow | Down | Garbage | What the user sees |
-**Single points of failure:** …
-## Scale
-| At | What breaks | What I do | Trigger number |
-## Monitoring
-## Deployment and CI/CD
-## Providers
-| Need | Provider | Region | DPA | How I'd leave |
-## Monthly cost
-| Part | Now | Target | 10× |
-## Decisions
-- [ADR-0001](adr/0001-[title].md): …
+# System design – [Product]
+| | |
+|---|---|
+| **Status** | draft / confirmed by [who], [date] |
+| **Author** | |
+| **Updated** | |
+| **Next** | 02 Compliance |
+## In one page
+What it is, the top 3 qualities, the shape, the safety nets, the cost: 5–6 lines.
+## The files
+| File | What it answers |
+## Not doing, and why
+| Not doing | Why | It comes back when |
+## Open questions
+| Question | Answered by | When |
+## Decisions (ADRs)
+| ADR | Decision |
 ## Glossary
 - **Term:** what it is, compared with something the reader already knows
 ## Journal
 - [date]: [what was decided, by whom, what it changed]
 ````
 
-And one file per decision in `docs/02-design/adr/NNNN-[title].md`:
+Each topic file starts with `# NN – [Topic]` and a link back to the README, then:
+
+| File | Holds |
+|---|---|
+| `01-requirements.md` | main jobs; `\| Quality \| Number \| Source (PRD line) \|`; top 3 |
+| `02-calculation.md` | the calculation, written out |
+| `03-context.md`, `04-containers.md` | the diagram, `\| # \| From → to \| What \| How \|`; the offline level in 04 |
+| `05-flows.md` | per flow: the dynamic diagram, `\| # \| Where \| What happens \|`, immediate vs later, offline path |
+| `06-data.md` | the diagram, `\| Data \| Lives in \| Source of truth \| Sensitive \| Backup \|` |
+| `07-failures.md` | `\| Dependency \| Slow \| Down \| Garbage \| What the user sees \|`; single points of failure; idempotency |
+| `08-scale.md` | `\| What breaks first \| At \| Trigger number \| What I do \|`; doors kept open |
+| `09-monitoring.md` | logs, golden signals, alerts with what to do, SLO |
+| `10-deployment.md` | the diagram, the steps, keep or change, decisions |
+| `11-providers.md` | `\| Need \| Provider \| Region \| DPA \| How I'd leave \|` |
+| `12-cost.md` | `\| Part \| Now \| Target \| 10× \|`; per paying user against the brief |
+
+And one file per decision in `docs/adr/NNNN-[title].md`:
 
 ```markdown
 # ADR-NNNN: [Decision]
@@ -197,8 +220,8 @@ And one file per decision in `docs/02-design/adr/NNNN-[title].md`:
 ```
 
 ## Validate mode
-`/system-design validate <file>`: judge an existing system design, change nothing.
-1. Read the design, its ADRs and journal, the PRD, the brief's money check and `docs/ideas.md`.
+`/system-design validate <folder>`: judge an existing system design, change nothing.
+1. Read the design folder, its ADRs and the README's journal, the PRD, the brief's money check and `docs/ideas.md`.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask: does every number trace back to the PRD? Does the calculation justify every part beyond one API and one database? Does every dependency have a failure row? Does every non-functional requirement have a mechanism? Does the cost fit the brief? Is every one-way door an ADR? Is every term explained?
 4. Report: findings by severity, each with the line, what's wrong and what to change; then what the design does well; then what you couldn't evaluate. The user picks what to apply.
@@ -225,17 +248,19 @@ Before a new service or data flow, write a one-page design doc: requirements wit
 - [ ] requirements with numbers, the top 3 qualities in order, confirmed by the user
 - [ ] the calculation written out
 - [ ] the context and container diagrams, the offline level, the shape confirmed by the user
-- [ ] 2–3 flows traced end to end, with what's immediate and what's later
-- [ ] the data: where it lives, source of truth, sensitive data, backups
+- [ ] 2–3 flows traced end to end, with what's immediate and what's later, each with a dynamic diagram
+- [ ] the data: where it lives, source of truth, sensitive data, backups, with a diagram
 - [ ] a failure row for every dependency, single points of failure, idempotency
 - [ ] what breaks at 10× and 100×, with trigger numbers
 - [ ] monitoring, alerts tied to the SLO, budget alerts
-- [ ] deployment and CI/CD decided
+- [ ] deployment and CI/CD decided, with a diagram of the road to production
 - [ ] providers chosen against the requirements, with a way to leave
-- [ ] monthly cost at three sizes, compared with the brief
+- [ ] monthly cost at three sizes, per paying user, compared with the brief; when the expensive parts start
 - [ ] every one-way door an ADR, chosen by the user
 - [ ] checked against the requirements, the journeys and the High ideas
 - [ ] a glossary for every term
+- [ ] the README: status, summary, what we skip and why, open questions, the ADR table
+- [ ] every diagram opened in a browser, no text overlapping
 
 ## Next
 Compliance (`/compliance`): it takes the list of providers and the data locations from here.

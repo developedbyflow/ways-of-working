@@ -48,7 +48,7 @@ flowchart LR
 | 03 | [Product brief](skills/product-brief/SKILL.md) | `/product-brief` | `01`, `02`, `ideas.md` | `03-product-brief.md` | go, go with conditions, change or stop |
 | 04 | [PRD](skills/prd/SKILL.md) | `/prd` | everything above | `04-prd.md`, `ideas.md` (sorted) | ready for delivery |
 | 05 | [Prototype](skills/prototype/SKILL.md) (optional) | `/prototype` | `04-prd.md`, `03-product-brief.md` | `05-prototype.md`, brief and PRD updated | pass, or fix and retest |
-| – | [Risk tests](skills/risk-tests/SKILL.md) (in parallel, from 03) | `/risk-tests` | `03-product-brief.md` | `risk-tests.md`, brief updated | every risk in the brief has a result |
+| – | [Risk tests](skills/risk-tests/SKILL.md) (in parallel, from 03) | `/risk-tests` | `03-product-brief.md` | `risk-tests/` (an overview, one folder per test), brief updated | every risk in the brief has a result |
 
 All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the documents folder from the `Project documents:` line in `CLAUDE.md`.
 
@@ -65,11 +65,11 @@ All files are in `docs/01-discovery/`, except `docs/ideas.md`. `docs/` is the do
 | 07 | Security | `/security` | what can be attacked (STRIDE) and how it's protected |
 | 08 | AI design | `/ai-design` | for products with AI: evals, prompts, limits, cost |
 
-Compliance comes right after System design: it needs the list of providers, and it changes the data model (consent records, retention), the API (export, deletion) and the screens (consent, minimum age). It runs again before launch, to check everything exists and works. 04–06 can run almost in parallel; 07–08 check what 01–06 decided. Every big decision in 01–03 becomes an ADR.
+Compliance comes right after System design: it needs the list of providers, and it changes the data model (consent records, retention), the API (export, deletion) and the screens (consent, minimum age). It runs again before launch, to check everything exists and works. 04–06 can run almost in parallel; 07–08 check what 01–06 decided. Every big decision in 01–03 becomes an ADR, in `docs/adr/`.
 
 ## Where the documents go
 
-`docs/` is wherever `/docs-setup` put it: a private docs repo, `docs/` in the code repo, or the team's existing place. The `Project documents:` line in `CLAUDE.md` points to it. Inside, one folder per phase, numbered in the order of the road; each step's file is numbered inside it:
+`docs/` is wherever `/docs-setup` put it: a private docs repo, `docs/` in the code repo, or the team's existing place. The `Project documents:` line in `CLAUDE.md` points to it. Inside, one folder per phase, numbered in the order of the road; each step is numbered inside it, as a file, or as a folder when it has several files (a README is its entry). The decisions (ADRs) have one folder for the whole project, because they come from every phase:
 
 ```
 docs/
@@ -81,7 +81,17 @@ docs/
     03-product-brief.md
     04-prd.md
     05-prototype.md
-    risk-tests.md
+    risk-tests/
+      README.md          every risk: pass mark, when, status
+      ai-plate-scan/     one folder per test: README, scripts, raw data
+  02-design/
+    01-system-design/
+      README.md          status, summary, what we skip, open questions, ADRs, glossary, journal
+      01-requirements.md … 12-cost.md
+      diagrams/
+    02-compliance …
+  adr/
+    0001-database.md …
 ```
 
 ## Extra clarifications

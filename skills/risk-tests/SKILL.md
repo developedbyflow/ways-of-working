@@ -1,7 +1,7 @@
 ---
 name: risk-tests
-description: "A tool for every phase: test a risky assumption before building on it. In Discovery, the risks from the product brief; in Delivery, a technical unknown (a spike, a load test); after launch, a channel or a price (an experiment). Pick the riskiest, write the hypothesis with the pass mark set in the brief, choose the cheapest test that answers it (signup page, fake door, spike on real data, waitlist, price page, cost check), run it, compare with the pass mark, decide, and update the brief. Use whenever the next step depends on an unchecked assumption. Also judges an existing test: /risk-tests validate <file>."
-argument-hint: "[the risk to test] or validate <file>"
+description: "A tool for every phase: test a risky assumption before building on it. In Discovery, the risks from the product brief; in Delivery, a technical unknown (a spike, a load test); after launch, a channel or a price (an experiment). Pick the riskiest, write the hypothesis with the pass mark set in the brief, choose the cheapest test that answers it (signup page, fake door, spike on real data, waitlist, price page, cost check), run it, compare with the pass mark, decide, and update the brief. Use whenever the next step depends on an unchecked assumption. Also judges existing tests: /risk-tests validate <folder>."
+argument-hint: "[the risk to test] or validate <folder>"
 ---
 
 # Risk tests (any phase)
@@ -30,7 +30,7 @@ The brief writes the tests; this step runs them honestly and decides from them. 
 ## How to run it
 - **The bar:** do what a senior engineer or the C-level who owns this area (CEO, CPO, CTO, CFO, CMO, COO) at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Senior also means knowing what to leave out: say what you skip and why.
 - **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Every `docs/…` path below means that folder.
-- **Read first:** where the risk comes from (the brief's risk table and journal in Discovery, the architecture's open questions in Delivery) and `docs/01-discovery/risk-tests.md` if it exists. Product risks from the brief are recorded there; later phases record their tests in their own folder (`docs/02-delivery/risk-tests.md`…).
+- **Read first:** where the risk comes from (the brief's risk table and journal in Discovery, the architecture's open questions in Delivery) and `docs/01-discovery/risk-tests/` if it exists. Product risks from the brief are recorded there; a later phase records its tests in a `risk-tests/` folder inside its own phase folder.
 - **One test at a time.** The user runs it; you help design it and read the result.
 - **The pass mark never moves after the result.** If it was wrong, say so in the journal and set a new one for the next test.
 - **Nothing outside this machine without the user:** no page published, no email sent, no money taken.
@@ -81,22 +81,45 @@ Keep, change (the person, the feature, the price) or stop. Then:
 ### 7. The next test
 Back to step 1 until every risk in the brief has a result.
 
-Then add a section to `docs/01-discovery/risk-tests.md`:
+Write into `docs/01-discovery/risk-tests/`:
+
+```
+risk-tests/
+  README.md          the overview: every risk from the brief, its pass mark, when, its status
+  ai-plate-scan/     one folder per test, named after the risk (no number: tests run in parallel)
+    README.md        the test
+    …                its scripts and raw data, next to it
+```
+
+A risk gets its folder when its test starts; until then it's a row in the overview, and the brief holds its method.
+
+The overview, `risk-tests/README.md`:
 
 ```markdown
 # Risk tests
-## [Risk] – [type]
+| Risk | Type | Pass if | When | Status |
+|---|---|---|---|---|
+| [risk, linked to its folder](folder/README.md) | value / usability / feasibility / viability | the brief's pass mark | the brief's "When" | not started / running / pass / fail / unclear |
+```
+
+Each test, `risk-tests/[risk]/README.md`:
+
+```markdown
+# [Risk] – [type]
+Part of the [risk tests](../README.md).
 **Hypothesis:** We believe … We'll know it's true if … by …
 **Test:** what, where, how many people or samples
+**Unclear if:** …
+**How to run it:** the steps, the scripts in this folder
 **Ran:** [dates]
-**Raw data:** [table or link]
+**Raw data:** [the files in this folder]
 **Result:** pass / fail / unclear, [the number] against [the pass mark]
 **Decision:** keep / change / stop, because …; brief updated on [date]
 ```
 
 ## Validate mode
-`/risk-tests validate <file>`: judge existing risk tests, change nothing.
-1. Read the file and the brief's risk table and journal.
+`/risk-tests validate <folder>`: judge existing risk tests, change nothing.
+1. Read the overview, every test folder, and the brief's risk table and journal.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask: does every pass mark match the one in the brief, set before the test? Was the riskiest risk tested first, or the easiest? Is the raw data there, so someone else could check the result? Is any "unclear" read as a pass? Did the brief and the PRD change where a result says they should?
 4. Report: findings by severity, each with the line, what's wrong and what to change; then what the tests do well; then what you couldn't evaluate. The user picks what to apply.
@@ -118,7 +141,7 @@ Test the riskiest assumption with the cheapest test that answers it (Lean Startu
 When a project rests on a big assumption ("customers will use this", "the API can take the load"), propose a small test with a pass mark before the build sprint.
 
 ## Done when
-- [ ] every risk in the brief has a test section, riskiest first
+- [ ] every risk in the brief is a row in the overview; each test that started has its own folder, riskiest first
 - [ ] each one has the hypothesis, the pass mark from the brief, the raw data and the result
 - [ ] each one has a decision, and the brief's table and journal are updated
 - [ ] what changed in the product is in the PRD, with a journal line
