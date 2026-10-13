@@ -21,15 +21,17 @@ Architecture decides **how the code is organized**: the modules and their bounda
 ## How to run it
 - **The bar:** do what a senior engineer or the CTO at a well-run company would accept, in the simplest form that meets it. Use the real industry method and name it, so the user learns it. Say what you leave out and why.
 - **Teach while you go:** the user may be doing this for the first time. Every term gets one line on what it is and what it brings, compared with something a frontend developer already knows: folders by type (`components/`, `hooks/`) or by feature (`features/journal/`) is already an architecture choice; a component that calls a hook that calls the API client is already layers; server data in TanStack Query and screen state in `useState` are already kinds of state, each with its place. Show the full picture of the topic, then mark what this product needs.
-- **One step per message.** Show a step, wait for the user's OK, then the next, even when the step isn't a decision.
+- **One step per message, and big steps in chunks.** Show a step, wait for the user's OK, then the next. Steps 4–11 are big: cut each into chunks (one sub-topic per message), **count the chunks before announcing them** and say so if the count changes; save and commit each chunk once it's confirmed.
+- **Ask only when there's a real choice.** When all the arguments point one way and no realistic alternative fits, write the chunk as decided, with its arguments, and move on to the next real choice; asking "confirm?" on a foregone conclusion wastes the user's attention. Ask when there are at least two options they could reasonably pick, and once they've chosen, the choice is final: no "private now, public later".
+- **Every number and every convention with its argument:** a known standard (named, its official page checked on the web), a target set earlier (cited), or a guess marked `[ASSUMPTION]`. For a convention or a tool, an argument card: why; the main alternative and who uses it; when the alternative is better; what someone may answer, and the reply; the source. When the industry is split, name the camps.
 - **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, use `docs/` in the current folder. Write into `docs/02-design/03-architecture/` and the ADRs into `docs/00-project/adr/`; create them if they don't exist.
 - **Read first:** the PRD (`docs/01-discovery/04-prd.md`: features, journeys, glossary, non-functional requirements, the build order), the system design (`docs/02-design/01-system-design/`: containers, flows, failures, the doors left open at scale, providers, the questions marked "03 Architecture"), the compliance folder (`docs/02-design/02-compliance/`: the new requirements), the ADRs, and the After-MVP High ideas in `docs/00-project/ideas.md`. Ask only what's missing.
 - **Existing code is a source of facts, not a model.** Read it for what it does, what data it holds, which frameworks it uses and where it hurts. A style doesn't become a rule because it's there, least of all in code written in a hurry or by AI without rules. Keep only what passes this step's criteria.
 - **The targets come from earlier; this step picks the mechanism.** The functional and non-functional requirements live in the PRD, and the system design put numbers on them. Don't set new targets or rank the qualities again: for each requirement, decide how the code meets it and how that's checked automatically. Add only the qualities the user never sees (ease of change, compatibility between versions, documentation). If a need of the user shows up that the PRD doesn't have, stop, propose it, and on a yes add it to the PRD with a journal line.
 - **The user decides** keep, change or rewrite for existing code (step 1), the modules (step 2), the inside of a module (step 3), the stack (step 7), the testing strategy (step 9) and every ADR (step 12). You give the options and a recommendation; they choose. One decision at a time.
 - **The simplest structure that holds the boundaries.** Modules by feature, in one service; layers and interfaces only where they bring something (a rule tested without the database, a provider you may swap), not everywhere. Every extra layer is one more file for every new feature, forever.
-- **Check versions on the official pages,** not from memory: the current version, when its support ends, its licence.
-- **Diagrams as SVG files** in `diagrams/`, in the C4 notation, like the system design's: each box with its name, type and technology; the container's border dashed; a title and a legend; numbered arrows explained in a table under the diagram. Open each one in a browser before committing: no text overlaps.
+- **Check versions on the official pages,** not from memory: the current version, when its support ends, its licence; and whether a tool is still maintained (its repository archived? its last release?), and whether it works with the versions of the rest of the stack.
+- **Diagrams as SVG files** in `diagrams/`, in the C4 notation, like the system design's: each box with its name, type and technology; the container's border dashed; a title and a legend; numbered arrows explained in a table under the diagram. Open each one before committing: no text overlaps. When a later decision renames something drawn (a platform, a technology), fix the old diagrams too and check the new text still fits its box.
 - **What isn't here:** the exact tables (04 Data model), the endpoints (05 API design), the screens (06 UI design), threats and security tests (07 Security), AI evals (08 AI design). Deployment, environments, CI/CD and monitoring were decided in the system design and are built in Build; this step only adds its own checks to the pipeline. The test plan for each feature is written per slice, in Planning and Build; here it's the strategy.
 
 ## Which level a decision belongs to
@@ -81,7 +83,16 @@ Use this at step 4. The target comes from the PRD or the system design; the arch
 Security has its own step (07); logs are in the shared rules (step 5).
 
 ## The testing levels
-Use this at step 9. Two known shapes: the **pyramid** (many unit tests, few end-to-end) and the **trophy** (Kent C. Dodds: most tests at integration, where most bugs show up). The common rule: most tests where the risk is and where they're cheap.
+Use this at step 9. The known shapes, so the user can name them at work:
+
+| Shape | From | What it says |
+|---|---|---|
+| Pyramid | Mike Cohn (2009); Ham Vocke on martinfowler.com (2018) | many small tests, few end-to-end; "push your tests as far down as you can"; Google's rough guide: 80% small, 15% integration, 5% end-to-end |
+| Trophy | Kent C. Dodds (2018) | static checks at the base, most tests at integration, where pieces meet |
+| Honeycomb | Spotify (2018) | for microservices: most tests at the service's boundary |
+| Anti-patterns | *Software Engineering at Google* | the ice-cream cone (mostly end-to-end) and the hourglass (nothing in the middle) |
+
+Pick the shape **per part, by where the risk is** (often the pyramid for pure rules and the trophy for endpoints and screens), and no percentages: each bug at the lowest level that can catch it.
 
 | Level | What it checks | How many |
 |---|---|---|
@@ -92,6 +103,7 @@ Use this at step 9. Two known shapes: the **pyramid** (many unit tests, few end-
 | End-to-end | a simulated person: browser, API, database, like production; slow and brittle, so few | the 2–3 flows from the system design |
 | Accessibility | automatic checks on every screen (axe), plus a manual pass with a screen reader | every screen |
 | Architecture | the boundaries: who may use whom (fitness functions) | a few rules, in CI |
+| Guard tests | one parametrized test that runs over **every** endpoint or table: no endpoint without an access rule, 404 on someone else's data, one error format, every table with personal data covered by export and deletion, the query count per request | a handful that cover everything, new code included |
 | Performance | response time and size under load | when a number in the PRD or the system design asks for it |
 | Property-based and mutation | the first generates thousands of random inputs and checks a rule that must always hold; the second breaks the code on purpose and checks that the tests notice | on the critical rules |
 | Smoke, after deploy | a few quick checks that production answers after each release | one per deploy |
@@ -129,7 +141,9 @@ For every requirement that becomes code, pick the module, the mechanism and **th
 
 The target doesn't change here. A missing requirement or a new need of the user (for example weights in pounds for users in the US) is proposed, and on a yes it goes into the PRD with a journal line.
 
-**Personal data, as a rule of every module:** every module that holds personal data can export it and delete it for one person, and a test fails when a new table with personal data isn't covered. Otherwise the export falls behind at the first new table.
+**Personal data, as a rule of every module:** every module that holds personal data can export it and delete it for one person, and a test fails when a new table with personal data isn't covered. Otherwise the export falls behind at the first new table. Define how the test recognises such a table (a column naming rule), and give the deletion test **the list of rows the law requires to keep** (proof of consent, the deleted account's id for re-deletion after a restore, shared items), or it fails by design or deletes what must stay.
+
+Also give a row and a check to availability and backups (measured, not tested: uptime; the restore drill, timed), and to every outside provider's callbacks (webhooks such as payments and email bounces).
 
 ### 5. The rules every module follows
 One rule, written once, for:
@@ -155,33 +169,47 @@ One rule, written once, for:
 ### 7. Languages, frameworks and tools
 For each need (the language, the API framework, database access and migrations, login, validation, jobs, the app framework, routing, state, offline storage, UI components, languages, tests) and for the tools (build, lint, formatting, CI, automatic dependency updates): the choice, why, the version and when its support ends, the licence, **when to revisit**.
 
-Choose by: the user or the team knows it; mature, with long-term support; the community, the docs and how well AI agents know it; the licence; how hard it is to leave. **Boring technology** (Dan McKinley, "Choose Boring Technology"): you have only a few innovation tokens; spend them where the product is different. What runs today is one option, with its cost of change, not the starting point. **The user decides.**
+Include the categories easily forgotten: **code quality platforms** (SonarQube, Codacy, Qodana) and **AI code review** (CodeRabbit, Copilot, Claude Code's `/code-review` in a new session); for each, check the free plan against the repository's visibility (several are free only for public code) and say whether it's a **gate** (stops the code) or a **signal** (reports, a person decides); a gate whose rules can't be changed (for example a fixed coverage threshold) becomes a signal. The git hooks tool. For the app, **the size of each library actually used**, added up against the size budget of step 6, with the way back if it's passed.
+
+Choose by: the user or the team knows it (when the project is also learning for a job, what that job uses counts); mature, with long-term support; the community, the docs and how well AI agents know it; the licence; how hard it is to leave. **Boring technology** (Dan McKinley, "Choose Boring Technology"): you have only a few innovation tokens; spend them where the product is different. What runs today is one option, with its cost of change, not the starting point. Every row gets a real **revisit condition**, not "updates proposed automatically" (that's how updates arrive, not when to reconsider); a default rule for the small libraries is fine (12 months without a release, a licence change, the end of support). **The user decides.**
 
 ### 8. Conventions and code standards
 Names (tables, columns, JSON fields, files, routes), the error and date formats, where tests live, commit messages, and what's forbidden (for example a module writing to another module's tables). Short, each with an example, so an AI agent can follow them; in Build they go into the code repo's `CLAUDE.md`. Small style (spaces, quotes) isn't discussed: the formatter decides it. Whatever can be checked automatically (lint, formatting, architecture tests) becomes a check in CI.
+
+**Code standards per language,** complete, by area, not a handful of rules: for the app (types, components, hooks and effects, data, forms, styles, accessibility, languages, errors, performance, security, offline, tests) and for the server (types and null, dependency injection, transactions, data access, validation, errors, logs, time, tests). Each rule with why and what checks it (a tool, a test, or review). Check every example against the framework's real behaviour (a name mapping that adds no `_` before a digit breaks at start). The list of what's forbidden says how each item is caught, and a rule "caught by a test" must name a check that can really see it (a boundary test sees Java types, not the text of SQL).
 
 ### 9. The testing strategy
 For each level in the table above: what's tested there, with which tool, how many.
 - the 2–3 flows from the system design become the end-to-end tests;
 - **each of the system design's top 3 qualities gets a test** (for example "data is never lost" → sync tests with duplicate requests, out of order, offline);
-- providers: fakes in the integration tests, their test mode end to end;
-- what runs on every PR (fast, under about 10 minutes) and what runs nightly;
-- coverage (the share of code the tests reach) is a signal, not a target;
+- **where the component tests run** (a simulated browser such as jsdom, or a real one such as Vitest Browser Mode): a decision when the app uses offline storage, focus or layout;
+- **each outside provider, in a table:** its fake in the tests, in end-to-end, and when the real one is checked; "only mock types that you own" (a fake of your interface, HTTP fakes only for the adapter); check the fake tools are still maintained;
+- "data is never lost" also needs **the backup restore test** (a backup actually restored, monthly) and **the rollback test** (the previous version on the migrated database); check each tool's limits (Playwright runs service workers on Chromium only);
+- what runs on every PR (fast, under about 10 minutes, Fowler's ten-minute build) and what runs later; with a private repository, **count the CI minutes** against the free allowance;
+- **flaky tests:** how many retries, when one is quarantined, which levels are never retried;
+- coverage (the share of code the tests reach) is a signal, not a target; mutation tests on the critical rules, after checking the tool runs on this version of the test framework;
 - what isn't tested, and why.
 
 It's the strategy, not the plan: the tests for each feature are written per slice, in Planning and Build. **The user decides.** AI evals are in 08, security tests in 07.
 
 ### 10. The repo and the local start
-One repo for the API and the app (a monorepo) or several; the folder tree; each PRD feature → its module and folder, so each slice in Planning knows where it writes; one command that starts everything locally, with test data; what runs before a commit.
+- one repo for the API and the app (a monorepo) or several;
+- **public or private**, decided once, with the real costs (branch protection, secret scanning and CI minutes differ by visibility and plan) and the user's fears answered (leaked secrets are the real risk of a public repository);
+- the build's shape (one project or several sub-projects), and the meanings of "module" that collide at work;
+- the folder tree; each PRD feature → its module and folder, so each slice in Planning knows where it writes; a feature that lands in three modules is noted as several features;
+- one command that starts everything locally, with **invented** test data (seeded through the modules' doors, never real personal data) and the providers faked by default; one file of local services shared with the end-to-end tests;
+- what runs before a commit and before a push; for AI agents, a hook that blocks a push to `main` and skipping the hooks (an instruction alone isn't enough);
+- the code repo's `CLAUDE.md` under 200 lines, the rules per language in path-scoped files.
 
 ### 11. Documentation and technical debt
 - where decisions and explanations live: the ADRs, the READMEs, comments only for "why";
-- how a shortcut taken on purpose is recorded (what, why, when it gets fixed), so it isn't lost;
-- how often the frameworks and libraries are upgraded (for example to each long-term-support version);
-- who reads the documentation: a new person, or an AI agent that must understand the code without its author.
+- the module map **generated from the code** where the framework can (Spring Modulith's Documenter), compared with the drawing at each slice end;
+- how a shortcut taken on purpose is recorded (what, why, cost, when it gets fixed): Fowler's debt quadrant, only prudent deliberate debt logged, in the same list as the planned work; `TODO(ID)` in the code, a bare `TODO` fails CI;
+- **an upgrade calendar** gathered from step 7's revisit column, with the next dates;
+- who reads the documentation: a new person, or an AI agent that must understand the code without its author; the test: a new AI session, given only the repositories, starts the app and adds a field end to end.
 
 ### 12. The big decisions become ADRs
-Only one-way doors: the style, the language and framework of the API and of the app, maybe how the tests reach the database. One at a time: you give the options and your recommendation, **the user chooses**. Note what each decision pulls along. **After each ADR, re-read the earlier files it changes.**
+Only one-way doors: the style, the language and framework of the API and of the app, maybe how the tests reach the database. First propose the list, with **what doesn't get an ADR and why** (two-way doors live in the topic files). When the decisions were already taken in the steps, write the ADRs and give them to the user to check together. Otherwise one at a time: you give the options and your recommendation, **the user chooses**. Note what each decision pulls along. **After each ADR, re-read the earlier files it changes,** the system design and its diagrams included.
 
 ### 13. Check it
 - every MVP feature has a module; every table has one owner module; no cycles;
@@ -189,7 +217,9 @@ Only one-way doors: the style, the language and framework of the API and of the 
 - every non-functional requirement in the PRD and every requirement from the system design and compliance has a mechanism and a check;
 - each of the top 3 qualities has a test; the flows are the end-to-end tests;
 - every convention has an example;
-- someone outside knows where they'd put a High idea. Nobody at hand? `/architecture validate <folder>`.
+- someone outside knows where they'd put a High idea.
+
+Run the check with a **separate agent** that has only the documents (`/architecture validate <folder>`), then verify its findings before showing them: it can be wrong. Look especially for **contradictions left by a changed decision** (the journal says one thing, an older file another), **words left from an abandoned platform** (a framework's own concepts that the new one doesn't have), paths and examples that disagree, and terms missing from the glossary.
 
 Write as you go: each step's file once the user confirms it, with a journal line in the README. At the end, set this step's row in `docs/02-design/README.md` (the map of the Design steps) to done, with the date, and link the folder.
 
@@ -252,7 +282,7 @@ And one file per decision in `docs/00-project/adr/NNNN-[title].md`, with the sam
 `/architecture validate <folder>`: judge an existing architecture, change nothing.
 1. Read the folder, its ADRs and the README's journal, the PRD, the system design, the compliance folder, `docs/00-project/ideas.md`, and the code if it exists.
 2. Check the template and "Done when" item by item, citing the lines.
-3. Then ask: does every MVP feature have a module, and every table one owner? Are there cycles? Does every provider sit behind one interface? Does every non-functional requirement in the PRD, and every requirement from the system design and compliance, have a mechanism and an automatic check? Do export and deletion cover every module with personal data? Does each of the top 3 qualities have a test? Does every stack choice have a reason, a version, a licence and a revisit date? Does every convention have an example? Was a style kept only because it existed? Does a High idea fit in one module? Is every term explained?
+3. Then ask: does every MVP feature have a module, and every table one owner? Are there cycles? Does every provider sit behind one interface? Does every non-functional requirement in the PRD, and every requirement from the system design and compliance, have a mechanism and an automatic check? Do export and deletion cover every module with personal data? Does each of the top 3 qualities have a test? Does every stack choice have a reason, a version, a licence and a revisit date? Does every convention have an example? Was a style kept only because it existed? Does a High idea fit in one module? Is every term explained? Does any older file contradict a decision changed later in the journal, or keep a concept from an abandoned platform?
 4. Report: findings by severity, each with the line, what's wrong and what to change; then what's done well; then what you couldn't evaluate. The user picks what to apply.
 
 ## The bad version and why not
@@ -291,8 +321,8 @@ Split the code by what may change: each module hides one decision (the AI provid
 - [ ] the frontend: the three kinds of state, the contract client, the size budget, how new versions arrive
 - [ ] the languages, frameworks and tools, each with a reason, a version checked on the official page, a licence and when to revisit; chosen by the user
 - [ ] the conventions, each with an example, the automatic ones in CI
-- [ ] the testing strategy: every level, the flows as end-to-end tests, a test for each of the top 3 qualities, what runs on each PR and nightly, what isn't tested; chosen by the user
-- [ ] the repo, each PRD feature mapped to a folder, one command to start locally
+- [ ] the testing strategy: the shape per part, every level, the guard tests, each provider's fake, the flows as end-to-end tests, a test for each of the top 3 qualities (backup restore and rollback included), what runs on each PR and later within the CI budget, flaky tests, what isn't tested; chosen by the user
+- [ ] the repo, public or private decided once, each PRD feature mapped to a folder, one command to start locally with invented data, the hooks for people and AI agents
 - [ ] documentation and technical debt: where decisions live, the debt log, the upgrade rhythm
 - [ ] every one-way door an ADR, chosen by the user; the earlier files re-read after each one
 - [ ] a glossary for every term
