@@ -261,7 +261,7 @@ The style, the modules, how the requirements are met, the stack, how it's tested
 - [date]: [what was decided, by whom, what it changed]
 ````
 
-Each topic file starts with `# NN – [Topic]` and a link back to the README, then:
+Each topic file starts with `# NN – [Topic]` and a link back to the README. **The titles of the server's and the app's files say which side they're about:** `# 01 – Backend: the modules`, `# 02 – Backend: inside a module`, `# 04 – Backend: the rules every module follows`, `# 05 – Frontend: the app`, and the README's table of files uses the same titles. Why: the server has three files and the app one, so without the word a reader thinks the backend is missing (asked on 2026-10-13). Then:
 
 | File | Holds |
 |---|---|
