@@ -9,7 +9,7 @@ From an idea, or no idea, to a product that people pay for, in five phases:
 | Phase | What it does | Skills |
 |---|---|---|
 | **1. Discovery** | from zero to what to build: the problem, the market, the decision, the MVP | below |
-| **2. Design** | how the system runs, how the code is organized, the data, the API, the screens, the law, security and AI | below: 01–06 written, the rest not yet |
+| **2. Design** | how the system runs, how the code is organized, the data, the API, the screens, the law, security and AI | below: 01–07 written, the rest not yet |
 | **3. Planning** | split the work into slices and tasks, estimate from the design, set the order | not written yet |
 | **4. Build** | implement, test and deploy, every slice (deploy from the first week) | not written yet |
 | **5. Launch & Growth** | launch, then grow and measure | not written yet |
@@ -62,10 +62,10 @@ All files are in `docs/01-discovery/`, except `docs/00-project/ideas.md`. `docs/
 | 04 | [Data model](skills/data-model/SKILL.md) | `/data-model` | what data, how it relates, which rules? entities, the questions and volumes, tables with why, indexes checked on generated data, lifecycle, offline data, migrations, test data |
 | 05 | [API design](skills/api-design/SKILL.md) | `/api-design` | how do the app and the server talk? the clients and style, every endpoint with its shapes and why, errors, lists, repeats and concurrency, sync, webhooks and files, changes that don't break old clients, a contract checked by a linter |
 | 06 | [UI design](skills/ui-design/SKILL.md) | `/ui-design` | what do people see and do? the map of screens and the navigation, the flows with their failure paths, every screen's states, the words, a small design system checked for contrast, accessibility; the key screens now, the others one slice ahead of their code |
-| 07 | Security | `/security` | what can be attacked (STRIDE) and how it's protected |
+| 07 | [Security](skills/security/SKILL.md) | `/security` | what can be attacked and how is it protected? the assets and the attackers, a bar from OWASP ASVS, the map with its trust boundaries, every flow's threats (STRIDE) with their protections and checks, the numbers for passwords, sessions and limits, the headers, secrets, the supply chain, the accounts, detection; the whole model now, each slice's new ways in before its code |
 | 08 | AI design | `/ai-design` | for products with AI: evals, prompts, limits, cost |
 
-UI design runs again in Build, once per slice, before the slice's code: `/ui-design slice <n>` designs that slice's screens in full, one slice ahead.
+UI design runs again in Build, once per slice, before the slice's code: `/ui-design slice <n>` designs that slice's screens in full, one slice ahead. Security does too: `/security slice <n>` passes over what the slice brings in and puts its protections in the slice's definition of done; and `/security validate` runs again before the first tester and before launch.
 
 Compliance comes right after System design: it needs the list of providers, and it changes the data model (consent records, retention), the API (export, deletion) and the screens (consent, minimum age). It runs again before launch, to check everything exists and works. 04–06 can run almost in parallel; 07–08 check what 01–06 decided. Every big decision in 01–03 becomes an ADR, in `docs/00-project/adr/`.
 
