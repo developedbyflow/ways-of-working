@@ -26,7 +26,7 @@ flowchart LR
     S["Setup"] --> B["00 Brainstorm"] --> P["01 Problem"] --> M["02 Market research"] --> R["03 Product brief"] --> Q["04 PRD"] --> O["05 Prototype<br/>(optional)"]
     R -.-> T["Risk tests<br/>(in parallel)"]
   end
-  O --> X["2. Design"]
+  O --> X["Phase 2: Design"]
   P -. "fewer than 3 of 5" .-> B
   M -. "stop or change" .-> B
   R -. "a risk test fails" .-> R
@@ -54,6 +54,27 @@ All files are in `docs/01-discovery/`, except `docs/00-project/ideas.md`. `docs/
 
 ### Phase 2: Design
 
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e8eef7", "primaryTextColor": "#1a1a1a", "primaryBorderColor": "#8a8a8a", "lineColor": "#8a8a8a", "clusterBkg": "#f5f5f5", "clusterBorder": "#8a8a8a"}}}%%
+flowchart LR
+  P["Phase 1: Discovery<br/>(PRD, prototype,<br/>risk tests)"] --> S1
+  subgraph D["Design: how it runs and how it's built"]
+    S1["01 System design"] --> S2["02 Compliance"] --> S3["03 Architecture"] --> M["04 Data model<br/>05 API design<br/>06 UI design<br/>(almost in parallel)"] --> S7["07 Security"] --> S8["08 AI design<br/>(products with AI)"]
+  end
+  S8 --> X["Phase 3: Planning"]
+  S7 -. "no AI" .-> X
+  S2 -. "new requirements" .-> P
+  S7 -. "a gap in 01–06" .-> S1
+  S8 -. "a gap in 01–07" .-> S1
+```
+
+#### Start
+1. The PRD is done, and the prototype if you made one. The risk tests may still be running; their results come into the step that needs them (an AI test into 08).
+2. Run `/system-design`. It creates `docs/02-design/README.md`, the map with each step's status.
+3. Then the steps in order. A product without AI goes from 07 to Planning.
+
+#### The steps
+
 | # | Step | Command | The question it answers |
 |---|---|---|---|
 | 01 | [System design](skills/system-design/SKILL.md) | `/system-design` | how does the system run? components, data flows, scale, failures, monitoring, cost, deployment and CI/CD |
@@ -65,11 +86,26 @@ All files are in `docs/01-discovery/`, except `docs/00-project/ideas.md`. `docs/
 | 07 | [Security](skills/security/SKILL.md) | `/security` | what can be attacked and how is it protected? the assets and the attackers, a bar from OWASP ASVS, the map with its trust boundaries, every flow's threats (STRIDE) with their protections and checks, the numbers for passwords, sessions and limits, the headers, secrets, the supply chain, the accounts, detection; the whole model now, each slice's new ways in before its code |
 | 08 | [AI design](skills/ai-design/SKILL.md) | `/ai-design` | for products with AI: what's inside the AI box? every AI job's card, the measure and threshold with its margin, the pinned model, the prompt and the answer's schema, evals as a process, the attacks specific to AI, what the person sees, tokens and cost measured, production signals, the AI Act; contracts and the riskiest job now, the other prompts one slice ahead of their code |
 
+What each step reads and writes:
+
+| # | Reads | Writes | Ends with |
+|---|---|---|---|
+| 01 | PRD, brief, risk tests; the running system, if one exists | `01-system-design/`, the map `02-design/README.md` | the requirements with numbers, the shape and the monthly cost, confirmed by the user |
+| 02 | 01, PRD, brief; the running app's tables | `02-compliance/`, the new requirements in the PRD | every kind of data with its purpose, legal basis, place and retention; the consents and the minimum age decided |
+| 03 | PRD, 01, 02; existing code | `03-architecture/` | every requirement has a module, a mechanism and an automatic check |
+| 04 | PRD, 01–03; an existing database | `04-data-model/`, `schema.sql` | `schema.sql` runs on a real database |
+| 05 | PRD, 01–04; an existing API | `05-api-design/`, `openapi.yaml` | `openapi.yaml` holds every endpoint and passes the linter |
+| 06 | PRD, prototype, 01–05; an existing app | `06-ui-design/`: wireframes, mockups, tokens | the key screens' mockups pass the page check; the test with people decided |
+| 07 | everything, and what 01–06 left for Security | `07-security/`, the scripts that try the decisions | every threat with its protection and its check, or an accepted risk with its owner |
+| 08 | everything, and what 01–07 left for AI design; the AI risk test | `08-ai-design/`: the prompts, the evals | every AI job with a threshold, a pinned model and its prompt; what blocks a release decided |
+
+Every step writes its hard-to-undo choices as ADRs, in `docs/00-project/adr/`, and sets its own row in the map when it ends. When a step finds a gap in an earlier one, it stops, says so, and on a yes fixes it where it lives, with a line in that document's journal.
+
 UI design runs again in Build, once per slice, before the slice's code: `/ui-design slice <n>` designs that slice's screens in full, one slice ahead. Security does too: `/security slice <n>` passes over what the slice brings in and puts its protections in the slice's definition of done; and `/security validate` runs again before the first tester and before launch. AI design does too: `/ai-design slice <n>` writes the slice's prompts and test sets before its code; and the evals run again at every prompt or model change.
 
-Compliance comes right after System design: it needs the list of providers, and it changes the data model (consent records, retention), the API (export, deletion) and the screens (consent, minimum age). It runs again before launch, to check everything exists and works. 04–06 can run almost in parallel; 07–08 check what 01–06 decided. Every big decision in 01–03 becomes an ADR, in `docs/00-project/adr/`.
+Compliance comes right after System design: it needs the list of providers, and it changes the data model (consent records, retention), the API (export, deletion) and the screens (consent, minimum age). It runs again before launch, to check everything exists and works. 04–06 can run almost in parallel; 07–08 check what 01–06 decided.
 
-At work you'll hear "high-level design" (HLD) and "low-level design" (LLD); every company draws the line differently, so they aren't step names here. The translation: HLD is 01 System design plus the modules in 03 Architecture; LLD is the rest of 03, 04 Data model and 05 API design; 02, 06, 07 and 08 touch both. `docs/02-design/README.md` holds this map for the project, with each step's status; the first Design step creates it, and each step updates its own row when it ends.
+At work you'll hear "high-level design" (HLD) and "low-level design" (LLD); every company draws the line differently, so they aren't step names here. The translation: HLD is 01 System design plus the modules in 03 Architecture; LLD is the rest of 03, 04 Data model and 05 API design; 02, 06, 07 and 08 touch both. `docs/02-design/README.md` holds this map for the project, with each step's status.
 
 ## Where the documents go
 
