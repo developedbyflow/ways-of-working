@@ -42,6 +42,9 @@ workspace "<Product>" "The design's C4 model." {
         }
 
         styles {
+            element "Element" {
+                width 520
+            }
             element "Person" {
                 shape Person
                 background #08427b

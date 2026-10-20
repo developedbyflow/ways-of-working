@@ -37,6 +37,7 @@ if [ -s "$dir/c4/views.txt" ]; then
     # the layout chosen above; the shared legend added at the bottom (the exporter's key is a separate file)
     { sed -n '1p' "$src"; echo "$c4layout"; sed -e '1d' -e '/^@enduml/d' "$src"
       cat "$dir/c4/legend.puml"; echo '@enduml'; } > "$tmp/$key.puml"
+    python3 "$dir/c4/pad-labels.py" "$tmp/$key.puml"     # room inside every box
     draw -o "$tmp/out" "$tmp/$key.puml"
     mkdir -p "$(dirname "$dir/$target")"
     cp "$tmp/out/$key.svg" "$dir/$target.svg"
