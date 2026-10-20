@@ -165,7 +165,7 @@ An ADR (Architecture Decision Record) is one short file per decision, in `docs/0
 
 Write as you go: each step's file once the user confirms it, with a journal line in the README.
 
-This is the first Design step, so it also creates `docs/02-design/README.md` if it doesn't exist: the map of the Design steps from `FLOWS.md` (each step, its question, high-level or low-level design, status), with a short note translating HLD and LLD. At the end, set this step's row to done, with the date.
+This is the first Design step, so it also creates `docs/02-design/README.md` if it doesn't exist: the map of the Design steps from `FLOWS.md` (each step, its question, high-level or low-level design, status), with a short note translating HLD and LLD, and **a map for a reader who knows arc42**: a table with the 12 arc42 sections (checked on docs.arc42.org) and, for each, the files that cover it, linked; the steps stay ordered by when each decision is taken, the map is how a reader used to arc42 finds each section. Every later Design step adds its files to the map. At the end, set this step's row to done, with the date.
 
 ```
 docs/02-design/01-system-design/
