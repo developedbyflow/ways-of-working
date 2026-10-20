@@ -69,8 +69,8 @@ Take every idea from `docs/00-project/ideas.md` and sort it with the user:
 ### 7. Size and time
 Size each MVP feature: S (1–2 days), M (about a week), L (2+ weeks). Add them up and compare with the time until the launch date in the brief. Too long → cut features, cut parts of features, or ship in slices. A first version that takes a year is not a first version.
 
-### 8. Done when, per feature
-For each MVP feature, one at a time:
+### 8. Functional requirements, per feature
+The section is headed **"Functional requirements"**, next to "Non-functional requirements", so both kinds are found by name (at work and in interviews they're called that; "Done when" hid what they are). For each MVP feature, one at a time:
 - **A short description:** what it does and which journeys it serves.
 - **Criteria you can tick yes or no:** "I can reset my password from the email", not "the account works well". The happy path and the main failures (wrong input, no connection, nothing found).
 - **Given / when / then** only where the flow is complex.
@@ -120,7 +120,7 @@ Then write `docs/01-discovery/04-prd.md`:
 ## MVP scope
 | ID | Feature | Why in the MVP (dependency / solves / expected / differentiator) | Size |
 **Total size:** … against … until launch
-## Done when
+## Functional requirements
 ### F-01 [Feature]
 [What it does, which journeys.]
 - [ ] …
@@ -168,7 +168,7 @@ On any project, ask: what is the smallest thing we can ship that solves the prob
 - [ ] ideas sorted, the MVP justified, dependencies checked, `docs/00-project/ideas.md` rewritten
 - [ ] payment, both sides, AI cost, day one, data in and out, and roles checked
 - [ ] the MVP size fits the time until launch
-- [ ] every MVP feature has yes/no criteria, including the main failures
+- [ ] every MVP feature has yes/no criteria, including the main failures, under "Functional requirements"
 - [ ] non-functional numbers set, providers as requirements, numbers that agree
 - [ ] non-goals and out of scope written
 - [ ] assumptions and open decisions listed; the blocking ones answered
