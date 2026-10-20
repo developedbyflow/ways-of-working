@@ -39,11 +39,6 @@ workspace "<Product>" "The design's C4 model." {
             autoLayout lr
         }
 
-        properties {
-            "c4plantuml.tags" "true"
-            "c4plantuml.legend" "false"
-        }
-
         styles {
             element "Person" {
                 shape Person
@@ -66,6 +61,10 @@ workspace "<Product>" "The design's C4 model." {
                 background #cfe3f7
                 color #000000
                 border dashed
+            }
+            element "Boundary" {
+                color #0b4884
+                strokeWidth 2
             }
             element "External" {
                 background #999999

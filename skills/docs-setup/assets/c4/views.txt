@@ -1,3 +1,5 @@
-# One line per C4 view: "<view key in workspace.dsl>:<where its SVG goes, from docs/02-design, without .svg>"
+# One line per C4 view: "<view key in workspace.dsl>:<its SVG, from docs/02-design, without .svg>[:<the Markdown with its table>]"
+# The third field, added when the Markdown exists (/system-design, /architecture), makes check-tables.py compare
+# the drawing's numbered arrows with the table's rows: same numbers, the same two ends.
 context:01-system-design/diagrams/c4-context
 containers:01-system-design/diagrams/c4-containers

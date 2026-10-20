@@ -1,13 +1,20 @@
+<style>
+legend {
+  FontSize 26
+  BackgroundColor #fafafa
+  LineColor #cccccc
+}
+</style>
 legend bottom left
-|= <color:#222222>Legend</color> |= <color:#222222>C4 notation</color> |
-| <back:#08427b>          </back> | <color:#222222>Person</color> |
-| <back:#1168bd>          </back> | <color:#222222>Software system: ours</color> |
-| <back:#438dd5>          </back> | <color:#222222>Container: a part that runs separately</color> |
-| <back:#85bbf0>          </back> | <color:#222222>Component: a module of the API</color> |
-| <back:#cfe3f7>          </back> | <color:#222222>Library, no business data</color> |
-| <back:#999999>          </back> | <color:#222222>External system</color> |
-| <color:#c0392b>**red border**</color> | <color:#222222>health data is kept here</color> |
-| <color:#444444>**——→**</color> | <color:#222222>calls or sends to, while the app runs</color> |
-| <color:#444444>**- - →**</color> | <color:#222222>imported by the admin, at each new version</color> |
-| | <color:#222222>the number on an arrow: its row in the table under the drawing</color> |
+|= <size:26><color:#222222>Legend</color></size> |= <size:26><color:#222222>C4 notation</color></size> |
+| <back:#08427b><size:26>            </size></back> | <size:26><color:#222222>Person</color></size> |
+| <back:#1168bd><size:26>            </size></back> | <size:26><color:#222222>Software system: ours</color></size> |
+| <back:#438dd5><size:26>            </size></back> | <size:26><color:#222222>Container: a part that runs separately</color></size> |
+| <back:#85bbf0><size:26>            </size></back> | <size:26><color:#222222>Component: a module of the API</color></size> |
+| <back:#cfe3f7><size:26>            </size></back> | <size:26><color:#222222>Library, no business data</color></size> |
+| <back:#999999><size:26>            </size></back> | <size:26><color:#222222>External system</color></size> |
+| <size:26><color:#c0392b>**red border**</color></size> | <size:26><color:#222222>health data is kept here</color></size> |
+| <size:26><color:#444444>**———→**</color></size> | <size:26><color:#222222>calls or sends to, while the app runs</color></size> |
+| <size:26><color:#444444>**- - - →**</color></size> | <size:26><color:#222222>imported by the admin, at each new version</color></size> |
+| | <size:26><color:#222222>the number on an arrow: its row in the table under the drawing</color></size> |
 endlegend
