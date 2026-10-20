@@ -30,6 +30,7 @@ if [ -s "$dir/c4/views.txt" ]; then
   [ -x "$structurizr" ] || { echo "Structurizr CLI not found at $structurizr" >&2; exit 1; }
   tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT
   "$structurizr" export -w "$dir/c4/workspace.dsl" -f plantuml/structurizr -o "$tmp" >/dev/null
+  "$structurizr" export -w "$dir/c4/workspace.dsl" -f json -o "$tmp/json" >/dev/null
   grep -v '^\s*\(#\|$\)' "$dir/c4/views.txt" | while IFS= read -r line; do
     key="${line%%:*}"; target="${line#*:}"; target="${target%%:*}"
     src="$tmp/structurizr-$key.puml"
@@ -37,6 +38,7 @@ if [ -s "$dir/c4/views.txt" ]; then
     # the layout chosen above; the shared legend added at the bottom (the exporter's key is a separate file)
     { sed -n '1p' "$src"; echo "$c4layout"; sed -e '1d' -e '/^@enduml/d' "$src"
       cat "$dir/c4/legend.puml"; echo '@enduml'; } > "$tmp/$key.puml"
+    python3 "$dir/c4/add-groups.py" "$tmp/json/workspace.json" "$tmp/$key.puml"   # the groups the exporter leaves out
     python3 "$dir/c4/pad-labels.py" "$tmp/$key.puml"     # room inside every box
     draw -o "$tmp/out" "$tmp/$key.puml"
     mkdir -p "$(dirname "$dir/$target")"
@@ -44,7 +46,6 @@ if [ -s "$dir/c4/views.txt" ]; then
     echo "drew $target.svg (C4: $key)"
   done
   # Every arrow's number and ends match the table under its drawing (c4/check-tables.py).
-  "$structurizr" export -w "$dir/c4/workspace.dsl" -f json -o "$tmp/json" >/dev/null
   python3 "$dir/c4/check-tables.py" "$tmp/json/workspace.json" "$dir"
 fi
 

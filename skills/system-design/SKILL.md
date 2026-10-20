@@ -94,6 +94,7 @@ C4 draws the system at zoom levels, like a map: level 1 shows the system as one 
 ### 5. Containers (C4, level 2)
 The parts deployed separately and how they talk (HTTP, a queue, a database connection). A diagram, with the relationship table under it.
 - **Default: one API and one database** (a monolith), until a number asks for more.
+- **Every part that runs on its own is a container:** the scheduled backup job or a worker too, not only the app, the API and the database. An arrow starts at the part that does the work (a database doesn't send its own backups; the backup job reads it and sends the copy), and imported data goes to the container that runs the import. Mark the containers that keep health or other sensitive data (a tag with its own border in the legend). Under the table, what's left out of the drawing (monitoring, secrets, plan B providers, one-shot deploy containers), each with the container that talks to it. The outside systems keep their group here too: `diagrams.sh` adds it (`c4/add-groups.py`), since the Structurizr export leaves groups out of container and component views.
 - **How the app reaches people:** static files (PWA, SPA) or a server that renders pages (SSR). It changes the hosting.
 - **How much works offline**, a one-way door:
   1. it opens and shows what you saw last;
@@ -211,7 +212,7 @@ Each topic file starts with `# NN – [Topic]` and a link back to the README, th
 |---|---|
 | `01-requirements.md` | the functional requirements (main jobs, with codes); `\| Quality (non-functional requirement) \| Number \| Source \|`; top 3; constraints, legal and organizational |
 | `02-calculation.md` | the calculation, written out, guesses marked, later measurements written back |
-| `03-context.md`, `04-containers.md` | the diagram (a view of the C4 model), `\| # \| From → to \| What \| How \|`; in 03 what's left out of the drawing; the offline level in 04 |
+| `03-context.md`, `04-containers.md` | the diagram (a view of the C4 model), `\| # \| From → to \| What \| How \|`; in 03 and 04 what's left out of the drawing; the offline level in 04 |
 | `05-flows.md` | per flow: the sequence diagram, `\| # \| Where \| What happens \|`, immediate vs later, offline path |
 | `06-data.md` | the deployment diagram, `\| Data \| Lives in \| Source of truth \| Sensitive \| Backup \|` |
 | `07-failures.md` | `\| Dependency \| Slow \| Down \| Garbage \| What the user sees \|`; single points of failure; idempotency |
