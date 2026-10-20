@@ -1,0 +1,13 @@
+legend right
+  <color:#222222><b>Legend</b> (C4 notation)</color>
+  <back:#08427b>      </back> <color:#222222>Person</color>
+  <back:#1168bd>      </back> <color:#222222>Software system: ours</color>
+  <back:#438dd5>      </back> <color:#222222>Container: a part that runs separately</color>
+  <back:#85bbf0>      </back> <color:#222222>Component: a module of the API (owns its tables)</color>
+  <back:#cfe3f7>      </back> <color:#222222>Library, no business data, used by every module</color>
+  <back:#999999>      </back> <color:#222222>External system</color>
+  <color:#c0392b><b>Red border</b></color><color:#222222>: health data is kept here</color>
+  <color:#222222>solid arrow: calls or sends to, while the app runs</color>
+  <color:#222222>dashed arrow: imported by the admin, at each new version</color>
+  <color:#222222>Numbers on the arrows: the table under the drawing in the Markdown.</color>
+endlegend

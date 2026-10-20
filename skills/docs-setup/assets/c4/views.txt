@@ -1,0 +1,3 @@
+# One line per C4 view: "<view key in workspace.dsl>:<where its SVG goes, from docs/02-design, without .svg>"
+context:01-system-design/diagrams/c4-context
+containers:01-system-design/diagrams/c4-containers

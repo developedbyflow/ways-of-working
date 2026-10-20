@@ -21,7 +21,7 @@ The PRD says what the product does. System design says how it runs: which parts 
 - **The user decides** at three points: the numbers (step 2), the shape of the system (step 5) and every ADR (step 14). You give the options and a recommendation; they choose. One decision at a time.
 - **No new requirements here.** If the design needs a requirement the PRD doesn't have (for example how much works offline), stop, propose it, and on a yes add it to the PRD with a journal line.
 - **Start with the fewest parts.** Every extra box is one more thing that fails, needs watching and costs money. A part is added only when a number asks for it.
-- **Diagrams as SVG files** in `diagrams/`, in the C4 notation: each box with its name, type and technology; people dark blue, the system's containers blue, outside systems grey; the system's border dashed; a title and a legend. Number the arrows and explain them in a table under the diagram. Not Mermaid in chat (the arrows get lost). Open each one in a browser before committing: no text overlaps.
+- **Diagrams in standard notations, drawn from text** (decided 2026-10-20), so they read the same at any company and can't drift apart: **C4** levels 1–2 and where the data lives (a C4 deployment view) from **one Structurizr model**, `docs/02-design/c4/workspace.dsl` (Structurizr DSL: the elements and relationships written once, each drawing a view of them); the flows as **UML sequence diagrams**; the road to production as a **UML activity diagram**, each a `.puml` next to its `.svg` in `diagrams/`. `docs/02-design/diagrams.sh` (set up by `/docs-setup`) draws them all with the Structurizr CLI and PlantUML, both free. In C4: one relationship per direction (a webhook back is a second arrow), each label says what flows and starts with its row number in the table under the drawing, the technology as the relationship's technology, a title per view, the shared legend. Never a hand-made SVG or a home style; not Mermaid in chat (the arrows get lost). Open each one before committing: no text overlaps.
 - **Security has its own step** (07 Security, `/security`): it needs the API and the data model, which come later. Here, only the mechanisms the other steps need (for example a webhook's signature, a daily AI cap); the README points to 07.
 
 ## The building blocks
@@ -71,16 +71,23 @@ Journeys, glossary, non-functional requirements and open decisions from the PRD;
 **If the system already runs**, read how it runs first: the deploy files, Docker Compose, the backup. It's the starting point, not a rule. For each part show what it is today, keep or change, why, and what moving costs (data to migrate, scripts to rewrite, what could break). Change only for a reason: a requirement it doesn't meet or a number it can't carry. The user decides.
 
 ### 2. Requirements, with numbers
-- **The 3–7 main jobs** of the system, from the journeys.
-- **The qualities, with numbers:** users (at the target and at 10×), requests per second at peak, data growth per year, response time for the main actions, availability, RPO (how much data you may lose in a failure) and RTO (how long until you're back), what must never be lost.
+- **The 3–7 main jobs** of the system, headed "the functional requirements, from the PRD journeys and features", each with its source code (UJ-…, F-…). A job states the need, the technology at the end ("log a plate from a photo …: with AI"), so it stays true if the solution changes.
+- **The qualities, with numbers,** in a table whose column says "Quality (non-functional requirement)": users (at the target and at 10×, from the real costs once step 13 has them, not only the brief's guess), requests per second at peak, data growth per year, response time for the main actions, availability, RPO (how much data you may lose in a failure) and RTO (how long until you're back), what must never be lost.
 - **The top 3 qualities, in order** (for example "data is never lost > logging works offline > low cost"). When two conflict, the higher one wins.
+- **The constraints, separately:** legal (the law, contracts) and organizational (how many people build and run it, their hours, the budget), each with its source; they aren't ranked, a choice that breaks one is out.
 - **The user decides:** confirm the numbers before going on.
 
 ### 3. Back-of-the-envelope calculation
 Storage per year, peak requests, AI calls per day and their cost, photo traffic. Write the calculation, not only the result: "300 users × 20 entries a day = 6,000 writes a day, about 0.07 per second; one small server is plenty." Without it, a cache or a queue is a guess.
+- **Mark every factor you guessed** `(guess)`, with what it's derived from ("from UJ-1: ~4 meals × 3–4 foods"). The peak hour's share of the day has no published standard: say so; interview books use peak = 2 × average (Alex Xu), stricter is fine if argued.
+- **Every table that grows,** not only the biggest one, and the large files apart from the database.
+- **The conclusion must match step 9:** "one small server carries N×" only up to the limit the scale file gives; past it, a bigger server, then a second one at its trigger.
+- **Write back what later steps measure** (the data model's real row sizes, the API's requests counted screen by screen, the AI test's tokens), with a journal line; the old guess stays visible ("first guessed ~3 GB").
 
 ### 4. Context (C4, level 1)
 C4 draws the system at zoom levels, like a map: level 1 shows the system as one box and the world around it, level 2 opens the box. Here: who uses the system and which outside systems it talks to (payments, email, AI, data sources). A diagram, with the relationship table under it.
+- **Name each outside system by its provider once chosen** ("Paddle (payments)"); providers come at step 12, so the context is read again then.
+- **Every provider of step 12 appears** in the drawing or in a "left out of the drawing" list with the reason (monitoring, backups, plan B); what's only imported, not called while the app runs, is marked so (a dashed arrow).
 
 ### 5. Containers (C4, level 2)
 The parts deployed separately and how they talk (HTTP, a queue, a database connection). A diagram, with the relationship table under it.
@@ -102,12 +109,12 @@ The 2–3 most important and most risky actions (for example: log a food; scan a
 - **the "server says no" path:** what happens to an entry the server refuses (an expired login, an ended trial, a bad value). Signing out or an expired login never deletes what wasn't sent without asking;
 - offline edits and deletes, not only new entries.
 
-Draw each flow as a **C4 dynamic diagram**: the parts on top, the numbered steps below in order, like a film of one request; the numbers match the table.
+Draw each flow as a **UML sequence diagram**: the parts on top, time going down, the numbered steps matching the table; a step inside one part is an arrow back to it; failures as `alt` or `break`.
 
 These flows become the end-to-end tests; the rest of the testing strategy is decided in `/architecture`.
 
 ### 7. The data
-Where each kind of data lives, which copy is the source of truth (the server, or the phone until sync), what is sensitive (health data, payments), how it's backed up and where the backup copy lives (3-2-1: 3 copies, on 2 kinds of storage, 1 at another company). A diagram of where the data and its copies live. Logs with a user's id or IP address are still personal data under GDPR: never write "no personal data"; write what they hold, for how long and where. Details of tables and fields → `/data-model`.
+Where each kind of data lives, which copy is the source of truth (the server, or the phone until sync), what is sensitive (health data, payments), how it's backed up and where the backup copy lives (3-2-1: 3 copies, on 2 kinds of storage, 1 at another company). A diagram of where the data and its copies live: a C4 deployment view of the model (where each part runs, the copies as infrastructure nodes, health data marked). Logs with a user's id or IP address are still personal data under GDPR: never write "no personal data"; write what they hold, for how long and where. Details of tables and fields → `/data-model`.
 
 ### 8. What happens when something fails
 A table with every dependency (the database, the AI, payments, email, the server itself) × slow, down, returns garbage: timeout, retry, fallback, what the user sees.
@@ -134,7 +141,7 @@ The implementation comes in Build, with `project-setup`.
 - **Environments:** local, staging (a copy of production to check before release; yes or no, and why), production.
 - **The pipeline:** lint, tests, one build, deploy from `main`. Preview deploys per PR if the hosting offers them.
 - **Database migrations** (changes to the structure) that run before the new code, **rollback** in minutes (back to the previous version), secrets outside the code, a backup with a tested restore.
-- A diagram of the road from a push to production, with the rollback.
+- A diagram of the road from a push to production, with the rollback: a UML activity diagram (who does each step as a swimlane, the decisions as diamonds).
 
 ### 12. Providers
 For each need (hosting, database, AI, payments, email, login, monitoring), pick one against the PRD's requirements: region, data processing agreement (DPA), no training on your data, price, and **how you'd leave** if you had to (put it behind one interface in the code). Build or buy: build only what makes the product different. The list feeds `/compliance`. Check that the analytics tool can compute the PRD's metrics (retention by sign-up week needs to follow one person over time, which privacy-first web analytics don't do). A provider that depends on a risk test can be chosen before it when the test only picks the model; the rule for choosing is written before the test and includes the PRD's response time, not only accuracy.
@@ -164,7 +171,8 @@ docs/02-design/01-system-design/
   01-requirements.md   02-calculation.md   03-context.md   04-containers.md
   05-flows.md          06-data.md          07-failures.md  08-scale.md
   09-monitoring.md     10-deployment.md    11-providers.md 12-cost.md
-  diagrams/            c4-context, c4-containers, one per flow, data, deployment (SVG)
+  diagrams/            c4-context, c4-containers, data (SVG, from the C4 model); one per flow, deployment (.puml + SVG)
+docs/02-design/c4/workspace.dsl   the C4 model, shared with /architecture
 docs/00-project/adr/
   0001-[title].md …
 ```
@@ -199,15 +207,15 @@ Each topic file starts with `# NN – [Topic]` and a link back to the README, th
 
 | File | Holds |
 |---|---|
-| `01-requirements.md` | main jobs; `\| Quality \| Number \| Source (PRD line) \|`; top 3 |
-| `02-calculation.md` | the calculation, written out |
-| `03-context.md`, `04-containers.md` | the diagram, `\| # \| From → to \| What \| How \|`; the offline level in 04 |
-| `05-flows.md` | per flow: the dynamic diagram, `\| # \| Where \| What happens \|`, immediate vs later, offline path |
-| `06-data.md` | the diagram, `\| Data \| Lives in \| Source of truth \| Sensitive \| Backup \|` |
+| `01-requirements.md` | the functional requirements (main jobs, with codes); `\| Quality (non-functional requirement) \| Number \| Source \|`; top 3; constraints, legal and organizational |
+| `02-calculation.md` | the calculation, written out, guesses marked, later measurements written back |
+| `03-context.md`, `04-containers.md` | the diagram (a view of the C4 model), `\| # \| From → to \| What \| How \|`; in 03 what's left out of the drawing; the offline level in 04 |
+| `05-flows.md` | per flow: the sequence diagram, `\| # \| Where \| What happens \|`, immediate vs later, offline path |
+| `06-data.md` | the deployment diagram, `\| Data \| Lives in \| Source of truth \| Sensitive \| Backup \|` |
 | `07-failures.md` | `\| Dependency \| Slow \| Down \| Garbage \| What the user sees \|`; single points of failure; idempotency |
 | `08-scale.md` | `\| What breaks first \| At \| Trigger number \| What I do \|`; doors kept open |
 | `09-monitoring.md` | logs, golden signals, alerts with what to do, SLO |
-| `10-deployment.md` | the diagram, the steps, keep or change, decisions |
+| `10-deployment.md` | the activity diagram, the steps, keep or change, decisions |
 | `11-providers.md` | `\| Need \| Provider \| Region \| DPA \| How I'd leave \|` |
 | `12-cost.md` | `\| Part \| Now \| Target \| 10× \|`; per paying user against the brief |
 
@@ -229,7 +237,7 @@ And one file per decision in `docs/00-project/adr/NNNN-[title].md`:
 `/system-design validate <folder>`: judge an existing system design, change nothing.
 1. Read the design folder, its ADRs and the README's journal, the PRD, the brief's money check and `docs/00-project/ideas.md`.
 2. Check the template and "Done when" item by item, citing the lines.
-3. Then ask: does every number trace back to the PRD? Does the calculation justify every part beyond one API and one database? Does every dependency have a failure row? Does every non-functional requirement have a mechanism? Does the cost fit the brief? Is every one-way door an ADR? Is every term explained?
+3. Then ask: does every number trace back to the PRD? Does the calculation justify every part beyond one API and one database? Does every dependency have a failure row? Does every provider appear in the context? Do the C4 drawings come from one model, and do the flows' and the cost's numbers match the calculation and the scale file? Does every non-functional requirement have a mechanism? Does the cost fit the brief? Is every one-way door an ADR? Is every term explained?
 4. Report: findings by severity, each with the line, what's wrong and what to change; then what the design does well; then what you couldn't evaluate. The user picks what to apply.
 
 ## The bad version and why not
@@ -239,6 +247,7 @@ And one file per decision in `docs/00-project/adr/NNNN-[title].md`:
 - No numbers: "it must scale" is not a requirement.
 - Deployment decided at the end → "works on my machine".
 - Nice diagrams with no decisions and no reasons.
+- Diagrams in a home-made style, each drawn separately: the next company can't read them, and the same part has two names in two drawings.
 - Finding out the AI or cloud bill at the end of the month.
 
 ## What breaks if you skip it
@@ -251,10 +260,10 @@ There is no best solution, only trade-offs (the first law of software architectu
 Before a new service or data flow, write a one-page design doc: requirements with numbers, the diagram, the failure table, the cost. Discuss it with the team before the code; the big decisions go into the repo as ADRs.
 
 ## Done when
-- [ ] requirements with numbers, the top 3 qualities in order, confirmed by the user
-- [ ] the calculation written out
+- [ ] requirements with numbers, the top 3 qualities in order, the constraints (legal and organizational), confirmed by the user
+- [ ] the calculation written out, guesses marked, its conclusion consistent with the scale file
 - [ ] the context and container diagrams, the offline level, the shape confirmed by the user
-- [ ] 2–3 flows traced end to end, with what's immediate and what's later, each with a dynamic diagram
+- [ ] 2–3 flows traced end to end, with what's immediate and what's later, each with a sequence diagram
 - [ ] the data: where it lives, source of truth, sensitive data, backups, with a diagram
 - [ ] a failure row for every dependency, the unseen ones too (monitoring, backup job, registry, domain, certificate), single points of failure, idempotency
 - [ ] every offline flow has a "server says no" path; nothing unsent is deleted without asking
@@ -268,7 +277,8 @@ Before a new service or data flow, write a one-page design doc: requirements wit
 - [ ] checked against the requirements, the journeys and the High ideas
 - [ ] a glossary for every term
 - [ ] the README: status, summary, what we skip and why, open questions, the ADR table
-- [ ] every diagram opened in a browser, no text overlapping
+- [ ] every provider in the context drawing or its "left out" list
+- [ ] every diagram in a standard notation, drawn by `diagrams.sh` (C4 from the model), opened, no text overlapping
 
 ## Next
 Compliance (`/compliance`): it takes the list of providers and the data locations from here.

@@ -1,6 +1,6 @@
 ---
 name: docs-setup
-description: "Decide where the project documents live (a private docs repo, docs/ in the code repo, or the team's existing tool), create the place and its starting structure, and write the 'Project documents:' line in CLAUDE.md so every skill writes there. Use when the user starts a new project, before /brainstorm."
+description: "Decide where the project documents live (a private docs repo, docs/ in the code repo, or the team's existing tool), create the place and its starting structure, and write the 'Project documents:' line in CLAUDE.md so every skill writes there. Also sets up the diagram tools, so every design drawing is in a standard notation (C4, UML, ER, DFD) drawn from text. Use when the user starts a new project, before /brainstorm."
 argument-hint: "[the project name]"
 ---
 
@@ -51,28 +51,49 @@ docs/
     ideas.md        every idea in your head, in any form
   01-discovery/     brainstorm, problem, market research, brief, PRD
 ```
-`ideas.md` starts with one line: `# Ideas` and "Write every idea here, in any form. /brainstorm shapes it." Later phases add their folders (`02-design/`…) when they start; the decisions (ADRs) go in `00-project/adr/` from the first one.
+`ideas.md` starts with one line: `# Ideas` and "Write every idea here, in any form. /brainstorm shapes it." Later phases add their folders when they start (`02-design/` starts with the diagram files of step 4); the decisions (ADRs) go in `00-project/adr/` from the first one.
 
-### 4. Tell the skills where it is
+### 4. The diagram tools
+Every design drawing is in a **standard notation, drawn from text**, so it reads the same at any company and the drawings can't drift apart: C4 from one model, the rest as PlantUML files. Without this, each Design step draws in its own style, and the same part ends up with two names in two drawings.
+
+- **Copy the starting files** from this skill's `assets/` into `docs/02-design/`: `diagrams.sh` (draws everything), `c4/workspace.dsl` (an empty C4 model in the Structurizr DSL, with the styles), `c4/legend.puml` (the legend every C4 drawing shares), `c4/views.txt` (which view goes to which SVG). `/system-design` fills the model.
+- **The tools**, free, once per machine, in `~/Desktop/TechProducts/tools/` (or the folder in `DIAGRAM_TOOLS`): PlantUML (a `.jar`, runs on Java 17+) and the Structurizr CLI (the C4 author's tool). No Graphviz: PlantUML's own layout. Pick a release a few weeks old, not one from the last days. Say the file, the source and the size, and download only after the user says yes:
+  ```bash
+  mkdir -p ~/Desktop/TechProducts/tools && cd ~/Desktop/TechProducts/tools
+  curl -sSLO https://github.com/plantuml/plantuml/releases/download/v<version>/plantuml-<version>.jar
+  curl -sSLO https://github.com/structurizr/cli/releases/download/v<version>/structurizr-cli.zip && unzip -q structurizr-cli.zip -d structurizr-cli
+  ```
+- **Check it:** `docs/02-design/diagrams.sh` draws the empty model's two views; open them.
+
+| Drawing | Notation | Source |
+|---|---|---|
+| context, containers, components, where things run | C4 (levels 1–3, deployment) | `c4/workspace.dsl` |
+| a flow, a request through the parts | UML sequence diagram | `.puml` next to its `.svg` |
+| a screen flow, a pipeline | UML activity diagram | idem |
+| the tables | ER diagram, crow's foot, generated from `schema.sql` | idem |
+| the security map | data flow diagram with trust boundaries | idem |
+
+### 5. Tell the skills where it is
 In `CLAUDE.md` of the folder where the user works with Claude, one line with the absolute path to the documents folder:
 ```markdown
 Project documents: /Users/<user>/<path>/<project>-docs/docs
 ```
 Every skill reads this line and writes there. Without it, skills write to `docs/` in the current folder. Show the line and check the path exists.
 
-### 5. Access and personal data
+### 6. Access and personal data
 - **Who else needs access, and what role?** Least privilege, for a limited time, removed explicitly afterwards.
   - On a personal GitHub account a collaborator always gets **write** access (there's no read-only role); a free **organization** gives a **Read** role. For a one-off look (an interview), share the screen or a PDF instead.
 - **Interview notes hold personal data:** no real names, only in the private place.
 
-### 6. First commit
-Commit the structure (for a git repo): `docs: start the project documents`.
+### 7. First commit
+Commit the structure (for a git repo): `docs: start the project documents`. The tools stay outside the repo; the starting diagram files go in.
 
 ## The bad version and why not
 - **Everything in one public repo** → strategy and prices reach the competition.
 - **Moving old documents from the public repo to the private one** and thinking they're hidden → the public git history still has them.
 - **The personal framework inside the project repo** → it stays stuck there and doesn't follow you to the next project or your job.
 - **Not telling the skills where the documents are** → each step writes somewhere else.
+- **Drawing each diagram by hand, in a home style** → the next company can't read them, and the drawings disagree with each other.
 
 ## What breaks if you skip it
 Either the strategy is exposed, or the documents scatter and nobody knows which one is true.
@@ -90,6 +111,7 @@ Use the place the team already keeps documents in, instead of creating a new one
 - [ ] the place is decided, with the reason
 - [ ] it exists, and a private repo is verified as private
 - [ ] `docs/00-project/ideas.md` and `docs/01-discovery/` exist
+- [ ] the diagram tools work: `docs/02-design/diagrams.sh` draws the empty C4 model
 - [ ] the `Project documents:` line is in `CLAUDE.md`, pointing to a path that exists
 - [ ] access is decided: who, which role, until when
 - [ ] the structure is committed
