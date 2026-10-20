@@ -46,7 +46,7 @@ workspace "<Product>" "The design's C4 model." {
                 width 520
             }
             element "Person" {
-                shape Person
+                shape RoundedBox
                 background #08427b
                 color #ffffff
             }
