@@ -8,7 +8,7 @@
 #   ./diagrams.sh foo.puml   draw one PlantUML file
 #
 # Needs Java 17+ and two free tools in $DIAGRAM_TOOLS (default ~/Desktop/TechProducts/tools):
-#   plantuml-<version>.jar and structurizr-cli/ (no Graphviz: PlantUML's built-in layout, smetana).
+#   plantuml-<version>.jar and structurizr-cli/ (no Graphviz: PlantUML's built-in layouts, ELK for C4 and smetana for the rest).
 set -euo pipefail
 
 dir="$(cd "$(dirname "$0")" && pwd)"
@@ -30,8 +30,8 @@ if [ -s "$dir/c4/views.txt" ]; then
     key="${line%%:*}"; target="${line#*:}"
     src="$tmp/structurizr-$key.puml"
     [ -f "$src" ] || { echo "missing view: $key" >&2; exit 1; }
-    # PlantUML's own layout instead of Graphviz; the shared legend instead of the exporter's
-    { sed -n '1p' "$src"; echo '!pragma layout smetana'; sed -e '1d' -e '/^SHOW_LEGEND/d' -e '/^@enduml/d' "$src"
+    # ELK, PlantUML's built-in layout with straight, right-angled lines (no Graphviz); the shared legend instead of the exporter's
+    { sed -n '1p' "$src"; echo '!pragma layout elk'; echo 'skinparam ArrowThickness 1.6'; echo 'skinparam defaultTextAlignment center'; sed -e '1d' -e '/^SHOW_LEGEND/d' -e '/^@enduml/d' "$src"
       cat "$dir/c4/legend.puml"; echo '@enduml'; } > "$tmp/$key.puml"
     draw -o "$tmp/out" "$tmp/$key.puml"
     mkdir -p "$(dirname "$dir/$target")"
