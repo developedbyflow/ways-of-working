@@ -32,7 +32,7 @@ The data model decides **what data the product keeps, how it relates, and which 
 - **Check the indexes in Design only where the table's shape is at stake** (step 5): the big or very frequent tables, on generated data. Why: an index is cheap to add later (`CREATE INDEX CONCURRENTLY` doesn't block writes); what's expensive is a table shape that leaves no room for a good index (an entry that reaches its person only through a join; values hidden in JSON that a report must sum). The SQL written here isn't the SQL the ORM will generate, so the final check of the real queries stays in Build, per slice.
 - **The user decides** the conceptual model (step 2), every real choice in the tables (step 4) and every ADR (step 12). You give the options and a recommendation; they choose. One decision at a time.
 - **Check the database's behaviour on its official pages,** not from memory: the types, what a constraint or an index does, which `ALTER TABLE` forms rewrite or lock a table, the version's features (PostgreSQL 18 has `uuidv7()` and `NOT NULL … NOT VALID`; earlier versions don't). **Write "tried" only for what the test proved** (a uniqueness error doesn't prove "the last change wins"), and keep every script in `checks/`.
-- **Diagrams as SVG files** in `diagrams/`, in crow's-foot notation (the usual entity–relationship notation: a line per relation, the "foot" on the many side): one conceptual diagram for the whole product, and one per module with its tables, columns, keys and the links to other modules drawn differently, **generated from the database `schema.sql` builds** (a script that reads the catalog, with `ORDER BY` everywhere so a rerun writes the same file), so the drawing can't drift from the SQL. Each with a title and a legend. Open each one before committing: no text overlaps.
+- **ER diagrams in crow's-foot notation** (the usual entity–relationship notation: a line per relation, the "foot" on the many side), written as PlantUML (`.puml` next to its `.svg` in `diagrams/`): one conceptual diagram for the whole product, written by hand, and one per module with its tables, columns, keys and the links to other modules drawn differently (a grey stub for another module's table), **generated from the database `schema.sql` builds** by a script in `checks/` that reads the catalog, with `ORDER BY` everywhere so a rerun writes the same file; the columns marked personal or health data in the tables' pages are shaded. So the drawing can't drift from the SQL. Each with a title and a legend explaining the notation. `docs/02-design/diagrams.sh` (set up by `/docs-setup`) draws every diagram of the design from text, in a standard notation (decided 2026-10-20), so they read the same at any company; never a hand-made SVG, a home style, or a script that draws SVG itself. Open each one before committing: no text overlaps.
 - **What isn't here:** the endpoints and the JSON shape (05 API design: **the table isn't the contract**, a new column doesn't appear in the API by itself), the screens (06 UI design), encryption, database access and Row-Level Security (07 Security), the data for AI evals (08 AI design), the full SQL of the migrations (Build, per slice; here the shape and the plan), backups and restore (decided in the system design).
 
 ## The three levels
@@ -243,7 +243,7 @@ docs/02-design/04-data-model/
   tables/                 one file per module: [module].md
   schema.sql              every schema, table and index, run on a real database
   checks/                 the volume generator and the EXPLAIN queries of step 5
-  diagrams/               the conceptual model, one per module (SVG)
+  diagrams/               the conceptual model (by hand), one per module (generated): .puml + SVG
 docs/00-project/adr/
   NNNN-[title].md …
 ```
@@ -341,7 +341,8 @@ The first PR decides the tables, in a hurry. Bad data gets in on day one and nev
 - [ ] a glossary for every term the files use, grown with the steps
 - [ ] the README: status, summary, what we skip and why, open questions, the ADR table
 - [ ] the row in `docs/02-design/README.md` set to done
-- [ ] every diagram opened in a browser, no text overlapping
+- [ ] every column in the tables' pages exists in `schema.sql` and every column of `schema.sql` has a row, or is marked with the slice that adds it; the generator rerun writes the same files
+- [ ] every diagram drawn by `diagrams.sh` (the modules generated from `schema.sql`), opened, no text overlapping
 
 ## Next
 API design (`/api-design`) and UI design (`/ui-design`): the API exposes what the screens need, not the tables' shape. Then Security (`/security`) checks it all, Row-Level Security and database access included.

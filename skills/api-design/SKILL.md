@@ -38,7 +38,7 @@ API design decides **the contract between the app and the server**: the resource
 - **Every endpoint in full detail now, not per slice** (chosen on 2026-10-13): the UI design comes right after and needs to know what each screen gets; the data model is already whole, so most shapes come from it quickly; an endpoint is still free to change until the first release, so a later change costs little. The alternative (the map now, the shapes per slice in Build) wins when the PRD may change a lot after the first slices.
 - **The user decides** the map of endpoints (step 3), every real choice in the shapes (step 4), the sync protocol's shape (step 7) and every ADR (step 11). You give the options and a recommendation; they choose. One decision at a time.
 - **Check the standards on their official pages,** not from memory: HTTP's methods and status codes (RFC 9110), Problem Details (RFC 9457), the patch formats, the OpenAPI version, the framework's features (Spring Framework 7 has API versioning built in; Spring Boot 4 uses Jackson 3), the tools' rules. **Write "tried" only for what a test proved,** and keep every script in `checks/`. **A tool is tried the way the linter was, on planted cases:** oasdiff on copies of the contract with one change each (a stricter limit, a removed field, a deprecation with too short a sunset), each expected to stop or pass, its default levels read in its own source; a tool downloaded for the trial (a Docker image) is named with its size and asked for first.
-- **Diagrams as SVG files** in `diagrams/`: one sequence diagram per main flow, **drawn at its step:** a repeated request at step 6, the sync at step 7, the slowest call to an outside service and the payment at step 8; each with a title and a legend. Open each one before committing: no text overlaps. Left to the end, two of the four were missing at the check.
+- **UML sequence diagrams,** written as PlantUML (`.puml` next to its `.svg` in `diagrams/`): the parts as lifelines, the step numbers matching the tables, failures and branches as `alt`, `break`, `loop`, a lost answer as a lost message. `docs/02-design/diagrams.sh` (set up by `/docs-setup`) draws every diagram of the design from text, in a standard notation (decided 2026-10-20), so they read the same at any company; never a hand-made SVG, a home style, or a script that draws SVG itself. One per main flow, **drawn at its step:** a repeated request at step 6, the sync at step 7, the slowest call to an outside service and the payment at step 8; each with a title and a legend. Open each one before committing: no text overlaps. Left to the end, two of the four were missing at the check.
 - **What isn't here:** the tables (04 Data model; the contract doesn't change them), the screens and their states (06 UI design), the session's length, the exact rate limits, CSRF, security headers and Row-Level Security (07 Security), the AI's prompts and limits (08 AI design), the controllers' Java code (Build, per slice).
 
 ## The styles
@@ -243,7 +243,7 @@ docs/02-design/05-api-design/
   openapi.yaml         every endpoint, checked by the linter
   redocly.yaml         the linter's rules: the conventions as checks
   checks/              the scripts: the lists, the repeats, the sync's pages, oasdiff's planted changes, the examples' generator
-  diagrams/            the sequence diagrams (SVG)
+  diagrams/            the sequence diagrams (.puml + SVG)
 docs/00-project/adr/
   NNNN-[title].md …
 ```
@@ -341,7 +341,7 @@ Every controller decides its endpoints in the first PR, each one differently. On
 - [ ] a glossary for every term the files use, grown with the steps
 - [ ] the README: status, summary, what we skip and why, open questions, the ADR table
 - [ ] the row in `docs/02-design/README.md` set to done
-- [ ] the four sequence diagrams (a repeat, the sync, the slowest outside call, the payment), each opened in a browser, no text overlapping
+- [ ] the four sequence diagrams (a repeat, the sync, the slowest outside call, the payment), UML, drawn by `diagrams.sh`, their numbers matching a step table in the Markdown, each opened, no text overlapping
 - [ ] oasdiff's rules tried on planted changes
 
 ## Sources

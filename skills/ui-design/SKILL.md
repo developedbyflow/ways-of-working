@@ -42,7 +42,7 @@ UI design decides **what people see and do**: the map of screens and the navigat
 - **The user decides** the map and the navigation, with the key screens (step 3), every real choice in the key screens (step 5), the visual direction (step 7), the test with people (step 11) and every ADR (step 12); in a slice, every real choice in its screens. You give the options and a recommendation; they choose. One decision at a time.
 - **A number about the documents is counted by a script before it's written** (the screens, the pages, the rules, the pairs), and the script is run again at the check. On MacroMate, four counts made by hand were wrong and had reached the README's summary: 46 screens for 56, 41 in their slice for 47, 34 wireframe pages for 30, 8 rules for 7.
 - **Check the standards on their official pages,** not from memory: WCAG 2.2 and its Understanding pages, the WAI-ARIA Authoring Practices Guide, the platforms' guidelines (Apple, Material), the framework's and the libraries' versions, the browsers' support. **Write "tried" only for what a test proved,** and keep every script in `checks/`. **A check is tried on planted mistakes** (a text/background pair under 4.5:1, a 30 px button, a field without a label, a focus hidden by a fixed bar), **one per rule**, each expected to be caught, and on a correct page where nothing must be found; a tool downloaded for the check (axe-core, a browser for Playwright) is named with its size and asked for first.
-- **Diagrams as SVG files** in `diagrams/`, drawn by a script kept next to them: one flow diagram per main flow, **drawn at step 4**, each with a title and a legend, the failure paths drawn as dashed lines. Open each one, and every HTML page, before committing: no text overlaps, nothing is cut off.
+- **UML activity diagrams** for the flows, written as PlantUML (`.puml` next to its `.svg` in `diagrams/`): one per main flow, **drawn at step 4**, each with a title and a legend; each screen an action with its number and address, a choice the person makes as a decision, the failure paths as notes beside their screen. `docs/02-design/diagrams.sh` (set up by `/docs-setup`) draws every diagram of the design from text, in a standard notation (decided 2026-10-20), so they read the same at any company; never a hand-made SVG, a home style, or a script that draws SVG itself. The flow tables in `03-flows.md` and the diagrams say the same words. Open each one, and every HTML page, before committing: no text overlaps, nothing is cut off.
 - **What isn't here:** the tables and the endpoints (04 Data model and 05 API design), the full legal texts (02 Compliance; here only where they appear), the session's length, CSRF and security headers (07 Security), what the AI does and its prompts (08 AI design; here how its result looks and its label), the public website and the pricing page (Launch), the components' code (Build, per slice).
 
 ## The states of a screen
@@ -269,7 +269,7 @@ docs/02-design/06-ui-design/
   tokens/              the tokens file the code reads
   wireframes/          the gray pages (HTML), one per screen and per state that changes the layout; the script per screen that writes them
   mockups/             the key screens with the tokens (HTML), made from the wireframes by a script
-  diagrams/            the flows (SVG) and the script that draws them
+  diagrams/            the flows (.puml + SVG)
   checks/              the scripts: the page check (axe and our rules), the contrast check, their planted pages
 docs/00-project/adr/
   NNNN-[title].md …
@@ -360,7 +360,7 @@ Every screen is decided by the first PR that touches it, with whatever component
 Design:
 - [ ] the people, their worst moments, the devices and widths, the languages, the accessibility level
 - [ ] the map: every screen with its address, feature, data source, states, components and slice; every PRD criterion reaches one or has a reason; the navigation; the taps per main task; the one-way doors; the key screens; chosen by the user
-- [ ] every main flow with its failure paths, drawn
+- [ ] every main flow with its failure paths, drawn as a UML activity diagram by `diagrams.sh`, its texts the same as its table
 - [ ] every key screen in full: wireframe pages, data with their source, the state table, the texts, the criteria tried; chosen by the user where there was a choice
 - [ ] the voice, the glossary, the texts of the shared states and shared error codes in every language
 - [ ] the visual direction, chosen by the user; the tokens file on three levels; the contrast check passing in every theme, tried on planted pairs
