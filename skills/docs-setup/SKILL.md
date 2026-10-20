@@ -57,11 +57,12 @@ docs/
 Every design drawing is in a **standard notation, drawn from text**, so it reads the same at any company and the drawings can't drift apart: C4 from one model, the rest as PlantUML files. Without this, each Design step draws in its own style, and the same part ends up with two names in two drawings.
 
 - **Copy the starting files** from this skill's `assets/` into `docs/02-design/`: `diagrams.sh` (draws everything), `c4/workspace.dsl` (an empty C4 model in the Structurizr DSL, with the styles), `c4/legend.puml` (the legend every C4 drawing shares), `c4/views.txt` (which view goes to which SVG). `/system-design` fills the model.
-- **The tools**, free, once per machine, in `~/Desktop/TechProducts/tools/` (or the folder in `DIAGRAM_TOOLS`): PlantUML (a `.jar`, runs on Java 17+) and the Structurizr CLI (the C4 author's tool). No Graphviz: PlantUML's own layout. Pick a release a few weeks old, not one from the last days. Say the file, the source and the size, and download only after the user says yes:
+- **The tools**, free, once per machine, in `~/Desktop/TechProducts/tools/` (or the folder in `DIAGRAM_TOOLS`): PlantUML (a `.jar`, runs on Java 17+), the Structurizr CLI (the C4 author's tool) and **Graphviz** (`brew install graphviz`), the layout engine C4-PlantUML is made for: it keeps the outside systems together and the arrows straight. Without it, `diagrams.sh` falls back to PlantUML's own layouts (ELK for C4), which work but read worse. The ER diagrams keep PlantUML's `smetana` layout (a pragma in their files): with Graphviz the wide ones come out as a staircase, cut at 4,096 px. Pick a release a few weeks old, not one from the last days. Say the file, the source and the size, and download only after the user says yes:
   ```bash
   mkdir -p ~/Desktop/TechProducts/tools && cd ~/Desktop/TechProducts/tools
   curl -sSLO https://github.com/plantuml/plantuml/releases/download/v<version>/plantuml-<version>.jar
   curl -sSLO https://github.com/structurizr/cli/releases/download/v<version>/structurizr-cli.zip && unzip -q structurizr-cli.zip -d structurizr-cli
+  brew install graphviz
   ```
 - **Check it:** `docs/02-design/diagrams.sh` draws the empty model's two views; open them.
 

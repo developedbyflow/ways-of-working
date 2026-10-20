@@ -8,7 +8,7 @@
 #   ./diagrams.sh foo.puml   draw one PlantUML file
 #
 # Needs Java 17+ and two free tools in $DIAGRAM_TOOLS (default ~/Desktop/TechProducts/tools):
-#   plantuml-<version>.jar and structurizr-cli/ (no Graphviz: PlantUML's built-in layouts, ELK for C4 and smetana for the rest).
+#   plantuml-<version>.jar and structurizr-cli/ and, for the best layout, Graphviz (`brew install graphviz`); without it, PlantUML's built-in layouts.
 set -euo pipefail
 
 dir="$(cd "$(dirname "$0")" && pwd)"
@@ -17,7 +17,9 @@ plantuml="${PLANTUML_JAR:-$(ls "$tools"/plantuml-*.jar 2>/dev/null | sort | tail
 structurizr="${STRUCTURIZR_CLI:-$tools/structurizr-cli/structurizr.sh}"
 [ -f "$plantuml" ] || { echo "PlantUML not found in $tools (set DIAGRAM_TOOLS or PLANTUML_JAR)" >&2; exit 1; }
 
-draw() { java -Djava.awt.headless=true -jar "$plantuml" -tsvg -charset UTF-8 "$@"; }
+# Graphviz (dot) gives the best layout; without it, PlantUML's built-in ones (ELK for C4, smetana for the rest).
+if command -v dot >/dev/null 2>&1; then layout=""; c4layout=""; else layout="-Playout=smetana"; c4layout="!pragma layout elk"; fi
+draw() { java -Djava.awt.headless=true -jar "$plantuml" -tsvg -charset UTF-8 $layout "$@"; }
 
 if [ $# -gt 0 ]; then draw "$@"; exit; fi
 
@@ -30,8 +32,8 @@ if [ -s "$dir/c4/views.txt" ]; then
     key="${line%%:*}"; target="${line#*:}"
     src="$tmp/structurizr-$key.puml"
     [ -f "$src" ] || { echo "missing view: $key" >&2; exit 1; }
-    # ELK, PlantUML's built-in layout with straight, right-angled lines (no Graphviz); the shared legend instead of the exporter's
-    { sed -n '1p' "$src"; echo '!pragma layout elk'; echo 'skinparam ArrowThickness 1.6'; echo 'skinparam defaultTextAlignment center'; sed -e '1d' -e '/^SHOW_LEGEND/d' -e '/^@enduml/d' "$src"
+    # the layout chosen above; the shared legend instead of the exporter's
+    { sed -n '1p' "$src"; echo "$c4layout"; echo 'skinparam ArrowThickness 1.6'; echo 'skinparam defaultTextAlignment center'; sed -e '1d' -e '/^SHOW_LEGEND/d' -e '/^@enduml/d' "$src"
       cat "$dir/c4/legend.puml"; echo '@enduml'; } > "$tmp/$key.puml"
     draw -o "$tmp/out" "$tmp/$key.puml"
     mkdir -p "$(dirname "$dir/$target")"
