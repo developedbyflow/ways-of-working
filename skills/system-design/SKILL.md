@@ -87,6 +87,8 @@ Storage per year, peak requests, AI calls per day and their cost, photo traffic.
 ### 4. Context (C4, level 1)
 C4 draws the system at zoom levels, like a map: level 1 shows the system as one box and the world around it, level 2 opens the box. Here: who uses the system and which outside systems it talks to (payments, email, AI, data sources). A diagram, with the relationship table under it.
 - **Name each outside system by its provider once chosen** ("Paddle (payments)"); providers come at step 12, so the context is read again then.
+- **Every row has a "How":** for a system, its protocol (HTTPS, a webhook, OpenID Connect); for a person, how they reach the system ("the app (PWA), in a browser"), never an empty cell.
+- **The outside systems in one group** (`group "Outside systems"` in the model), so the drawing keeps them together.
 - **Every provider of step 12 appears** in the drawing or in a "left out of the drawing" list with the reason (monitoring, backups, plan B); what's only imported, not called while the app runs, is marked so (a dashed arrow).
 
 ### 5. Containers (C4, level 2)

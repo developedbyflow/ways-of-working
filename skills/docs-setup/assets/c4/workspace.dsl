@@ -16,9 +16,11 @@ workspace "<Product>" "The design's C4 model." {
             api = container "API" "<What it does.>" "<Technology>"
             database = container "Database" "<What it holds.>" "<Technology>" "Database"
         }
-        outside = softwareSystem "<Outside system>" "<What it does for us.>" "External"
+        outsideSystems = group "Outside systems" {
+            outside = softwareSystem "<Outside system>" "<What it does for us.>" "External"
+        }
 
-        user -> product "1. <What the person does with it>"
+        user -> product "1. <What the person does with it>" "<How they reach it: the app, in a browser>"
         product -> outside "2. <What goes, what comes back>" "<HTTPS>"
 
         user -> product.app "1. <Uses the app>"
