@@ -112,7 +112,7 @@ The 2–3 most important and most risky actions (for example: log a food; scan a
 - **the "server says no" path:** what happens to an entry the server refuses (an expired login, an ended trial, a bad value). Signing out or an expired login never deletes what wasn't sent without asking;
 - offline edits and deletes, not only new entries.
 
-Draw each flow as a **UML sequence diagram**: the parts on top, time going down, the numbered steps matching the table; a step inside one part is an arrow back to it; failures as `alt` or `break`.
+Draw each flow as a **UML sequence diagram**: the parts on top, time going down, the numbered steps matching the table; a step inside one part is an arrow back to it; failures as `alt` or `break`. The parts are the containers of step 5, with the same names, and every request passes the ones it really passes (the web server too); each flow draws its failure paths (no answer, refused, the login expired), not only the happy path. **A flow is re-read after the steps that detail it** (the data model, the API design, security, AI design): they decide its fields, limits and failure codes, and the flow is brought in line with a journal line; the flow keeps the path and what fails, the call's details stay in the API design.
 
 These flows become the end-to-end tests; the rest of the testing strategy is decided in `/architecture`.
 
