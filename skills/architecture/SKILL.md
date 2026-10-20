@@ -31,7 +31,7 @@ Architecture decides **how the code is organized**: the modules and their bounda
 - **The user decides** keep, change or rewrite for existing code (step 1), the modules (step 2), the inside of a module (step 3), the stack (step 7), the testing strategy (step 9) and every ADR (step 12). You give the options and a recommendation; they choose. One decision at a time.
 - **The simplest structure that holds the boundaries.** Modules by feature, in one service; layers and interfaces only where they bring something (a rule tested without the database, a provider you may swap), not everywhere. Every extra layer is one more file for every new feature, forever.
 - **Check versions on the official pages,** not from memory: the current version, when its support ends, its licence; and whether a tool is still maintained (its repository archived? its last release?), and whether it works with the versions of the rest of the stack.
-- **Diagrams as SVG files** in `diagrams/`, in the C4 notation, like the system design's: each box with its name, type and technology; the container's border dashed; a title and a legend; numbered arrows explained in a table under the diagram. Open each one before committing: no text overlaps. When a later decision renames something drawn (a platform, a technology), fix the old diagrams too and check the new text still fits its box.
+- **Diagrams in standard notations, drawn from text** (decided 2026-10-20), like the system design's: the modules as a **C4 component view in the same Structurizr model**, `docs/02-design/c4/workspace.dsl`, so the containers and the outside systems keep exactly the system design's names; one action inside a module as a **UML sequence diagram**, a `.puml` next to its `.svg` in `diagrams/`. `docs/02-design/diagrams.sh` draws them all (add the view to `c4/views.txt`). One relationship per direction, each label starting with its row number in the table under the drawing; a title per view, the shared legend. Never a hand-made SVG or a home style. Open each one before committing: no text overlaps. When a later decision renames something (a platform, a technology), change it once in the model and redraw.
 - **What isn't here:** the exact tables (04 Data model), the endpoints (05 API design), the screens (06 UI design), threats and security tests (07 Security), AI evals (08 AI design). Deployment, environments, CI/CD and monitoring were decided in the system design and are built in Build; this step only adds its own checks to the pipeline. The test plan for each feature is written per slice, in Planning and Build; here it's the strategy.
 
 ## Which level a decision belongs to
@@ -123,7 +123,7 @@ Split the API by the PRD's features and words (the log, recipes, a shared kitche
 - what it exposes and whom it calls; no cycles (A calls B and B calls A);
 - how modules talk: a direct call through the interface (the default), or an event ("account deleted") when one action touches many modules.
 
-A C4 level 3 diagram of the API. The test of a good boundary: a High idea from `ideas.md` fits in one module. **The user decides.**
+A C4 level 3 diagram of the API: a `component` view of the model, each module a component tagged `Module`, the libraries without business data tagged `Library`. The arrow from the app goes to the part that receives every request first (a filter or a gateway inside the API), not to the container's border, which C4 can't draw. The test of a good boundary: a High idea from `ideas.md` fits in one module. **The user decides.**
 
 ### 3. Inside a module
 - **The style:** by feature, each action with its endpoint, validation, logic and data access close together.
@@ -131,7 +131,7 @@ A C4 level 3 diagram of the API. The test of a good boundary: a High idea from `
 - **What goes behind an interface:** only what you want to swap or replace in tests: the providers, the storage, the clock.
 - **The dependency rule:** the business rules depend on nothing outside; the database, the framework and the providers depend on them.
 
-One action traced from the request to the database and back, as a numbered table like the system design's flows, with a diagram. **The user decides.**
+One action traced from the request to the database and back, as a numbered table like the system design's flows, with a UML sequence diagram: the shared rules, the controller, the service, the rules, the repository as lifelines, a call to another module through its door, each check that can refuse as a `break` with its status code. **The user decides.**
 
 ### 4. The requirements, in the code
 For every requirement that becomes code, pick the module, the mechanism and **the automatic check**:
@@ -230,7 +230,8 @@ docs/02-design/03-architecture/
   04-cross-cutting.md         05-frontend.md            06-stack.md
   07-conventions.md           08-testing.md             09-repo.md
   10-maintenance.md
-  diagrams/                   c4-components (the API, level 3), one action inside a module (SVG)
+  diagrams/                   c4-components (SVG, from the C4 model); one action inside a module (.puml + SVG)
+docs/02-design/c4/workspace.dsl   the C4 model, shared with /system-design: the components view is added here
 docs/00-project/adr/
   NNNN-[title].md …
 ```
@@ -265,8 +266,8 @@ Each topic file starts with `# NN – [Topic]` and a link back to the README. **
 
 | File | Holds |
 |---|---|
-| `01-modules.md` | the diagram; `\| Module \| What it does \| Owns \| Exposes \| Calls \|`; how modules talk; the High-idea test |
-| `02-inside-a-module.md` | the style, the layers, the dependency rule, what's behind an interface; one action traced, `\| # \| Where \| What happens \|`, with its diagram |
+| `01-modules.md` | the diagram (a view of the C4 model); `\| Module \| What it does \| Owns \| Exposes \| Calls \|`; how modules talk; the High-idea test |
+| `02-inside-a-module.md` | the style, the layers, the dependency rule, what's behind an interface; one action traced, `\| # \| Where \| What happens \|`, with its sequence diagram |
 | `03-requirements-in-code.md` | `\| Requirement \| From \| Where it lives \| How it's checked \|`; personal data per module |
 | `04-cross-cutting.md` | `\| Concern \| The rule \| Where it lives \| Example \|` |
 | `05-frontend.md` | the routes; `\| State \| Lives in \| Source of truth \| Library \|`; the contract client, the size budget, new versions, the folders |
@@ -282,13 +283,14 @@ And one file per decision in `docs/00-project/adr/NNNN-[title].md`, with the sam
 `/architecture validate <folder>`: judge an existing architecture, change nothing.
 1. Read the folder, its ADRs and the README's journal, the PRD, the system design, the compliance folder, `docs/00-project/ideas.md`, and the code if it exists.
 2. Check the template and "Done when" item by item, citing the lines.
-3. Then ask: does every MVP feature have a module, and every table one owner? Are there cycles? Does every provider sit behind one interface? Does every non-functional requirement in the PRD, and every requirement from the system design and compliance, have a mechanism and an automatic check? Do export and deletion cover every module with personal data? Does each of the top 3 qualities have a test? Does every stack choice have a reason, a version, a licence and a revisit date? Does every convention have an example? Was a style kept only because it existed? Does a High idea fit in one module? Is every term explained? Does any older file contradict a decision changed later in the journal, or keep a concept from an abandoned platform?
+3. Then ask: does every MVP feature have a module, and every table one owner? Are there cycles? Does every provider sit behind one interface? Does every non-functional requirement in the PRD, and every requirement from the system design and compliance, have a mechanism and an automatic check? Do export and deletion cover every module with personal data? Does each of the top 3 qualities have a test? Does every stack choice have a reason, a version, a licence and a revisit date? Does every convention have an example? Was a style kept only because it existed? Does a High idea fit in one module? Is every term explained? Does any older file contradict a decision changed later in the journal, or keep a concept from an abandoned platform? Does the components view come from the same C4 model as the system design's drawings, with the same names?
 4. Report: findings by severity, each with the line, what's wrong and what to change; then what's done well; then what you couldn't evaluate. The user picks what to apply.
 
 ## The bad version and why not
 - Clean architecture with 4 projects and 6 layers for 30 endpoints: every new feature touches 8 files, and half of them only pass the data along.
 - Everything in one file, or in `Utils/` and `Helpers/`: nobody knows where anything goes, so it goes everywhere.
 - Organized only by type (`Controllers/`, `Services/`, `Repositories/`): one feature is spread across four folders.
+- The modules drawn by hand in a separate file: the providers get other names than in the system design, and nobody else's tools can read the drawing.
 - The AI provider called directly from ten places: switching it touches the whole code.
 - Modules only on the diagram: anyone reads and writes anyone's tables, so the boundaries don't exist.
 - Microservices for one person, because "that's what big companies do".
@@ -328,7 +330,7 @@ Split the code by what may change: each module hides one decision (the AI provid
 - [ ] a glossary for every term
 - [ ] the README: status, summary, what we skip and why, open questions, the ADR table
 - [ ] the row in `docs/02-design/README.md` set to done
-- [ ] every diagram opened in a browser, no text overlapping
+- [ ] every diagram in a standard notation, drawn by `diagrams.sh` (the components from the C4 model, the action as a sequence diagram), opened, no text overlapping
 
 ## Next
 Data model (`/data-model`), API design (`/api-design`) and UI design (`/ui-design`), almost in parallel: they take the modules, the shared rules and the conventions from here. Then Security (`/security`) checks it all.
