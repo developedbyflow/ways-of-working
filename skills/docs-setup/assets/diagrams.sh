@@ -17,9 +17,9 @@ plantuml="${PLANTUML_JAR:-$(ls "$tools"/plantuml-*.jar 2>/dev/null | sort | tail
 structurizr="${STRUCTURIZR_CLI:-$tools/structurizr-cli/structurizr.sh}"
 [ -f "$plantuml" ] || { echo "PlantUML not found in $tools (set DIAGRAM_TOOLS or PLANTUML_JAR)" >&2; exit 1; }
 
-# Graphviz (dot) gives the best layout, with straight segments for C4 (its curves are the default; "ortho" puts the labels over the boxes);
+# Graphviz (dot) gives the best layout, with its curved lines (straight segments and "ortho" were tried on 2026-10-20 and read worse);
 # without it, PlantUML's built-in ones (ELK for C4, smetana for the rest).
-if command -v dot >/dev/null 2>&1; then layout=""; c4layout="skinparam linetype polyline"; else layout="-Playout=smetana"; c4layout="!pragma layout elk"; fi
+if command -v dot >/dev/null 2>&1; then layout=""; c4layout=""; else layout="-Playout=smetana"; c4layout="!pragma layout elk"; fi
 draw() { java -Djava.awt.headless=true -jar "$plantuml" -tsvg -charset UTF-8 $layout "$@"; }
 
 if [ $# -gt 0 ]; then draw "$@"; exit; fi
