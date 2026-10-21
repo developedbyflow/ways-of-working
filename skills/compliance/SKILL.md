@@ -27,6 +27,7 @@ Compliance says **what you're obliged to do** and turns each obligation into a p
 - **The user decides** every legal basis, every retention period and every new requirement. You give the options and a recommendation; they choose. One decision at a time.
 - **New requirements go into the PRD,** with a journal line, after the user says yes: a consent screen, an export button, a deletion job.
 - **Collect less before you protect more.** For each piece of data, first ask whether you need it at all; data you don't keep can't leak, be requested or be fined (data minimisation).
+- **A number or a rule decided earlier changes everywhere at once** (decided 2026-10-21, after a whole-design check found ~160 stale mentions left behind by later steps): before committing, `grep` all of `docs/` for the old value and its wording (the number, the name, the phrase) and fix every place in the same commit, or say why one stays (a journal line keeps what was true that day; a past count kept on purpose goes into `docs/02-design/checks/facts-history.txt`). `diagrams.sh` runs `checks/facts.py`, which counts the main facts from their sources (tables, addresses, threats, secrets, screens, ADRs, alerts) and stops on a document that states another number; a new fact that many files repeat gets a line in it.
 
 ## The laws and rules
 Use this list at step 8. Name the ones that apply; for each one you name, one line on what it asks.

@@ -5,7 +5,7 @@
 #     then drawn by PlantUML; c4/views.txt says where each view's SVG goes;
 #   - everything else (UML sequence, UML activity, ER, DFD): the .puml file next to its .svg.
 #
-#   ./diagrams.sh            draw everything
+#   ./diagrams.sh            check the counts in the documents (checks/facts.py), then draw everything
 #   ./diagrams.sh foo.puml   draw one PlantUML file
 #
 # Needs Java 17+ and two free tools in $DIAGRAM_TOOLS (default ~/Desktop/TechProducts/tools):
@@ -24,6 +24,9 @@ if command -v dot >/dev/null 2>&1; then layout=""; c4layout=""; else layout="-Pl
 draw() { java -Djava.awt.headless=true -jar "$plantuml" -tsvg -charset UTF-8 $layout "$@"; }
 
 if [ $# -gt 0 ]; then draw "$@"; exit; fi
+
+# 0. Every count the documents state matches its source (checks/facts.py): a stale "132 addresses" stops the redraw.
+python3 -I "$dir/checks/facts.py"
 
 # 1. The C4 model: c4/views.txt has one "view key:path of the SVG without .svg:the Markdown with its table" per line.
 if [ -s "$dir/c4/views.txt" ]; then

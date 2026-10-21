@@ -77,7 +77,7 @@ A core that is always there (**bold**), the rest only when it applies. The arc42
 8. **Review:** written comments first, until the deadline. A meeting only if the comments don't converge or it is a one-way door: at most ten people, no presentation, the document read at the start (Amazon reads its memos in silence first, a "study hall"), the last 10 minutes for the decision (Squarespace).
 9. **Decision:** made by the decider with the approvers; not unanimity: "yes", "not yet" or "yes, if…" (Squarespace); the dissent written in the document, then everyone commits ("disagree and commit", Bezos, 2016). Written in the Decision section; the one-way doors become ADRs.
 10. **After approval:** a ticket that links the proposal; PRs cite its number. A small design change during the work is written into the proposal with a history line; a big one becomes a new proposal, with "supersedes / superseded by" in both (Rust: "More substantial changes should be new RFCs, with a note added to the original RFC").
-11. **When delivered:** the step documents and the architecture overview updated, each with a journal line pointing to the proposal; the C4 model and diagrams redrawn; the team told; status "done".
+11. **When delivered:** the step documents and the architecture overview updated, each with a journal line pointing to the proposal; every number or rule the change touches found with `grep` across `docs/` and fixed in the same commit (`checks/facts.py` checks the main counts); the C4 model and diagrams redrawn; the team told; status "done".
 12. **After launch:** a dated note in History: the success metric reached or not, what was confirmed, what wasn't. Ubl: re-read your own design docs a year or two later.
 
 ### The architecture overview: `/design-doc`
