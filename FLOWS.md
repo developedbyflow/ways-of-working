@@ -59,7 +59,7 @@ All files are in `docs/01-discovery/`, except `docs/00-project/ideas.md`. `docs/
 flowchart LR
   P["Phase 1: Discovery<br/>(PRD, prototype,<br/>risk tests)"] --> S1
   subgraph D["Design: how it runs and how it's built"]
-    S1["01 System design"] --> S2["02 Compliance"] --> S3["03 Architecture"] --> M["04 Data model<br/>05 API design<br/>06 UI design<br/>(almost in parallel)"] --> S7["07 Security"] --> S8["08 AI design<br/>(products with AI)"] --> S9["09 Design doc<br/>(the summary)"]
+    S1["01 System design"] --> S2["02 Compliance"] --> S3["03 Architecture"] --> M["04 Data model<br/>05 API design<br/>06 UI design<br/>(almost in parallel)"] --> S7["07 Security"] --> S8["08 AI design<br/>(products with AI)"] --> S9["09 Architecture overview<br/>(then design docs for changes)"]
   end
   S9 --> X["Phase 3: Planning"]
   S7 -. "no AI" .-> S9
@@ -86,7 +86,7 @@ flowchart LR
 | 06 | [UI design](skills/ui-design/SKILL.md) | `/ui-design` | what do people see and do? the map of screens and the navigation, the flows with their failure paths, every screen's states, the words, a small design system checked for contrast, accessibility; the key screens now, the others one slice ahead of their code |
 | 07 | [Security](skills/security/SKILL.md) | `/security` | what can be attacked and how is it protected? the assets and the attackers, a bar from OWASP ASVS, the map with its trust boundaries, every flow's threats (STRIDE) with their protections and checks, the numbers for passwords, sessions and limits, the headers, secrets, the supply chain, the accounts, detection; the whole model now, each slice's new ways in before its code |
 | 08 | [AI design](skills/ai-design/SKILL.md) | `/ai-design` | for products with AI: what's inside the AI box? every AI job's card, the measure and threshold with its margin, the pinned model, the prompt and the answer's schema, evals as a process, the attacks specific to AI, what the person sees, tokens and cost measured, production signals, the AI Act; contracts and the riskiest job now, the other prompts one slice ahead of their code |
-| 09 | [Design doc](skills/design-doc/SKILL.md) | `/design-doc`; `/design-doc change "<name>"` | how do I explain it all in one document, and how do I propose a big change? the summary of the design for a reader from outside; a proposal reviewed and decided before code, with its alternatives, rollout and decision |
+| 09 | [Architecture overview and design docs](skills/design-doc/SKILL.md) | `/design-doc`; `/design-doc change "<name>"` | how do I explain it all in one document, and how do I propose a big change? the architecture overview for a reader from outside; a design doc per change: a proposal reviewed and decided before code, with its alternatives, rollout and decision |
 
 What each step reads and writes:
 
@@ -100,7 +100,7 @@ What each step reads and writes:
 | 06 | PRD, prototype, 01–05; an existing app | `06-ui-design/`: wireframes, mockups, tokens | the key screens' mockups pass the page check; the test with people decided |
 | 07 | everything, and what 01–06 left for Security | `07-security/`, the scripts that try the decisions | every threat with its protection and its check, or an accepted risk with its owner |
 | 08 | everything, and what 01–07 left for AI design; the AI risk test | `08-ai-design/`: the prompts, the evals | every AI job with a threshold, a pinned model and its prompt; what blocks a release decided |
-| 09 | the READMEs of 01–08, the ADRs, the PRD; for a proposal, the step documents it touches | `design-doc.md`; a proposal in `changes/NNNN-<name>.md`, then the step documents and ADRs it changes | the summary readable in an hour, every number matching its source; a proposal decided in writing |
+| 09 | the READMEs of 01–08, the ADRs, the PRD; for a proposal, the step documents it touches | `architecture-overview.md`; a design doc in `changes/NNNN-<name>.md`, then the step documents and ADRs it changes | the summary readable in an hour, every number matching its source; a proposal decided in writing |
 
 Every step writes its hard-to-undo choices as ADRs, in `docs/00-project/adr/`, and sets its own row in the map when it ends. When a step finds a gap in an earlier one, it stops, says so, and on a yes fixes it where it lives, with a line in that document's journal.
 
@@ -137,8 +137,8 @@ docs/
       01-requirements.md … 12-cost.md
       diagrams/
     02-compliance …
-    design-doc.md        the whole design in one document, linking to the steps (09)
-    changes/             one proposal per big change: 0001-<name>.md …
+    architecture-overview.md   the whole design in one document, linking to the steps (09)
+    changes/             one design doc (a proposal) per big change: 0001-<name>.md …
 ```
 
 ## Extra clarifications

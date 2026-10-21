@@ -1,15 +1,15 @@
 ---
 name: design-doc
-description: "One short document a team reads before code. Two uses, one format: the summary of a design that exists (all of Design in one document, linking to the details), or a proposal for a big change (a new service, a feature that touches many parts, a provider swap, a change to live data), written before code, reviewed by a deadline, decided in writing, then the step documents and ADRs updated. Sections: summary, context and why now, goals and non-goals, requirements with numbers, C4 context and containers, 1–2 flows with failure paths, data, API and old app versions, screens, failures, security and personal data, operations, rollout and rollback, testing and the success metric, scale and cost, drawbacks and alternatives, plan and dependencies, risks, the decision, history; each with when to include it and its arc42 chapter. Use at the end of Design, then for every one-way-door change in Build, after launch or at work. Also: /design-doc change \"<name>\" writes a proposal; /design-doc validate <file> judges an existing one."
-argument-hint: "[nothing: the summary] or change \"<name>\" or validate <file>"
+description: "One short document a team reads before code. Two uses, one format: the architecture overview of a design that exists (all of Design in one document, linking to the details; elsewhere a system overview, an HLD or a SAD), or a design doc, the proposal for a big change (a new service, a feature that touches many parts, a provider swap, a change to live data), written before code, reviewed by a deadline, decided in writing, then the step documents and ADRs updated. Sections: summary, context and why now, goals and non-goals, requirements with numbers, C4 context and containers, 1–2 flows with failure paths, data, API and old app versions, screens, failures, security and personal data, operations, rollout and rollback, testing and the success metric, scale and cost, drawbacks and alternatives, plan and dependencies, risks, the decision, history; each with when to include it and its arc42 chapter. Use at the end of Design, then for every one-way-door change in Build, after launch or at work. Also: /design-doc change \"<name>\" writes a proposal; /design-doc validate <file> judges an existing one."
+argument-hint: "[nothing: the architecture overview] or change \"<name>\" or validate <file>"
 ---
 
 # Design doc
 
 ## When to use it
 Two situations, one format:
-1. **The summary of a design that exists:** at the end of Design, one document that gathers what steps 01–08 decided, so someone from outside (a reviewer, a new colleague, an investor) understands the system without reading dozens of files. It lives at `docs/02-design/design-doc.md`.
-2. **A proposal for a change:** any time after (in Build, after launch, at work): a new service, a feature that touches several parts, a provider swapped, a change to data in production, a new need for scale or availability. Written **before** code, reviewed, decided; only then the step documents change and the ADRs are written. Each lives at `docs/02-design/changes/NNNN-<name>.md`.
+1. **The architecture overview of a design that exists:** at the end of Design, one document that gathers what steps 01–08 decided, so someone from outside (a reviewer, a new colleague, an investor) understands the system without reading dozens of files. It lives at `docs/02-design/architecture-overview.md`. **The name matters:** in practice "design doc" means the proposal for one change (Ubl), while the view of a whole existing system is called an architecture or system overview, an `ARCHITECTURE.md` in a code repo (Aleksey Kladov, 2021: "the high-level architecture of the project"), or an HLD / SAD (high-level design, solution architecture document) in client projects. There is only ever one overview; it is updated after every approved proposal.
+2. **A design doc, the proposal for a change:** any time after (in Build, after launch, at work): a new service, a feature that touches several parts, a provider swapped, a change to data in production, a new need for scale or availability. Written **before** code, reviewed, decided; only then the step documents change and the ADRs are written. Each lives at `docs/02-design/changes/NNNN-<name>.md`.
 
 **The door test** (Jeff Bezos, 2015 letter to shareholders): a decision that is hard to undo (a "one-way door") is made "methodically, carefully, slowly"; one that is easy to undo (a "two-way door") "can and should be made quickly". A one-way door gets a proposal and a review; a two-way door gets a ticket, no document.
 
@@ -25,10 +25,10 @@ At work nobody delivers 12 files for a new feature. They deliver **one document*
 ## How to run it
 - **The bar:** what a senior engineer or a staff engineer at a well-run company would accept in a design review, in the shortest form that meets it. Name the industry practice so the user learns it: the design doc (Google), the RFC (Uber, HashiCorp, Sourcegraph, Rust), the RFD (Oxide), the KEP (Kubernetes) are the same idea.
 - **Teach while you go:** every term gets one line on what it is and what it brings, compared with something a frontend developer knows (a proposal is a big PR's description, written before the code; the step documents are the diff, after the decision).
-- **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, `docs/` in the current folder. The summary goes to `docs/02-design/design-doc.md`; proposals to `docs/02-design/changes/`, created with the first one. At work, use the team's place and template (Confluence, Notion, the client's arc42): the arc42 column below says where each section goes.
-- **The proposal is the "why"; the step documents are the truth now.** A proposal never replaces them: once approved, they are updated and point back to it.
+- **Where the documents are:** the `Project documents:` line in `CLAUDE.md` gives the documents folder; without it, `docs/` in the current folder. The overview goes to `docs/02-design/architecture-overview.md`; proposals to `docs/02-design/changes/`, created with the first one, with a README listing them. At work, use the team's place and template (Confluence, Notion, the client's arc42): the arc42 column below says where each section goes.
+- **The proposal is the "why"; the step documents and the overview are the truth now.** A proposal never replaces them: once approved, they are updated and point back to it.
 - **Link, don't copy.** The document is short for the reader and links to the details (the requirements file, `schema.sql`, `openapi.yaml`, the ADRs). Ubl: "copy-pasting complete schema definitions should be avoided"; formal definitions "quickly get out of date". No code.
-- **Length:** a proposal of 1–3 pages for a change of a few weeks (Ubl's "mini design doc", "especially helpful for incremental improvements or sub tasks"); 10–20 pages only for a new system ("around 10-20ish pages" for a larger project, Ubl); the summary of an existing design, readable in an hour. Sections that don't apply are removed (Squarespace: "Remove sections that are not applicable"), with half a line saying why when a reviewer would expect them.
+- **Length:** a proposal of 1–3 pages for a change of a few weeks (Ubl's "mini design doc", "especially helpful for incremental improvements or sub tasks"); 10–20 pages only for a new system ("around 10-20ish pages" for a larger project, Ubl); the architecture overview of an existing design, readable in an hour. Sections that don't apply are removed (Squarespace: "Remove sections that are not applicable"), with half a line saying why when a reviewer would expect them.
 - **Use what exists:** the C4 drawings and flows already generated by `docs/02-design/diagrams.sh`; a proposal that changes the shape changes the model (`c4/workspace.dsl`) after approval, not before; the proposal shows the new drawing as a draft.
 - **The user decides** what the proposal proposes and, at work, who decides and who approves. You write, check and recommend; one decision at a time.
 
@@ -47,7 +47,7 @@ A core that is always there (**bold**), the rest only when it applies. The arc42
 | **Goals and non-goals** | what we want; what could reasonably be a goal but we choose not to make one; what we leave for later | always | 1 |
 | **Requirements** | the numbers with their source (people, speed, the availability target measured as an SLO, how much may be lost), the top 3 qualities, the constraints; the short calculation when a number decides the shape | always | 1, 2, 10 |
 | **Design: context (C4 level 1)** | the drawing and its relationship table | always | 3 |
-| Design: containers (C4 level 2) | the drawing and its table; which parts are new or change | always in the summary; in a proposal when the parts change | 5 |
+| Design: containers (C4 level 2) | the drawing and its table; which parts are new or change | always in the overview; in a proposal when the parts change | 5 |
 | Design: components (C4 level 3) | a container's modules | only for a new service with an inner structure that matters | 5 |
 | **Design: flows** | 1–2 UML sequence diagrams; their failure paths point to the failure table | always | 6 |
 | Design: data | only what changes, in short, linked to the real schema; what is sensitive; how long it's kept and how it's deleted; the migration | when the data changes | 5, 8 |
@@ -77,10 +77,10 @@ A core that is always there (**bold**), the rest only when it applies. The arc42
 8. **Review:** written comments first, until the deadline. A meeting only if the comments don't converge or it is a one-way door: at most ten people, no presentation, the document read at the start (Amazon reads its memos in silence first, a "study hall"), the last 10 minutes for the decision (Squarespace).
 9. **Decision:** made by the decider with the approvers; not unanimity: "yes", "not yet" or "yes, if…" (Squarespace); the dissent written in the document, then everyone commits ("disagree and commit", Bezos, 2016). Written in the Decision section; the one-way doors become ADRs.
 10. **After approval:** a ticket that links the proposal; PRs cite its number. A small design change during the work is written into the proposal with a history line; a big one becomes a new proposal, with "supersedes / superseded by" in both (Rust: "More substantial changes should be new RFCs, with a note added to the original RFC").
-11. **When delivered:** the step documents updated, each with a journal line pointing to the proposal; the C4 model and diagrams redrawn; the team told; status "done".
+11. **When delivered:** the step documents and the architecture overview updated, each with a journal line pointing to the proposal; the C4 model and diagrams redrawn; the team told; status "done".
 12. **After launch:** a dated note in History: the success metric reached or not, what was confirmed, what wasn't. Ubl: re-read your own design docs a year or two later.
 
-### The summary: `/design-doc`
+### The architecture overview: `/design-doc`
 1. Read every step README in `docs/02-design/` ("In one page", "Not doing", open questions), the ADRs and the PRD.
 2. Write the core and every section that has content, each a few lines with links to the files that hold the detail; use the generated drawings (C4 context and containers, the flows).
 3. Check that every number in it matches its source file; where two files disagree, say so and fix the older one with the user's yes.
@@ -108,7 +108,7 @@ A core that is always there (**bold**), the rest only when it applies. The arc42
 - [ ] Does the header say who decides, who approves and by when?
 - [ ] Is every one-way door an ADR?
 - [ ] No code, no copied schema or contract?
-- [ ] Readable in 15–20 minutes (a proposal) or an hour (the summary)?
+- [ ] Readable in 15–20 minutes (a proposal) or an hour (the overview)?
 
 ## The bad version and why not
 - The document written **after** the code, to tick a box: it changes nothing.
@@ -141,6 +141,7 @@ Checked on 2026-10-21:
 - Oxide, [RFD 1](https://rfd.shared.oxide.computer/rfd/0001).
 - Michael Nygard, [Documenting Architecture Decisions](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), 2011.
 - Jeff Bezos, letters to shareholders: [2015](https://www.sec.gov/Archives/edgar/data/1018724/000119312516530910/d168744dex991.htm) (the doors), [2016](https://www.sec.gov/Archives/edgar/data/1018724/000119312517120198/d373368dex991.htm) ("disagree and commit"), [2017](https://www.sec.gov/Archives/edgar/data/1018724/000119312518121161/d456916dex991.htm) (memos read in the meeting).
+- Aleksey Kladov, [ARCHITECTURE.md](https://matklad.github.io/2021/02/06/ARCHITECTURE.md.html), 2021.
 - Jacob Kaplan-Moss, [Against RFCs](https://jacobian.org/2023/dec/1/against-rfcs/), 2023.
 - Google SRE, [Reliable product launches](https://sre.google/sre-book/reliable-product-launches/).
 - arc42, [docs.arc42.org](https://docs.arc42.org/home/); C4, [c4model.com](https://c4model.com/).
@@ -154,11 +155,11 @@ Checked on 2026-10-21:
 - [ ] the decision written; the one-way doors as ADRs
 - [ ] after delivery: the step documents updated with journal lines pointing back, the diagrams redrawn, status "done"
 
-**The summary:**
+**The architecture overview:**
 - [ ] the core and every section with content, each linking to the file that holds the detail
 - [ ] every number matches its source file
 - [ ] the C4 context and containers and the main flows shown
 - [ ] readable in an hour
 
 ## Next
-Planning, after the summary. A proposal leads to its ticket and its slice.
+Planning, after the overview. A proposal leads to its ticket and its slice.
