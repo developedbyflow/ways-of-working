@@ -118,7 +118,7 @@ FACTS = [
     ("threats", lambda: len(re.findall(r"^\| T-\d+ ", read("07-security/03-threats.md"), re.M)),
      "07-security/03-threats.md", r"threats\b", 70),
     ("secrets", lambda: table_rows("07-security/07-data-and-secrets.md", "| Secret | Opens"),
-     "07-security/07-data-and-secrets.md", r"secrets\b", 15),
+     "07-security/07-data-and-secrets.md", r"(?:secrets|in the inventory)\b", 15),
     ("flows on the security map", lambda: table_rows("07-security/02-map.md", "| # | From"),
      "07-security/02-map.md", r"flows\b", 15),
     ("screens", screens, "06-ui-design/02-map.md", r"screens\b", 40),
