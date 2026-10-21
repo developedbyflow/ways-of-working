@@ -260,7 +260,7 @@ The architecture becomes whatever the first PRs made it. The first outage shows 
 There is no best solution, only trade-offs (the first law of software architecture, Richards and Ford). Design for the numbers you have, know what you'd do at the next 10×, and write down why you chose.
 
 ## How to apply it at work
-Before a new service or data flow, write a one-page design doc: requirements with numbers, the diagram, the failure table, the cost. Discuss it with the team before the code; the big decisions go into the repo as ADRs.
+Before a new service or data flow, write a short design doc with `/design-doc change "<name>"`: requirements with numbers, the C4 drawings, the flows with their failures, the cost, the alternatives, a written decision. Discuss it with the team before the code; the big decisions go into the repo as ADRs.
 
 ## Done when
 - [ ] requirements with numbers, the top 3 qualities in order, the constraints (legal and organizational), confirmed by the user
