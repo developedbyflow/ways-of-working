@@ -118,7 +118,7 @@ Draw each flow as a **UML sequence diagram**: the parts on top, time going down,
 These flows become the end-to-end tests; the rest of the testing strategy is decided in `/architecture`.
 
 ### 7. The data
-Where each kind of data lives, which copy is the source of truth (the server, or the phone until sync), what is sensitive (health data, payments), how it's backed up and where the backup copy lives (3-2-1: 3 copies, on 2 kinds of storage, 1 at another company). A diagram of where the data and its copies live: a C4 deployment view of the model (where each part runs, the copies as infrastructure nodes, health data marked). Logs with a user's id or IP address are still personal data under GDPR: never write "no personal data"; write what they hold, for how long and where. Details of tables and fields → `/data-model`.
+Where each kind of data lives, which copy is the source of truth (the server, or the phone until sync), what is sensitive (health data, payments), how it's backed up and where the backup copy lives (3-2-1: 3 copies, on 2 kinds of storage, 1 offsite; at another company if you also fear the provider, stricter than the rule asks). A diagram of where the data and its copies live: a C4 deployment view of the model (where each part runs, the copies as infrastructure nodes, health data marked). Logs with a user's id or IP address are still personal data under GDPR: never write "no personal data"; write what they hold, for how long and where. Details of tables and fields → `/data-model`.
 
 ### 8. What happens when something fails
 A table with every dependency (the database, the AI, payments, email, the server itself) × slow, down, returns garbage: timeout, retry, fallback, what the user sees.
