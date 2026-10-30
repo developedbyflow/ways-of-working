@@ -128,7 +128,8 @@ docs/02-design/02-compliance/
   06-dpia.md             the short impact assessment
   07-other-laws.md       cookies, consumer, medical devices, AI Act, accessibility, licences, entity
   08-breach-plan.md      the first 72 hours
-  drafts/                privacy policy, terms, consent texts (drafts until checked)
+  public-texts/          what people outside read: privacy policy, terms, consent texts
+                         (drafts until checked); a README says each text's reader, place, when
 ```
 
 The README:
