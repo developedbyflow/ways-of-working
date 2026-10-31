@@ -124,7 +124,7 @@ Split the API by the PRD's features and words (the log, recipes, a shared kitche
 - what it exposes and whom it calls; no cycles (A calls B and B calls A);
 - how modules talk: a direct call through the interface (the default), or an event ("account deleted") when one action touches many modules.
 
-A C4 level 3 diagram of the API: a `component` view of the model, each module a component tagged `Module`, the libraries without business data tagged `Library`. The arrow from the app goes to the part that receives every request first (a filter or a gateway inside the API), not to the container's border, which C4 can't draw. The test of a good boundary: a High idea from `ideas.md` fits in one module. **The user decides.**
+A C4 level 3 diagram of the API: a `component` view of the model, each module a component tagged `Module`, the libraries without business data tagged `Library`. The arrow from the app goes to the part that receives every request first (a filter or a gateway inside the API), not to the container's border, which C4 can't draw. **Readable, or split:** past about 12 arrows, one drawing crosses too much to read (MacroMate's 35 rows were unreadable, and so were 26 with their texts); draw instead a map with only the arrows' numbers (their texts in the table under it) and one view per module, the module with who calls it, whom it calls and its outside systems, the arrows between its neighbours left out; a row every module shares (each one, its own tables) is a sentence, not an arrow per module. The test of a good boundary: a High idea from `ideas.md` fits in one module. **The user decides.**
 
 ### 3. Inside a module
 - **The style:** by feature, each action with its endpoint, validation, logic and data access close together.
@@ -231,7 +231,7 @@ docs/02-design/03-architecture/
   04-cross-cutting.md         05-frontend.md            06-stack.md
   07-conventions.md           08-testing.md             09-repo.md
   10-maintenance.md
-  diagrams/                   c4-components (SVG, from the C4 model); one action inside a module (.puml + SVG)
+  diagrams/                   c4-modules (the map) and modules/<module> (SVG, from the C4 model); one action inside a module (.puml + SVG)
 docs/02-design/c4/workspace.dsl   the C4 model, shared with /system-design: the components view is added here
 docs/00-project/adr/
   NNNN-[title].md …
