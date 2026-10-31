@@ -115,6 +115,8 @@ Pick the shape **per part, by where the risk is** (often the pyramid for pure ru
 ### 1. Read what exists
 The PRD's functional requirements (MVP features, journeys, glossary), its non-functional requirements and the build order; the system design's containers, flows, failures, the doors left open at scale, the providers and the questions left for 03; compliance's new requirements; the ADRs; the High ideas. List what's missing and ask only that.
 
+**Then decide the server's language and framework, as an ADR, before step 2.** Steps 2–6 are written in its terms (packages, transactions, annotations), so it can't wait for step 7, which only adds the versions and the other tools. It's a one-way door: argue it as step 7 says (what the user or the team knows, maturity, how hard it is to leave). In MacroMate it was decided "ahead of step 7" on the same day, and the files written before step 7 had to point forward to it. **A file may point to a later file only for the detail;** the rule itself is written where it's decided.
+
 **If code exists**, read it for facts (what it does, what data it holds, which frameworks it uses) and for what hurts, **not as a model**. The git history shows where it hurts: files that change often and always together are either one module or tied the wrong way. For each part: keep, change or rewrite, why, and what it costs. Keep only what passes this step's criteria, not what happens to exist. The user decides.
 
 ### 2. The modules (C4, level 3)
@@ -131,6 +133,7 @@ A C4 level 3 diagram of the API: a `component` view of the model, each module a 
 - **Where the business rules live:** pure functions, no database, no network, tested in milliseconds.
 - **What goes behind an interface:** only what you want to swap or replace in tests: the providers, the storage, the clock.
 - **The dependency rule:** the business rules depend on nothing outside; the database, the framework and the providers depend on them.
+- **Who may see what:** say what guards the boundary between modules. In Java, a class without `public` is visible only in its own package, and each sub-folder is a package of its own, so with folders by type (`controller/`, `service/`) the classes the layers share must be `public` and the language can't keep other modules out; a tool must (Spring Modulith's `ApplicationModules.verify()` treats only the module's top package as its API, or ArchUnit). Only with all of a module's classes in one package can package-private guard it. MacroMate first wrote both "folders by type" and "package-private except the door", which can't both hold.
 
 One action traced from the request to the database and back, as a numbered table like the system design's flows, with a UML sequence diagram: the shared rules, the controller, the service, the rules, the repository as lifelines, a call to another module through its door, each check that can refuse as a `break` with its status code. **The user decides.**
 
