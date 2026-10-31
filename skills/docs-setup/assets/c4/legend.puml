@@ -7,12 +7,12 @@ legend {
 </style>
 legend bottom left
 |= <size:26><color:#222222>Legend</color></size> |= <size:26><color:#222222>C4 notation</color></size> |
-| <back:#08427b><size:26>            </size></back> | <size:26><color:#222222>Person</color></size> |
-| <back:#1168bd><size:26>            </size></back> | <size:26><color:#222222>Software system: ours</color></size> |
-| <back:#438dd5><size:26>            </size></back> | <size:26><color:#222222>Container: a part that runs separately</color></size> |
-| <back:#85bbf0><size:26>            </size></back> | <size:26><color:#222222>Component: a module of the API</color></size> |
-| <back:#cfe3f7><size:26>            </size></back> | <size:26><color:#222222>Library, no business data</color></size> |
-| <back:#999999><size:26>            </size></back> | <size:26><color:#222222>External system</color></size> |
+| <size:26><color:#08427b>██████</color></size> | <size:26><color:#222222>Person</color></size> |
+| <size:26><color:#1168bd>██████</color></size> | <size:26><color:#222222>Software system: ours</color></size> |
+| <size:26><color:#438dd5>██████</color></size> | <size:26><color:#222222>Container: a part that runs separately</color></size> |
+| <size:26><color:#85bbf0>██████</color></size> | <size:26><color:#222222>Component: a module of the API</color></size> |
+| <size:26><color:#cfe3f7>██████</color></size> | <size:26><color:#222222>Library, no business data</color></size> |
+| <size:26><color:#999999>██████</color></size> | <size:26><color:#222222>External system</color></size> |
 | <size:26><color:#c0392b>**red border**</color></size> | <size:26><color:#222222>health data is kept here</color></size> |
 | <size:26><color:#444444>**———→**</color></size> | <size:26><color:#222222>calls or sends to, while the app runs</color></size> |
 | <size:26><color:#444444>**- - - →**</color></size> | <size:26><color:#222222>imported by the admin, at each new version</color></size> |
