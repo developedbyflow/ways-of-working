@@ -2,7 +2,9 @@
 """Checks that each C4 drawing and the table under it in the Markdown say the same thing.
 
 For every view listed in c4/views.txt with a third field (the Markdown file that holds its table):
-  - every number on an arrow of the view ("5. Starts checkout") is a row of the table, and every row is an arrow;
+  - every number on an arrow of the view ("5. Starts checkout") is a row of the table;
+  - every row of the table is an arrow in at least one of the views that share it, except the rows
+    named in a fourth field (drawn in no view, said in a sentence instead);
   - each arrow's two ends are named in its row's "From → to" cell (the name, or its first word).
 Reads the model as Structurizr JSON (exported by diagrams.sh), the table as the first Markdown table whose
 first column is "#". Standard library only. Exit code 1 and a list of differences when they disagree.
@@ -106,30 +108,42 @@ def main():
             views[view["key"]] = view
 
     problems = []
+    tables = {}        # Markdown file → (the views that share its table, the numbers they draw, rows drawn in none)
     for line in (design / "c4" / "views.txt").read_text().splitlines():
         if not line.strip() or line.lstrip().startswith("#"):
             continue
         parts = line.strip().split(":")
         if len(parts) < 3:
             continue
-        key, markdown_file = parts[0], design / parts[2]
+        key, markdown_name = parts[0], parts[2]
+        undrawn = {n.strip() for n in parts[3].split(",") if n.strip()} if len(parts) > 3 else set()
         arrows = view_arrows(views[key], elements, relationships)
-        rows = table_rows(markdown_file.read_text())
-        drawn = {arrow[0] for arrow in arrows}
-        for number in sorted(drawn - rows.keys(), key=lambda n: (len(n), n)):
-            problems.append(f"{key}: arrow {number} is drawn but has no row in {parts[2]}")
-        for number in sorted(rows.keys() - drawn, key=lambda n: (len(n), n)):
-            problems.append(f"{key}: row {number} of {parts[2]} has no arrow in the drawing")
+        rows = table_rows((design / markdown_name).read_text())
+        table = tables.setdefault(markdown_name, ([], set(), set(), rows))
+        table[0].append(key)
+        table[1].update(arrow[0] for arrow in arrows)
+        table[2].update(undrawn)
+        before = len(problems)
+        for number in sorted({arrow[0] for arrow in arrows} - rows.keys(), key=lambda n: (len(n), n)):
+            problems.append(f"{key}: arrow {number} is drawn but has no row in {markdown_name}")
         for number, source, destination, label in arrows:
             cell = rows.get(number)
             if cell is None:
                 continue
+            if number in undrawn:
+                problems.append(f"{key}: arrow {number} is drawn but views.txt says row {number} is drawn in no view")
             for end in (source, destination):
                 if not named(end, cell):
                     problems.append(f"{key}: arrow \"{label}\" ({source} → {destination}): "
                                     f"\"{end}\" isn't named in row {number} (\"{cell}\")")
-        if not problems or not any(p.startswith(key + ":") for p in problems):
-            print(f"{key}: {len(arrows)} arrows match {parts[2]}")
+        if len(problems) == before:
+            print(f"{key}: {len(arrows)} arrows match {markdown_name}")
+
+    for markdown_name, (keys, drawn, undrawn, rows) in tables.items():
+        for number in sorted(rows.keys() - drawn - undrawn, key=lambda n: (len(n), n)):
+            problems.append(f"{', '.join(keys)}: row {number} of {markdown_name} has no arrow in the drawing")
+        for number in sorted(undrawn - rows.keys(), key=lambda n: (len(n), n)):
+            problems.append(f"views.txt: row {number} of {markdown_name}, named as drawn in no view, isn't in the table")
 
     if problems:
         print("\n".join(problems), file=sys.stderr)

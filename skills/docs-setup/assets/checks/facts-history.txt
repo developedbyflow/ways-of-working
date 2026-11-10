@@ -1,0 +1,6 @@
+# Past or partial counts kept on purpose, one per line: "path from docs/: text in the line".
+# facts.py skips the counts inside these texts and still checks the rest of their lines.
+# Each text says when it was true, or counts something else than the total; a line that says it in its own
+# words ("at this decision", "before", "when drafted") or a journal line ("- 2026-10-14: ...") needs nothing here.
+# For example, a section that records each recount of the API map ("**120 addresses**, 4 outside; then ..."):
+#   02-design/07-security/02-map.md: **120 addresses**, 4 outside

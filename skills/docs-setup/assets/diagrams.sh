@@ -43,6 +43,7 @@ if [ -s "$dir/c4/views.txt" ]; then
       cat "$dir/c4/legend.puml"; echo '@enduml'; } > "$tmp/$key.puml"
     python3 "$dir/c4/add-groups.py" "$tmp/json/workspace.json" "$tmp/$key.puml"   # the groups the exporter leaves out
     python3 "$dir/c4/pad-labels.py" "$tmp/$key.puml"     # room inside every box
+    python3 "$dir/c4/numbers-only.py" "$tmp/json/workspace.json" "$key" "$tmp/$key.puml"   # the map: only the arrows' numbers
     draw -o "$tmp/out" "$tmp/$key.puml"
     mkdir -p "$(dirname "$dir/$target")"
     cp "$tmp/out/$key.svg" "$dir/$target.svg"

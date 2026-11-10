@@ -2,6 +2,8 @@
  * <Product>: the C4 model (https://c4model.com), one source for every C4 drawing of the design.
  * Structurizr DSL (https://docs.structurizr.com/dsl); drawn by ../diagrams.sh, views listed in views.txt.
  * One relationship per direction; each label starts with its row number in the table under the drawing.
+ * A view with many arrows can show only their numbers, the text staying in its table:
+ * properties { "labels" "numbers" } inside the view (c4/numbers-only.py).
  * Filled in by /system-design (context, containers, data), /architecture (components).
  */
 workspace "<Product>" "The design's C4 model." {
