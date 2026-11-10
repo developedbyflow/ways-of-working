@@ -16,7 +16,7 @@ Two situations, one format:
 **When not to write one:**
 - it would take less time to build than to write ("If implementing your idea will take less time than writing it up, you can probably go ahead without an RFC", HashiCorp);
 - the solution is clear and has no real trade-offs: the document would only be an "implementation manual" (Malte Ubl, Google);
-- the decision is yours alone (Sourcegraph);
+- the decision is yours alone and nobody else is affected (Sourcegraph): in a team, a change only you own. **Solo, a big one-way door still gets its proposal,** because the reader it's for is you in a year, a future colleague or an investor; the review is the outside read (`/design-doc validate`) and a night between writing and deciding, written in its Decision;
 - a bug, a screen on an existing API, a small change easy to reverse: a ticket, and an ADR if it is a one-way door.
 
 ## The problem it solves
