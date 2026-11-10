@@ -40,16 +40,20 @@ One folder per skill in `skills/`, with one `SKILL.md` that holds everything. A 
 
 The grouping lives in [FLOWS.md](FLOWS.md) as **recipes**: one per situation (a new SaaS product, an existing codebase at work), with the skills to run, their order and their phase.
 
-Every skill has the same sections:
+Every skill has the same sections, in this order:
 
 - **When to use it**
 - **The problem it solves**
-- **Steps**
+- **How to run it:** the command and its arguments (`validate <file>`, and `slice <n>` for the steps that run again in Build)
+- **What you need to know** (the Design skills): the concepts the step rests on, before its steps (in `/security`: threat modeling, the standards, authentication in numbers…)
+- **Steps**, with the templates of the documents it writes (and **A slice's pass** for UI design, Security and AI design)
+- **Validate mode** (from Problem on): how it judges a document that already exists
 - **The bad version and why not**
 - **What breaks if you skip it**
 - **The principle behind it**
 - **How to apply it at work**
 - **Done when**
+- **Sources** (where the step rests on standards read on their official pages)
 - **Next**
 
 ## Install
