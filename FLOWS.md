@@ -9,7 +9,7 @@ From an idea, or no idea, to a product that people pay for, in five phases:
 | Phase | What it does | Skills |
 |---|---|---|
 | **1. Discovery** | from zero to what to build: the problem, the market, the decision, the MVP | below |
-| **2. Design** | how the system runs, how the code is organized, the data, the API, the screens, the law, security and AI | below: 01–08 written |
+| **2. Design** | how the system runs, how the code is organized, the data, the API, the screens, the law, security and AI | below: 01–09 written |
 | **3. Planning** | split the work into slices and tasks, estimate from the design, set the order | not written yet |
 | **4. Build** | implement, test and deploy, every slice (deploy from the first week) | not written yet |
 | **5. Launch & Growth** | launch, then grow and measure | not written yet |
@@ -41,7 +41,7 @@ flowchart LR
 
 | # | Step | Command | Reads | Writes | Ends with |
 |---|---|---|---|---|---|
-| – | [Setup](skills/docs-setup/SKILL.md) | `/docs-setup` | the user's answers | `CLAUDE.md` line, `ideas.md` (empty), `01-discovery/` | the documents' place exists and the skills know it |
+| – | [Setup](skills/docs-setup/SKILL.md) | `/docs-setup` | the user's answers | `CLAUDE.md` line, `ideas.md` (empty), `01-discovery/`; `02-design/` with `diagrams.sh`, `c4/` and `checks/facts.py` | the documents' place exists and the skills know it; the diagram tools and the counts check run |
 | 00 | [Brainstorm](skills/brainstorm/SKILL.md) | `/brainstorm` | `ideas.md` (raw) | `00-brainstorm.md`, `ideas.md` (shaped) | one problem picked, two fallbacks |
 | 01 | [Problem](skills/problem/SKILL.md) | `/problem` | `00-brainstorm.md`, `ideas.md` | `01-problem.md` | 3 of 5 interviews confirm it, or "not yet verified" |
 | 02 | [Market research](skills/market-research/SKILL.md) | `/market-research` | `01-problem.md` | `02-market-research.md` | go, change or stop |
@@ -69,7 +69,7 @@ flowchart LR
 ```
 
 #### Start
-1. The PRD is done, and the prototype if you made one. The risk tests may still be running; their results come into the step that needs them (an AI test into 08).
+1. The PRD is done, and the prototype if you made one. The risk tests may still be running; their results come into the step that needs them (an AI test into 08, run at the latest before Planning closes).
 2. Run `/system-design`. It creates `docs/02-design/README.md`, the map with each step's status.
 3. Then the steps in order. A product without AI goes from 07 to 09.
 4. From then on, every big change (a one-way door) starts as a proposal: `/design-doc change "<name>"`, reviewed and decided before code, then the step documents and ADRs updated.
@@ -102,7 +102,7 @@ What each step reads and writes:
 | 08 | everything, and what 01–07 left for AI design; the AI risk test | `08-ai-design/`: the prompts, the evals | every AI job with a threshold, a pinned model and its prompt; what blocks a release decided |
 | 09 | the READMEs of 01–08, the ADRs, the PRD; for a proposal, the step documents it touches | `architecture-overview.md`; a design doc in `changes/NNNN-<name>.md`, then the step documents and ADRs it changes | the summary readable in an hour, every number matching its source; a proposal decided in writing |
 
-Every step writes its hard-to-undo choices as ADRs, in `docs/00-project/adr/`, and sets its own row in the map when it ends. When a step finds a gap in an earlier one, it stops, says so, and on a yes fixes it where it lives, with a line in that document's journal.
+Every step writes its hard-to-undo choices as ADRs, in `docs/00-project/adr/`, and sets its own row in the map when it ends. Every count several documents repeat (threats, endpoints, screens…) is guarded by `checks/facts.py`, which `diagrams.sh` runs first: a step that adds such a count adds its guard, and a past count kept on purpose goes into `checks/facts-history.txt`. When a step finds a gap in an earlier one, it stops, says so, and on a yes fixes it where it lives, with a line in that document's journal.
 
 UI design runs again in Build, once per slice, before the slice's code: `/ui-design slice <n>` designs that slice's screens in full, one slice ahead. Security does too: `/security slice <n>` passes over what the slice brings in and puts its protections in the slice's definition of done; and `/security validate` runs again before the first tester and before launch. AI design does too: `/ai-design slice <n>` writes the slice's prompts and test sets before its code; and the evals run again at every prompt or model change.
 
@@ -138,6 +138,9 @@ docs/
       diagrams/
     02-compliance …
     architecture-overview.md   the whole design in one document, linking to the steps (09)
+    diagrams.sh          checks the counts, then draws every diagram from text
+    c4/                  the C4 model (workspace.dsl), its views and the check that each drawing matches its table
+    checks/facts.py      stops on a document that states another count than its source
     changes/             one design doc (a proposal) per big change: 0001-<name>.md …
 ```
 
