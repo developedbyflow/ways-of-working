@@ -72,7 +72,7 @@ flowchart LR
 1. The PRD is done, and the prototype if you made one. The risk tests may still be running; their results come into the step that needs them (an AI test into 08, run at the latest before Planning closes).
 2. Run `/system-design`. It creates `docs/02-design/README.md`, the map with each step's status.
 3. Then the steps in order. A product without AI goes from 07 to 09.
-4. From then on, every big change (a one-way door) starts as a proposal: `/design-doc change "<name>"`, reviewed and decided before code, then the step documents and ADRs updated.
+4. From then on, every big one-way door (a change hard to undo that touches several parts; a small one gets only an ADR) starts as a proposal, a design doc, called an RFC (request for comments) at many companies: `/design-doc change "<name>"`, reviewed by a deadline and decided in writing before code, then the step documents, the ADRs and the overview updated in one commit. `/design-doc validate <file>` judges one, yours or a colleague's.
 
 #### The steps
 
@@ -86,7 +86,7 @@ flowchart LR
 | 06 | [UI design](skills/ui-design/SKILL.md) | `/ui-design` | what do people see and do? the map of screens and the navigation, the flows with their failure paths, every screen's states, the words, a small design system checked for contrast, accessibility; the key screens now, the others one slice ahead of their code |
 | 07 | [Security](skills/security/SKILL.md) | `/security` | what can be attacked and how is it protected? the assets and the attackers, a bar from OWASP ASVS, the map with its trust boundaries, every flow's threats (STRIDE) with their protections and checks, the numbers for passwords, sessions and limits, the headers, secrets, the supply chain, the accounts, detection; the whole model now, each slice's new ways in before its code |
 | 08 | [AI design](skills/ai-design/SKILL.md) | `/ai-design` | for products with AI: what's inside the AI box? every AI job's card, the measure and threshold with its margin, the pinned model, the prompt and the answer's schema, evals as a process, the attacks specific to AI, what the person sees, tokens and cost measured, production signals, the AI Act; contracts and the riskiest job now, the other prompts one slice ahead of their code |
-| 09 | [Architecture overview and design docs](skills/design-doc/SKILL.md) | `/design-doc`; `/design-doc change "<name>"` | how do I explain it all in one document, and how do I propose a big change? the architecture overview for a reader from outside; a design doc per change: a proposal reviewed and decided before code, with its alternatives, rollout and decision |
+| 09 | [Architecture overview and design docs](skills/design-doc/SKILL.md) | `/design-doc`; `/design-doc change "<name>"` | how do I explain it all in one document, and how do I propose a big change (a design doc, or RFC)? the architecture overview for a reader from outside; a design doc per change: a proposal reviewed and decided before code, with its alternatives, rollout and decision |
 
 What each step reads and writes:
 
@@ -104,7 +104,7 @@ What each step reads and writes:
 
 Every step writes its hard-to-undo choices as ADRs, in `docs/00-project/adr/`, and sets its own row in the map when it ends. Every count several documents repeat (threats, endpoints, screens…) is guarded by `checks/facts.py`, which `diagrams.sh` runs first: a step that adds such a count adds its guard, and a past count kept on purpose goes into `checks/facts-history.txt`. When a step finds a gap in an earlier one, it stops, says so, and on a yes fixes it where it lives, with a line in that document's journal.
 
-UI design runs again in Build, once per slice, before the slice's code: `/ui-design slice <n>` designs that slice's screens in full, one slice ahead. Security does too: `/security slice <n>` passes over what the slice brings in and puts its protections in the slice's definition of done; and `/security validate` runs again before the first tester and before launch. AI design does too: `/ai-design slice <n>` writes the slice's prompts and test sets before its code; and the evals run again at every prompt or model change.
+A big change in Build, or after launch, starts as a design doc with `/design-doc change "<name>"` (step 09), before its slice. UI design runs again in Build, once per slice, before the slice's code: `/ui-design slice <n>` designs that slice's screens in full, one slice ahead. Security does too: `/security slice <n>` passes over what the slice brings in and puts its protections in the slice's definition of done; and `/security validate` runs again before the first tester and before launch. AI design does too: `/ai-design slice <n>` writes the slice's prompts and test sets before its code; and the evals run again at every prompt or model change.
 
 Compliance comes right after System design: it needs the list of providers, and it changes the data model (consent records, retention), the API (export, deletion) and the screens (consent, minimum age). It runs again before launch, to check everything exists and works. 04–06 can run almost in parallel; 07–08 check what 01–06 decided.
 
