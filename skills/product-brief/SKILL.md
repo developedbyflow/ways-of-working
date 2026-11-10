@@ -32,7 +32,7 @@ From 01 and 02, one or two lines each:
 
 ### 2. The goal in people
 A revenue goal decides nothing; the number of paying users it needs does.
-- goal ÷ price = paying users. Use the monthly and the yearly price (for example €2,000/month ≈ 190–300 paying users at $12/month or $80/year).
+- goal ÷ price = paying users. Use the monthly and the yearly price (for example €2,000/month ≈ 190–300 paying users at \$12/month or \$80/year).
 - By when.
 - **One user signal** that shows the product works for them (for example "logs food 5 days a week after the first month"). Revenue tells you late; this tells you early.
 
