@@ -65,12 +65,12 @@ Created with the overview, before the first proposal:
 ```
 # Changes
 
-[one paragraph: one proposal per one-way door, written before code, reviewed by a deadline, decided in writing; once approved, in one commit: its ADRs, the step documents with a journal line pointing back, the overview with a History line, every number it changes fixed across docs/ and the counts check run; the proposal is the "why", the step documents the truth now]
+[one paragraph: one proposal per big one-way door (hard to undo and touching several parts; a small one-way door gets only an ADR), written before code, reviewed by a deadline, decided in writing; once approved, in one commit: its ADRs (an ADR it reverses kept, marked superseded, linked both ways), the step documents with a journal line pointing back, the overview with a History line, the C4 model and its diagrams redrawn where the parts change, the proposal's row set to approved, every number it changes fixed across docs/ and the counts check run; the proposal is the "why", the step documents the truth now]
 
 - **Write one:** /design-doc change "<name>"; the sections and the rules are in the design-doc skill, and the whole design in one document is the architecture overview, updated after every approved change.
 - **When not to:** a bug, a screen on an existing API, a small change easy to undo (a two-way door): a ticket, and an ADR if it's a one-way door.
 - **Numbers:** 0001-<name>.md, never reused, like the ADRs.
-- **Statuses:** draft, in review, approved, rejected, withdrawn, done, superseded (linked both ways).
+- **Statuses:** draft, in review, approved, rejected, withdrawn, done, superseded (linked both ways). "Not yet" keeps it in review, with what must change written in its Decision; done at delivery, when its History says what the build changed and its row says done.
 - **A proposal keeps the numbers of its day:** frozen once decided; the counts check skips this folder.
 - **The table:** # the number; Decided, the date and the outcome ("yes", "not yet", "yes, if…"); Changed, the step documents and ADRs it changed, linked.
 
