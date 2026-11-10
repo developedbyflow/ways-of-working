@@ -1,6 +1,6 @@
 ---
 name: design-doc
-description: "One short document a team reads before code. Two uses, one format: the architecture overview of a design that exists (all of Design in one document, linking to the details; elsewhere a system overview, an HLD or a SAD), or a design doc, the proposal for a big change (a new service, a feature that touches many parts, a provider swap, a change to live data), written before code, reviewed by a deadline, decided in writing, then the step documents and ADRs updated. Sections: summary, context and why now, goals and non-goals, requirements with numbers, C4 context and containers, 1–2 flows with failure paths, data, API and old app versions, screens, failures, security and personal data, operations, rollout and rollback, testing and the success metric, scale and cost, drawbacks and alternatives, plan and dependencies, risks, the decision, history; each with when to include it and its arc42 chapter. Use at the end of Design, then for every one-way-door change in Build, after launch or at work. Also: /design-doc change \"<name>\" writes a proposal; /design-doc validate <file> judges an existing one."
+description: "One short document a team reads before code. Two uses, one format: the architecture overview of a design that exists (all of Design in one document, linking to the details; elsewhere a system overview, an HLD or a SAD), or a design doc, the proposal for a big change (a new service, a feature that touches many parts, a provider swap, a change to live data), written before code, reviewed by a deadline, decided in writing, then the step documents and ADRs updated. Sections: summary, context and why now, goals and non-goals, requirements with numbers, C4 context and containers, 1–2 flows with failure paths, data, API and old app versions, screens, failures, security and personal data, operations, rollout and rollback, testing and the success metric, scale and cost, drawbacks and alternatives, plan and dependencies, risks, the decision, history; each with when to include it and its arc42 chapter. The overview's header and the changes/ folder's README as templates; every number taken from its step file and checked by the counts check, every later change dated where it's made. Use at the end of Design, after the Design walkthrough brings the overview in line last, then for every one-way-door change in Build, after launch or at work. Also: /design-doc change \"<name>\" writes a proposal; /design-doc validate <file> judges an existing one."
 argument-hint: "[nothing: the architecture overview] or change \"<name>\" or validate <file>"
 ---
 
@@ -9,7 +9,7 @@ argument-hint: "[nothing: the architecture overview] or change \"<name>\" or val
 ## When to use it
 Two situations, one format:
 1. **The architecture overview of a design that exists:** at the end of Design, one document that gathers what steps 01–08 decided, so someone from outside (a reviewer, a new colleague, an investor) understands the system without reading dozens of files. It lives at `docs/02-design/architecture-overview.md`. **The name matters:** in practice "design doc" means the proposal for one change (Ubl), while the view of a whole existing system is called an architecture or system overview, an `ARCHITECTURE.md` in a code repo (Aleksey Kladov, 2021: "the high-level architecture of the project"), or an HLD / SAD (high-level design, solution architecture document) in client projects. There is only ever one overview; it is updated after every approved proposal.
-2. **A design doc, the proposal for a change:** any time after (in Build, after launch, at work): a new service, a feature that touches several parts, a provider swapped, a change to data in production, a new need for scale or availability. Written **before** code, reviewed, decided; only then the step documents change and the ADRs are written. Each lives at `docs/02-design/changes/NNNN-<name>.md`.
+2. **A design doc, the proposal for a change:** any time after (in Build, after launch, at work): a new service, a feature that touches several parts, a provider swapped, a change to data in production, a new need for scale or availability. Written **before** code, reviewed, decided; only then, at approval, the ADRs are written and the step documents and the overview change (they are the design Build follows); delivery only marks it done and writes back what the build changed. Each lives at `docs/02-design/changes/NNNN-<name>.md`.
 
 **The door test** (Jeff Bezos, 2015 letter to shareholders): a decision that is hard to undo (a "one-way door") is made "methodically, carefully, slowly"; one that is easy to undo (a "two-way door") "can and should be made quickly". A one-way door gets a proposal and a review; a two-way door gets a ticket, no document.
 
@@ -30,12 +30,54 @@ At work nobody delivers 12 files for a new feature. They deliver **one document*
 - **Link, don't copy.** The document is short for the reader and links to the details (the requirements file, `schema.sql`, `openapi.yaml`, the ADRs). Ubl: "copy-pasting complete schema definitions should be avoided"; formal definitions "quickly get out of date". No code.
 - **Length:** a proposal of 1–3 pages for a change of a few weeks (Ubl's "mini design doc", "especially helpful for incremental improvements or sub tasks"); 10–20 pages only for a new system ("around 10-20ish pages" for a larger project, Ubl); the architecture overview of an existing design, readable in an hour. Sections that don't apply are removed (Squarespace: "Remove sections that are not applicable"), with half a line saying why when a reviewer would expect them.
 - **Use what exists:** the C4 drawings and flows already generated by `docs/02-design/diagrams.sh`; a proposal that changes the shape changes the model (`c4/workspace.dsl`) after approval, not before; the proposal shows the new drawing as a draft.
-- **The user decides** what the proposal proposes and, at work, who decides and who approves. You write, check and recommend; one decision at a time.
+- **The user decides** what the proposal proposes and, at work, who decides and who approves. You write, check and recommend; one decision at a time. A real choice is written as options, A and B, each with why and when it wins, and the document keeps the letter and the date ("decided 2026-11-10, option A").
+- **Every number from its step file, never from memory or from another summary.** The overview repeats numbers the step documents own (the cost, the counts, the dates of a risk test); each is copied from the file that computes it, at the day in the header's "Reflects". Where two step files disagree (a cost table kept at an older figure while a later step works out a new one), say both and which one is kept until when, rather than picking one silently. A shortcut phrase is checked against its source too: found on 2026-11-10, MacroMate's overview said "migrations only add", while its deployment file drops a column once the previous release no longer uses it; the overview and the four step files that repeated the shortcut were corrected together.
+- **Prefer counts the counts check guards, link the rest.** `docs/02-design/checks/facts.py` checks the main counts (tables, addresses, threats, screens, flows, protections, ADRs, alerts…) in every document; write those in the phrases it reads ("93 threats", "eight flows with their failure paths", "the other 47 with their slice"). A count it doesn't guard goes stale silently: name the thing and link the file that counts it instead.
+- **A change after the overview is written is dated where it's made:** "(added 2026-11-10)", "(widened 2026-11-10, after the AI design's walkthrough)", "(corrected 2026-11-10: it said ~€297)", so a reader sees what moved, when, and what it was before; the History section keeps one line per update.
+- **In the user's voice:** the header and the History say "confirmed by me", "brought in line by me", "with my yes", one voice from the first line to the last, as the step READMEs' journals do.
+- **A promise in the document is a check:** "each with when it must be settled" means every dependency has its moment (found on 2026-11-10: MacroMate's AI plate test had none); "the ones that change the design" means every open question in a step README that would change a part, a cost or a provider is in the table; "readable in an hour" is counted (MacroMate's overview: ~155 lines, ~3,800 words, about 20 minutes).
 
 ## The header
 Title; author; status; created; **comments due by** (3–5 working days: Oxide, "3-5 business days"; Rust keeps a final comment period open "for at least 5 business days"); **decider**; **approvers**, each with yes / not yet / date (Squarespace); other reviewers, who don't block; a security and privacy reviewer when the change touches personal data; the ticket; supersedes / superseded by; links (PRD, ADRs, the step documents it changes).
 
 **Statuses:** draft, in review, approved, rejected, withdrawn (by the author), done (delivered), superseded (by another, linked both ways). Numbers are never reused (as for ADRs, Nygard).
+
+## The overview's header
+A two-column table under the title, the rows in this order:
+
+```
+| | |
+|---|---|
+| **What this is** | the whole design in one document, for a reader from outside; short on purpose, every section links to its detail; elsewhere a system overview, an HLD or a SAD; a "design doc" is the proposal for one change, kept in changes/ |
+| **Author** | [name] |
+| **Status** | Design confirmed by me, steps 01–08 ([dates]); walked through file by file in the Design walkthrough ([dates]), with my yes; waiting for [a risk test, run before [moment] (planned for [date], not run yet on [date])] |
+| **Reflects** | the step documents as of [date] |
+| **Decider** | [who] (a one-person project: me; at a company, the team lead or the architect) |
+| **Big changes from now on** | a proposal in changes/, reviewed and decided before code; then the step documents and ADRs |
+| **Links** | PRD · product brief · the design map · ADRs |
+```
+
+The sections then follow the table below in its order: Summary; Context and scope; Goals and non-goals; Requirements; Design (Context, Containers, Components, Flows, Data, API, Screens, as `###`); What happens when something fails; Cross-cutting concerns; Rollout; Testing and the success metric; Scale and cost; Drawbacks and alternatives; Plan and dependencies; Risks and open questions; Decision; History.
+
+## The changes folder's README
+Created with the overview, before the first proposal:
+
+```
+# Changes
+
+[one paragraph: one proposal per one-way door, written before code, reviewed by a deadline, decided in writing; once approved, in one commit: its ADRs, the step documents with a journal line pointing back, the overview with a History line, every number it changes fixed across docs/ and the counts check run; the proposal is the "why", the step documents the truth now]
+
+- **Write one:** /design-doc change "<name>"; the overview is updated after every approved change.
+- **When not to:** a bug, a screen on an existing API, a two-way door: a ticket, and an ADR if it's a one-way door.
+- **Numbers:** 0001-<name>.md, never reused, like the ADRs.
+- **Statuses:** draft, in review, approved, rejected, withdrawn, done, superseded (linked both ways).
+- **A proposal keeps the numbers of its day:** frozen once decided; the counts check skips this folder.
+- **The table:** # the number; Decided, the date and the outcome; Changed, the step documents and ADRs it changed, linked.
+
+| # | Proposal | Status | Decided | Changed |
+|---|---|---|---|---|
+| — | none yet | | | |
+```
 
 ## The sections
 A core that is always there (**bold**), the rest only when it applies. The arc42 column says where the section goes in a client's arc42 template.
@@ -52,17 +94,17 @@ A core that is always there (**bold**), the rest only when it applies. The arc42
 | **Design: flows** | 1–2 UML sequence diagrams; their failure paths point to the failure table | always | 6 |
 | Design: data | only what changes, in short, linked to the real schema; what is sensitive; how long it's kept and how it's deleted; the migration | when the data changes | 5, 8 |
 | Design: API | new or changed endpoints, in short, linked to the contract; **old app versions keep working** | when the contract changes | 5, 8 |
-| Design: screens | the screen flow, the states (empty, loading, error, offline), accessibility | when what people see changes | — |
+| Design: screens | the map's size and navigation, the key screens and the rest by slice, the flows with their failure paths, the states every screen shares (empty, loading, partial, error, changed meanwhile, offline and waiting, refused, read-only), the languages, accessibility | when what people see changes; always in the overview | — |
 | **What happens when something fails** | one table: every new dependency slow, down or wrong; what the person sees | always | 8, 11 |
 | **Cross-cutting concerns** | security and personal data (what data, who has access, which threats, who reviews); the law; monitoring and **operations** (who runs it, the alerts and what to do for each, what support needs to know); AI if any; always, at least as "unchanged, because…" | always | 8, 11 |
 | Rollout | where it runs, how it reaches production, **how it is switched off** (a feature flag), **which number triggers a rollback**, the data migration | when what runs or how it runs changes | 7 |
-| Testing and the success metric | how we know it works (which tests, which provider is faked); the number that, after launch, says it was worth it, and where it comes from | in a proposal | 10 |
+| Testing and the success metric | how we know it works (which tests, which provider is faked, the flows as end-to-end tests); the number that, after launch, says it was worth it, and where it comes from | in a proposal and in the overview | 10 |
 | Scale and cost | what breaks first at 10× and the number that triggers a change; the monthly cost now and at 10× | when load or cost changes | 10 |
 | **Drawbacks and alternatives** | why **not** to do it; the reasonable alternatives, always including "do nothing", with what each wins and costs; what others do; the ideas dropped in review and why | always: this is the document's value | 9 |
-| Plan and dependencies | the stages, a rough estimate, who does what; who we depend on and whether **they know**, with a name and a date | in a proposal | — |
+| Plan and dependencies | the stages, a rough estimate, who does what; who we depend on and whether **they know**, each with a name and the moment it must be settled (before the beta, before the first payment…) | in a proposal and in the overview | — |
 | **Risks and open questions** | what we don't know yet, who answers, by when | always | 11 |
 | **Decision** | the date, the outcome, the conditions ("yes, if…"), the dissent written down, the link to the meeting notes; the ADRs for the one-way doors | always | 9 |
-| History | status and design changes, dated; the note after launch | in a proposal | — |
+| History | status and design changes, dated, in the owner's voice; the note after launch; in the overview, one line per update (written, brought in line, an approved proposal folded in) | always | — |
 
 ## Steps
 
@@ -76,15 +118,16 @@ A core that is always there (**bold**), the rest only when it applies. The arc42
 7. **Validate it** (below), fix what it finds, then status "in review".
 8. **Review:** written comments first, until the deadline. A meeting only if the comments don't converge or it is a one-way door: at most ten people, no presentation, the document read at the start (Amazon reads its memos in silence first, a "study hall"), the last 10 minutes for the decision (Squarespace).
 9. **Decision:** made by the decider with the approvers; not unanimity: "yes", "not yet" or "yes, if…" (Squarespace); the dissent written in the document, then everyone commits ("disagree and commit", Bezos, 2016). Written in the Decision section; the one-way doors become ADRs.
-10. **After approval:** a ticket that links the proposal; PRs cite its number. A small design change during the work is written into the proposal with a history line; a big one becomes a new proposal, with "supersedes / superseded by" in both (Rust: "More substantial changes should be new RFCs, with a note added to the original RFC").
-11. **When delivered:** the step documents and the architecture overview updated, each with a journal line pointing to the proposal; every number or rule the change touches found with `grep` across `docs/` and fixed in the same commit (`checks/facts.py` checks the main counts); the C4 model and diagrams redrawn; the team told; status "done".
+10. **At approval, in one commit:** the ADRs; the step documents it changes, each README with a journal line pointing to the proposal; the architecture overview, with a History line; every number or rule the change touches found with `grep` across `docs/` and fixed (`checks/facts.py` checks the main counts); the C4 model and diagrams redrawn; the row in `changes/README.md` (Decided, Changed). Then a ticket that links the proposal; PRs cite its number. A small design change during the work is written into the proposal with a history line; a big one becomes a new proposal, with "supersedes / superseded by" in both (Rust: "More substantial changes should be new RFCs, with a note added to the original RFC").
+11. **When delivered:** what the build changed from the proposal written back into the step documents and the overview, dated, with journal lines; the team told; status "done".
 12. **After launch:** a dated note in History: the success metric reached or not, what was confirmed, what wasn't. Ubl: re-read your own design docs a year or two later.
 
 ### The architecture overview: `/design-doc`
-1. Read every step README in `docs/02-design/` ("In one page", "Not doing", open questions), the ADRs and the PRD.
-2. Write the core and every section that has content, each a few lines with links to the files that hold the detail; use the generated drawings (C4 context and containers, the flows).
-3. Check that every number in it matches its source file; where two files disagree, say so and fix the older one with the user's yes.
-4. Redo it when a step changes a lot; its header says the date and which steps it reflects.
+1. Read every step README in `docs/02-design/` ("In one page", "Not doing", open questions, Status and Next), the ADRs and the PRD; for each number you'll repeat, the step file that computes it (the cost file, the scale file, the risk tests' table), not the README's summary of it.
+2. Write the header (above) and the core, then every section that has content, each a few lines with links to the files that hold the detail; use the generated drawings (C4 context and containers, the flows). Create `changes/README.md` from its template, and give step 09 its row in the Design map (`docs/02-design/README.md`): written [date], redone when a step changes a lot and after every approved proposal.
+3. Check that every number in it matches its source file; where two files disagree, say so and fix the older one with the user's yes. Run `checks/facts.py` and a link check (every relative link and anchor resolves).
+4. **After the Design walkthrough, bring it in line last** (MacroMate's step 09, 2026-11-10): the walkthrough fixes steps 01–08 file by file, so the overview, written before it, lags every one of them. Go section by section against each README as it stands: the header's Status and Reflects; the summary's cost; each step's summary (a later step's walkthrough widens it: MacroMate's AI line still had five words where the AI design had grown pinned ids, the plate test's variants, its alerts and the AI Act's flag); every open question's moment and every dependency's date; each fact changed gets its dated mark, the History its line, the Design map's row 09 its date; one commit.
+5. Redo it when a step changes a lot or a proposal is approved; its header says the date and which steps it reflects.
 
 ## Validate mode
 `/design-doc validate <file>`: judge a design doc (one written here or a colleague's), change nothing.
@@ -108,7 +151,9 @@ A core that is always there (**bold**), the rest only when it applies. The arc42
 - [ ] Does the header say who decides, who approves and by when?
 - [ ] Is every one-way door an ADR?
 - [ ] No code, no copied schema or contract?
-- [ ] Readable in 15–20 minutes (a proposal) or an hour (the overview)?
+- [ ] Readable in 15–20 minutes (a proposal) or an hour (the overview), counted?
+- [ ] (The overview) Does every number match the step file that computes it, at the date in "Reflects", and does the counts check pass?
+- [ ] Is every change after it was written dated where it's made, and the History in the owner's voice?
 
 ## The bad version and why not
 - The document written **after** the code, to tick a box: it changes nothing.
@@ -119,6 +164,8 @@ A core that is always there (**bold**), the rest only when it applies. The arc42
 - Only the happy path, no security, operations or failures.
 - The schema and the contract copied in: they disagree with the real ones after the first change.
 - The proposal approved, the step documents never updated: the "truth" falls behind.
+- The overview written once and never brought in line: the later steps and the walkthrough move its numbers, and the one document an outsider reads is the one that's wrong.
+- A number copied from another summary instead of its source, or a shortcut phrase ("migrations only add") instead of the rule: it disagrees with the file it links to.
 
 ## What breaks if you skip it
 Big changes are discussed in pieces, in PRs, when changing them is already expensive. Nobody from outside can understand the system without reading everything. A year later, "why did we choose this?" and "who decided?" have no answer.
@@ -156,10 +203,14 @@ Checked on 2026-10-21:
 - [ ] after delivery: the step documents updated with journal lines pointing back, the diagrams redrawn, status "done"
 
 **The architecture overview:**
+- [ ] the header as its template: Status (the walkthrough, a risk test still waiting with its dates), Reflects, Decider, Links
 - [ ] the core and every section with content, each linking to the file that holds the detail
-- [ ] every number matches its source file
+- [ ] every number matches the step file that computes it; `checks/facts.py` passes; every link and anchor resolves
+- [ ] every dependency and open question with its moment
 - [ ] the C4 context and containers and the main flows shown
-- [ ] readable in an hour
+- [ ] `changes/README.md` from its template; step 09's row in the Design map
+- [ ] every later change dated, a History line per update, in the owner's voice
+- [ ] readable in an hour, counted
 
 ## Next
 Planning, after the overview. A proposal leads to its ticket and its slice.
