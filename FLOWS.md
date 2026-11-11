@@ -81,7 +81,7 @@ flowchart LR
 |---|---|---|---|---|---|
 | – | [Setup](skills/docs-setup/SKILL.md) | `/docs-setup` | the user's answers | `CLAUDE.md` line, `00-project/README.md`, `ideas.md` (empty), `adr/README.md` (the index, an empty table), `01-discovery/`; `02-design/` with `diagrams.sh`, `c4/` and `checks/facts.py` | the documents' place exists and the skills know it; the diagram tools and the counts check run |
 | 00 | [Brainstorm](skills/brainstorm/SKILL.md) | `/brainstorm` | `ideas.md` (raw) | `00-brainstorm.md`, `ideas.md` (shaped) | one problem picked, two fallbacks |
-| 01 | [Problem](skills/problem/SKILL.md) | `/problem` | `00-brainstorm.md`, `ideas.md` | `01-problem.md` | 3 of 5 interviews confirm it, or "not yet verified" |
+| 01 | [Problem](skills/problem/SKILL.md) | `/problem` | `00-brainstorm.md`, `ideas.md` | `01-problem.md` (the interview notes in a private `interviews.md`) | 3 of 5 interviews confirm it, or "not yet verified" with a dated status and a deadline chosen on purpose (the risk accepted if it comes late) |
 | 02 | [Market research](skills/market-research/SKILL.md) | `/market-research` | `01-problem.md` | `02-market-research.md` | go, change or stop |
 | 03 | [Product brief](skills/product-brief/SKILL.md) | `/product-brief` | `01`, `02`, `ideas.md` | `03-product-brief.md` | go, go with conditions, change or stop |
 | 04 | [PRD](skills/prd/SKILL.md) | `/prd` | everything above | `04-prd.md`, `ideas.md` (sorted) | ready for delivery |
@@ -221,6 +221,8 @@ You recognize it when you hear yourself say "I think people will…", "the AI ca
 | big | big | find a smaller test, or cut the risk (postpone the feature) |
 
 Examples: "the AI can estimate calories from a photo" (weeks of code if false, a week of photos to check) → test now. "Developers want to lose weight with my app" (the whole project if false, 5 conversations to check) → test as early as possible. "The blue button is better" → just do it.
+
+A rule can be overruled on purpose, if the risk accepted is written down: MacroMate put its interviews "before launch at the latest" (2026-11-11), so the build starts first and the cost is building for a problem only its founder has.
 
 The brief's "When" column is this rule already applied to the risks you know at the start. Run them with `/risk-tests`.
 

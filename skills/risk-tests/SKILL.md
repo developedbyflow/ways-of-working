@@ -110,6 +110,7 @@ Part of the [risk tests](../README.md).
 **Hypothesis:** We believe … We'll know it's true if … by …
 **Test:** what, where, how many people or samples
 **Unclear if:** …
+**If it fails:** what happens to the product, written before it runs (back to the brief; the feature off, its version without the risky part; another provider)
 **How to run it:** the steps, the scripts in this folder
 **Ran:** [dates]
 **Raw data:** [the files in this folder]
@@ -142,7 +143,8 @@ When a project rests on a big assumption ("customers will use this", "the API ca
 
 ## Done when
 - [ ] every risk in the brief is a row in the overview; each test that started has its own folder, riskiest first
-- [ ] each one has the hypothesis, the pass mark from the brief, the raw data and the result
+- [ ] each one has the hypothesis, the pass mark from the brief, what a fail does (written before it runs), the raw data and the result
+- [ ] each status in the overview is dated, and says the same in the brief and every document that repeats it ("running" only once something has run)
 - [ ] each one has a decision, and the brief's table and journal are updated
 - [ ] what changed in the product is in the PRD, with a journal line
 
