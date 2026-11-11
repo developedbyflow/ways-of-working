@@ -13,7 +13,7 @@ written yet is skipped: on a new project every fact is skipped and the check pas
 
 Not checked:
   - the journal lines ("- 2026-10-14: ..."), which record what was true that day;
-  - the proposals in 02-design/changes/, frozen when they were decided;
+  - the proposals in 02-design/09-architecture-overview/changes/, frozen when they were decided;
   - a number followed by "at step", "at this decision", "before" or "when drafted", which says when it was true;
   - a number under the fact's floor: a part, not the total ("the module's 4 tables");
   - a count inside a text listed in facts-history.txt, a past count kept on purpose (one "path: text in the
@@ -328,7 +328,7 @@ def main():
     wrong = []
     for md in sorted(docs.rglob("*.md")):
         rel = md.relative_to(docs).as_posix()
-        if rel.startswith("02-design/changes/") or "/node_modules/" in rel:
+        if rel.startswith("02-design/09-architecture-overview/changes/") or "/node_modules/" in rel:
             continue
         for n, line in enumerate(md.read_text(encoding="utf-8").splitlines(), 1):
             if JOURNAL.match(line):

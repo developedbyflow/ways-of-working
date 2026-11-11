@@ -100,7 +100,7 @@ What each step reads and writes:
 | 06 | PRD, prototype, 01–05; an existing app | `06-ui-design/`: wireframes, mockups, tokens | the key screens' mockups pass the page check; the test with people decided |
 | 07 | everything, and what 01–06 left for Security | `07-security/`, the scripts that try the decisions | every threat with its protection and its check, or an accepted risk with its owner |
 | 08 | everything, and what 01–07 left for AI design; the AI risk test | `08-ai-design/`: the prompts, the evals | every AI job with a threshold, a pinned model and its prompt; what blocks a release decided |
-| 09 | the READMEs of 01–08, the step files that compute each number it repeats, the ADRs, the PRD; for a proposal, the step documents it touches | `architecture-overview.md`; a design doc in `changes/NNNN-<name>.md`, then the step documents and ADRs it changes | the summary readable in an hour, every number matching its source; a proposal decided in writing |
+| 09 | the READMEs of 01–08, the step files that compute each number it repeats, the ADRs, the PRD; for a proposal, the step documents it touches | `09-architecture-overview/architecture-overview.md`; a design doc in `09-architecture-overview/changes/NNNN-<name>.md`, then the step documents and ADRs it changes | the summary readable in an hour, every number matching its source; a proposal decided in writing |
 
 Every step writes its hard-to-undo choices as ADRs, in `docs/00-project/adr/`, and sets its own row in the map when it ends. Every count several documents repeat (threats, endpoints, screens…) is guarded by `checks/facts.py`, which `diagrams.sh` runs first: a step that adds such a count adds its guard, and a past count kept on purpose goes into `checks/facts-history.txt`. When a step finds a gap in an earlier one, it stops, says so, and on a yes fixes it where it lives, with a line in that document's journal.
 
@@ -136,12 +136,14 @@ docs/
       README.md          status, summary, what we skip, open questions, ADRs, glossary, journal
       01-requirements.md … 12-cost.md
       diagrams/
-    02-compliance …
-    architecture-overview.md   the whole design in one document, linking to the steps (09)
+    02-compliance … 08-ai-design
+    09-architecture-overview/
+      architecture-overview.md   the whole design in one document, linking to the steps
+      changes/           one design doc (a proposal, an RFC) per big change: README.md, then 0001-<name>.md …
+                         — the steps above, the tools below, used by every step and set up by /docs-setup —
     diagrams.sh          checks the counts, then draws every diagram from text
     c4/                  the C4 model (workspace.dsl), its views and the check that each drawing matches its table
     checks/facts.py      stops on a document that states another count than its source
-    changes/             one design doc (a proposal) per big change: 0001-<name>.md …
 ```
 
 ## Extra clarifications
