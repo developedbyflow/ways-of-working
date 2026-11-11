@@ -32,7 +32,10 @@ One line: the MVP solves the problem in 01, for the person in 01.
 - **From the cost of the problem:** each cost in 01 becomes a target. "~30 minutes a day to log" → "a full day logged in under 5 minutes".
 - **The user signal** from the brief (for example "logs food 5 days a week after the first month").
 - **A counter-metric:** a number that must not get worse while you chase the others (for example "average calories logged don't drop because people stop logging snacks").
-- For each: the target and how you measure it. Anything measured in the app becomes an **event** to track (for example `day_completed`), so you can see it from the first day.
+- For each: the target and how you measure it. Anything measured in the app becomes an **event** or a **daily counter** to track (for example `day_completed`, or `entries_added` per person per day when the team keeps daily counters instead of events, as MacroMate's ADR-0018 did), so you can see it from the first day.
+- **Every target is a number, or `[ASSUMPTION]`** listed in Assumptions ("the share, set before the beta" is fine only there).
+- **Who is counted:** only the people the metric is about (a weight-loss metric counts only people with the goal "lose", not everyone).
+- **Small totals stay hidden:** a total behind fewer than ~5 people isn't published, because it points at one person.
 
 ### 3. User journeys
 The 3–5 main flows, each as a short scene with a named person (from 01, not "the user"):
@@ -45,7 +48,7 @@ The 3–5 main flows, each as a short scene with a named person (from 01, not "t
 Each journey later becomes screens and tests.
 
 ### 4. Glossary
-Every domain word the PRD uses (for example *food, recipe, variant, meal, plan, log entry*), defined once, with how it relates to the others ("a recipe has many variants"). Use exactly these words everywhere after; no synonyms. This becomes the data model and the names in the code (ubiquitous language, from Domain-Driven Design).
+Every domain word the PRD uses (for example *food, recipe, variant, meal, plan, log entry*), defined once, with how it relates to the others ("a recipe has many variants"). Use exactly these words everywhere after; no synonyms. Every domain word the criteria use gets an entry, not only the big nouns: a state (*read-only*), a place (*archive*), an action (*Complete day*); MacroMate's re-read found 6 missing on 2026-11-11. This becomes the data model and the names in the code (ubiquitous language, from Domain-Driven Design).
 
 ### 5. Sort the ideas
 Take every idea from `docs/00-project/ideas.md` and sort it with the user:
@@ -67,29 +70,32 @@ Take every idea from `docs/00-project/ideas.md` and sort it with the user:
 - **Roles:** who can do what (user, admin, a member of a shared space), for each feature.
 
 ### 7. Size and time
-Size each MVP feature: S (1–2 days), M (about a week), L (2+ weeks). Add them up and compare with the time until the launch date in the brief. Too long → cut features, cut parts of features, or ship in slices. A first version that takes a year is not a first version.
+Size each MVP feature: S (1–2 days), M (about a week), L (2+ weeks). Add them up and compare with the capacity until the launch date in the brief; if the brief has no date, until its checkpoint or the owner's date. Show the capacity as a sum, counted from the day you check (hours a week × weeks ÷ 8 h), and recount it on every re-check. Too long → cut features, cut parts of features, or ship in slices. A first version that takes a year is not a first version.
+
+If the owner keeps a size that doesn't fit, write "fails on purpose, because …" with the decision. MacroMate: ~125 days at ~10 h a week ≈ 2 years against a June 2027 checkpoint; no feature cut, built in slices, and the checkpoint re-decides the date.
 
 ### 8. Functional requirements, per feature
 The section is headed **"Functional requirements"**, next to "Non-functional requirements", so both kinds are found by name (at work and in interviews they're called that; "Done when" hid what they are). For each MVP feature, one at a time:
-- **A short description:** what it does and which journeys it serves.
+- **A short description:** what it does and which journeys it serves; one line is enough, and it tells a reader what the criteria are for.
 - **Criteria you can tick yes or no:** "I can reset my password from the email", not "the account works well". The happy path and the main failures (wrong input, no connection, nothing found).
 - **Given / when / then** only where the flow is complex.
 - **Data rules** where they matter:
   - a missing value is not zero (an unknown nutrient, a day not logged);
   - store the raw data, calculate what derives from it (a grade, a total), so there is one source of truth;
   - when an item changes, past records keep their values (a snapshot).
-- **Not in the MVP:** the parts of this feature left for later.
+- **Not in the MVP:** the parts of this feature left for later, on every feature where an idea waits in `ideas.md`, citing its F-ID ("Not in MVP: tolerating typos (F-24)"). MacroMate had it on only two features.
 
 ### 9. Non-functional requirements, with numbers
 - **Speed:** 0.1 s feels instant, 1 s keeps the flow, 10 s is the limit. Set a number for the main actions.
 - **Security:** who can see whose data, login rules, limits on requests (rate limiting), what happens to secrets.
-- **Personal data:** consent, where it is hosted, export, deletion (including from backups), what is sent to third parties.
-- **Devices and browsers**, **languages** (with number and date formats).
+- **Personal data:** consent, where it is hosted, export, deletion (including from backups), what is sent to third parties. Headed **Health data and GDPR** when health data is processed (explicit consent, minimum age, retention).
+- **Offline**, if the app works without internet: what opens and what can be done, how long data waits on the device, what needs internet.
+- **Devices** (with the browsers and the smallest screen), **Languages** (with number and date formats).
 - **Availability and backups:** availability per month, RPO (how much data you can lose), RTO (how long to restore), and what each needs (alerts, a tested restore).
 - **Accessibility:** WCAG level, contrast, tap targets, larger fonts.
 - **Operations:** how users reach you and how fast you answer, terms and privacy pages, alerts when costs or errors spike.
 
-Third-party providers appear as requirements (region, data processing agreement, no training on your data), never by name; the name is chosen in the architecture.
+Third-party providers appear as requirements (region, data processing agreement, no training on your data), never by name, in the criteria too ("the payment provider's page", "a phone call"); the name is chosen in the architecture. Names are fine where the name is the fact: data sources and their licences, a sign-in users see (Google), browsers, an Assumptions line quoting a calculation's figure, and an open decision about a provider already chosen. MacroMate's slip: a payment provider and an alerting vendor named in criteria, fixed 2026-11-11.
 
 **Check that the numbers agree:** an RTO of 4 h doesn't fit in 99.5% availability (3.6 h down per month).
 
@@ -103,7 +109,7 @@ Third-party providers appear as requirements (region, data processing agreement,
 
 ### 12. Review and ready for delivery
 - Someone who will design or build it reads the PRD. Their questions are answered, or listed as open with an owner. Nobody at hand? Run `/prd validate <file>`.
-- **Ready for delivery** when: every MVP feature has criteria, the numbers agree, the size fits the time, and no open decision blocks the architecture.
+- **Ready for delivery** when: every MVP feature has criteria, the numbers agree, the size fits the time (or fails on purpose, with the decision written), and no open decision blocks the architecture. The step that judges it writes the verdict in the file, with the date, not only in the chat.
 
 Then write `docs/01-discovery/04-prd.md`:
 
@@ -111,7 +117,8 @@ Then write `docs/01-discovery/04-prd.md`:
 # 04 – PRD
 ## Goal
 ## Success metrics
-| Problem today | Target | How I measure it | Event |
+| Problem today | Target | How I measure it | Event or daily counter |
+Who is counted; totals behind fewer than ~5 people not published.
 **Counter-metric:** …
 ## User journeys
 ### UJ-1 [Name] [does what]
@@ -119,14 +126,17 @@ Then write `docs/01-discovery/04-prd.md`:
 - **Term:** definition, relation to other terms
 ## MVP scope
 | ID | Feature | Why in the MVP (dependency / solves / expected / differentiator) | Size |
-**Total size:** … against … until launch
+**Total size:** … against … until launch (capacity from [date]: … h a week × … weeks ÷ 8 h); fits / fails on purpose, because …
+### Build order (slices)
+1. **[Name]:** F-…, F-…. Before it, [the tests that must pass].
+**Ready for delivery:** [date], yes / no, because …
 ## Functional requirements
 ### F-01 [Feature]
-[What it does, which journeys.]
+[What it does, which journeys: one line.]
 - [ ] …
-Not in MVP: …
+Not in MVP: … (F-…)
 ## Non-functional requirements
-### Speed · Security · Personal data · Devices · Languages · Availability and backups · Accessibility · Operations
+### Speed · Security · Personal data (or Health data and GDPR) · Offline · Devices · Languages · Availability and backups · Accessibility · Operations
 ## Non-goals
 ## Out of scope
 Everything after the MVP in `docs/00-project/ideas.md`.
@@ -143,6 +153,14 @@ Everything after the MVP in `docs/00-project/ideas.md`.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask: does every MVP feature trace back to the problem, a dependency, an expected feature or a differentiator? Can each criterion be ticked yes or no by someone else? Does the glossary match the words used? Do the non-functional numbers agree? Is any vendor named where a requirement belongs? Does the size fit the time?
 4. Report: findings by severity, each with the line, what's wrong and what to change; then what the PRD does well; then what you couldn't evaluate. The user picks what to apply.
+
+## After Design
+Design makes the PRD precise; the PRD must say so, or the two drift. Once Design's steps are written, re-read the PRD against each step's files:
+- **A criterion Design made precise** is written back with the number, marked "(added [date], [step])": session lengths, a reset link's life, speed measured as LCP and CLS on a slow 4G phone, a timeout.
+- **An open decision Design raised** goes into Open decisions with its owner and date (the RTO against the database plan; a legal question before the first payment).
+- **The risk tests' pass marks** go into Assumptions ("15 of 20 plates within ±20%"), until the test is run.
+- **Each slice names the tests** that must pass before it starts.
+- Recount the capacity, check the provider names, the glossary and the metrics again, and add a journal line.
 
 ## The bad version and why not
 - Putting every idea in the first version.
@@ -162,17 +180,18 @@ The first version solves the problem, it doesn't tick every idea. Every requirem
 On any project, ask: what is the smallest thing we can ship that solves the problem, and how will we know it's done? In refinement, push every ticket to yes/no acceptance criteria.
 
 ## Done when
-- [ ] success metrics from the cost of the problem, with the user signal, a counter-metric and events
+- [ ] success metrics from the cost of the problem, with the user signal, a counter-metric, events or daily counters, a number or `[ASSUMPTION]` for every target, who is counted, small totals hidden
 - [ ] 3–5 journeys with a named person, the moment value lands and an edge case
-- [ ] a glossary, used consistently
+- [ ] a glossary with every domain word the criteria use, used consistently
 - [ ] ideas sorted, the MVP justified, dependencies checked, `docs/00-project/ideas.md` rewritten
 - [ ] payment, both sides, AI cost, day one, data in and out, and roles checked
-- [ ] the MVP size fits the time until launch
-- [ ] every MVP feature has yes/no criteria, including the main failures, under "Functional requirements"
+- [ ] the MVP size fits the time until launch, or fails on purpose with the decision, the capacity counted from the day it's checked
+- [ ] every MVP feature has a one-line description and yes/no criteria, including the main failures, under "Functional requirements"; "Not in MVP" cites the waiting ideas' F-IDs
 - [ ] non-functional numbers set, providers as requirements, numbers that agree
 - [ ] non-goals and out of scope written
 - [ ] assumptions and open decisions listed; the blocking ones answered
-- [ ] reviewed or validated, and ready for delivery
+- [ ] reviewed or validated, and the ready-for-delivery verdict written in the file
+- [ ] after Design: re-read against Design's files, precise criteria and new open decisions written back, risk tests' pass marks in Assumptions, tests named per slice
 
 ## Next
 Prototype (`/prototype`), optional: when the main flow is new to people. Otherwise Design: the architecture.
