@@ -16,6 +16,45 @@ From an idea, or no idea, to a product that people pay for, in five phases:
 
 Design comes before Planning: you can't estimate what you haven't designed. Testing and deploying aren't the end of Build, they happen on every slice.
 
+### The whole road, at a glance
+
+The complete flow, high level: the five phases in order, and `00-project/` beside them the whole time, since every phase writes to it. Kept up to date as each phase gets its skills (added 2026-11-11; Planning, Build and Launch say only what's decided so far).
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e8eef7", "primaryTextColor": "#1a1a1a", "primaryBorderColor": "#8a8a8a", "lineColor": "#8a8a8a", "clusterBkg": "#f5f5f5", "clusterBorder": "#8a8a8a"}}}%%
+flowchart TB
+  subgraph PR["00 Project: open the whole time"]
+    ID["ideas.md<br/>every idea, its F-ID for good"]
+    AD["adr/<br/>every one-way door, one a file"]
+  end
+  S["Setup<br/>/docs-setup"] --> D1["1. Discovery<br/>brainstorm → problem → market<br/>→ brief → PRD (+ risk tests)"]
+  D1 --> D2["2. Design<br/>01 → 09"] --> D3["3. Planning<br/>the PRD cut into slices"] --> D4["4. Build<br/>slice by slice"] --> D5["5. Launch & Growth"]
+  S -. "empty ideas.md, empty index" .-> PR
+  D1 -. "dumps, shapes, the PRD sorts:<br/>MVP / High / Medium / Low" .-> ID
+  D2 -. "each step's Not doing → an idea;<br/>an idea it rules out → Dropped" .-> ID
+  D2 -. "each step's one-way doors" .-> AD
+  D3 -. "re-sorts the buckets" .-> ID
+  D4 --> Q{"a new requirement<br/>or decision"}
+  Q -- "an idea, not now" --> ID
+  Q -- "easy to undo" --> T["a line in the ticket or the PR,<br/>no ADR"]
+  Q -- "hard to undo, one part" --> AD
+  Q -- "hard to undo, several parts" --> DD["a design doc in 09's changes/<br/>(/design-doc change)"] -- "approved: its ADRs" --> AD
+  D5 -. "what people ask for" .-> ID
+```
+
+When you go back to `00-project/`, phase by phase:
+
+| Phase | `ideas.md` | `adr/` |
+|---|---|---|
+| Setup | `/docs-setup` creates it empty | creates the index, an empty table |
+| 1. Discovery | your raw ideas in, `/brainstorm` shapes them (each an ID); problem, market research and the brief park new ones under "New"; `/prd` sorts them: the MVP, then High, Medium, Low | — |
+| 2. Design | each step: a "Not doing" row that could come back becomes an idea, an idea it rules out moves to "Dropped" with the decision | each step writes its own one-way doors, with their rows in the index |
+| 3. Planning (not written yet) | re-sorted against the slices and the time until launch | — |
+| 4. Build (not written yet) | a new idea goes under "New", never straight into a slice | a small one-way door: `/adr`; a big one: `/design-doc change`, its ADRs at approval; a decision that flips: a new ADR that replaces the old |
+| 5. Launch & Growth (not written yet) | what people ask for and what the numbers show, re-sorted | as in Build |
+
+The test for any new decision, in any phase after Design: easy to undo, a ticket; hard to undo and small, `/adr`; hard to undo and big, `/design-doc change` (Tools for any phase, below).
+
 ### Phase 1: Discovery
 
 ```mermaid
