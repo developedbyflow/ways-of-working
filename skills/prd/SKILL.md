@@ -55,8 +55,8 @@ Take every idea from `docs/00-project/ideas.md` and sort it with the user:
   - the **expected** features from 02 that users won't live without;
   - **at least one differentiator** from 02, or nobody has a reason to switch.
 - **After MVP:** High / Medium / Low, by value against effort. When the list is long, score with RICE (reach × impact × confidence ÷ effort).
-- Order the MVP by dependencies first, then what solves the problem, then the rest.
-- Rewrite `docs/00-project/ideas.md`: ideas move from "New" to their section; merged and dropped ones are marked.
+- Order the MVP by dependencies first, then what solves the problem, then the rest. This dependency order isn't the build order: the build order is the slices of step 7, each usable before the next; `ideas.md` keeps the dependency order and says so.
+- Rewrite `docs/00-project/ideas.md`: ideas move from "New" to their section; merged and moved ones go under "Merged or moved" with an arrow, dropped ones under "Dropped" with the date and why; set the header's Next free ID and Updated, and add a History line (the date, sorted in 04 PRD, what moved).
 
 ### 6. The checks a feature list misses
 - **Payment:** if the goal is revenue, is there a feature through which people pay? Trial, plans, cancel.

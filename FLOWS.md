@@ -41,7 +41,7 @@ flowchart LR
 
 | # | Step | Command | Reads | Writes | Ends with |
 |---|---|---|---|---|---|
-| – | [Setup](skills/docs-setup/SKILL.md) | `/docs-setup` | the user's answers | `CLAUDE.md` line, `ideas.md` (empty), `01-discovery/`; `02-design/` with `diagrams.sh`, `c4/` and `checks/facts.py` | the documents' place exists and the skills know it; the diagram tools and the counts check run |
+| – | [Setup](skills/docs-setup/SKILL.md) | `/docs-setup` | the user's answers | `CLAUDE.md` line, `00-project/README.md`, `ideas.md` (empty), `adr/README.md` (the index, an empty table), `01-discovery/`; `02-design/` with `diagrams.sh`, `c4/` and `checks/facts.py` | the documents' place exists and the skills know it; the diagram tools and the counts check run |
 | 00 | [Brainstorm](skills/brainstorm/SKILL.md) | `/brainstorm` | `ideas.md` (raw) | `00-brainstorm.md`, `ideas.md` (shaped) | one problem picked, two fallbacks |
 | 01 | [Problem](skills/problem/SKILL.md) | `/problem` | `00-brainstorm.md`, `ideas.md` | `01-problem.md` | 3 of 5 interviews confirm it, or "not yet verified" |
 | 02 | [Market research](skills/market-research/SKILL.md) | `/market-research` | `01-problem.md` | `02-market-research.md` | go, change or stop |

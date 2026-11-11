@@ -87,23 +87,44 @@ The format of `docs/00-project/ideas.md`:
 
 ```markdown
 # Ideas
-Parking lot for feature ideas. Each idea has a stable ID (F-01, F-02…) that never changes, even when the order does. Unsorted until 04 PRD, which sorts them.
+
+| | |
+|---|---|
+| **What this is** | the parking lot for every feature idea, from the first brainstorm on: the MVP's features in the PRD's dependency order, everything after the MVP in priority buckets, and what was merged, moved or dropped, each with why |
+| **Updated** | [date] |
+| **Next free ID** | F-[NN] |
+
+**The IDs:** each idea gets the next free number (F-01, F-02…) when it arrives and keeps it forever, even when its place, its priority or its phase changes. A number says nothing about priority or phase. Other documents cite ideas by their ID, never by a position or a range.
+
+**The order:** the MVP by dependency (what everything else needs first, then what solves the problem, then the rest), as the PRD's MVP table; that isn't the build order, which is the PRD's slices. After the MVP, three buckets, High, Medium and Low, each ordered from most to least wanted. A new idea waits in "New" until it's sorted.
+
+**What each idea says:** what it is, in one or two lines; where it came from and what it solves, when that isn't obvious; and any decision it would reopen (an ADR, the DPIA, a non-goal). The details of an MVP feature live in the PRD; this line is its summary.
 
 ## New (not sorted yet)
 - **F-01 [Short name]:** what it does for the user, in one line. *From:* [step, date]. *Solves:* [the problem or complaint, if known]
 
 ## MVP (set in 04 PRD)
+Order: what everything else depends on first, then what solves the problem, then the rest.
+
 ## After MVP
+Each bucket ordered from most to least wanted.
+
 ### High
 ### Medium
 ### Low
+
+## Merged or moved
+Ideas that live on in another, their IDs kept.
+- **F-25** → merged into F-11 on [date]: [what it was]
+
 ## Dropped
-- **F-07 [Name]:** why, so it isn't discussed again
-## Merged
-- F-25 → F-11
+- **F-07 [Name]:** dropped [date]. [why, and the decision that forbids it], so it isn't discussed again
+
+## History
+- [date]: written in [step].
 ```
 
-Rules: take the next free ID, never reuse one; a merged idea keeps its ID with an arrow; a dropped idea stays with its reason.
+Rules: take the next free ID and move the header's Next free ID on; never reuse one. A merged or moved idea keeps its ID with an arrow; a dropped idea stays with its date and reason. Every change to the file sets Updated and adds a History line.
 
 Then write `docs/01-discovery/00-brainstorm.md`:
 

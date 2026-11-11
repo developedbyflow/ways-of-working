@@ -65,7 +65,7 @@ Created with the overview, before the first proposal:
 ```
 # Changes
 
-[one paragraph: one proposal per big one-way door (hard to undo and touching several parts; a small one-way door gets only an ADR), written before code, reviewed by a deadline, decided in writing; once approved, in one commit: its ADRs (an ADR it reverses kept, marked superseded, linked both ways), the step documents with a journal line pointing back, the overview with a History line, the C4 model and its diagrams redrawn where the parts change, the proposal's row set to approved, every number it changes fixed across docs/ and the counts check run; the proposal is the "why", the step documents the truth now]
+[one paragraph: one proposal per big one-way door (hard to undo and touching several parts; a small one-way door gets only an ADR), written before code, reviewed by a deadline, decided in writing; once approved, in one commit: its ADRs (an ADR it reverses kept, its status "replaced by ADR-NNNN", linked both ways), the step documents with a journal line pointing back, the overview with a History line, the C4 model and its diagrams redrawn where the parts change, the proposal's row set to approved, every number it changes fixed across docs/ and the counts check run; the proposal is the "why", the step documents the truth now]
 
 - **Write one:** /design-doc change "<name>"; the sections and the rules are in the design-doc skill, and the whole design in one document is the architecture overview, updated after every approved change.
 - **When not to:** a bug, a screen on an existing API, a small change easy to undo (a two-way door): a ticket, and an ADR if it's a one-way door.
@@ -124,7 +124,7 @@ The header and the sections above as one file to copy; a heading in bold is a co
 | **Security and privacy reviewer** | <who>, when the change touches personal data |
 | **Ticket** | |
 | **Supersedes / superseded by** | |
-| **Links** | PRD · ADRs · the step documents it changes |
+| **Links** | PRD · the idea's F-number in `ideas.md`, when it came from one (its ADRs cite it too) · ADRs · the step documents it changes |
 
 ## **Summary**                         3–5 lines: if someone reads only this, what must they know (arc42 1)
 ## **Context and scope**               what exists today, facts only; what we build; why now; what doing nothing costs; the terms (1, 12)

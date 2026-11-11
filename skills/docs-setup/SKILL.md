@@ -122,7 +122,7 @@ Use the place the team already keeps documents in, instead of creating a new one
 ## Done when
 - [ ] the place is decided, with the reason
 - [ ] it exists, and a private repo is verified as private
-- [ ] `docs/00-project/README.md`, `docs/00-project/ideas.md` and `docs/01-discovery/` exist
+- [ ] `docs/00-project/README.md` (the folder's entry), `docs/00-project/ideas.md`, `docs/00-project/adr/README.md` (the ADRs' index, an empty table, next number 0001) and `docs/01-discovery/` exist
 - [ ] the diagram tools work: `docs/02-design/diagrams.sh` passes the counts check (every fact skipped) and draws the empty C4 model
 - [ ] the `Project documents:` line is in `CLAUDE.md`, pointing to a path that exists
 - [ ] access is decided: who, which role, until when
