@@ -122,7 +122,7 @@ Then write `docs/01-discovery/01-problem.md`:
 **Questions:**
 1. Tell me about the last time you…
 **At the end:** [the real ask]
-**Pass:** 3 of 5 describe the same problem, meaning [which parts must match]. **Fewer:** change who it's for or the problem, or drop it, back to the brainstorm.
+**Pass:** 3 of 5 describe the same problem, meaning [which parts must match]. **Fewer:** change who it's for or the problem, or drop it: back to the brainstorm's fallbacks, or, with no brainstorm, a brainstorm first.
 **Results:** in `interviews.md` (private, no names). **Pattern:** [x of 5 describe …] **Decision:** keep / change / drop
 ## Journal
 - [date]: [what was written or changed, by whom, why]
@@ -174,7 +174,7 @@ Before any feature or ticket, ask: what problem does this solve, for whom, and w
 - [ ] the problem has no solution in it ("can't find an app that…" fails), plus a job story
 - [ ] today's alternatives, each with where it fails
 - [ ] the cost in numbers, each measured or estimated with how to measure it, and the strength on the ladder
-- [ ] "the same problem" defined, at least 5 interviews per group about the last time, a real ask, a fail branch
+- [ ] "the same problem" defined, at least 5 interviews from the main group (and 5 per group, or 2–3 kept apart, from a second one), every question about the last time, a real ask, a fail branch; or, when not run yet, the plan for them and the test in the brief
 - [ ] a dated status and a deadline; results in a private `interviews.md` and a decision, or the test in the brief
 - [ ] a journal, with every later change marked "(added …)" or "(corrected …: it said …)"
 - [ ] feature ideas parked in `docs/00-project/ideas.md` with stable IDs

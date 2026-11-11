@@ -162,7 +162,7 @@ A written decision can be checked later. Decide what counts as success before yo
 Before a big project, ask for a one-page brief: the problem, the market, the four risks with tests, and the decision. In a kickoff, run the pre-mortem.
 
 ## Done when
-- [ ] one page, two at most, linking to 01 and 02 instead of repeating them
+- [ ] one page, two at most (the journal and the dated marks of later changes not counted), linking to 01 and 02 instead of repeating them
 - [ ] every claim marked as evidence or guess
 - [ ] the goal in paying users, with a date and a user signal
 - [ ] who pays is named; for B2B, who must buy

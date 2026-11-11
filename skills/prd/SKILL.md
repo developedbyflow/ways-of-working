@@ -125,7 +125,7 @@ Who is counted; totals behind fewer than ~5 people not published.
 ## Glossary
 - **Term:** definition, relation to other terms
 ## MVP scope
-| ID | Feature | Why in the MVP (dependency / solves / expected / differentiator) | Size |
+| ID | Feature | Why in the MVP (dependency / solves / expected / differentiator, or a step-6 check: payment, day one, both sides of a screen) | Size |
 **Total size:** … against … until launch (capacity from [date]: … h a week × … weeks ÷ 8 h); fits / fails on purpose, because …
 ### Build order (slices)
 1. **[Name]:** F-…, F-…. Before it, [the tests that must pass].
@@ -148,7 +148,7 @@ Everything after the MVP in `docs/00-project/ideas.md`.
 ```
 
 ## Validate mode
-`/prd validate <file>`: judge an existing PRD, change nothing.
+`/prd validate <file>`: judge an existing PRD, change nothing; the owner then writes the ready-for-delivery verdict (step 12) in the file, from the report.
 1. Read the PRD, its journal, everything in `docs/01-discovery/` and `docs/00-project/ideas.md`.
 2. Check the template and "Done when" item by item, citing the lines.
 3. Then ask: does every MVP feature trace back to the problem, a dependency, an expected feature or a differentiator? Can each criterion be ticked yes or no by someone else? Does the glossary match the words used? Do the non-functional numbers agree? Is any vendor named where a requirement belongs? Does the size fit the time?

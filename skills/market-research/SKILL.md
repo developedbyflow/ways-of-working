@@ -171,7 +171,7 @@ Before a new feature or tool, check: does something already do this, what do its
 ## Done when
 - [ ] direct, indirect and doing nothing, with monthly and yearly prices, free tier and trial
 - [ ] traction for the main competitors
-- [ ] complaints grouped and counted from 20–30 reviews each for the top 3, with quotes and links
+- [ ] complaints grouped and counted from 20–30 recent 1–3 star reviews (and 10 five-star ones) for each of the top 3, with quotes and links
 - [ ] a feature table, and features split into expected and differentiators, each differentiator tied to a complaint
 - [ ] what stops users from switching
 - [ ] TAM / SAM / SOM bottom-up, with sources
