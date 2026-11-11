@@ -262,13 +262,13 @@ Each topic file starts with `# NN – [Topic]` and a link back to the README, th
 | `11-providers.md` | `\| Need \| Today \| Provider \| Where the data is \| DPA, training on our data \| How I'd leave \|` (Today only if a system runs); the providers outside the required region, and why |
 | `12-cost.md` | `\| Part \| Until the beta (only me) \| Target \| 10× \|`, a total and a per-paying-user row; what stays free; `\| A month, per paying user \| Brief \| Now \|`; the notes around the table |
 
-And one file per decision in `docs/00-project/adr/NNNN-[title].md`:
+And one file per decision in `docs/00-project/adr/NNNN-[title].md`, the next number from the index `docs/00-project/adr/README.md`, with its row added there in the same commit (| # | Decision | Status | Decided in | Last change |) and the next number moved on; every Design step's ADRs do the same:
 
 ```markdown
 # ADR-NNNN: [Decision]
-- **Status:** accepted | replaced by ADR-NNNN
-- **Date:**
-- **Updated:** [date]: [what a later step changed]; the decision doesn't change. (only once a later step changes it)
+- **Status:** accepted | replaced by ADR-NNNN (linked both ways)
+- **Date:** [date] (decided in [step], e.g. "01 System design"; two steps: "03 Architecture → 07 Security")
+- **Updated:** [date]: [what changed]; [date]: …; the decision doesn't change. (one line, every dated change in the body listed, only once one exists; the body marks each "(added [date])" or "(corrected [date]: it said …)"; a flipped decision is a new ADR, not an Updated entry)
 ## Context
 ## Options
 | Option | For | Against |

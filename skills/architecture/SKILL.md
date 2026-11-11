@@ -305,7 +305,7 @@ Each topic file starts with `# NN – [Topic]` and a link back to the README. **
 
 A topic file that cites anything ends with `## Sources`, numbered and cited in the text as `[n]`, each with the date it was read when it can change (a plan, a price, a version).
 
-And one file per decision in `docs/00-project/adr/NNNN-[title].md`, with the same sections as every ADR: status, date, context, options (for and against), decision, consequences, revisit when.
+And one file per decision in `docs/00-project/adr/NNNN-[title].md`, in the ADR template of `/system-design` (status, date, updated, context, options, decision, consequences, revisit when), with its row in the index `docs/00-project/adr/README.md` in the same commit.
 
 ## Validate mode
 `/architecture validate <folder>`: judge an existing architecture, change nothing.

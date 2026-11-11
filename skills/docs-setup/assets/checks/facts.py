@@ -298,6 +298,26 @@ FACTS = [
      "00-project/adr", r"(?:ADRs|architecture decisions)\b", None),
 ]
 
+def adr_index():
+    """The ADRs' index, 00-project/adr/README.md: one linked row per ADR file, and the next number after the
+    highest. No index yet, nothing checked."""
+    folder = where("00-project/adr")
+    index = folder / "README.md"
+    if not index.exists():
+        return []
+    text = index.read_text(encoding="utf-8")
+    names = sorted(p.name for p in folder.glob("[0-9][0-9][0-9][0-9]-*.md"))
+    rows = re.findall(r"^\| \[(\d{4})\]\(([^)]+)\) \|", text, re.M)
+    wrong = [f"00-project/adr/README.md: no row for {name}" for name in names if name not in [r[1] for r in rows]]
+    wrong += [f"00-project/adr/README.md: the row {n} links {link}, which isn't an ADR file"
+              for n, link in rows if link not in names or not link.startswith(n)]
+    said = re.search(r"\*\*Next number\*\* \| (\d{4})", text)
+    should = f"{max((int(n[:4]) for n in names), default=0) + 1:04d}"
+    if not said or said[1] != should:
+        wrong.append(f"00-project/adr/README.md: the next number says {said[1] if said else 'nothing'}; it is {should}")
+    return wrong
+
+
 WHEN = re.compile(r"^[^.;,()]{0,20}?\b(at step|at this decision|at the decision|before |when drafted)")
 JOURNAL = re.compile(r"^\s*- \d{4}-\d{2}-\d{2}")
 
@@ -344,6 +364,7 @@ def main():
                             or any(a <= m.start() and m.end() <= b for a, b in kept)):
                         continue
                     wrong.append(f"{rel}:{n}: says {m[0]!r}; {source} has {true} {name}")
+    wrong += adr_index()
     for name, true, source, _, _ in counts:
         hint = "  (0: is its table written, and do the guard's header and pattern still find it?)" if true == 0 else ""
         print(f"{name}: {true} ({source}){hint}")

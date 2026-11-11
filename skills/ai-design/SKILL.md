@@ -377,7 +377,7 @@ Answer only in the JSON schema you were given.
 <one closing line>
 ```
 
-And one file per decision in `docs/00-project/adr/NNNN-[title].md`, with the same sections as every ADR: status, date, context, options (for and against), decision, consequences, revisit when.
+And one file per decision in `docs/00-project/adr/NNNN-[title].md`, in the ADR template of `/system-design` (status, date, updated, context, options, decision, consequences, revisit when), with its row in the index `docs/00-project/adr/README.md` in the same commit.
 
 ## Validate mode
 `/ai-design validate <folder>`: judge an existing AI design, change nothing.

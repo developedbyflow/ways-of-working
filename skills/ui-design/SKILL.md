@@ -363,7 +363,7 @@ Each topic file starts with `# NN – [Topic]` and a link back to the README, th
 | `10-checks.md` | `\| Check \| What it finds \| Run \| Tried on \|`; each run, dated and counted; what the checks found on the drawings, and how the checks were corrected; in Build, `\| Check \| When \|` |
 | `screens/[screen].md` | per screen: what it's for, the data `\| Field \| From \| Why \|`, the actions, the states `\| State \| Shows \| Text (05-words' key) \| Page \|`, the criteria tried `\| Criterion \| Result \|`, its checks |
 
-And one file per decision in `docs/00-project/adr/NNNN-[title].md`, with the same sections as every ADR: status, date, context, options (for and against), decision, consequences, revisit when.
+And one file per decision in `docs/00-project/adr/NNNN-[title].md`, in the ADR template of `/system-design` (status, date, updated, context, options, decision, consequences, revisit when), with its row in the index `docs/00-project/adr/README.md` in the same commit.
 
 ## Validate mode
 `/ui-design validate <folder>`: judge an existing UI design (documents, a design file, or a running app's screens), change nothing.

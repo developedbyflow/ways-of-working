@@ -342,7 +342,7 @@ Each topic file starts with `# NN – [Topic]` and a link back to the README, th
 | `08-changes.md` | when the rules start `\| When \| The rule \| Why \|`; `\| Change \| Breaks the old app? \| Why, here \| oasdiff's check and its level \| What we do \|`; a looser limit; a newer app against an older server; the versioning, with its argument card; retiring a version; the check in CI; when this is read again |
 | `09-checks.md` | `\| When \| What \| Catches \| Tool \|`; the linter now and on every PR; the code against the design and against production; the tests per endpoint `\| Test \| Written \| Which addresses \| From \|`; the generated requests, with their sessions and their argument card |
 
-And one file per decision in `docs/00-project/adr/NNNN-[title].md`, with the same sections as every ADR: status, date, context, options (for and against), decision, consequences, revisit when.
+And one file per decision in `docs/00-project/adr/NNNN-[title].md`, in the ADR template of `/system-design` (status, date, updated, context, options, decision, consequences, revisit when), with its row in the index `docs/00-project/adr/README.md` in the same commit.
 
 ## Validate mode
 `/api-design validate <folder>`: judge an existing API design or contract, change nothing.

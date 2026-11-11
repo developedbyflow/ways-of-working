@@ -382,7 +382,7 @@ Each topic file starts with `# NN – [Topic]` and a link back to the README, th
 | `11-checks.md` | (1) `\| Protection \| Check \| Where \| When \| Tried on \|`, the levels defined above it, the accepted and transferred threats below; (2) the list's counts and its deviations, then "The rules the list found", `\| Requirement \| What it asks \| The rule for Build \|`; (3) the outside test before launch, with its price and its trigger |
 | `asvs-l2.md` | the counts, then `\| Requirement \| L \| What it asks \| Applies \| How it's met \| Checked by \|`: `v5.0.0-x.y.z`; 1 or 2; one plain sentence; yes, no, deviation or gap; the file and section, the technology not used, the deviation's reason, or the gap's rule for Build; the row of 11-checks, or for a gap its slice |
 
-And one file per decision in `docs/00-project/adr/NNNN-[title].md`, with the same sections as every ADR: status, date, context, options (for and against), decision, consequences, revisit when.
+And one file per decision in `docs/00-project/adr/NNNN-[title].md`, in the ADR template of `/system-design` (status, date, updated, context, options, decision, consequences, revisit when), with its row in the index `docs/00-project/adr/README.md` in the same commit.
 
 ## Validate mode
 `/security validate <folder>`: judge an existing threat model or security design, change nothing.

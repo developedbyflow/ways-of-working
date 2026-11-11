@@ -319,7 +319,7 @@ Each topic file starts with `# NN – [Topic]` and a link back to the README ("P
 | `07-migrations.md` | `\| Slice \| Features \| Tables \|` with each slice's count and the total, and `\| Table \| Slice \| Its first writer \|` where it isn't obvious; from `schema.sql` to the migrations; the data of a system already running; `\| Release \| [the tool] \| The code \| If it fails, the previous release… \|` and `\| Change \| In one release? \| How \|`; the fill and the locks as measured (`\| Change \| The plain form \| Tried \| The safe form \| Tried \|`); `\| Setting \| Value \| Why \|`; `\| Check \| When \| How \|` for CI; "Step 10, checked" |
 | `08-test-data.md` | invented, never copied; the seed's `\| Person \| From slice \| What they show \| The rule behind it \|` and how it's written (`\| Rule \| Why \|`); the builders; the end-to-end tests; staging; the volume generator; "Step 11, checked" |
 
-And one file per decision in `docs/00-project/adr/NNNN-[title].md`, with the same sections as every ADR: status, date, context, options (for and against), decision, consequences, revisit when.
+And one file per decision in `docs/00-project/adr/NNNN-[title].md`, in the ADR template of `/system-design` (status, date, updated, context, options, decision, consequences, revisit when), with its row in the index `docs/00-project/adr/README.md` in the same commit.
 
 ## Validate mode
 `/data-model validate <folder>`: judge an existing data model, change nothing.
