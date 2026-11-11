@@ -110,6 +110,17 @@ Compliance comes right after System design: it needs the list of providers, and 
 
 At work you'll hear "high-level design" (HLD) and "low-level design" (LLD); every company draws the line differently, so they aren't step names here. The translation: HLD is 01 System design plus the modules in 03 Architecture; LLD is the rest of 03, 04 Data model and 05 API design; 02, 06, 07 and 08 touch both. `docs/02-design/README.md` holds this map for the project, with each step's status.
 
+### Tools for any phase
+Not steps of one phase: each is run whenever its moment comes, in any phase.
+
+| Tool | Command | When | Writes |
+|---|---|---|---|
+| [Risk tests](skills/risk-tests/SKILL.md) | `/risk-tests` | a decision rests on an assumption nobody checked, and being wrong costs a lot | `01-discovery/risk-tests/`, one folder per test |
+| [ADR](skills/adr/SKILL.md) | `/adr "<the decision>"` | after Design (in Build, after launch, at work): one decision hard to undo but small, touching one part (a library, a format, a convention) | `00-project/adr/NNNN-<title>.md`, its row in the index, a replaced ADR marked, the step documents it changes |
+| [Design doc](skills/design-doc/SKILL.md) | `/design-doc change "<name>"` | after Design: a change hard to undo that touches several parts (a service, a provider, production data) | `02-design/09-architecture-overview/changes/NNNN-<name>.md`, then its ADRs when approved |
+
+Which one: easy to undo, a ticket; hard to undo and small, `/adr`; hard to undo and big, `/design-doc change`. In Design, each step writes its own ADRs, in the same template.
+
 ## Where the documents go
 
 `docs/` is wherever `/docs-setup` put it: a private docs repo, `docs/` in the code repo, or the team's existing place. The `Project documents:` line in `CLAUDE.md` points to it. Inside, one folder per phase, numbered in the order of the road; each step is numbered inside it, as a file, or as a folder when it has several files (a README is its entry). What belongs to the whole project, not to one phase, sits in `00-project/`: the ideas and the decisions (ADRs), which come from every phase:

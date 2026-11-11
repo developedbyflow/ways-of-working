@@ -67,4 +67,4 @@ It links each skill into `~/.claude/skills`, so an edit or a `git pull` applies 
 
 ## How to use it
 
-[FLOWS.md](FLOWS.md) says which skill to run, in what order, and what each one reads and writes. Starting a new product: run `/docs-setup`, write every idea into `docs/00-project/ideas.md`, then run `/brainstorm`. At work, before a big change, run `/design-doc change "<name>"`: it writes the design doc (an RFC at many companies) that the team reviews and decides before the code; `/design-doc validate <file>` judges a colleague's.
+[FLOWS.md](FLOWS.md) says which skill to run, in what order, and what each one reads and writes. Starting a new product: run `/docs-setup`, write every idea into `docs/00-project/ideas.md`, then run `/brainstorm`. At work, for a small decision that's hard to undo (a library, a format), run `/adr "<the decision>"`: one ADR, its row in the index. Before a big change, run `/design-doc change "<name>"`: it writes the design doc (an RFC at many companies) that the team reviews and decides before the code; `/design-doc validate <file>` judges a colleague's.

@@ -19,7 +19,7 @@
 - **Other documents cite them by ID or number** (F-11, ADR-0007), never by a position or a range.
 
 ## How `changes/` relates to `adr/`
-A big one-way door after Design (hard to undo and touching several parts) is first a design doc in step 09's `changes/`, reviewed and decided before code. Once it's approved, its one-way doors are written here as ADRs, each linked to the proposal, and an ADR it reverses is kept as replaced. A small one-way door is only an ADR. An idea that leads to a change keeps its F-number in the proposal and in the ADR.
+A big one-way door after Design (hard to undo and touching several parts) is first a design doc in step 09's `changes/`, reviewed and decided before code. Once it's approved, its one-way doors are written here as ADRs, each linked to the proposal, and an ADR it reverses is kept as replaced. A small one-way door is only an ADR, written with `/adr "<the decision>"`. An idea that leads to a change keeps its F-number in the proposal and in the ADR.
 
 ## Journal
 - <date>: created by /docs-setup.
