@@ -32,7 +32,7 @@ From 01 and 02, one or two lines each:
 
 ### 2. The goal in people
 A revenue goal decides nothing; the number of paying users it needs does.
-- goal ÷ price = paying users. Use the monthly and the yearly price (for example €2,000/month ≈ 190–300 paying users at \$12/month or \$80/year).
+- goal ÷ what's left per paying user (step 4) = paying users, not goal ÷ price. Do it once for the monthly and once for the yearly price, in one currency, with the conversion written: the real number sits between, by the mix (for example €2,000/month ≈ ~226–425 paying users at \$12/month or \$80/year, at \$1 ≈ €0.90).
 - By when.
 - **One user signal** that shows the product works for them (for example "logs food 5 days a week after the first month"). Revenue tells you late; this tells you early.
 
@@ -41,16 +41,23 @@ A revenue goal decides nothing; the number of paying users it needs does.
 - **For businesses, or when someone is obliged to buy:** who **must** buy (a law, a contract, losing money) and who only **wants** to? Read the law or the contract yourself and name the obliged party. Selling to the one who wants it while the one who must pay buys elsewhere is the classic mistake.
 
 ### 4. Rough money check
-Price minus what each paying user costs you: store or payment fees (15–30% in app stores, ~3% for card payments), hosting, AI calls, email, support time. If the margin is thin or negative at your price, it's a viability risk for step 5.
+Price minus what each paying user costs you per month: payment fees, hosting, AI calls, email, support time. One column per way of paying (monthly, yearly, through a store), and two rows of "left":
+- **the typical user**, and **the heavy user**: the one who uses every paid call they're allowed. Bound them by a monthly AI budget per person, not only a daily cap: a daily cap alone lets one user cost more than they pay. Count the users who don't pay (a trial) too.
+- **Fees, with their source and date.** A subscription without a merchant of record, for example Stripe in the EEA: 1.5% + €0.25 a card payment, plus 0.7% for Billing and 0.5% for Tax (stripe.com/ie/pricing, read 2026-11-11), and you handle VAT yourself. A merchant of record, which handles VAT for you: ~5% + \$0.50 (Paddle). App stores: 15% for a small seller (Apple's Small Business Program; Google Play's EEA subscriptions 10% + a 5% billing fee, read 2026-11-11). **Say whether VAT is inside the base** of every fee: a 5% taken on a price with 21% VAT costs more than on the price before it.
+- **Guesses first, real costs later.** Before Design it's guesses, marked as such. Once the system design's monthly cost exists, redo the table from it, in the same commit as the cost. The journal never says "replaced" while the table isn't (MacroMate's journal said so twice while the table kept October's guesses for a month).
+
+If the margin is thin or negative at your price, it's a viability risk for step 5.
 
 ### 5. The four risks
-First find them with a **pre-mortem:** "It's a year later and the product failed. Why?" Write every reason, then sort them into the four types:
-- **value:** will people want it? (usually the 3–5 interviews from 01: "3 out of 5")
-- **usability:** can they use it? (a few screens as a clickable prototype, shown to 3 people before any code)
+Marty Cagan's four product risks (*Inspired*). First find them with a **pre-mortem:** "It's a year later and the product failed. Why?" Write every reason, then sort them into the four types:
+- **value:** will people want it? (usually the interviews from 01, at least 5 people from the segment, not only friends: "3 out of 5")
+- **usability:** can they use it? (a few screens as a clickable prototype, shown to 5 people before any code: Nielsen's 5 users find most problems)
 - **feasibility:** can it be built? (do you have the data, does the AI do it well enough: "20 out of 30 correct")
-- **viability:** does it work as a business? (reach, money from step 4, legal: "100 sign-ups before launch")
+- **viability:** does it work as a business? (reach, money from step 4, legal: "100 sign-ups before launch"); some teams call it **business** risk.
 
-For each risk: a test, a **pass mark set now, before the test**, how long the test takes, **when it runs** (the step that depends on it: "before the architecture", "before slice 1", "before launch"), and a status. Put the riskiest first: the one that would hurt most if wrong and that you are least sure about. Test what the first version needs, not what comes second.
+Each pre-mortem reason gets a **Covered by:** the risk test, the money check, a rule, or "not tested" with why. A reason with nothing in that column is a risk nobody is watching.
+
+For each risk: a test, a **pass mark set now, before the test**, **what a fail sends back** (which decision is redone, what is dropped or switched off), how long the test takes, **when it runs** (the gate that depends on it: "before the architecture", "before slice 1", "before launch"), and a status with its date. Put the riskiest first: the one that would hurt most if wrong and that you are least sure about. If the rows are sorted some other way, say the order they must pass in, by gate, in one line above the table. Test what the first version needs, not what comes second.
 
 ### 6. Scope
 What the first version does, as a few capabilities, and what it explicitly doesn't. The boundary, not a feature list; the PRD turns it into features.
@@ -82,7 +89,9 @@ Someone outside the idea reads the page and says back what the product is and fo
 ### 11. The decision
 - **Go**, **go with conditions** (start the PRD while the tests run), **change** or **stop**, and why.
 - **The fallback:** what's left if it doesn't work (for example "my own tool and a portfolio project").
+- **Where it stands ([date]):** one line under the decision, kept current as the project moves: which steps are done, each test's status and gate, and why the decision still holds.
 - When a test fails later, come back to this page, decide again, and add a line to the journal.
+- **Later changes are marked** in place, "(added [date])" or "(corrected [date]: it said …)", and each gets a journal line: what changed, who decided, why. The page stays readable and its history stays checkable.
 
 Then write `docs/01-discovery/03-product-brief.md`:
 
@@ -93,13 +102,26 @@ Then write `docs/01-discovery/03-product-brief.md`:
 - **Solution:** …
 - **Differentiators:** …
 ## Goal
-- [goal] ≈ [N] paying users at [price/month or price/year], by [date]
+- [goal] ≈ [N–M] paying users at [price/month or price/year], from what's left per user, at [conversion], by [date]
 - **User signal:** …
 ## Who pays
 ## Money check
-| Price | Fees | Hosting | AI | Other | Left per user |
+Per paying user per month, [before / with] VAT; source: [guesses / the system design's cost].
+| | Monthly | Yearly | Through a store |
+|---|---|---|---|
+| Price | | | |
+| Fees (VAT in the base or not) | | | |
+| AI, a typical user | | | |
+| AI of the users who don't pay | | | |
+| Hosting and the rest | | | |
+| **Left, typical user** | | | |
+| AI, a heavy user: the monthly budget used up | | | |
+| **Left, heavy user** | | | |
+## Pre-mortem
+| Reason | Type | Covered by |
 ## Risks and how I test them
-| Risk | Type | Test | Pass if | Takes | When | Status |
+Order they must pass in: …
+| Risk | Type | Test | Pass if | If it fails | Takes | When | Status |
 ## Scope
 **In the first version:** … **Out:** …
 ## Vision
@@ -107,6 +129,7 @@ Then write `docs/01-discovery/03-product-brief.md`:
 | Decision | One-way or two-way | Blocks | Who | By when |
 ## Decision
 **[Go / go with conditions / change / stop]**, because …
+**Where it stands ([date]):** …
 **Fallback:** …
 ## Journal
 - [date]: [what was decided, by whom, what it changed]
@@ -116,7 +139,7 @@ Then write `docs/01-discovery/03-product-brief.md`:
 `/product-brief validate <file>`: judge an existing brief, change nothing.
 1. Read the brief, its journal, 01 and 02. A critique that ignores what was already decided is shallow.
 2. Check the template and "Done when" item by item, citing the lines.
-3. Then ask what no template asks: who must act or pay, and is that who the brief names? Is every number marked as evidence or guess, including inside the prose? Does each test aim at the first version? Was each pass mark set before the test? What is explicitly out? What does doing nothing cost?
+3. Then ask what no template asks: who must act or pay, and is that who the brief names? Is every number marked as evidence or guess, including inside the prose? Does the money check match the system design's cost, and does the journal claim a change the table doesn't show? Does each test aim at the first version, and say what a fail sends back? Was each pass mark set before the test? What is explicitly out? What does doing nothing cost?
 4. Go to the primary source for any claim that rests on a law, a contract or a price.
 5. Report: findings by severity, each with the line, what's wrong and what to change; then what the brief does well; then what you couldn't evaluate. The user picks what to apply.
 
@@ -124,6 +147,8 @@ Then write `docs/01-discovery/03-product-brief.md`:
 - Going straight to code because "the idea is good".
 - Testing only feasibility, because that's what developers enjoy.
 - Setting the pass mark after the test → every result looks like a pass.
+- A test with no failure path: when it fails, nobody knows what to undo, so it gets explained away.
+- A money check left at its first guesses after the real costs exist, with a journal line saying it was updated.
 - A moat that isn't there ("our AI is better").
 - Five pages: nobody reads it, so nobody challenges it.
 
@@ -141,12 +166,14 @@ Before a big project, ask for a one-page brief: the problem, the market, the fou
 - [ ] every claim marked as evidence or guess
 - [ ] the goal in paying users, with a date and a user signal
 - [ ] who pays is named; for B2B, who must buy
-- [ ] the money check per user
-- [ ] the four risks, each with a test, a pass mark set in advance and a status, riskiest first
+- [ ] the money check per user, typical and heavy (bounded by a monthly AI budget), every fee sourced and dated, VAT in or out of its base; redone from the system design's cost once it exists
+- [ ] the goal's paying users from what's left per user, in one currency, the conversion written
+- [ ] a pre-mortem whose every reason has a "Covered by"
+- [ ] the four risks, each with a test, a pass mark set in advance, what a fail sends back, a gate and a dated status; riskiest first, or the order by gate said
 - [ ] scope in and out
 - [ ] open decisions with what they block, who and by when
 - [ ] read by someone outside the idea, or validated
-- [ ] the decision, the fallback and the first journal line
+- [ ] the decision, where it stands (dated), the fallback and the first journal line; later changes marked "(added/corrected [date])" with a journal line each
 
 ## Next
 PRD (`/prd`). The risk tests run in parallel with it (`/risk-tests`).
