@@ -92,6 +92,7 @@ The format of `docs/00-project/ideas.md`:
 |---|---|
 | **What this is** | the parking lot for every feature idea, from the first brainstorm on: the MVP's features in the PRD's dependency order, everything after the MVP in priority buckets, and what was merged, moved or dropped, each with why |
 | **Updated** | [date] |
+| **README** | [00 Project](README.md), what this folder holds and the rules it shares with the ADRs |
 | **Next free ID** | F-[NN] |
 
 **The IDs:** each idea gets the next free number (F-01, F-02…) when it arrives and keeps it forever, even when its place, its priority or its phase changes. A number says nothing about priority or phase. Other documents cite ideas by their ID, never by a position or a range.

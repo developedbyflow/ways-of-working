@@ -268,7 +268,7 @@ And one file per decision in `docs/00-project/adr/NNNN-[title].md`, the next num
 ```markdown
 # ADR-NNNN: [Decision]
 - **Status:** accepted | replaced by ADR-NNNN (linked both ways)
-- **Date:** [date] (decided in [step], e.g. "01 System design"; two steps: "03 Architecture → 07 Security")
+- **Date:** [the day it was decided] (decided in [step], e.g. "01 System design"; two steps: "03 Architecture → 07 Security"; written down another day or in another step: "decided in 03 Architecture; written 2026-10-13", "03 Architecture, written in 04 Data model")
 - **Updated:** [date]: [what changed]; [date]: …; the decision doesn't change. (one line, every dated change in the body listed, only once one exists; the body marks each "(added [date])" or "(corrected [date]: it said …)"; a flipped decision is a new ADR, not an Updated entry)
 ## Context
 ## Options
