@@ -117,8 +117,10 @@ At work you'll hear "high-level design" (HLD) and "low-level design" (LLD); ever
 ```
 docs/
   00-project/
+    README.md            the folder's entry: the ideas and the ADRs, who writes and reads each, the rules they share
     ideas.md             your raw ideas, shaped in 00 Brainstorm, sorted in 04 PRD
     adr/                 the decisions that are hard to undo, from every phase
+      README.md          their index: the template, the statuses, the change rule, a row per ADR
       0001-database.md …
   01-discovery/
     00-brainstorm.md

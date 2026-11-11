@@ -48,11 +48,12 @@ The second command must print `"visibility": "PRIVATE"`.
 ```
 docs/
   00-project/       what belongs to the whole project, not to one phase
+    README.md       the folder's entry: its two parts, who writes and reads each, the rules they share
     ideas.md        every idea in your head, in any form
     adr/README.md   the index of the decisions (ADRs), with an empty table
   01-discovery/     brainstorm, problem, market research, brief, PRD
 ```
-`ideas.md` starts with one line: `# Ideas` and "Write every idea here, in any form. /brainstorm shapes it." Later phases add their folders when they start (`02-design/` starts with the diagram files of step 4); the decisions (ADRs) go in `00-project/adr/` from the first one. **Copy `assets/adr/README.md`** to `docs/00-project/adr/README.md`: the index, with the purpose (one-way doors only, one a file, numbers never reused), the template's place, the statuses, the change rule, an empty table (| # | Decision | Status | Decided in | Last change |) and "Next number: 0001"; every Design skill that writes an ADR adds its row there in the same commit, and `checks/facts.py` checks a row per ADR file and the next number.
+`ideas.md` starts with one line: `# Ideas` and "Write every idea here, in any form. /brainstorm shapes it." Later phases add their folders when they start (`02-design/` starts with the diagram files of step 4); the decisions (ADRs) go in `00-project/adr/` from the first one. **Copy `assets/project/README.md`** to `docs/00-project/README.md`, the folder's entry: what `ideas.md` and `adr/` hold, who writes and reads each, the rules they share (an ID or a number never reused, every change dated, nothing deleted, cited by ID), how step 09's `changes/` leads to ADRs, a journal; set its Updated and its first journal line to today. Without it, the one folder every phase writes to is the one with no entry. **Copy `assets/adr/README.md`** to `docs/00-project/adr/README.md`: the index, with the purpose (one-way doors only, one a file, numbers never reused), the template's place, the statuses, the change rule, an empty table (| # | Decision | Status | Decided in | Last change |) and "Next number: 0001"; every Design skill that writes an ADR adds its row there in the same commit, and `checks/facts.py` checks a row per ADR file and the next number.
 
 ### 4. The diagram tools
 Every design drawing is in a **standard notation, drawn from text**, so it reads the same at any company and the drawings can't drift apart: C4 from one model, the rest as PlantUML files. Without this, each Design step draws in its own style, and the same part ends up with two names in two drawings.
@@ -121,7 +122,7 @@ Use the place the team already keeps documents in, instead of creating a new one
 ## Done when
 - [ ] the place is decided, with the reason
 - [ ] it exists, and a private repo is verified as private
-- [ ] `docs/00-project/ideas.md` and `docs/01-discovery/` exist
+- [ ] `docs/00-project/README.md`, `docs/00-project/ideas.md` and `docs/01-discovery/` exist
 - [ ] the diagram tools work: `docs/02-design/diagrams.sh` passes the counts check (every fact skipped) and draws the empty C4 model
 - [ ] the `Project documents:` line is in `CLAUDE.md`, pointing to a path that exists
 - [ ] access is decided: who, which role, until when
