@@ -113,7 +113,7 @@ Researched [month year]. Prices and estimates are approximate.
 ## 4. Features
 | Feature | [App 1] | [App 2] | … |
 ### Expected (not a differentiator)
-### Differentiators (no major app does these well)
+### Differentiators (no major app does these well: where the vendors don't say, a hypothesis)
 ## 5. Switching
 ## 6. Market size
 TAM / SAM / SOM, bottom-up
