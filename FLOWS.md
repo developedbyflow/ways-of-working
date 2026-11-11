@@ -23,23 +23,22 @@ The complete flow, high level: the five phases in order, and `00-project/` besid
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e8eef7", "primaryTextColor": "#1a1a1a", "primaryBorderColor": "#8a8a8a", "lineColor": "#8a8a8a", "clusterBkg": "#f5f5f5", "clusterBorder": "#8a8a8a"}}}%%
 flowchart TB
+  subgraph ROAD["The road"]
+    direction LR
+    S["Setup<br/>/docs-setup"] --> D1["1. Discovery<br/>brainstorm → PRD<br/>(+ risk tests)"] --> D2["2. Design<br/>01 → 09"] --> D3["3. Planning<br/>slices"] --> D4["4. Build<br/>slice by slice"] --> D5["5. Launch<br/>& Growth"]
+  end
+  ROAD -. "every phase writes here<br/>(the table below)" .-> PR
+  D4 --> Q{"a new requirement<br/>or decision"}
+  Q -- "an idea, not now" --> ID
+  Q -- "easy to undo" --> T["a line in the ticket<br/>or the PR, no ADR"]
+  Q -- "hard to undo,<br/>one part: /adr" --> AD
+  Q -- "hard to undo,<br/>several parts" --> DD["a design doc<br/>/design-doc change"]
+  DD -- "approved:<br/>its ADRs" --> AD
   subgraph PR["00 Project: open the whole time"]
+    direction LR
     ID["ideas.md<br/>every idea, its F-ID for good"]
     AD["adr/<br/>every one-way door, one a file"]
   end
-  S["Setup<br/>/docs-setup"] --> D1["1. Discovery<br/>brainstorm → problem → market<br/>→ brief → PRD (+ risk tests)"]
-  D1 --> D2["2. Design<br/>01 → 09"] --> D3["3. Planning<br/>the PRD cut into slices"] --> D4["4. Build<br/>slice by slice"] --> D5["5. Launch & Growth"]
-  S -. "empty ideas.md, empty index" .-> PR
-  D1 -. "dumps, shapes, the PRD sorts:<br/>MVP / High / Medium / Low" .-> ID
-  D2 -. "each step's Not doing → an idea;<br/>an idea it rules out → Dropped" .-> ID
-  D2 -. "each step's one-way doors" .-> AD
-  D3 -. "re-sorts the buckets" .-> ID
-  D4 --> Q{"a new requirement<br/>or decision"}
-  Q -- "an idea, not now" --> ID
-  Q -- "easy to undo" --> T["a line in the ticket or the PR,<br/>no ADR"]
-  Q -- "hard to undo, one part" --> AD
-  Q -- "hard to undo, several parts" --> DD["a design doc in 09's changes/<br/>(/design-doc change)"] -- "approved: its ADRs" --> AD
-  D5 -. "what people ask for" .-> ID
 ```
 
 When you go back to `00-project/`, phase by phase:
