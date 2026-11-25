@@ -40,7 +40,7 @@ A small decision that's hard to undo is made in a chat or a PR comment, and the 
 5. **The user decides.** Write the decision in one or two sentences, with the letter and the date.
 6. **The consequences:** what becomes easier, what becomes harder, what it costs, what other documents must change; and **Revisit when:** the number or the event that would reopen it (a library unmaintained for a year, a size over the budget, a second module needing the same).
 7. **Write it, in one commit:**
-   - `docs/00-project/adr/NNNN-<short-title>.md`, the next number from the index, in the template below, status "accepted";
+   - `docs/00-project/adr/NNNN-<short-title>.md`, the next number from the index, in the template below, status "accepted" (or "proposed" when a team reviews it first, see "How to apply it at work");
    - its row in the index, and the index's next number moved on;
    - an ADR it reverses: the old one's status becomes "replaced by ADR-NNNN", linked both ways; the old file stays;
    - the step documents it changes (the stack, a convention, a table…), each README with a journal line pointing to the ADR;
@@ -53,7 +53,7 @@ The template, the same one every ADR uses (the `/system-design` skill's):
 
 ```markdown
 # ADR-NNNN: [Decision]
-- **Status:** accepted | replaced by ADR-NNNN (linked both ways)
+- **Status:** proposed (in review) | accepted | replaced by ADR-NNNN (linked both ways)
 - **Date:** [the day it was decided] (decided in [where: a step, "Build, slice 2", "after launch"])
 - **Updated:** [date]: [what changed]; …; the decision doesn't change. (only once a dated change exists)
 ## Context
@@ -83,10 +83,10 @@ The template, the same one every ADR uses (the `/system-design` skill's):
 The reasons behind the small irreversible choices live in people's heads and leave with them; the same discussion is had again with every new colleague; a library is swapped without anyone knowing what depended on it.
 
 ## The principle behind it
-Michael Nygard's architecture decision records (2011): one short file per decision, numbered, never reused, with its context, decision and consequences; a reversed decision kept and marked, replaced by a new one. Jeff Bezos's doors (2015 letter): a one-way door is decided carefully, a two-way door quickly. The size of the record follows the size of the decision: a ticket, an ADR, or a design doc.
+Michael Nygard's architecture decision records (2011): one short file per decision, numbered, never reused, with its context, decision and consequences, and a status (proposed, then accepted); a reversed decision kept and marked, replaced by a new one. Jeff Bezos's doors (2015 letter): a one-way door is decided carefully, a two-way door quickly. The size of the record follows the size of the decision: a ticket, an ADR, or a design doc.
 
 ## How to apply it at work
-Use the team's template and place if there is one (MADR, a `docs/adr/` folder per repository, Confluence); the questions are the same. Before deciding something hard to undo in your module, ask whether an ADR already covers it; write yours, link it from the PR, and ask the reviewers to comment on the options, not only the code. When a decision crosses teams, it isn't small: propose a design doc.
+Use the team's template and place if there is one (MADR, a `docs/adr/` folder per repository, Confluence); the questions are the same. Before deciding something hard to undo in your module, ask whether an ADR already covers it; write yours with status "proposed", link it from the PR, and ask the reviewers to comment on the options, not only the code; when the PR is approved, the status becomes "accepted" with that date. Working alone, skip "proposed" and write "accepted" directly. When a decision crosses teams, it isn't small: propose a design doc.
 
 ## Done when
 - [ ] it's a small one-way door (a ticket or a design doc otherwise, said so)
