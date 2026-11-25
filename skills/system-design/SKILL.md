@@ -268,13 +268,16 @@ And one file per decision in `docs/00-project/adr/NNNN-[title].md`, the next num
 ```markdown
 # ADR-NNNN: [Decision]
 - **Status:** proposed (in review) | accepted | replaced by ADR-NNNN (linked both ways)
+- **Deciders:** [who approved it: the user; at work the tech lead, the client architect or design authority]
 - **Date:** [the day it was decided] (decided in [step], e.g. "01 System design"; two steps: "03 Architecture → 07 Security"; written down another day or in another step: "decided in 03 Architecture; written 2026-10-13", "03 Architecture, written in 04 Data model")
 - **Updated:** [date]: [what changed]; [date]: …; the decision doesn't change. (one line, every dated change in the body listed, only once one exists; the body marks each "(added [date])" or "(corrected [date]: it said …)"; a flipped decision is a new ADR, not an Updated entry)
 ## Context
+(ends with **Drivers:** the 2–3 requirements or qualities that weigh most, e.g. exact amounts, auditability)
 ## Options
 | Option | For | Against |
 (A., B., C., the chosen one in bold; a cost column when the options differ in money)
 ## Decision
+(optional first line, the Y-statement: "In the context of X, facing Y, we chose Z, accepting W.")
 ## Consequences
 ## Revisit when
 ```
