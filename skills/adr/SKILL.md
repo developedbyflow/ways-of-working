@@ -35,9 +35,9 @@ A small decision that's hard to undo is made in a chat or a PR comment, and the 
 ## Steps
 1. **Is it an ADR?** Put it through the three questions above. Easy to undo: say so, and suggest a ticket instead. Big, touching several parts (a new service, a provider, production data, the shape of the system): stop, and propose `/design-doc change "<name>"`. Only a small one-way door goes on.
 2. **Read what exists.** The index (`adr/README.md`): is there an ADR on the same topic, which this one would change or reverse? The step documents the decision touches (the architecture's stack and conventions, the data model, the API…), the PRD's requirements that constrain it, and `ideas.md` if an idea led to it (keep its F-number).
-3. **The context:** what forces the decision now, the constraints (the requirements with their numbers, the stack, the budget, the law), and what happens if nothing is decided. Facts only.
+3. **The context:** what forces the decision now, the constraints (the requirements with their numbers, the stack, the budget, the law), and what happens if nothing is decided. Facts only. End with **Drivers:** the 2–3 requirements or qualities that weigh most in this choice; the options are judged against them.
 4. **The options:** 2–4 real ones, lettered A, B, C, each with what it wins and what it costs (`| Option | For | Against |`, a cost column when they differ in money), "keep what we have" among them when something exists. Each fact with its source and date. Recommend one, with why and when the other would win.
-5. **The user decides.** Write the decision in one or two sentences, with the letter and the date.
+5. **The user decides.** Write the decision in one or two sentences, with the letter, the date and the **Deciders** (who approved it). Optionally open it with a one-line Y-statement: "In the context of X, facing Y, we chose Z, accepting W." If the client or a reviewer overrules the recommendation, say so and keep the recommended option visible: it protects the team and explains the code at handover.
 6. **The consequences:** what becomes easier, what becomes harder, what it costs, what other documents must change; and **Revisit when:** the number or the event that would reopen it (a library unmaintained for a year, a size over the budget, a second module needing the same).
 7. **Write it, in one commit:**
    - `docs/00-project/adr/NNNN-<short-title>.md`, the next number from the index, in the template below, status "accepted" (or "proposed" when a team reviews it first, see "How to apply it at work");
@@ -53,14 +53,17 @@ The template, the same one every ADR uses (the `/system-design` skill's):
 
 ```markdown
 # ADR-NNNN: [Decision]
-- **Status:** proposed (in review) | accepted | replaced by ADR-NNNN (linked both ways)
+- **Status:** proposed (in review) | accepted | replaced by ADR-NNNN (linked both ways); add "reconstructed [date]" for a past decision written down later
+- **Deciders:** [who approved it: the user; at work the tech lead, the client architect or design authority]
 - **Date:** [the day it was decided] (decided in [where: a step, "Build, slice 2", "after launch"])
 - **Updated:** [date]: [what changed]; …; the decision doesn't change. (only once a dated change exists)
 ## Context
+(ends with **Drivers:** the 2–3 requirements or qualities that weigh most, e.g. exact amounts, auditability)
 ## Options
 | Option | For | Against |
 (A., B., C., the chosen one in bold)
 ## Decision
+(optional first line, the Y-statement: "In the context of X, facing Y, we chose Z, accepting W.")
 ## Consequences
 ## Revisit when
 ```
@@ -68,7 +71,7 @@ The template, the same one every ADR uses (the `/system-design` skill's):
 ## Validate mode
 `/adr validate <file>`: judge an existing ADR, change nothing.
 1. Read the ADR, the index, the ADRs it names, and the step documents it touches.
-2. Check: is it really a one-way door, and a small one (or should it be a ticket, or a design doc)? Does the context say what forces it, with facts? Are there at least two real options, each with for and against, "keep what we have" among them when something exists? Is the decision one or two sentences, with who and when? Are the consequences honest, the costs included? Is "Revisit when" a number or an event someone will notice? Is its row in the index, with the right status? Does an ADR it reverses say "replaced by", linked both ways? Is every dated change in the Updated line? Do the step documents it changes say the same today?
+2. Check: is it really a one-way door, and a small one (or should it be a ticket, or a design doc)? Does the context say what forces it, with facts, and name its drivers? Are there at least two real options, each with for and against, "keep what we have" among them when something exists? Is the decision one or two sentences, with the deciders and the date? Are the consequences honest, the costs included? Is "Revisit when" a number or an event someone will notice? Is its row in the index, with the right status? Does an ADR it reverses say "replaced by", linked both ways? Is every dated change in the Updated line? Do the step documents it changes say the same today?
 3. Report: findings by severity, each with the line, what's wrong and what to change; then what it does well; then what you couldn't judge.
 
 ## The bad version and why not
@@ -76,7 +79,7 @@ The template, the same one every ADR uses (the `/system-design` skill's):
 - No ADR for a library that every module now imports: a year later nobody knows why, or what it would cost to leave.
 - One option, the chosen one: it's an announcement, not a decision.
 - The old ADR edited into the new decision: the history of why is gone, and every link to it now says something else.
-- An ADR written after the code, to tick a box: the options were never weighed.
+- An ADR written after the code, to tick a box: the options were never weighed. (Different from a **reconstructed** ADR: joining a project that already made a decision, you write it down from the code and the people who were there, mark it "reconstructed [date]", and say which options you could rebuild and which you couldn't. That is one of the most useful first contributions on a client project.)
 - A big change squeezed into an ADR to skip the review: the other parts it touches find out after the code.
 
 ## What breaks if you skip it
@@ -86,12 +89,12 @@ The reasons behind the small irreversible choices live in people's heads and lea
 Michael Nygard's architecture decision records (2011): one short file per decision, numbered, never reused, with its context, decision and consequences, and a status (proposed, then accepted); a reversed decision kept and marked, replaced by a new one. Jeff Bezos's doors (2015 letter): a one-way door is decided carefully, a two-way door quickly. The size of the record follows the size of the decision: a ticket, an ADR, or a design doc.
 
 ## How to apply it at work
-Use the team's template and place if there is one (MADR, a `docs/adr/` folder per repository, Confluence); the questions are the same. Before deciding something hard to undo in your module, ask whether an ADR already covers it; write yours with status "proposed", link it from the PR, and ask the reviewers to comment on the options, not only the code; when the PR is approved, the status becomes "accepted" with that date. Working alone, skip "proposed" and write "accepted" directly. When a decision crosses teams, it isn't small: propose a design doc.
+Use the team's template and place if there is one (MADR, a `docs/adr/` folder per repository, Confluence); the questions are the same. Before deciding something hard to undo in your module, ask whether an ADR already covers it; joining a project, reconstruct the key past decisions as ADRs marked "reconstructed"; write yours with status "proposed", name the deciders (often the client architect or a design authority), link it from the PR, and ask the reviewers to comment on the options, not only the code; when the PR is approved, the status becomes "accepted" with that date. Working alone, skip "proposed" and write "accepted" directly. When a decision crosses teams, it isn't small: propose a design doc.
 
 ## Done when
 - [ ] it's a small one-way door (a ticket or a design doc otherwise, said so)
 - [ ] the context with facts, at least two real options with for and against, each fact with its source and date
-- [ ] the decision chosen by the user, with the letter and the date; the consequences and "Revisit when" written
+- [ ] the drivers named; the decision chosen by the user, with the letter, the date and the deciders; the consequences and "Revisit when" written
 - [ ] the file with the next number, its row in the index, the next number moved on
 - [ ] an ADR it reverses marked "replaced by", linked both ways
 - [ ] the step documents it changes updated, each with a journal line; the idea it came from names it
